@@ -7,6 +7,10 @@
       var isActive = btn.getAttribute('data-theme-btn') === mode;
       btn.classList.toggle('is-active', isActive);
     });
+    var favicon = document.getElementById('favicon');
+    if (favicon) favicon.setAttribute('href', mode === 'night' ? 'favicon-lavender.svg' : 'favicon-peach.svg');
+    var avatar = document.getElementById('avatar-img');
+    if (avatar) avatar.setAttribute('src', mode === 'night' ? 'favicon-lavender.svg' : 'favicon-peach.svg');
     try { localStorage.setItem('guerz-theme', mode); } catch (e) {}
   }
 
