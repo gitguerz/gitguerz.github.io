@@ -1,7 +1,13 @@
 // guerz.lol — GuerzBook (guestbook)
-// entries live in localStorage for now (static site, no backend yet).
-// name + email required (email regex-checked), stored but never displayed.
+// Signatures POST to Formspree — collected privately in your dashboard + emailed to you.
+// The visible wall still uses localStorage so a signer sees their own mark land;
+// it is NOT shared across visitors yet (static site, no shared backend).
+// name + email required (email regex-checked). email is collected, never displayed.
 (function () {
+  // ⬇️⬇️⬇️ REPLACE THIS after Formspree signup — paste your endpoint here ⬇️⬇️⬇️
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mojgwbwj';
+  // ⬆️⬆️⬆️ looks like https://formspree.io/f/abcdwxyz ⬆️⬆️⬆️
+
   var STORAGE_KEY = 'guerz-guestbook';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -68,15 +74,43 @@
         return;
       }
 
-      var when = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toLowerCase();
-      var entry = { name: name, email: email, when: when, message: message }; // email stored, never displayed
-      entries.push(entry);
-      saveEntries(entries);
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+      status.textContent = 'signing...';
+      status.className = 'lj-form-status';
 
-      list.appendChild(renderEntry(entry));
-      form.reset();
-      status.textContent = 'signed! thanks for stopping by ^_^';
-      status.className = 'lj-form-status lj-form-status--ok';
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: 'new guerz.lol guestbook signature'
+        })
+      })
+      .then(function (res) {
+        if (res.ok) {
+          var when = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toLowerCase();
+          var entry = { name: name, email: email, when: when, message: message };
+          entries.push(entry);
+          saveEntries(entries);
+          list.appendChild(renderEntry(entry));
+          form.reset();
+          status.textContent = 'signed! thanks for stopping by ^_^';
+          status.className = 'lj-form-status lj-form-status--ok';
+        } else {
+          status.textContent = 'hmm, that didn\u2019t go through \u2014 try again?';
+          status.className = 'lj-form-status lj-form-status--err';
+        }
+      })
+      .catch(function () {
+        status.textContent = 'network hiccup \u2014 try again in a sec?';
+        status.className = 'lj-form-status lj-form-status--err';
+      })
+      .then(function () {
+        if (btn) btn.disabled = false;
+      });
     });
   }
 
