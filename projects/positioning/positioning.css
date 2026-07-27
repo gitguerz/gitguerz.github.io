@@ -1,0 +1,48 @@
+/* Reset default browser margins and padding on all elements */
+* {
+  margin: 0; /* Remove default margin from all elements */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Make width and height include padding and border */
+}
+
+/* Style the container div that wraps all positioning examples */
+.container {
+  max-width: 1000px; /* Limit container width so it doesn't stretch too wide */
+  margin: 0 auto; /* Center the container on the page (auto margins on sides) */
+  padding: 2rem; /* Add space inside the container around all content */
+}
+
+/* Style all positioning section divs */
+.positioning-section {
+  margin-bottom: 3rem; /* Add space below each section so they don't feel cramped */
+  padding: 1.5rem; /* Add internal padding inside the section */
+  border: 2px solid #333; /* Add a border around each section for clarity */
+  background-color: #f5f5f5; /* Light gray background to distinguish sections */
+}
+
+
+/* Style the static positioning example */
+.static-example {
+  position: static; /* Static is the default, element follows normal document flow */
+  background-color: #e8f5e9; /* Light green background to see the element */
+  padding: 1rem; /* Add space inside the element */
+  margin-bottom: 1rem; /* Add space below this element */
+}
+
+/* Style the relative positioning example */
+.relative-example {
+  position: relative; /* Position relative to where it would normally sit */
+  top: 20px; /* Move the element 20px down from its normal position */
+  background-color: #e3f2fd; /* Light blue background to see the element */
+  padding: 1rem; /* Add space inside the element */
+  margin-bottom: 1rem; /* Add space below this element */
+}
+
+/* Style the absolute positioning example */
+.absolute-example {
+  position: absolute; /* Position relative to nearest positioned ancestor */
+  top: 100px; /* Distance from top of positioned ancestor */
+  left: 50px; /* Distance from left of positioned ancestor */
+  background-color: #fff3e0; /* Light orange background to see the element */
+  padding: 1rem; /* Add space inside the element */
+}
