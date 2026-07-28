@@ -51,7 +51,7 @@
     <summary>
       <span class="lj-section-caret">▸</span>
       <span class="lj-section-title">cold instructions</span>
-      <span class="lj-section-count">4 builds · from scratch, no tutorial</span>
+      <span class="lj-section-count">3 builds · from scratch, no tutorial</span>
     </summary>
     <div class="lj-section-body">
     <details class="lj-project-box">
@@ -117,40 +117,181 @@
         <span class="lj-project-stack">html + css</span>
       </summary>
       <div class="lj-project-inner">
-        <div class="lj-card-body">the smallest possible flex layout — <b>display: flex</b> with <b>space-between</b> and <b>align-items: center</b> — spreading three children across a row. commented line-by-line as a memory anchor.</div>
+        <div class="lj-card-body">a five-part flexbox reference — <b>flex-direction</b>, <b>justify-content</b>, <b>align-items</b>, <b>flex-wrap</b> and <b>flex-grow</b>, each with side-by-side demo boxes so the axis behaviour is visible. commented line-by-line.</div>
         <div class="lj-view-toggle">
           <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
           <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
         </div>
         <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/flex.html" title="Flexbox preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/flex.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+          <iframe class="lj-preview-frame" data-src="projects/flexbox/flexbox.html" title="Flexbox preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/flexbox/flexbox.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
         </div>
         <div class="lj-view-pane" data-pane="code" hidden>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
-              <span class="lj-code-file">flex.html</span>
+              <span class="lj-code-file">flexbox.html</span>
               <button class="lj-code-copy" type="button">copy</button>
             </div>
             <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+&lt;html lang="en"&gt;
 &lt;head&gt;
-&lt;style&gt;
-.container {
-  display: flex;                  /* turns the container into a flex box — children line up in a row by default */
-  justify-content: space-between; /* spreads children out with equal gaps between them, no gap at edges */
-  align-items: center;            /* centers children vertically along the cross-axis */
-}
-&lt;/style&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;link rel="stylesheet" href="flexbox.css"&gt; &lt;!-- connects this file to your CSS --&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div class="container"&gt;
-  &lt;div&gt;1&lt;/div&gt;
-  &lt;div&gt;2&lt;/div&gt;
-  &lt;div&gt;3&lt;/div&gt;
-&lt;/div&gt;
+
+  &lt;h2&gt;1. Flex Direction&lt;/h2&gt;
+  &lt;p class="label"&gt;row (default) vs column — controls which way the main axis runs&lt;/p&gt;
+  &lt;div class="demo-row"&gt;
+    &lt;div class="box direction-row"&gt;
+      &lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;div class="item"&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="box direction-column"&gt;
+      &lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;div class="item"&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2&gt;2. Justify Content&lt;/h2&gt;
+  &lt;p class="label"&gt;controls spacing of items along the main axis&lt;/p&gt;
+  &lt;div class="demo-row"&gt;
+    &lt;div class="box justify-demo jc-start"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box justify-demo jc-end"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box justify-demo jc-center"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box justify-demo jc-between"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box justify-demo jc-around"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2&gt;3. Align Items&lt;/h2&gt;
+  &lt;p class="label"&gt;controls positioning along the cross axis (perpendicular to main axis)&lt;/p&gt;
+  &lt;div class="demo-row"&gt;
+    &lt;div class="box align-demo ai-start"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box align-demo ai-center"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="box align-demo ai-end"&gt;&lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2&gt;4. Flex Wrap&lt;/h2&gt;
+  &lt;p class="label"&gt;too many items forced onto one line vs allowed to wrap&lt;/p&gt;
+  &lt;div class="box wrap-demo"&gt;
+    &lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;div class="item"&gt;3&lt;/div&gt;
+    &lt;div class="item"&gt;4&lt;/div&gt;&lt;div class="item"&gt;5&lt;/div&gt;&lt;div class="item"&gt;6&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2&gt;5. Flex Grow&lt;/h2&gt;
+  &lt;p class="label"&gt;item 2 has flex-grow:2, so it claims twice the leftover space of items 1 and 3&lt;/p&gt;
+  &lt;div class="box grow-demo"&gt;
+    &lt;div class="item"&gt;1&lt;/div&gt;&lt;div class="item"&gt;2&lt;/div&gt;&lt;div class="item"&gt;3&lt;/div&gt;
+  &lt;/div&gt;
+
 &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;
+</code></pre>
+          </div>
+          <div class="lj-code-block">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">flexbox.css</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>body {
+  font-family: sans-serif; /* keeps labels readable */
+  background-color: #1a1a1a; /* dark background so the colored boxes pop */
+  color: #eee; /* light text on dark background */
+  padding: 2rem; /* breathing room around the whole page */
+}
+
+h2 {
+  margin-top: 2.5rem; /* space above each section title */
+  margin-bottom: 0.5rem; /* tighter space below, closer to its demo */
+  color: #7fd1ff; /* light blue to separate titles from body text */
+}
+
+p.label {
+  font-size: 0.9rem; /* smaller than body text, it's a caption not content */
+  color: #aaa; /* dimmed so it doesn't compete with the boxes */
+  margin-bottom: 0.5rem; /* small gap before the demo box starts */
+}
+
+.demo-row {
+  display: flex; /* lays out several mini flex-containers side by side for comparison */
+  gap: 2rem; /* space between the mini-containers */
+  flex-wrap: wrap; /* lets the row wrap on narrow screens instead of overflowing */
+}
+
+.box {
+  border: 2px solid #444; /* outlines each flex-container so you can see its edges */
+  padding: 1rem; /* space inside each flex-container, around the items */
+  background-color: #222; /* slightly lighter than page background, marks the container boundary */
+}
+
+.item {
+  background-color: #ff6b6b; /* red items are the ones being positioned/sized — the thing you're watching move */
+  padding: 0.75rem; /* space inside each item so the number isn't cramped */
+  margin: 0.25rem; /* tiny gap between items so touching edges are visible */
+  color: #1a1a1a; /* dark text readable against the red background */
+  font-weight: bold; /* makes the item numbers easy to scan */
+  display: flex; /* used ONLY to center the number inside each item */
+  align-items: center; /* centers number vertically inside the item */
+  justify-content: center; /* centers number horizontally inside the item */
+}
+
+/* SECTION 1: flex-direction — controls which way the main axis runs */
+.direction-row {
+  display: flex; /* THE property being demoed */
+  flex-direction: row; /* items line up left-to-right (default) */
+  width: 200px;
+  height: 120px;
+}
+.direction-row .item { width: 40px; height: 40px; }
+
+.direction-column {
+  display: flex; /* THE property being demoed */
+  flex-direction: column; /* items stack top-to-bottom instead */
+  width: 200px;
+  height: 120px;
+}
+.direction-column .item { width: 40px; height: 40px; }
+
+/* SECTION 2: justify-content — controls spacing along the main axis */
+.justify-demo {
+  display: flex; /* THE property being demoed */
+  width: 260px;
+  height: 80px;
+}
+.justify-demo .item { width: 40px; height: 40px; }
+.jc-start   { justify-content: flex-start; }   /* items pushed to the start, no gap between them */
+.jc-end     { justify-content: flex-end; }     /* items pushed to the end */
+.jc-center  { justify-content: center; }       /* items clumped in the middle */
+.jc-between { justify-content: space-between; }/* equal gaps BETWEEN items, none at the edges */
+.jc-around  { justify-content: space-around; } /* equal gaps AROUND each item, so edges get half-gaps */
+
+/* SECTION 3: align-items — controls positioning along the cross axis (perpendicular to main axis) */
+.align-demo {
+  display: flex; /* THE property being demoed */
+  width: 220px;
+  height: 100px; /* taller box so vertical alignment is actually visible */
+}
+.align-demo .item { width: 40px; height: 30px; } /* shorter items than the container, so alignment shows */
+.ai-start  { align-items: flex-start; }  /* items stick to the top */
+.ai-center { align-items: center; }      /* items centered vertically */
+.ai-end    { align-items: flex-end; }    /* items stick to the bottom */
+
+/* SECTION 4: flex-wrap — controls whether items are forced onto one line or allowed to wrap */
+.wrap-demo {
+  display: flex; /* THE property being demoed */
+  flex-wrap: wrap; /* items that don't fit spill onto a new line instead of shrinking or overflowing */
+  width: 220px; /* deliberately too narrow to fit all 6 items on one line */
+}
+.wrap-demo .item { width: 60px; height: 40px; }
+
+/* SECTION 5: flex-grow — controls how items divide up leftover space */
+.grow-demo {
+  display: flex; /* THE property being demoed */
+  width: 300px;
+  height: 60px;
+}
+.grow-demo .item:nth-child(1) { flex-grow: 1; } /* takes 1 share of leftover space */
+.grow-demo .item:nth-child(2) { flex-grow: 2; } /* takes 2 shares — ends up twice as wide as item 1 */
+.grow-demo .item:nth-child(3) { flex-grow: 1; } /* takes 1 share, same as item 1 */
+</code></pre>
           </div>
         </div>
       </div>
@@ -181,7 +322,7 @@
             <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 
-&lt;head&gt; &lt;!-- Open the head section where metadata is defined --&gt; 
+&lt;head&gt; &lt;!-- Open the head section where metadata is defined --&gt;
     &lt;meta charset="UTF-8"&gt; &lt;!-- Tell the browser to use UTF-8 encoding for all text (includes emojis, accents, etc)--&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt; &lt;!-- Viewport tells mobile browsers to treat the page width as device width, not zoomed out --&gt;
     &lt;title&gt;Positioning Cold Build Instructional&lt;/title&gt; &lt;!-- Title appears in browser tab and search results --&gt;
@@ -189,40 +330,32 @@
 &lt;/head&gt; &lt;!-- Close the head section, page content starts after this --&gt;
 
 &lt;body&gt; &lt;!-- Open body where all visible content lives --&gt;
- &lt;div class="container"&gt; &lt;!-- Container div holds all positioning examples, easier to manage layout --&gt;
-&lt;h1&gt;CSS Positioning Cold Build Instructional&lt;/h1&gt; &lt;!-- Main heading for the page, largest; most important--&gt;
-&lt;p&gt;CSS positioning changes how elements flow on the page. The are five values: static (default), relative, absolute, fixed, and sticky.&lt;/p&gt;
- &lt;/div&gt;
+  &lt;div class="container"&gt; &lt;!-- Container div holds ALL content, opens once, closes once at the very end --&gt;
 
- &lt;section class="positionin-section"&gt; &lt;!-- Section for static posotioning examples --&gt;
-    &lt;h2&gt;Static Positioning&lt;/h2&gt; &lt;!-- Heading for static positioning section --&gt;
-    &lt;p&gt;Static positioning is the default value for all elements. Elements stact in normal document flow. Top, right, Bottom, Left properties do not apply; are ignored.&lt;/p&gt; &lt;!-- Paragraph explaining static positioning --&gt;
-    &lt;div class="static-example"&gt; &lt;!-- Create a div with class "static-example" to hold static positioned elements --&gt;
-&lt;/section&gt; &lt;!-- Close the static positioning section --&gt;
+    &lt;h1&gt;CSS Positioning Cold Build Instructional&lt;/h1&gt; &lt;!-- Main heading for the page, largest; most important--&gt;
+    &lt;p&gt;CSS positioning changes how elements flow on the page. There are five values: static (default), relative, absolute, fixed, and sticky.&lt;/p&gt;
 
-    &lt;section class="positionin-section"&gt; &lt;!-- Section for relative posotioning examples --&gt;
-    &lt;h2&gt;Relative Positioning&lt;/h2&gt; &lt;!-- Heading for relative positioning section --&gt; 
-    &lt;p&gt;Relative positioning moves an element relative to its normal position. Top, right, bottom, left properties will move the element from where it would normally be.&lt;/p&gt; &lt;!-- Paragraph explaining relative positioning --&gt;
+    &lt;section class="positioning-section"&gt; &lt;!-- Section for static positioning examples --&gt;
+      &lt;h2&gt;Static Positioning&lt;/h2&gt; &lt;!-- Heading for static positioning section --&gt;
+      &lt;p&gt;Static positioning is the default value for all elements. Elements stack in normal document flow. Top, right, bottom, left properties do not apply; they are ignored.&lt;/p&gt; &lt;!-- Paragraph explaining static positioning --&gt;
+      &lt;div class="static-example"&gt; &lt;!-- Div showing a statically positioned element --&gt;
+        &lt;p&gt;I am static. I sit exactly where the document flow puts me.&lt;/p&gt; &lt;!-- Paragraph is statically positioned --&gt;
+      &lt;/div&gt; &lt;!-- Close the static example div — this was missing before, which broke everything after it --&gt;
+    &lt;/section&gt; &lt;!-- Close the static positioning section --&gt;
 
-    &lt;div class="relative-example"&gt; &lt;!-- Create a div with class "relative-example" to hold relative positioned elements --&gt;
-        &lt;p&gt;I am relative. I move from my normal position.&lt;/p&gt; &lt;!-- Paragraph is relatively positioned --&gt;
-    &lt;/div&gt; &lt;!-- Close the relative positioning div --&gt;
-
-    &lt;div class="positioning-example"&gt; &lt;!-- Create a div with class "positioning-example" to hold relative positioned elements --&gt;
-        &lt;h2&gt;Relative Positioning&lt;/h2&gt; &lt;!-- Heading for relative positioning section --&gt;
-        &lt;p&gt;Relative positioning moves an element from its normal position using top, right, bottom, left. It still takes up space where it would normally sit.&lt;/p&gt; &lt;!-- Paragraph explaining relative positioning --&gt;
-        &lt;div class="relative-example"&gt; &lt;!-- Create a div with class "relative-example" to hold relative positioned elements --&gt;
-            &lt;p&gt;I am relative. I moved 20px from the top.&lt;/p&gt; &lt;!-- Paragraph that will be moved with CSS --&gt;
-        &lt;/div&gt; &lt;!-- Close the relative example div --&gt;
+    &lt;section class="positioning-section"&gt; &lt;!-- Section for relative positioning examples --&gt;
+      &lt;h2&gt;Relative Positioning&lt;/h2&gt; &lt;!-- Heading for relative positioning section --&gt;
+      &lt;p&gt;Relative positioning moves an element from its normal position using top, right, bottom, left. It still takes up space where it would normally sit.&lt;/p&gt; &lt;!-- Paragraph explaining relative positioning --&gt;
+      &lt;div class="relative-example"&gt; &lt;!-- Create a div with class "relative-example" to hold the relatively positioned element --&gt;
+        &lt;p&gt;I am relative. I moved 20px from the top, but my original spot is still reserved.&lt;/p&gt; &lt;!-- Paragraph that gets moved with CSS --&gt;
+      &lt;/div&gt; &lt;!-- Close the relative example div --&gt;
     &lt;/section&gt; &lt;!-- Close the relative positioning section --&gt;
 
-    &lt;/section&gt; &lt;!-- Close the relative positioning section --&gt;
-
-    &lt;section class="positioning-section"&gt; &lt;!-- Section for absolute positioning examples --&gt;
+    &lt;section class="positioning-section"&gt; &lt;!-- Section for absolute positioning examples, now with position:relative applied so absolute anchors HERE instead of the whole page --&gt;
       &lt;h2&gt;Absolute Positioning&lt;/h2&gt; &lt;!-- Heading for absolute positioning section --&gt;
-      &lt;p&gt;Absolute positioning removes an element from normal document flow. It positions relative to the nearest positioned ancestor (or the document if none exists).&lt;/p&gt; &lt;!-- Explain that absolute takes element out of flow --&gt;
+      &lt;p&gt;Absolute positioning removes an element from normal document flow. It positions relative to the nearest positioned ancestor (this section), not the whole page.&lt;/p&gt; &lt;!-- Explain that absolute takes element out of flow --&gt;
       &lt;div class="absolute-example"&gt; &lt;!-- Create a div with class "absolute-example" for the absolutely positioned element --&gt;
-        &lt;p&gt;I am absolutely positioned. I'm taken out of normal flow.&lt;/p&gt; &lt;!-- Paragraph positioned absolutely, doesn't reserve space --&gt;
+        &lt;p&gt;I am absolutely positioned inside my section, not flying to the top of the page.&lt;/p&gt; &lt;!-- Paragraph positioned absolutely, doesn't reserve space --&gt;
       &lt;/div&gt; &lt;!-- Close the absolute example div --&gt;
     &lt;/section&gt; &lt;!-- Close the absolute positioning section --&gt;
 
@@ -237,16 +370,16 @@
     &lt;section class="positioning-section"&gt; &lt;!-- Section for sticky positioning examples --&gt;
       &lt;h2&gt;Sticky Positioning&lt;/h2&gt; &lt;!-- Heading for sticky positioning section --&gt;
       &lt;p&gt;Sticky positioning is a hybrid. Element flows normally until you scroll past it, then it sticks to the viewport edge you defined.&lt;/p&gt; &lt;!-- Explain that sticky is a hybrid of relative and fixed --&gt;
-           &lt;div class="sticky-example"&gt; &lt;!-- Create a div with class "sticky-example" for the sticky positioned element --&gt;
-            &lt;p&gt;I am sticky. I flow normally, then stick when you scroll.&lt;/p&gt; &lt;!-- Paragraph that sticks on scroll --&gt;
-           &lt;/div&gt; &lt;!-- Close the sticky example div --&gt;
+      &lt;div class="sticky-example"&gt; &lt;!-- Create a div with class "sticky-example" for the sticky positioned element --&gt;
+        &lt;p&gt;I am sticky. I flow normally, then stick when you scroll.&lt;/p&gt; &lt;!-- Paragraph that sticks on scroll --&gt;
+      &lt;/div&gt; &lt;!-- Close the sticky example div --&gt;
     &lt;/section&gt; &lt;!-- Close the sticky positioning section --&gt;
 
-  &lt;/div&gt; &lt;!-- Close the container div --&gt;
-
+  &lt;/div&gt; &lt;!-- Close the container div — matches the single open tag at the top --&gt;
 &lt;/body&gt; &lt;!-- Close the body section --&gt;
 
-&lt;/html&gt; &lt;!-- Close the HTML document --&gt;</code></pre>
+&lt;/html&gt; &lt;!-- Close the HTML document --&gt;
+</code></pre>
           </div>
           <div class="lj-code-block">
             <div class="lj-code-bar">
@@ -269,12 +402,13 @@
 
 /* Style all positioning section divs */
 .positioning-section {
+  position: relative; /* THE FIX: gives absolute-positioned children something to anchor to besides the whole page */
   margin-bottom: 3rem; /* Add space below each section so they don't feel cramped */
   padding: 1.5rem; /* Add internal padding inside the section */
   border: 2px solid #333; /* Add a border around each section for clarity */
   background-color: #f5f5f5; /* Light gray background to distinguish sections */
+  min-height: 180px; /* Guarantees room for the absolutely-positioned box to sit below the text without overlapping it */
 }
-
 
 /* Style the static positioning example */
 .static-example {
@@ -295,155 +429,30 @@
 
 /* Style the absolute positioning example */
 .absolute-example {
-  position: absolute; /* Position relative to nearest positioned ancestor */
-  top: 100px; /* Distance from top of positioned ancestor */
-  left: 50px; /* Distance from left of positioned ancestor */
+  position: absolute; /* Position relative to nearest positioned ancestor — now .positioning-section, since it has position:relative */
+  bottom: 1rem; /* Anchored to the BOTTOM of the section instead of the top — this is the actual fix, since a top offset can't predict how tall the heading/paragraph text above it will be */
+  right: 1rem; /* Distance from the right edge of the section */
   background-color: #fff3e0; /* Light orange background to see the element */
   padding: 1rem; /* Add space inside the element */
+}
+
+/* Style the fixed positioning example — was missing entirely, so it had zero styling */
+.fixed-example {
+  position: fixed; /* Anchors to the viewport, not the document — stays put on scroll */
+  bottom: 20px; /* Distance from the bottom of the visible screen */
+  right: 20px; /* Distance from the right of the visible screen */
+  background-color: #fce4ec; /* Light pink background to see the element */
+  padding: 1rem; /* Add space inside the element */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow so it visually "floats" above the page */
+}
+
+/* Style the sticky positioning example — was missing entirely, so it had zero styling */
+.sticky-example {
+  position: sticky; /* Hybrid of relative and fixed — acts relative until a scroll threshold, then sticks */
+  top: 10px; /* The point where it "sticks" as you scroll past it */
+  background-color: #ede7f6; /* Light purple background to see the element */
+  padding: 1rem; /* Add space inside the element */
 }</code></pre>
-          </div>
-        </div>
-      </div>
-    </details>
-    <details class="lj-project-box">
-      <summary>
-        <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--lavender">from scratch</span>
-        <span class="lj-project-name">Survey Form</span>
-        <span class="lj-project-stack">html</span>
-      </summary>
-      <div class="lj-project-inner">
-        <div class="lj-card-body">a fully semantic survey form — labelled text / email / number inputs, a select, radio + checkbox groups, and a textarea — every field wired with matching <b>for</b>/<b>id</b> and required validation.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/survey-form.html" title="Survey Form preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/survey-form.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
-          <div class="lj-code-block lj-code-block--peach">
-            <div class="lj-code-bar">
-              <span class="lj-code-file">survey-form.html</span>
-              <button class="lj-code-copy" type="button">copy</button>
-            </div>
-            <pre class="lj-code"><code>&lt;!-- Main heading of the page --&gt;
-&lt;h1 id="title"&gt;Survey Form&lt;/h1&gt;
-
-&lt;!-- Brief description explaining the purpose of the survey --&gt;
-&lt;p id="description"&gt;
-  Thank you for taking the time to help us improve the platform.
-&lt;/p&gt;
-
-&lt;!-- Contains all form fields that the user will complete --&gt;
-&lt;form id="survey-form"&gt;
-
-  &lt;!-- Label associated with the Name input field --&gt;
-  &lt;label for="name" id="name-label"&gt;Name&lt;/label&gt;
-
-  &lt;!-- Collects the user's name. Required before the form can be submitted. --&gt;
-  &lt;input
-    type="text"
-    id="name"
-    name="name"
-    placeholder="Enter your name"
-    required
-  &gt;
-
-  &lt;!-- Label associated with the Email input field --&gt;
-  &lt;label for="email" id="email-label"&gt;Email&lt;/label&gt;
-
-  &lt;!-- Collects the user's email address. Browser validates the format. --&gt;
-  &lt;input
-    type="email"
-    id="email"
-    name="email"
-    placeholder="Enter your email"
-    required
-  &gt;
-
-  &lt;!-- Label associated with the Age input field --&gt;
-  &lt;label for="number" id="number-label"&gt;Age&lt;/label&gt;
-
-  &lt;!-- Collects the user's age. Only numbers from 10 to 99 are allowed. --&gt;
-  &lt;input
-    type="number"
-    id="number"
-    name="age"
-    min="10"
-    max="99"
-    placeholder="Age"
-    required
-  &gt;
-
-  &lt;!-- Label associated with the dropdown menu --&gt;
-  &lt;label for="dropdown" id="dropdown-label"&gt;
-    Which option best describes your current role?
-  &lt;/label&gt;
-
-  &lt;!-- Allows the user to choose one role --&gt;
-  &lt;select id="dropdown" name="role"&gt;
-    &lt;option value=""&gt;Select an option&lt;/option&gt;
-    &lt;option value="student"&gt;Student&lt;/option&gt;
-    &lt;option value="full-time-job"&gt;Employee&lt;/option&gt;
-    &lt;option value="full-time-learner"&gt;Other&lt;/option&gt;
-  &lt;/select&gt;
-
-  &lt;!-- Radio button group: only one option may be selected --&gt;
-  &lt;p&gt;Would you recommend this platform to a friend?&lt;/p&gt;
-
-  &lt;label&gt;
-    &lt;input type="radio" name="recommend" value="definitely"&gt;
-    Definitely
-  &lt;/label&gt;
-
-  &lt;label&gt;
-    &lt;input type="radio" name="recommend" value="maybe"&gt;
-    Maybe
-  &lt;/label&gt;
-
-  &lt;label&gt;
-    &lt;input type="radio" name="recommend" value="not-sure"&gt;
-    Not Sure
-  &lt;/label&gt;
-
-  &lt;!-- Checkbox group: multiple options may be selected --&gt;
-  &lt;p&gt;What is your favorite feature of the platform?&lt;/p&gt;
-
-  &lt;label&gt;
-    &lt;input type="checkbox" name="improvements" value="frontend"&gt;
-    Front-end Projects
-  &lt;/label&gt;
-
-  &lt;label&gt;
-    &lt;input type="checkbox" name="improvements" value="backend"&gt;
-    Back-end Projects
-  &lt;/label&gt;
-
-  &lt;label&gt;
-    &lt;input type="checkbox" name="improvements" value="data-visualization"&gt;
-    Data Visualization
-  &lt;/label&gt;
-
-  &lt;label&gt;
-    &lt;input type="checkbox" name="improvements" value="challenges"&gt;
-    Challenges
-  &lt;/label&gt;
-
-  &lt;!-- Allows the user to enter additional comments --&gt;
-  &lt;p&gt;Any comments or suggestions?&lt;/p&gt;
-
-  &lt;textarea
-    id="comments"
-    name="comments"
-    placeholder="Enter your comments here..."
-  &gt;&lt;/textarea&gt;
-
-  &lt;!-- Submits the completed form --&gt;
-  &lt;button id="submit" type="submit"&gt;Submit&lt;/button&gt;
-
-&lt;/form&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -455,13 +464,13 @@
     <summary>
       <span class="lj-section-caret">▸</span>
       <span class="lj-section-title">freeCodeCamp project instructions</span>
-      <span class="lj-section-count">1 shipped · 4 coming soon</span>
+      <span class="lj-section-count">2 shipped · 4 coming soon</span>
     </summary>
     <div class="lj-section-body">
     <details class="lj-project-box">
       <summary>
         <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--lavender">rwd cert · shipped</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
         <span class="lj-project-name">Build a Registration Form</span>
         <span class="lj-project-stack">html + css</span>
       </summary>
@@ -610,6 +619,87 @@ input[type="file"] { /* attribute selector targeting only the profile picture fi
 a { /* targets every anchor (link) element on the page */
   color: #dfdfe2; /* light grey link color, replacing the browser default blue that clashes with the dark theme */
 } /* closes the anchor rule */</code></pre>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
+        <span class="lj-project-name">CSS Grid</span>
+        <span class="lj-project-stack">html + css</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-card-body">the fCC grid workshop — a full <b>holy-grail layout</b> in pure grid: a three-column body (sidebar / main / aside) with a full-width header and footer, sized with <b>fr</b> units and pinned by explicit <b>grid-column</b> / <b>grid-row</b> lines. every line commented so the track math sticks.</div>
+        <div class="lj-view-toggle">
+          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
+          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <iframe class="lj-preview-frame" data-src="projects/css-grid/index.html" title="CSS Grid preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/css-grid/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code" hidden>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;                         &lt;!-- tells the browser this is HTML5 --&gt;
+&lt;html lang="en"&gt;                        &lt;!-- root element, lang helps accessibility/SEO --&gt;
+&lt;head&gt;                                   &lt;!-- metadata, not visible on page --&gt;
+  &lt;meta charset="UTF-8"&gt;                &lt;!-- sets character encoding --&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;  &lt;!-- connects this file to your CSS --&gt;
+&lt;/head&gt;
+&lt;body&gt;                                   &lt;!-- everything visible goes here --&gt;
+  &lt;div class="container"&gt;               &lt;!-- the GRID CONTAINER — matches display:grid in CSS --&gt;
+    &lt;div class="header"&gt;Header&lt;/div&gt;    &lt;!-- grid item, spans full width row 1 --&gt;
+    &lt;div class="sidebar"&gt;Sidebar&lt;/div&gt;  &lt;!-- grid item, column 1 row 2 --&gt;
+    &lt;div class="main"&gt;Main&lt;/div&gt;        &lt;!-- grid item, column 2 row 2 --&gt;
+    &lt;div class="aside"&gt;Aside&lt;/div&gt;      &lt;!-- grid item, column 3 row 2 --&gt;
+    &lt;div class="footer"&gt;Footer&lt;/div&gt;    &lt;!-- grid item, spans full width row 3 --&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="lj-code-block">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">styles.css</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>.container {
+    display: grid;  /* turns the element into a grid container */
+    grid-template-columns: 1fr 2fr 1fr;  /* 3 columns: side, middle (2x wider), side */
+    grid-template-rows: auto 1fr auto;  /* 3 rows: header, main content, footer */
+    gap: 1rem;  /* space between grid cells, both directions */
+    min-height: 100vh; /* grid fills the full screen height */
+}
+
+.header {
+    grid-column: 1 / -1; /* spans from column line 1 to the last line (full width) */
+    grid-row: 1; /* sits in row 1 */
+}
+
+.sidebar {
+    grid-column: 1; /* sits in first column; column 1 */
+    grid-row: 2; /* sits in row 2 */
+}
+
+.main {
+    grid-column: 2;  /* sits in second column; column 2 */
+    grid-row: 2;  /* sits in row 2 */
+}
+
+.aside {
+    grid-column: 3; /* sits in third column; column 3 */
+    grid-row: 2; /* sits in row 2 */
+}
+
+.footer {
+    grid-column: 1 / -1; /* spans full width again, from column line 1 to the last line */
+    grid-row: 3; /* sits in row 3 */
+}</code></pre>
           </div>
         </div>
       </div>

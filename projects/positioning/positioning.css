@@ -14,12 +14,13 @@
 
 /* Style all positioning section divs */
 .positioning-section {
+  position: relative; /* THE FIX: gives absolute-positioned children something to anchor to besides the whole page */
   margin-bottom: 3rem; /* Add space below each section so they don't feel cramped */
   padding: 1.5rem; /* Add internal padding inside the section */
   border: 2px solid #333; /* Add a border around each section for clarity */
   background-color: #f5f5f5; /* Light gray background to distinguish sections */
+  min-height: 180px; /* Guarantees room for the absolutely-positioned box to sit below the text without overlapping it */
 }
-
 
 /* Style the static positioning example */
 .static-example {
@@ -40,9 +41,27 @@
 
 /* Style the absolute positioning example */
 .absolute-example {
-  position: absolute; /* Position relative to nearest positioned ancestor */
-  top: 100px; /* Distance from top of positioned ancestor */
-  left: 50px; /* Distance from left of positioned ancestor */
+  position: absolute; /* Position relative to nearest positioned ancestor — now .positioning-section, since it has position:relative */
+  bottom: 1rem; /* Anchored to the BOTTOM of the section instead of the top — this is the actual fix, since a top offset can't predict how tall the heading/paragraph text above it will be */
+  right: 1rem; /* Distance from the right edge of the section */
   background-color: #fff3e0; /* Light orange background to see the element */
+  padding: 1rem; /* Add space inside the element */
+}
+
+/* Style the fixed positioning example — was missing entirely, so it had zero styling */
+.fixed-example {
+  position: fixed; /* Anchors to the viewport, not the document — stays put on scroll */
+  bottom: 20px; /* Distance from the bottom of the visible screen */
+  right: 20px; /* Distance from the right of the visible screen */
+  background-color: #fce4ec; /* Light pink background to see the element */
+  padding: 1rem; /* Add space inside the element */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow so it visually "floats" above the page */
+}
+
+/* Style the sticky positioning example — was missing entirely, so it had zero styling */
+.sticky-example {
+  position: sticky; /* Hybrid of relative and fixed — acts relative until a scroll threshold, then sticks */
+  top: 10px; /* The point where it "sticks" as you scroll past it */
+  background-color: #ede7f6; /* Light purple background to see the element */
   padding: 1rem; /* Add space inside the element */
 }
