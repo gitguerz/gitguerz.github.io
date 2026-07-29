@@ -51,7 +51,7 @@
     <summary>
       <span class="lj-section-caret">▸</span>
       <span class="lj-section-title">cold build instructions</span>
-      <span class="lj-section-count">4 builds · from scratch, no tutorial</span>
+      <span class="lj-section-count">5 builds · from scratch, no tutorial</span>
     </summary>
     <div class="lj-section-body">
     <details class="lj-project-box">
@@ -112,7 +112,7 @@
     <details class="lj-project-box">
       <summary>
         <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--lavender">from scratch</span>
+        <span class="lj-badge lj-badge--peach">from scratch</span>
         <span class="lj-project-name">Flexbox</span>
         <span class="lj-project-stack">html + css</span>
       </summary>
@@ -620,6 +620,169 @@ button:hover {
 /* Style the button while it is being clicked */
 button:active {
   background-color: #004b82; /* Darken the button even further while the mouse button is held down */
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--peach">from scratch</span>
+        <span class="lj-project-name">Animated Business Card</span>
+        <span class="lj-project-stack">html + css</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-card-body">a self-contained business card built cold — a circular <b>profile photo</b>, contact + social links, and an about blurb inside a shadowed card, centered on the page with flexbox. a <b>:hover</b> <b>transform: scale</b> gives the photo a smooth zoom, and a <b>@media</b> query reflows it for small screens. every line commented.</div>
+        <div class="lj-view-toggle">
+          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
+          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <iframe class="lj-preview-frame" data-src="projects/business-card/index.html" title="Animated Business Card preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/business-card/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code" hidden>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt; &lt;!--tells browser that this is an HTML5 document--&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt; &lt;!--where all the metadata lives--&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;!--sets page width to the device width--&gt;
+  &lt;title&gt;Animated Business Card&lt;/title&gt; &lt;!--appears in browser tab and/or bookmarks--&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt; &lt;!--links styles.css to this page--&gt;
+&lt;/head&gt;
+
+&lt;body&gt; &lt;!--everything the user actually sees--&gt;
+
+  &lt;div id="businessCard"&gt; &lt;!--where to add business card content--&gt;
+
+    &lt;img src="profile-pic.JPG" alt="Selfie Profile Pic" class="profile-photo"&gt;
+    &lt;!--img src displays image, alt describes image to screen readers, class is targeted by CSS--&gt;
+
+    &lt;h1&gt;Guerz&lt;/h1&gt;
+
+    &lt;p&gt;Full-Stack Developer in Training&lt;/p&gt;
+
+    &lt;p&gt;
+      Email:
+      &lt;a href="mailto:nick@guerz.lol"&gt;nick@guerz.lol&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;!--makes the email address clickable--&gt;
+
+    &lt;div id="socialLinks"&gt;
+
+      &lt;h2&gt;Connect with Me&lt;/h2&gt;
+
+      &lt;p&gt;
+        LinkedIn:
+        &lt;a href="https://www.linkedin.com/in/nicholas-guerzon-5baa77410/" target="_blank"&gt;
+          LinkedIn
+        &lt;/a&gt;
+      &lt;/p&gt;
+      &lt;!--makes LinkedIn clickable to my LinkedIn profile--&gt;
+
+      &lt;p&gt;
+        Instagram:
+        &lt;a href="https://instagram.com/guerz" target="_blank"&gt;
+          @Guerz
+        &lt;/a&gt;
+      &lt;/p&gt;
+      &lt;!--makes Instagram clickable to my Instagram profile--&gt;
+
+      &lt;p&gt;
+        Twitch:
+        &lt;a href="https://twitch.tv/guerz" target="_blank"&gt;
+          ttv/guerz
+        &lt;/a&gt;
+      &lt;/p&gt;
+      &lt;!--makes Twitch clickable to my Twitch profile--&gt;
+
+    &lt;/div&gt;
+
+    &lt;div id="bio"&gt;
+
+      &lt;h2&gt;About Me&lt;/h2&gt;
+
+      &lt;p&gt;
+        I'm Guerz, a self-taught dev getting back into the web! I like clear,
+        accessible front ends, small experiments, and late-night problem
+        solving. Connect with me and follow the projects!
+      &lt;/p&gt;
+
+      &lt;!--brief personal bio--&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="lj-code-block">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">styles.css</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>body { /*styles the whole page*/
+  font-family: Arial, sans-serif; /*sets the default page font*/
+  background-color: #f4f4f4; /*sets the default background color*/
+  display: flex; /*turns on Flexbox layout*/
+  justify-content: center; /*centers items horizontally; main axis*/
+  align-items: center; /*centers items vertically; cross axis*/
+  height: 100vh; /*makes the page 100% of the viewport height*/
+  margin: 0; /*removes the default margin*/
+}
+
+#businessCard { /*styles the card container*/
+  box-shadow: 0 0 10px #ccc; /*adds a soft shadow around the card*/
+  background-color: white; /*sets the card background color*/
+  padding: 20px; /*adds inner space inside the card*/
+  width: 300px; /*sets the card width to 300px*/
+  text-align: center; /*centers the text inside the card*/
+}
+
+.profile-photo { /*styles the profile photo*/
+  width: 100px; /*sets the photo width to 100px*/
+  height: auto; /*keeps the image's aspect ratio*/
+  border-radius: 50%; /*makes the photo circular*/
+  margin: 0 auto; /*centers the photo horizontally*/
+}
+
+h1,
+h2 { /*targets all H1 and H2 headings*/
+  color: #333; /*sets heading text color to dark gray*/
+}
+
+p,
+a { /*targets paragraphs and links*/
+  color: #555; /*sets the text color to medium gray*/
+  font-size: 16px; /*sets the text size to 16px*/
+  text-decoration: none; /*removes the default link underline*/
+}
+
+a:hover { /*applies styles when a link is hovered*/
+  text-decoration: underline; /*underlines links on hover*/
+}
+
+.profile-photo:hover { /*applies styles when the profile photo is hovered*/
+  transform: scale(1.1); /*enlarges the photo by 10%*/
+  transition: transform 0.3s ease-in-out; /*smoothly animates the hover effect*/
+}
+
+@media only screen and (max-width: 600px) { /*applies responsive styles on screens 600px or smaller*/
+
+  #businessCard { /*styles the business card for smaller screens*/
+    width: 90%; /*sets card width to 90% of the screen*/
+    padding: 10px; /*reduces inner spacing on smaller screens*/
+  }
+
 }</code></pre>
           </div>
         </div>
