@@ -50,8 +50,8 @@
   <details class="lj-section" open>
     <summary>
       <span class="lj-section-caret">▸</span>
-      <span class="lj-section-title">cold instructions</span>
-      <span class="lj-section-count">3 builds · from scratch, no tutorial</span>
+      <span class="lj-section-title">cold build instructions</span>
+      <span class="lj-section-count">4 builds · from scratch, no tutorial</span>
     </summary>
     <div class="lj-section-body">
     <details class="lj-project-box">
@@ -452,6 +452,174 @@ p.label {
   top: 10px; /* The point where it "sticks" as you scroll past it */
   background-color: #ede7f6; /* Light purple background to see the element */
   padding: 1rem; /* Add space inside the element */
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--peach">from scratch</span>
+        <span class="lj-project-name">Contact Form</span>
+        <span class="lj-project-stack">html + css</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-card-body">a semantic contact form built cold — <b>label</b> / <b>input</b> pairs wired with <b>for</b> + <b>id</b>, HTML5 <b>required</b> validation, and a flex-column layout. focus states, a resizable <b>textarea</b>, and hover/active button feedback, styled as a clean card. every line commented.</div>
+        <div class="lj-view-toggle">
+          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
+          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <iframe class="lj-preview-frame" data-src="projects/contact-form/index.html" title="Contact Form preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/contact-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code" hidden>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Contact Form&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main&gt;&lt;!-- contains the page's primary content --&gt;
+    &lt;h1&gt;Contact Form&lt;/h1&gt; &lt;!-- tells users and screen readers the main purpose of the page --&gt;
+
+    &lt;form action="#" method="post"&gt; &lt;!-- specifies where the form data is sent and how it is submitted --&gt;
+
+      &lt;label for="full-name"&gt;Full Name&lt;/label&gt; &lt;!-- provides an accessible text label for the input below --&gt;
+      &lt;input
+        type="text"
+        id="full-name"
+        name="full-name"
+        placeholder="Enter your full name"
+        required&gt;
+
+      &lt;label for="email"&gt;Email&lt;/label&gt; &lt;!-- provides an accessible text label for the email input below --&gt;
+      &lt;input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email address"
+        required&gt;
+
+      &lt;label for="message"&gt;Message&lt;/label&gt; &lt;!-- provides an accessible text label for the message field below --&gt;
+      &lt;textarea
+        id="message"
+        name="message"
+        placeholder="Enter your message"
+        required&gt;&lt;/textarea&gt; &lt;!-- creates a multi-line text field for longer user input --&gt;
+
+      &lt;button type="submit"&gt;Send Message&lt;/button&gt; &lt;!-- submits the form after all validation requirements have been met --&gt;
+
+    &lt;/form&gt;
+
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- ========================= --&gt;
+&lt;!-- HTML Complete --&gt;
+&lt;!-- Begin CSS --&gt;
+&lt;!-- ========================= --&gt;</code></pre>
+          </div>
+          <div class="lj-code-block">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">styles.css</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>/* Reset default browser margins and padding */
+* {
+  margin: 0; /* Remove default margin from all elements */
+  padding: 0; /* Remove default padding from all elements */
+  box-sizing: border-box; /* Include padding and border in an element's total width and height */
+}
+
+/* Style the page's main content */
+main {
+  max-width: 600px; /* Prevent the content from stretching too wide on larger screens */
+  margin: 2rem auto; /* Center the main element horizontally and add vertical spacing */
+  padding: 2rem; /* Add space between the content and the edges of the main element */
+  font-family: Arial, sans-serif; /* Apply a clean, readable font to all content inside the main element */
+  line-height: 1.5; /* Increase the spacing between lines of text to improve readability */
+  background-color: #fff; /* Give the form container a white background so it stands out from the page */
+  border-radius: 0.75rem; /* Round the corners of the form container to create a card-like appearance */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to lift the form container off the page */
+}
+
+/* Style the page heading */
+h1 {
+  margin-bottom: 1.5rem; /* Add space below the heading before the form begins */
+  text-align: center; /* Center the heading horizontally */
+}
+
+/* Style the contact form */
+form {
+  display: flex; /* Arrange the form controls using Flexbox */
+  flex-direction: column; /* Stack the form controls vertically */
+  gap: 1rem; /* Add consistent spacing between each form element */
+}
+
+/* Style form labels */
+label {
+  display: block; /* Allow the label to occupy its own line */
+  margin-bottom: 0.5rem; /* Separate each label from its corresponding form control */
+  font-weight: bold; /* Make each label stand out from its corresponding form control */
+}
+
+/* Style all form controls */
+input,
+textarea,
+button {
+  width: 100%; /* Make each form control span the full width of the form */
+  padding: 0.75rem; /* Add internal spacing so text doesn't touch the edges */
+  border: 1px solid #ccc; /* Add a light gray border around each form control */
+  border-radius: 0.5rem; /* Round the corners of each form control */
+  font-family: inherit; /* Use the same font as the parent element instead of the browser's default form font */
+  transition: border-color 0.3s ease; /* Smoothly animate border color changes */
+}
+
+/* Style form controls when focused */
+input:focus,
+textarea:focus {
+  outline: none; /* Remove the browser's default focus outline */
+  border-color: #0077cc; /* Highlight the focused field with a blue border */
+}
+
+/* Style the message field */
+textarea {
+  min-height: 150px; /* Ensure the message field provides enough room for multiple lines of text */
+  resize: vertical; /* Allow the user to resize the textarea vertically while preventing horizontal resizing */
+}
+
+/* Style the submit button */
+button {
+  background-color: #0077cc; /* Give the button a blue background */
+  color: #fff; /* Make the button text white for better contrast */
+  border: none; /* Remove the default browser border from the button */
+  cursor: pointer; /* Display a pointer cursor when hovering over the button */
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease; /* Smoothly animate color and shadow changes */
+}
+
+/* Style the button when hovered */
+button:hover {
+  background-color: #005fa3; /* Darken the button to provide visual feedback during hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Lift the button visually by adding a subtle shadow */
+}
+
+/* Style the button while it is being clicked */
+button:active {
+  background-color: #004b82; /* Darken the button even further while the mouse button is held down */
 }</code></pre>
           </div>
         </div>
