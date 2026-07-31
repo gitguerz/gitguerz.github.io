@@ -795,7 +795,7 @@ a:hover { /*applies styles when a link is hovered*/
     <summary>
       <span class="lj-section-caret">▸</span>
       <span class="lj-section-title">freeCodeCamp project instructions</span>
-      <span class="lj-section-count">2 shipped · 4 coming soon</span>
+      <span class="lj-section-count">3 shipped · 4 coming soon</span>
     </summary>
     <div class="lj-section-body">
     <details class="lj-project-box">
@@ -1031,6 +1031,69 @@ a { /* targets every anchor (link) element on the page */
     grid-column: 1 / -1; /* spans full width again, from column line 1 to the last line */
     grid-row: 3; /* sits in row 3 */
 }</code></pre>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd lab</span>
+        <span class="lj-project-name">"Build a Recipe" Project - The Odin Project's freeCodeCamp Remix</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-card-body">the Odin Project's take on the fCC recipe lab — a pure semantic HTML page: an <b>h1</b> title, a hero <b>img</b> with alt text, a description, an <b>ul</b> ingredients list, an <b>ol</b> of ordered steps, and a "more recipes" link list. no CSS, structure only. every line commented.</div>
+        <div class="lj-view-toggle">
+          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
+          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <iframe class="lj-preview-frame" data-src="projects/recipe/index.html" title="Build a Recipe preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/recipe/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code" hidden>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;                          &lt;!-- tells the browser this is modern HTML5 --&gt;
+&lt;html lang="en"&gt;                         &lt;!-- starts the page; lang helps screen readers know this is English --&gt;
+&lt;head&gt;                                   &lt;!-- holds page info the browser uses; this part does not show on the page --&gt;
+&lt;title&gt;The Odin Recipes&lt;/title&gt;           &lt;!-- sets the browser tab title; the test needs this exact text --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Creamy Chocolate Fudge&lt;/h1&gt;           &lt;!-- main visible heading for the recipe; the test needs this exact text --&gt;
+&lt;img src="https://cdn.freecodecamp.org/curriculum/labs/recipe.jpg" alt="creamy chocolate fudge squares on a plate"&gt; &lt;!-- shows the recipe image; alt describes it for screen readers and if the image fails --&gt;
+&lt;h2&gt;Description&lt;/h2&gt; &lt;!--starts the description section; the Odin Project FCC test needs this exact heading--&gt;
+&lt;p&gt;This creamy chocolate fudge is rich, smooth, and simple enough for a beginner recipe page.&lt;/p&gt; &lt;!-- first description paragraph; the test needs at least two p elements --&gt;
+&lt;p&gt;It uses basic pantry ingredients and sets into sweet squares that are easy to share.&lt;/p&gt; &lt;!-- second description paragraph; this gives the section more recipe detail --&gt;
+&lt;h2&gt;Ingredients&lt;/h2&gt;                      &lt;!-- starts the ingredients section; the test needs this exact heading text --&gt;
+&lt;ul&gt;                                      &lt;!-- starts an unordered list because ingredients do not need step-by-step order --&gt;
+  &lt;li&gt;2 cups chocolate chips&lt;/li&gt;         &lt;!-- one ingredient item in the unordered list --&gt;
+  &lt;li&gt;1 can sweetened condensed milk&lt;/li&gt; &lt;!-- one ingredient item in the unordered list --&gt;
+  &lt;li&gt;2 tablespoons butter&lt;/li&gt;           &lt;!-- one ingredient item in the unordered list --&gt;
+  &lt;li&gt;1 teaspoon vanilla extract&lt;/li&gt;     &lt;!-- one ingredient item in the unordered list --&gt;
+&lt;/ul&gt;                                     &lt;!-- closes the ingredients list --&gt;
+&lt;h2&gt;Steps&lt;/h2&gt;                            &lt;!-- starts the recipe steps section; the test needs this exact heading text --&gt;
+&lt;ol&gt;                                      &lt;!-- starts an ordered list because recipe steps must be followed in sequence --&gt;
+  &lt;li&gt;Line a small pan with parchment paper.&lt;/li&gt; &lt;!-- first numbered step in the recipe --&gt;
+  &lt;li&gt;Melt the chocolate chips, condensed milk, and butter together.&lt;/li&gt; &lt;!-- second numbered step in the recipe --&gt;
+  &lt;li&gt;Stir in the vanilla extract.&lt;/li&gt;   &lt;!-- third numbered step in the recipe --&gt;
+  &lt;li&gt;Spread the mixture into the pan and let it set before cutting.&lt;/li&gt; &lt;!-- fourth numbered step in the recipe --&gt;
+&lt;/ol&gt;                                     &lt;!-- closes the ordered steps list --&gt;
+&lt;h2&gt;More Recipes&lt;/h2&gt;                     &lt;!-- starts the related recipes section; the test needs this exact heading text --&gt;
+&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
+&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
           </div>
         </div>
       </div>
