@@ -288,21 +288,35 @@ img { max-width: 100%; display: block; }
 .lj-project-box[open] > summary .lj-project-caret { transform: rotate(90deg); }
 .lj-project-name { font: 800 15px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .01em; color: var(--text); }
 .lj-project-stack { margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-.lj-project-inner { padding: 12px; display: flex; flex-direction: column; gap: 10px; border-top: 2px dashed var(--muted); }
-
-/* view toggle: preview vs code */
-.lj-view-toggle { display: flex; width: fit-content; border: 2px solid var(--ink); overflow: hidden; }
-.lj-view-btn {
-  background: var(--paper); color: var(--muted); border: none; border-right: 2px solid var(--ink);
-  font: 800 9.5px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .06em;
-  padding: 6px 13px; cursor: pointer;
+/* code left, preview right — the source reads first */
+.lj-project-inner {
+  padding: 12px; border-top: 2px dashed var(--muted);
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 12px; align-items: start;
 }
-.lj-view-btn:last-child { border-right: none; }
-.lj-view-btn.is-active { background: var(--ink); color: var(--peach); }
-.lj-view-pane { display: flex; flex-direction: column; gap: 10px; }
-.lj-view-pane[hidden] { display: none; }
+.lj-project-inner > .lj-card-body { grid-column: 1 / -1; grid-row: 2; }
+.lj-project-inner > .lj-project-meta { grid-column: 1 / -1; grid-row: 1; }
+.lj-project-meta {
+  border: 2px solid var(--ink); background: var(--paper); padding: 10px 12px;
+  box-shadow: 4px 4px 0 var(--lavender);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.lj-meta-row { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.lj-meta-key {
+  flex: 0 0 128px; font: 800 9px 'IBM Plex Mono', monospace; text-transform: uppercase;
+  letter-spacing: .12em; color: var(--ink);
+}
+.lj-meta-val { font: 600 12.5px 'Inter', sans-serif; color: var(--text); }
+.lj-project-inner > .lj-coming-soon { grid-column: 1 / -1; }
+.lj-view-pane { display: flex; flex-direction: column; gap: 10px; min-width: 0; grid-row: 3; }
+.lj-view-pane[data-pane="code"] { grid-column: 1; max-height: 620px; overflow: auto; }
+.lj-view-pane[data-pane="preview"] { grid-column: 2; position: sticky; top: 74px; }
+.lj-pane-label {
+  font: 800 9px 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--muted);
+}
 .lj-preview-frame {
-  width: 100%; height: 380px; border: 2px solid var(--ink);
+  width: 100%; height: 420px; border: 2px solid var(--ink);
   box-shadow: 4px 4px 0 var(--lavender); background: #fff; display: block;
 }
 .lj-coming-soon {
@@ -311,6 +325,39 @@ img { max-width: 100%; display: block; }
 }
 .lj-project-box--soon > summary { opacity: .65; }
 .lj-badge--soon { background: transparent; border: 1px dashed var(--muted); color: var(--muted); }
+
+/* ---------- rwd v9 archive: module headers + unbuilt rows ---------- */
+.lj-module {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  margin-top: 18px; padding: 8px 10px;
+  border: 2px solid var(--ink); background: var(--lavender);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.lj-module:first-child { margin-top: 0; }
+.lj-module-kicker {
+  font: 800 9px 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--ink); border: 1px solid var(--ink); padding: 2px 6px; background: #fff;
+}
+.lj-module-title {
+  font: 900 15px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink);
+}
+.lj-module-count {
+  margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--ink); opacity: .7;
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.lj-archive-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 10px; border: 1px dashed var(--muted); background: var(--paper2);
+}
+.lj-archive-check { font: 700 13px 'IBM Plex Mono', monospace; color: var(--muted); }
+.lj-archive-name { font: 600 13px 'Inter', sans-serif; color: var(--muted); }
+.lj-archive-type {
+  margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.lj-archive-row--cert { border-style: solid; border-color: var(--ink); }
+.lj-archive-row--cert .lj-archive-name { color: var(--text); font-weight: 800; }
+.lj-archive-row--cert .lj-archive-type { color: var(--ink); }
 
 /* ---------- projects / code blocks ---------- */
 .lj-project-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
@@ -351,12 +398,21 @@ img { max-width: 100%; display: block; }
 
 
 /* ---------- mobile ---------- */
+@media (max-width: 900px) {
+  .lj-project-inner { grid-template-columns: 1fr; }
+  .lj-view-pane[data-pane="code"], .lj-view-pane[data-pane="preview"] { grid-column: 1; }
+  .lj-view-pane[data-pane="code"] { grid-row: 3; max-height: 460px; }
+  .lj-view-pane[data-pane="preview"] { grid-row: 4; position: static; }
+  .lj-meta-key { flex-basis: 100%; }
+}
+
 @media (max-width: 640px) {
   .lj-container, .lj-footer-inner, .lj-container--wide, .lj-footer-inner--wide { padding-left: 14px; padding-right: 14px; }
   .lj-section-count { flex-basis: 100%; margin-left: 0; text-align: left; }
   .lj-section-body { padding: 10px; }
   .lj-project-inner { padding: 10px; }
   .lj-project-name { flex-basis: 100%; order: 3; }
+  .lj-view-pane[data-pane="code"] { max-height: 380px; }
   .lj-project-stack { margin-left: 0; }
   .lj-code { font-size: 11px; }
 }

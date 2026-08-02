@@ -40,7 +40,7 @@
   <div class="lj-card lj-card--lavender">
     <div class="lj-userinfo-role">the build log · view source welcome</div>
     <div class="lj-title-wrap"><h1 class="lj-card-title">PROJECTS &amp; INSTRUCTIONS</h1></div>
-    <div class="lj-card-body">everything i've shipped, split two ways: <b>cold builds</b> coded from scratch with no hand-holding (the build-it-cold drills), and <b>freeCodeCamp cert projects</b> built to the user-story spec. open a section, tap any project, then flip between <b>▶ preview</b> (what the build looks like) and <b>&lt;/&gt; code</b> (the copy-able source). steal freely. ^_^</div>
+    <div class="lj-card-body">everything i've shipped, split two ways: <b>cold builds</b> coded from scratch with no hand-holding (the build-it-cold drills), and <b>freeCodeCamp cert projects</b> built to the user-story spec. open a section, tap any project, and the <b>source sits on the left</b> with the <b>rendered result</b> right beside it — code first, always. steal freely. ^_^</div>
     <div class="lj-badges">
       <span class="lj-badge lj-badge--peach">cold builds</span>
       <span class="lj-badge lj-badge--lavender">freeCodeCamp RWD</span>
@@ -64,15 +64,8 @@
       </summary>
       <div class="lj-project-inner">
         <div class="lj-card-body">a two-box demo proving how <b>box-sizing: border-box</b> folds padding and border <i>into</i> the declared width instead of adding on top, centered with a flex container. every line is commented so the model actually sticks.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/boxmodel.html" title="Box Model preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/boxmodel.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">boxmodel.html</span>
@@ -108,6 +101,11 @@
 &lt;/html&gt;</code></pre>
           </div>
         </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/boxmodel.html" title="Box Model preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/boxmodel.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
       </div>
     </details>
     <details class="lj-project-box">
@@ -119,15 +117,8 @@
       </summary>
       <div class="lj-project-inner">
         <div class="lj-card-body">a five-part flexbox reference — <b>flex-direction</b>, <b>justify-content</b>, <b>align-items</b>, <b>flex-wrap</b> and <b>flex-grow</b>, each with side-by-side demo boxes so the axis behaviour is visible. commented line-by-line.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/flexbox/flexbox.html" title="Flexbox preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/flexbox/flexbox.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">flexbox.html</span>
@@ -295,6 +286,11 @@ p.label {
 </code></pre>
           </div>
         </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/flexbox/flexbox.html" title="Flexbox preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/flexbox/flexbox.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
       </div>
     </details>
     <details class="lj-project-box">
@@ -306,15 +302,8 @@ p.label {
       </summary>
       <div class="lj-project-inner">
         <div class="lj-card-body">a full walkthrough of all five position values — static, relative, absolute, fixed and sticky — each in its own labelled section. built cold to lock the differences in.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/positioning/positioning.html" title="CSS Positioning preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/positioning/positioning.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">positioning.html</span>
@@ -456,6 +445,11 @@ p.label {
 }</code></pre>
           </div>
         </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/positioning/positioning.html" title="CSS Positioning preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/positioning/positioning.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
       </div>
     </details>
     <details class="lj-project-box">
@@ -467,15 +461,8 @@ p.label {
       </summary>
       <div class="lj-project-inner">
         <div class="lj-card-body">a semantic contact form built cold — <b>label</b> / <b>input</b> pairs wired with <b>for</b> + <b>id</b>, HTML5 <b>required</b> validation, and a flex-column layout. focus states, a resizable <b>textarea</b>, and hover/active button feedback, styled as a clean card. every line commented.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/contact-form/index.html" title="Contact Form preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/contact-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">index.html</span>
@@ -624,6 +611,11 @@ button:active {
 }</code></pre>
           </div>
         </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/contact-form/index.html" title="Contact Form preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/contact-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
       </div>
     </details>
     <details class="lj-project-box">
@@ -635,15 +627,8 @@ button:active {
       </summary>
       <div class="lj-project-inner">
         <div class="lj-card-body">a self-contained business card built cold — a circular <b>profile photo</b>, contact + social links, and an about blurb inside a shadowed card, centered on the page with flexbox. a <b>:hover</b> <b>transform: scale</b> gives the photo a smooth zoom, and a <b>@media</b> query reflows it for small screens. every line commented.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/business-card/index.html" title="Animated Business Card preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/business-card/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">index.html</span>
@@ -787,6 +772,11 @@ a:hover { /*applies styles when a link is hovered*/
 }</code></pre>
           </div>
         </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/business-card/index.html" title="Animated Business Card preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/business-card/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
       </div>
     </details>
     </div>
@@ -795,10 +785,340 @@ a:hover { /*applies styles when a link is hovered*/
   <details class="lj-section lj-section--lav" open>
     <summary>
       <span class="lj-section-caret">▸</span>
-      <span class="lj-section-title">freeCodeCamp project instructions</span>
-      <span class="lj-section-count">3 shipped · 4 coming soon</span>
+      <span class="lj-section-title">freeCodeCamp - RWD v9 Build Archive</span>
+      <span class="lj-section-count">4 built · 67 total · worked chronologically</span>
     </summary>
     <div class="lj-section-body">
+    <div class="lj-module">
+      <span class="lj-module-kicker">HTML</span>
+      <span class="lj-module-title">Basic HTML</span>
+      <span class="lj-module-count">13 items · 2 built</span>
+    </div>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
+        <span class="lj-project-name">Build a Curriculum Outline</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Project</span><span class="lj-meta-val">Build a Curriculum Outline</span></div>
+          <div class="lj-meta-row"><span class="lj-meta-key">Source</span><span class="lj-meta-val">freeCodeCamp Responsive Web Design v9</span></div>
+          <div class="lj-meta-row"><span class="lj-meta-key">Status</span><span class="lj-meta-val">Instructional Rebuild</span></div>
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">h1 · h2 · h3 · paragraph elements · heading hierarchy</span></div>
+          <div class="lj-meta-row"><span class="lj-meta-key">Completed</span><span class="lj-meta-val">2026-08-01</span></div>
+        </div>
+        <div class="lj-card-body">the first v9 workshop — heading hierarchy done properly: one <b>h1</b> as the page title, <b>h2</b> for the section, <b>h3</b> for each sub-section, with <b>p</b> elements carrying the content. rebuilt and commented line by line.</div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;h1&gt;Welcome to freeCodeCamp&lt;/h1&gt; &lt;!-- the h1 element is commonly utilized as the webpages title --&gt;
+&lt;h2&gt;Full-Stack Curriculum&lt;/h2&gt; &lt;!-- This is a subheading. --&gt;
+&lt;p&gt;Learn the skills to become a full-stack developer&lt;/p&gt; &lt;!-- This is a paragraph element. --&gt;
+
+&lt;h3&gt;Introduction to HTML&lt;/h3&gt; &lt;!-- used to create sub-subsections under an h2 section --&gt;
+&lt;p&gt;HTML represents the content and structure of a webpage&lt;/p&gt;
+
+&lt;h3&gt;Introduction to CSS&lt;/h3&gt;
+&lt;p&gt;CSS is used to style a webpage&lt;/p&gt;
+
+&lt;h3&gt;Introduction to JavaScript&lt;/h3&gt;
+&lt;p&gt;JavaScript adds interactivity to a webpage&lt;/p&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;                          &lt;!-- tells the browser this is modern HTML5 --&gt;
+&lt;html lang="en"&gt;                         &lt;!-- starts the page; lang helps screen readers know this is English --&gt;
+&lt;head&gt;                                   &lt;!-- holds page info the browser uses; this part does not show on the page --&gt;
+&lt;title&gt;The Odin Recipes&lt;/title&gt;           &lt;!-- sets the browser tab title; the test needs this exact text --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Creamy Chocolate Fudge&lt;/h1&gt;           &lt;!-- main visible heading for the recipe; the test needs this exact text --&gt;
+&lt;img src="https://cdn.freecodecamp.org/curriculum/labs/recipe.jpg" alt="creamy chocolate fudge squares on a plate"&gt; &lt;!-- shows the recipe image; alt describes it for screen readers and if the image fails --&gt;
+&lt;h2&gt;Description&lt;/h2&gt; &lt;!--starts the description section; the Odin Project FCC test needs this exact heading--&gt;
+&lt;p&gt;This creamy chocolate fudge is rich, smooth, and simple enough for a beginner recipe page.&lt;/p&gt; &lt;!-- first description paragraph; the test needs at least two p elements --&gt;
+&lt;p&gt;It uses basic pantry ingredients and sets into sweet squares that are easy to share.&lt;/p&gt; &lt;!-- second description paragraph; this gives the section more recipe detail --&gt;
+&lt;h2&gt;Ingredients&lt;/h2&gt;                      &lt;!-- starts the ingredients section; the test needs this exact heading text --&gt;
+&lt;ul&gt;                                      &lt;!-- starts an unordered list because ingredients do not need step-by-step order --&gt;
+  &lt;li&gt;2 cups chocolate chips&lt;/li&gt;         &lt;!-- one ingredient item in the unordered list --&gt;
+  &lt;li&gt;1 can sweetened condensed milk&lt;/li&gt; &lt;!-- one ingredient item in the unordered list --&gt;
+  &lt;li&gt;2 tablespoons butter&lt;/li&gt;           &lt;!-- one ingredient item in the unordered list --&gt;
+  &lt;li&gt;1 teaspoon vanilla extract&lt;/li&gt;     &lt;!-- one ingredient item in the unordered list --&gt;
+&lt;/ul&gt;                                     &lt;!-- closes the ingredients list --&gt;
+&lt;h2&gt;Steps&lt;/h2&gt;                            &lt;!-- starts the recipe steps section; the test needs this exact heading text --&gt;
+&lt;ol&gt;                                      &lt;!-- starts an ordered list because recipe steps must be followed in sequence --&gt;
+  &lt;li&gt;Line a small pan with parchment paper.&lt;/li&gt; &lt;!-- first numbered step in the recipe --&gt;
+  &lt;li&gt;Melt the chocolate chips, condensed milk, and butter together.&lt;/li&gt; &lt;!-- second numbered step in the recipe --&gt;
+  &lt;li&gt;Stir in the vanilla extract.&lt;/li&gt;   &lt;!-- third numbered step in the recipe --&gt;
+  &lt;li&gt;Spread the mixture into the pan and let it set before cutting.&lt;/li&gt; &lt;!-- fourth numbered step in the recipe --&gt;
+&lt;/ol&gt;                                     &lt;!-- closes the ordered steps list --&gt;
+&lt;h2&gt;More Recipes&lt;/h2&gt;                     &lt;!-- starts the related recipes section; the test needs this exact heading text --&gt;
+&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
+&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
+&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/curriculum-outline/index.html" title="Build a Curriculum Outline preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/curriculum-outline/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Debug Camperbot’s Profile Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Debug a Pet Adoption Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Cat Photo App</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd lab</span>
+        <span class="lj-project-name">"Build a Recipe" Project - The Odin Project's freeCodeCamp Remix</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-card-body">the Odin Project's take on the fCC recipe lab — a pure semantic HTML page: an <b>h1</b> title, a hero <b>img</b> with alt text, a description, an <b>ul</b> ingredients list, an <b>ol</b> of ordered steps, and a "more recipes" link list. no CSS, structure only. every line commented.</div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/recipe/index.html" title="Build a Recipe preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/recipe/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Bookstore Page</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Travel Agency Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an HTML Music Player</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an HTML Video Player</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an HTML Audio and Video Player</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Heart Icon</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Video Display Using iframe</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Video Compilation Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">HTML</span>
+      <span class="lj-module-title">Semantic HTML</span>
+      <span class="lj-module-count">4 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a List of Major Web Browsers</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build Quincy’s Job Tips Page</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Cat Blog Page</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an Event Hub</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">HTML</span>
+      <span class="lj-module-title">Forms and Tables</span>
+      <span class="lj-module-count">4 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Hotel Feedback Form</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Final Exams Table</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Book Catalog Table</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row lj-archive-row--cert">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Survey Form</span>
+      <span class="lj-archive-type">cert project</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">HTML</span>
+      <span class="lj-module-title">Accessibility</span>
+      <span class="lj-module-count">7 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Debug a Coding Journey Blog Page</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Tech Conference Schedule Table</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Debug a Donation Form</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an Accessible Audio Controller</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Checkout Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Movie Review Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Multimedia Player</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Basic CSS</span>
+      <span class="lj-module-count">4 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Cafe Menu</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Business Card</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Stylized To-Do List</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Blog Post Card</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Absolute and Relative Units</span>
+      <span class="lj-module-count">1 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an Event Flyer Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Pseudo Classes and Elements</span>
+      <span class="lj-module-count">3 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Greeting Card</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Parent Teacher Conference Form</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Job Application Form</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Colors</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Set of Colored Markers</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Set of Colored Boxes</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Styling Forms</span>
+      <span class="lj-module-count">4 items · 1 built</span>
+    </div>
     <details class="lj-project-box">
       <summary>
         <span class="lj-project-caret">▸</span>
@@ -808,15 +1128,8 @@ a:hover { /*applies styles when a link is hovered*/
       </summary>
       <div class="lj-project-inner">
         <div class="lj-card-body">the fCC registration form — three <b>fieldset</b> groups (personal details, account type, optional profile), radios, a file picker, a number field with min/max, a select, a textarea, a pattern-validated password and a required terms checkbox. posts to the fCC demo endpoint. every line commented.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/registration-form/registration-form.html" title="Build a Registration Form preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/registration-form/registration-form.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">index.html</span>
@@ -953,8 +1266,163 @@ a { /* targets every anchor (link) element on the page */
 } /* closes the anchor rule */</code></pre>
           </div>
         </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/registration-form/registration-form.html" title="Build a Registration Form preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/registration-form/registration-form.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
       </div>
     </details>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Contact Form</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Game Settings Panel</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Feature Selection Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Box Model / Layout &amp; Effects</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Rothko Painting</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Confidential Email Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Flexbox</span>
+      <span class="lj-module-count">4 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Flexbox Photo Gallery</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Set of Colorful Boxes</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Pricing Plans Layout Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row lj-archive-row--cert">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Page of Playing Cards</span>
+      <span class="lj-archive-type">cert project</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Typography</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Nutritional Label</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Newspaper Article</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Accessibility</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Quiz Webpage</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Tribute Page</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Positioning</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Cat Painting</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a House Painting</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Attribute Selectors</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Balance Sheet</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row lj-archive-row--cert">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Book Inventory App</span>
+      <span class="lj-archive-type">cert project</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Responsive Design</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Piano</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row lj-archive-row--cert">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Technical Documentation Page</span>
+      <span class="lj-archive-type">cert project</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Variables</span>
+      <span class="lj-module-count">2 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a City Skyline</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an Availability Table</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Grid</span>
+      <span class="lj-module-count">3 items · 1 built</span>
+    </div>
     <details class="lj-project-box">
       <summary>
         <span class="lj-project-caret">▸</span>
@@ -964,15 +1432,8 @@ a { /* targets every anchor (link) element on the page */
       </summary>
       <div class="lj-project-inner">
         <div class="lj-card-body">the fCC grid workshop — a full <b>holy-grail layout</b> in pure grid: a three-column body (sidebar / main / aside) with a full-width header and footer, sized with <b>fr</b> units and pinned by explicit <b>grid-column</b> / <b>grid-row</b> lines. every line commented so the track math sticks.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
-        <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/css-grid/index.html" title="CSS Grid preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/css-grid/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">the source</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">index.html</span>
@@ -1034,119 +1495,52 @@ a { /* targets every anchor (link) element on the page */
 }</code></pre>
           </div>
         </div>
-      </div>
-    </details>
-    <details class="lj-project-box">
-      <summary>
-        <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--lavender">rwd lab</span>
-        <span class="lj-project-name">"Build a Recipe" Project - The Odin Project's freeCodeCamp Remix</span>
-        <span class="lj-project-stack">html</span>
-      </summary>
-      <div class="lj-project-inner">
-        <div class="lj-card-body">the Odin Project's take on the fCC recipe lab — a pure semantic HTML page: an <b>h1</b> title, a hero <b>img</b> with alt text, a description, an <b>ul</b> ingredients list, an <b>ol</b> of ordered steps, and a "more recipes" link list. no CSS, structure only. every line commented.</div>
-        <div class="lj-view-toggle">
-          <button class="lj-view-btn is-active" type="button" data-view="preview">▶ preview</button>
-          <button class="lj-view-btn" type="button" data-view="code">&lt;/&gt; code</button>
-        </div>
         <div class="lj-view-pane" data-pane="preview">
-          <iframe class="lj-preview-frame" data-src="projects/recipe/index.html" title="Build a Recipe preview" loading="lazy"></iframe>
-          <div class="lj-project-links"><a href="projects/recipe/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-        </div>
-        <div class="lj-view-pane" data-pane="code" hidden>
-          <div class="lj-code-block lj-code-block--peach">
-            <div class="lj-code-bar">
-              <span class="lj-code-file">index.html</span>
-              <button class="lj-code-copy" type="button">copy</button>
-            </div>
-            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;                          &lt;!-- tells the browser this is modern HTML5 --&gt;
-&lt;html lang="en"&gt;                         &lt;!-- starts the page; lang helps screen readers know this is English --&gt;
-&lt;head&gt;                                   &lt;!-- holds page info the browser uses; this part does not show on the page --&gt;
-&lt;title&gt;The Odin Recipes&lt;/title&gt;           &lt;!-- sets the browser tab title; the test needs this exact text --&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Creamy Chocolate Fudge&lt;/h1&gt;           &lt;!-- main visible heading for the recipe; the test needs this exact text --&gt;
-&lt;img src="https://cdn.freecodecamp.org/curriculum/labs/recipe.jpg" alt="creamy chocolate fudge squares on a plate"&gt; &lt;!-- shows the recipe image; alt describes it for screen readers and if the image fails --&gt;
-&lt;h2&gt;Description&lt;/h2&gt; &lt;!--starts the description section; the Odin Project FCC test needs this exact heading--&gt;
-&lt;p&gt;This creamy chocolate fudge is rich, smooth, and simple enough for a beginner recipe page.&lt;/p&gt; &lt;!-- first description paragraph; the test needs at least two p elements --&gt;
-&lt;p&gt;It uses basic pantry ingredients and sets into sweet squares that are easy to share.&lt;/p&gt; &lt;!-- second description paragraph; this gives the section more recipe detail --&gt;
-&lt;h2&gt;Ingredients&lt;/h2&gt;                      &lt;!-- starts the ingredients section; the test needs this exact heading text --&gt;
-&lt;ul&gt;                                      &lt;!-- starts an unordered list because ingredients do not need step-by-step order --&gt;
-  &lt;li&gt;2 cups chocolate chips&lt;/li&gt;         &lt;!-- one ingredient item in the unordered list --&gt;
-  &lt;li&gt;1 can sweetened condensed milk&lt;/li&gt; &lt;!-- one ingredient item in the unordered list --&gt;
-  &lt;li&gt;2 tablespoons butter&lt;/li&gt;           &lt;!-- one ingredient item in the unordered list --&gt;
-  &lt;li&gt;1 teaspoon vanilla extract&lt;/li&gt;     &lt;!-- one ingredient item in the unordered list --&gt;
-&lt;/ul&gt;                                     &lt;!-- closes the ingredients list --&gt;
-&lt;h2&gt;Steps&lt;/h2&gt;                            &lt;!-- starts the recipe steps section; the test needs this exact heading text --&gt;
-&lt;ol&gt;                                      &lt;!-- starts an ordered list because recipe steps must be followed in sequence --&gt;
-  &lt;li&gt;Line a small pan with parchment paper.&lt;/li&gt; &lt;!-- first numbered step in the recipe --&gt;
-  &lt;li&gt;Melt the chocolate chips, condensed milk, and butter together.&lt;/li&gt; &lt;!-- second numbered step in the recipe --&gt;
-  &lt;li&gt;Stir in the vanilla extract.&lt;/li&gt;   &lt;!-- third numbered step in the recipe --&gt;
-  &lt;li&gt;Spread the mixture into the pan and let it set before cutting.&lt;/li&gt; &lt;!-- fourth numbered step in the recipe --&gt;
-&lt;/ol&gt;                                     &lt;!-- closes the ordered steps list --&gt;
-&lt;h2&gt;More Recipes&lt;/h2&gt;                     &lt;!-- starts the related recipes section; the test needs this exact heading text --&gt;
-&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
-&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-          </div>
+          <div class="lj-pane-label">the result</div>
+          <iframe class="lj-preview-frame" data-src="projects/css-grid/index.html" title="CSS Grid preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/css-grid/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
         </div>
       </div>
     </details>
-    <details class="lj-project-box lj-project-box--soon">
-      <summary>
-        <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--soon">soon</span>
-        <span class="lj-project-name">Tribute Page</span>
-        <span class="lj-project-stack">not started</span>
-      </summary>
-      <div class="lj-project-inner">
-        <div class="lj-coming-soon">🚧 coming soon…</div>
-      </div>
-    </details>
-    <details class="lj-project-box lj-project-box--soon">
-      <summary>
-        <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--soon">soon</span>
-        <span class="lj-project-name">Technical Documentation Page</span>
-        <span class="lj-project-stack">not started</span>
-      </summary>
-      <div class="lj-project-inner">
-        <div class="lj-coming-soon">🚧 coming soon…</div>
-      </div>
-    </details>
-    <details class="lj-project-box lj-project-box--soon">
-      <summary>
-        <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--soon">soon</span>
-        <span class="lj-project-name">Product Landing Page</span>
-        <span class="lj-project-stack">not started</span>
-      </summary>
-      <div class="lj-project-inner">
-        <div class="lj-coming-soon">🚧 coming soon…</div>
-      </div>
-    </details>
-    <details class="lj-project-box lj-project-box--soon">
-      <summary>
-        <span class="lj-project-caret">▸</span>
-        <span class="lj-badge lj-badge--soon">soon</span>
-        <span class="lj-project-name">Personal Portfolio Webpage</span>
-        <span class="lj-project-stack">not started</span>
-      </summary>
-      <div class="lj-project-inner">
-        <div class="lj-coming-soon">🚧 coming soon…</div>
-      </div>
-    </details>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Design a Newspaper Layout</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row lj-archive-row--cert">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Product Landing Page</span>
+      <span class="lj-archive-type">cert project</span>
+    </div>
+    <div class="lj-module">
+      <span class="lj-module-kicker">CSS</span>
+      <span class="lj-module-title">Animations</span>
+      <span class="lj-module-count">4 items</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build an Animated Ferris Wheel</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Moon Orbit</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Flappy Penguin</span>
+      <span class="lj-archive-type">workshop</span>
+    </div>
+    <div class="lj-archive-row">
+      <span class="lj-archive-check">☐</span>
+      <span class="lj-archive-name">Build a Personal Portfolio</span>
+      <span class="lj-archive-type">lab</span>
+    </div>
     </div>
   </details>
 
-  <div class="lj-userinfo-role">the shipped builds embed their real, full source and a live preview — copy any block straight into an editor. the “coming soon” cert projects fill in as each one gets built and claimed.</div>
+  <div class="lj-userinfo-role">the archive lists every workshop, lab and certification project in the freeCodeCamp RWD v9 curriculum, in order. built ones expand with their real, full source and a live preview — copy any block straight into an editor. the rest fill in as i work down the list.</div>
 
 </main>
 

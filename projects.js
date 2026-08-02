@@ -1,9 +1,10 @@
-// guerz.lol — projects page: copy-to-clipboard, preview/code toggle, lazy iframes
+// guerz.lol — projects page: copy-to-clipboard, lazy iframe previews
 (function () {
-  function loadFrame(pane) {
-    if (!pane) return;
-    var f = pane.querySelector('iframe[data-src]');
-    if (f && !f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src'));
+  function loadFrame(scope) {
+    if (!scope) return;
+    scope.querySelectorAll('iframe[data-src]').forEach(function (f) {
+      if (!f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src'));
+    });
   }
 
   function initCopy() {
@@ -35,37 +36,17 @@
     });
   }
 
-  function initToggle() {
-    document.querySelectorAll('.lj-view-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var inner = btn.closest('.lj-project-inner');
-        if (!inner) return;
-        var view = btn.getAttribute('data-view');
-        inner.querySelectorAll('.lj-view-btn').forEach(function (b) {
-          b.classList.toggle('is-active', b === btn);
-        });
-        inner.querySelectorAll('.lj-view-pane').forEach(function (p) {
-          var match = p.getAttribute('data-pane') === view;
-          p.hidden = !match;
-          if (match) loadFrame(p);
-        });
-      });
-    });
-  }
-
   function initLazyPreview() {
     document.querySelectorAll('.lj-project-box').forEach(function (box) {
       box.addEventListener('toggle', function () {
         if (!box.open) return;
-        var active = box.querySelector('.lj-view-pane:not([hidden])');
-        loadFrame(active);
+        loadFrame(box);
       });
     });
   }
 
   function init() {
     initCopy();
-    initToggle();
     initLazyPreview();
   }
 
