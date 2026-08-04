@@ -793,13 +793,13 @@ a:hover { /*applies styles when a link is hovered*/
     <summary>
       <span class="lj-section-caret">▸</span>
       <span class="lj-section-title">freeCodeCamp - RWD v9 Build Archive</span>
-      <span class="lj-section-count">10 built · 67 total · worked chronologically</span>
+      <span class="lj-section-count">15 built · 67 total · worked chronologically</span>
     </summary>
     <div class="lj-section-body">
     <div class="lj-module">
       <span class="lj-module-kicker">HTML</span>
       <span class="lj-module-title">Basic HTML</span>
-      <span class="lj-module-count">13 items · 8 built</span>
+      <span class="lj-module-count">13 items · 13 built</span>
     </div>
     <details class="lj-project-box">
       <summary>
@@ -1216,31 +1216,278 @@ a:hover { /*applies styles when a link is hovered*/
         </div>
       </div>
     </details>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build an HTML Video Player</span>
-      <span class="lj-archive-type">workshop</span>
-    </div>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build an HTML Audio and Video Player</span>
-      <span class="lj-archive-type">lab</span>
-    </div>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build a Heart Icon</span>
-      <span class="lj-archive-type">workshop</span>
-    </div>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build a Video Display Using iframe</span>
-      <span class="lj-archive-type">workshop</span>
-    </div>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build a Video Compilation Page</span>
-      <span class="lj-archive-type">lab</span>
-    </div>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
+        <span class="lj-project-name">Build an HTML Video Player</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">video element • replaced elements • source element • width attribute • muted attribute • poster attribute • type attribute • video/mp4 value • video/webm value • video/ogg value • video/quicktime value</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Working with the HTML Video Element&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Working with the HTML Video Element&lt;/h1&gt;
+  &lt;video 
+    width="640"
+    loop
+    controls
+    muted
+    poster="https://cdn.freecodecamp.org/curriculum/labs/past-event2.jpg"
+  &gt; &lt;!-- video is a replaced element that adds a video player to your webpage. width attribute sets the width of the video player. loop attribute makes the video play in a loop. controls attribute adds play, pause, and volume controls. muted attribute mutes the audio. poster attribute sets the image that will be displayed before the video starts playing. --&gt;
+    &lt;source
+      src="https://cdn.freecodecamp.org/curriculum/labs/what-is-the-map-method-and-how-does-it-work.mp4"
+      type="video/mp4"
+    &gt; &lt;!-- source element specifies the video file and its format. type attribute specifies the format of the video file. video/mp4 value is the format for MP4 videos. --&gt;
+    &lt;source
+      src="https://cdn.freecodecamp.org/curriculum/labs/mapmethod.webm"
+      type="video/webm"
+    &gt; &lt;!-- video/webm value is the format for WebM videos. --&gt;
+    &lt;source
+      src="https://cdn.freecodecamp.org/curriculum/labs/mapmethod.ogg"
+      type="video/ogg"
+    &gt; &lt;!-- video/ogg value is the format for OGG videos. --&gt;
+    &lt;source
+      src="https://cdn.freecodecamp.org/curriculum/labs/mapmethod.mov"
+      type="video/quicktime"
+    &gt; &lt;!-- video/quicktime value is the format for QuickTime videos. --&gt;
+  &lt;/video&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/html-video-player/index.html" title="Build an HTML Video Player preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/html-video-player/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd lab</span>
+        <span class="lj-project-name">Build an HTML Audio and Video Player</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Reinforced Concepts</span><span class="lj-meta-val">h1 element • h2 element • section element • video element • audio element • source element • controls attribute • width attribute • src value • loop attribute</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;
+  &lt;title&gt;HTML Audio and Video Lab&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;My Favorite Video and Song&lt;/h1&gt; &lt;!-- h1 element defines the main heading of the page. --&gt;
+  &lt;section&gt; &lt;!-- section element groups related content together. --&gt;
+    &lt;h2&gt;Learning to Code&lt;/h2&gt; &lt;!-- h2 element defines a subheading for the section. --&gt;
+    &lt;video controls width="640"&gt; &lt;!-- video element adds a video player to your webpage. controls attribute adds play, pause, and volume controls. width attribute sets the width of the video player. --&gt;
+      &lt;source src="https://cdn.freecodecamp.org/curriculum/labs/what-is-the-map-method-and-how-does-it-work.mp4" type="video/mp4"&gt; &lt;!-- source element specifies the video file and its format. src attribute specifies the path to the video file. type attribute specifies the format of the video file. video/mp4 value is the format for MP4 videos. --&gt;
+    &lt;/video&gt;
+  &lt;/section&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Sailing Away&lt;/h2&gt;
+    &lt;audio controls loop src="https://cdn.freecodecamp.org/curriculum/js-music-player/sailing-away.mp3"&gt;&lt;/audio&gt; &lt;!-- audio element adds an audio player to your webpage. controls attribute adds play, pause, and volume controls. loop attribute makes the audio play in a loop. src attribute specifies the path to the audio file. --&gt;
+  &lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/html-audio-video-player/index.html" title="Build an HTML Audio and Video Player preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/html-audio-video-player/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
+        <span class="lj-project-name">Build a Heart Icon</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">svg element • path element • d attribute • width attribute • height attribute • viewBox attribute • fill attribute</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;Heart Icon&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;svg width="24" height="24" viewBox="0 0 24 24" fill="red"&gt; &lt;!-- svg element defines a scalable vector graphic. width and height attributes set the dimensions of the SVG. viewBox attribute defines the coordinate system for the SVG. fill attribute sets the fill color for the shapes within the SVG. --&gt;
+      &lt;path
+        d="M12 21s-6-4.35-9.33-8.22C-.5 7.39 3.24 1 8.4 4.28 10.08 5.32 12 7.5 12 7.5s1.92-2.18 3.6-3.22C20.76 1 24.5 7.39 21.33 12.78 18 16.65 12 21 12 21z"
+      &gt;&lt;/path&gt; &lt;!-- path element defines the shape of the heart icon using a series of coordinates and commands. The d attribute contains the path data that describes the outline of the heart shape. --&gt;
+    &lt;/svg&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/heart-icon/index.html" title="Build a Heart Icon preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/heart-icon/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
+        <span class="lj-project-name">Build a Video Display Using iframe</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Introduced Concepts</span><span class="lj-meta-val">iframe replaced element • allow attribute • referrerpolicy attribute • accelerometer value • autoplay value • clipboard-write value • encrypted-media value • gyroscope value • web-share value • strict-origin-when-cross-origin value • allowfullscreen value</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Display Videos in an iframe&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;iframe Video Display&lt;/h1&gt;
+    &lt;iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/I0_951_MPE0"
+      allow="accelerometer autoplay clipboard-write encrypted-media gyroscope web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    &gt;
+    &lt;/iframe&gt; &lt;!-- iframe element embeds a video file into the page. width and height attributes set the dimensions of the iframe. src attribute specifies the path to the video file. allow attribute specifies which features are allowed for the iframe content. referrerpolicy attribute controls how much referrer information is sent with requests made from the iframe. allowfullscreen attribute allows the iframe content to be displayed in fullscreen mode. --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/iframe-video-display/index.html" title="Build a Video Display Using iframe preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/iframe-video-display/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd lab</span>
+        <span class="lj-project-name">Build a Video Compilation Page</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">Reinforced Basic HTML</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Video Compilation Page&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt; &lt;!-- sets the body of the document --&gt;
+&lt;main&gt; &lt;!-- sets the main content area --&gt;
+&lt;h1&gt;Guerz's fCC video compilation&lt;/h1&gt; &lt;!-- main heading --&gt;
+&lt;p&gt;welcome to Guerz's page! enjoy the videos! ^_^&lt;/p&gt; &lt;!-- paragraph element provides a brief introduction to the page --&gt;
+&lt;section&gt; &lt;!-- section element groups related content together --&gt;
+    &lt;h2&gt;first compilation&lt;/h2&gt; &lt;!-- heading for the first section --&gt;
+    &lt;p&gt;this is the first paragraph.&lt;/p&gt;
+    &lt;iframe
+      src="first-compilation.mp4"
+      title="guerz's first"
+      height="315"
+      width="560"&gt;
+    &lt;/iframe&gt; &lt;!-- iframe element embeds a video file into the page. src attribute specifies the path to the video file. title attribute provides a descriptive title for the iframe content. height and width attributes set the dimensions of the iframe. --&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h2&gt;second compilation&lt;/h2&gt;
+    &lt;p&gt;this is the second paragraph.&lt;/p&gt;
+    &lt;iframe
+      src="second-compilation.ogg"
+      title="guerz's second compilation"
+      height="315"
+      width="560"&gt;
+    &lt;/iframe&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+    &lt;h2&gt;third compilation&lt;/h2&gt;
+    &lt;p&gt;this is the third compilation.&lt;/p&gt;
+    &lt;iframe
+      src="third-compilation.webm"
+      title="guerz's third compilation"
+      height="315"
+      width="560"&gt;
+    &lt;/iframe&gt;
+&lt;/section&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/video-compilation-page/index.html" title="Build a Video Compilation Page preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/video-compilation-page/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
     <div class="lj-module">
       <span class="lj-module-kicker">HTML</span>
       <span class="lj-module-title">Semantic HTML</span>
