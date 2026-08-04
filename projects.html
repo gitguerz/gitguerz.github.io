@@ -43,11 +43,11 @@
     <div class="lj-card-body">everything i've built and shipped, split into 3 categories: 
       <ul>
         <li><b>Cold Build Instructions</b> - concepts rebuilt from scratch and explained line by line</li>
-        <li><b>freeCodeCamp RWD v9 Build Archive</b> <em>(WIP) </em>- curriculum <em>workshops</em>, <em>labs</em>, & <em>projects</em> chronologically logged from the first to the very last with every line commented and explained</li>
+        <li><b>freeCodeCamp RWD v9 Build Archive</b> <em>(WIP) </em>- curriculum <em>workshops</em>, <em>labs</em>, & <em>projects</em>  chronologically logged from the first to the very last with every line commented and explained</li>
         <li><b>The Odin Project's fCC Remix</b> <em>(WIP)</em> - an additional fCC curriculum that reinforces the concepts learned from <strong>fCC RWD v9</strong> curriculum</li>
       </ul>
-   builds are shown with code by default; preview tab where available.
-      <p><strong><em>NOTE:</em></strong> if you would like to use anything for your own educational purposes, please, feel free to use the information below however you see fit. enjoy! ^_^</p></div>
+   builds are shown with view of the code with clickable preview tab.
+      <p><strong><em>*NOTE:*</em></strong> if you would like to use anything for your own educational purposes, please, feel free to use the information below however you see fit. enjoy! ^_^</p></div>
     <div class="lj-badges">
       <span class="lj-badge lj-badge--peach">cold builds</span>
       <span class="lj-badge lj-badge--lavender">freeCodeCamp RWD</span>
@@ -793,13 +793,13 @@ a:hover { /*applies styles when a link is hovered*/
     <summary>
       <span class="lj-section-caret">▸</span>
       <span class="lj-section-title">freeCodeCamp - RWD v9 Build Archive</span>
-      <span class="lj-section-count">6 built · 67 total · worked chronologically</span>
+      <span class="lj-section-count">10 built · 67 total · worked chronologically</span>
     </summary>
     <div class="lj-section-body">
     <div class="lj-module">
       <span class="lj-module-kicker">HTML</span>
       <span class="lj-module-title">Basic HTML</span>
-      <span class="lj-module-count">13 items · 4 built</span>
+      <span class="lj-module-count">13 items · 8 built</span>
     </div>
     <details class="lj-project-box">
       <summary>
@@ -887,7 +887,7 @@ a:hover { /*applies styles when a link is hovered*/
           <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">img elements · anchor elements · src vs href · alt attributes · void elements · debugging swapped attributes</span></div>
         </div>
         <div class="lj-view-pane" data-pane="code">
-          <div><strong>preview</strong> not shown, because 2 of this lab's links point to internal fCC routes that only resolve inside their environment.</div>
+          <div class="lj-pane-label"><strong>preivew</strong> not shown due to fCC lab's use of internal photos</div>
           <div class="lj-code-block lj-code-block--peach">
             <div class="lj-code-bar">
               <span class="lj-code-file">index.html</span>
@@ -982,26 +982,240 @@ a:hover { /*applies styles when a link is hovered*/
         </div>
       </div>
     </details>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build a Recipe Page</span>
-      <span class="lj-archive-type">lab</span>
-    </div>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build a Bookstore Page</span>
-      <span class="lj-archive-type">workshop</span>
-    </div>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build a Travel Agency Page</span>
-      <span class="lj-archive-type">lab</span>
-    </div>
-    <div class="lj-archive-row">
-      <span class="lj-archive-check">☐</span>
-      <span class="lj-archive-name">Build an HTML Music Player</span>
-      <span class="lj-archive-type">workshop</span>
-    </div>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd lab</span>
+        <span class="lj-project-name">Build a Recipe Page</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">reinforces learned concepts of: &lt;!DOCTYPE html&gt; • html element • lang attribute • en value • head element • title element • meta element • charset attribute • UTF-8 value • body element • h1 element • h2 element • p element • img element • src attribute • alt attribute</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt; &lt;!-- tells browsers that the document is an HTML5 document--&gt;
+&lt;html lang="en"&gt; &lt;!-- html element defines the root of an HTML document. lang attribute sets the language. en value sets language to English --&gt;
+  &lt;head&gt; &lt;!-- element contains informatiion about the document for the browser, such as metadata, the title. This content is not displayed on the page --&gt;
+  &lt;meta charset="UTF-8"&gt; &lt;!-- meta element specifies the character encoding for the HTML document. charset attribute is the character encoding. UTF-8 value is the standard encoding and can encode mostly all characters, symbols, and emoji --&gt;
+  &lt;title&gt;Classic Pancakes Recipe&lt;/title&gt; &lt;!-- determines what browsers show in the title bar or tab for the page --&gt;
+  &lt;/head&gt;
+  &lt;body&gt; &lt;!-- contains information about the document for the browser, such as metadata and the title (links to stylesheets and scripts will be learned in later in the fCC curriculum) This content is not displayed on the page --&gt;
+  &lt;h1&gt;Classic Pancakes&lt;/h1&gt; &lt;!-- main title of webpage --&gt;
+  &lt;p&gt;Fluffy, golden pancakes made from scratch, perfect for a warm and satisfying homemade breakfast.&lt;/p&gt; &lt;!-- contains a paragraph of text --&gt;
+  &lt;img src="https://cdn.freecodecamp.org/curriculum/labs/recipe.jpg" alt="A stack of golden pancakes topped with syrup and berries"&gt; &lt;!-- img element displays an image. src attribute points to the image file. alt attribute provides alternative text for screen readers and displays if/when the image cannot load --&gt;
+  &lt;h2&gt;Ingredients&lt;/h2&gt; &lt;!-- second-level heading --&gt;
+  &lt;ul&gt; &lt;!-- creates a bulleted list --&gt;
+  &lt;li&gt;1 cup all-purpose flour&lt;/li&gt; &lt;!-- list item --&gt;
+  &lt;li&gt;2 tablespoons sugar&lt;/li&gt;
+  &lt;li&gt;1 teaspoon baking powder&lt;/li&gt;
+  &lt;li&gt;1/2 teaspoon baking soda&lt;/li&gt;
+  &lt;li&gt;1/4 teaspoon salt&lt;/li&gt;
+  &lt;li&gt;1 cup buttermilk&lt;/li&gt;
+  &lt;li&gt;1 large egg&lt;/li&gt;
+  &lt;li&gt;2 tablespoons melted butter&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;h2&gt;Instructions&lt;/h2&gt;
+  &lt;ol&gt; &lt;!-- creates a numbered (ordered) list --&gt;
+  &lt;li&gt;In a large bowl, whisk together the flour, sugar, baking powder, baking soda, and salt.&lt;/li&gt;
+  &lt;li&gt;In another bowl, whisk together the buttermilk, egg, and melted butter.&lt;/li&gt;
+  &lt;li&gt;Pour the wet ingredients into the dry ingredients and stir until just combined.&lt;/li&gt;
+  &lt;li&gt;Heat a griddle over medium heat and pour 1/4 cup of batter for each pancake.&lt;/li&gt;
+  &lt;li&gt;Cook until bubbles form on the surface, then flip and cook until golden brown.&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/recipe-page/index.html" title="Build a Recipe Page preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/recipe-page/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
+        <span class="lj-project-name">Build a Bookstore Page</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">Reinforced: &lt;!DOCTYPE html&gt; • html element • lang attribute • head element • meta element • charset attribute • UTF-8 value • title element • body element • h1 element • h2 element • p element • nested elements<br />Introduced: div element • class attribute • id attribute • button element</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt; &lt;!-- tells browsers that the document uses HTML5 --&gt;
+&lt;html lang="en"&gt; &lt;!-- html element defines the root of an HTML document. lang attribute sets the language. en value sets language to English --&gt;
+&lt;head&gt; &lt;!-- contains metadata about the document, such as its title and character encoding --&gt;
+  &lt;meta charset="UTF-8"&gt; &lt;!-- meta element specifies the character encoding for the HTML document. charset attribute is the character encoding. UTF-8 value is the standard encoding and can encode mostly all characters, symbols, and emoji --&gt;
+  &lt;title&gt;XYZ Bookstore Page&lt;/title&gt; &lt;!-- determines what browsers show in the title bar or tab for the page --&gt;
+&lt;/head&gt;
+&lt;body&gt; &lt;!-- contains the visible webpage content that users see and interact with --&gt;
+  &lt;h1&gt;XYZ Bookstore&lt;/h1&gt; &lt;!-- the main heading of the webpage --&gt;
+  &lt;p&gt;Browse our collection of amazing books!&lt;/p&gt; &lt;!-- contains a paragraph of text --&gt;
+  
+  &lt;div class="card-container"&gt; &lt;!-- div element groups related content. class attribute assigns a reusable name that can be shared by multiple elements for styling or selection --&gt;
+    &lt;div class="card" id="sally-adventure-book"&gt;  &lt;!-- class can be reused across multiple book cards. id uniquely identifies this specific card --&gt;
+      &lt;h2&gt;Sally's SciFi Adventure&lt;/h2&gt;
+      &lt;p&gt;This is an epic story of Sally and her dog Rex as they navigate through other worlds.&lt;/p&gt;
+      &lt;button class="btn"&gt;Buy Now&lt;/button&gt; &lt;!-- button element creates an interactive control. class="btn" groups buttons that may share styling --&gt;
+    &lt;/div&gt;
+    &lt;div class="card" id="dave-cooking-book"&gt;
+      &lt;h2&gt;Dave's Cooking Adventure&lt;/h2&gt;
+      &lt;p&gt;This is the story of Dave as he learns to cook everything from pancakes to pasta, one recipe at a time.&lt;/p&gt;
+      &lt;button class="btn"&gt;Buy Now&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Review your selections and continue to checkout.&lt;/p&gt;
+  &lt;div class="btn-container"&gt; &lt;!-- groups the cart and checkout navigation buttons together --&gt;
+    &lt;button class="btn" id="view-cart-btn"&gt;View Cart&lt;/button&gt; &lt;!-- this button shares the reusable btn class --&gt;
+    &lt;button class="btn" id="checkout-btn"&gt;Checkout&lt;/button&gt;    
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/bookstore-page/index.html" title="Build a Bookstore Page preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/bookstore-page/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd lab</span>
+        <span class="lj-project-name">Build a Travel Agency Page</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">Reinforced: &lt;!DOCTYPE html&gt; • html element • lang attribute • head element • meta element • charset attribute • UTF-8 value • title element • body element • h1 element • h2 element • p element • a element • href attribute • target attribute • _blank value • img element • src attribute • alt attribute • ul element • li element • figure element • figcaption element • nested elements<br />Introduced: header element • main element</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt; &lt;!-- tells browsers that the document uses HTML5 --&gt;
+&lt;html lang="en"&gt; &lt;!-- html element defines the root of an HTML document. lang attribute sets the language. en value sets language to English --&gt;
+&lt;head&gt; &lt;!-- contains metadata about the document, such as its title and character encoding --&gt;
+  &lt;meta charset="UTF-8"&gt; &lt;!-- meta element specifies the character encoding for the HTML document. charset attribute is the character encoding. UTF-8 value is the standard encoding and can encode mostly all characters, symbols, and emoji --&gt;
+  &lt;title&gt;Travel Agency Page&lt;/title&gt; &lt;!-- determines what browsers show in the title bar or tab for the page --&gt;
+&lt;/head&gt;
+&lt;body&gt; &lt;!-- contains the visible webpage content that users see and interact with --&gt;
+  &lt;header&gt; &lt;!-- contains introductory content, typically a group of introductory or navigational aids --&gt;
+    &lt;h1&gt;Wanderlust Travel Agency&lt;/h1&gt; &lt;!-- main heading of the webpage --&gt;
+    &lt;p&gt;Discover breathtaking destinations around the globe and let us help you plan the trip of a lifetime.&lt;/p&gt;  &lt;!-- contains a paragraph of text --&gt;
+  &lt;/header&gt;
+&lt;main&gt; &lt;!-- contains the main content of the document. there should be only one main element per document --&gt;
+  &lt;h2&gt;Packages&lt;/h2&gt; &lt;!-- represents a subheading of the webpage --&gt;
+  &lt;p&gt;We offer a variety of travel packages tailored to fit every type of traveler and budget.&lt;/p&gt;
+  &lt;ul&gt; &lt;!-- creates an unordered list of items --&gt;
+    &lt;li&gt;&lt;a href="https://www.freecodecamp.org/learn" target="_blank"&gt;Group Travels&lt;/a&gt;&lt;/li&gt; &lt;!-- li element represents a list item. a element creates a hyperlink. href attribute specifies the URL of the page the link goes to. target="_blank" opens the link in a new tab or window --&gt;
+    &lt;li&gt;&lt;a href="https://www.freecodecamp.org/learn" target="_blank"&gt;Private Tours&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;h2&gt;Top Itineraries&lt;/h2&gt;
+  &lt;figure&gt; &lt;!-- represents self-contained content, often with a caption --&gt;
+    &lt;a href="https://www.freecodecamp.org/learn" target="_blank"&gt;
+      &lt;img src="https://cdn.freecodecamp.org/curriculum/labs/colosseo.jpg" alt="The Colosseum in Rome, Italy"&gt; &lt;!-- img element embeds an image into the document. src attribute specifies the path to the image. alt attribute provides alternative text for the image if it cannot be displayed --&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;Explore the ancient wonders of Rome, Italy.&lt;/figcaption&gt; &lt;!-- provides a caption or legend for the content of the figure --&gt;
+  &lt;/figure&gt;
+  &lt;figure&gt;
+    &lt;a href="https://www.freecodecamp.org/learn" target="_blank"&gt;
+      &lt;img src="https://cdn.freecodecamp.org/curriculum/labs/alps.jpg" alt="Snow-capped peaks of the Alps"&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;Hike through the stunning peaks of the Alps.&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  &lt;figure&gt;
+    &lt;a href="https://www.freecodecamp.org/learn" target="_blank"&gt;
+      &lt;img src="https://cdn.freecodecamp.org/curriculum/labs/sea.jpg" alt="Crystal clear sea and coastline"&gt;
+    &lt;/a&gt;
+    &lt;figcaption&gt;Relax on the shores of a crystal-clear sea.&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/travel-agency-page/index.html" title="Build a Travel Agency Page preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/travel-agency-page/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="lj-project-box">
+      <summary>
+        <span class="lj-project-caret">▸</span>
+        <span class="lj-badge lj-badge--lavender">rwd workshop</span>
+        <span class="lj-project-name">Build an HTML Music Player</span>
+        <span class="lj-project-stack">html</span>
+      </summary>
+      <div class="lj-project-inner">
+        <div class="lj-project-meta">
+          <div class="lj-meta-row"><span class="lj-meta-key">Concepts Learned</span><span class="lj-meta-val">audio element • loop attribute • controls attribute • boolean attributes</span></div>
+        </div>
+        <div class="lj-view-pane" data-pane="code">
+          <div class="lj-pane-label">code</div>
+          <div class="lj-code-block lj-code-block--peach">
+            <div class="lj-code-bar">
+              <span class="lj-code-file">index.html</span>
+              <button class="lj-code-copy" type="button">copy</button>
+            </div>
+            <pre class="lj-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Working with the HTML Audio Element&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;freeCodeCamp Tunes&lt;/h1&gt;
+
+  &lt;h2&gt;Can't Stay Down&lt;/h2&gt;
+  &lt;p&gt;Artist: Quincy Larson&lt;/p&gt;
+
+  &lt;audio src="https://cdn.freecodecamp.org/curriculum/js-music-player/can't-stay-down.mp3" loop controls&gt;&lt;/audio&gt; &lt;!-- audio element is used to embed sound content in documents. loop attribute makes the audio play in a loop. controls attribute displays the audio controls. loop and controls are boolean values that do not need values --&gt;
+
+  &lt;h2&gt;Cruising for a Musing&lt;/h2&gt;
+  &lt;p&gt;Artist: Quincy Larson&lt;/p&gt;
+
+  &lt;audio src="https://cdn.freecodecamp.org/curriculum/js-music-player/cruising-for-a-musing.mp3" loop controls&gt;&lt;/audio&gt;
+
+  &lt;h2&gt;Scratching the Surface&lt;/h2&gt;
+  &lt;p&gt;Artist: Quincy Larson&lt;/p&gt;
+  
+  &lt;audio src="https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3" loop controls&gt;&lt;/audio&gt;  
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="lj-view-pane" data-pane="preview">
+          <div class="lj-pane-label">preview</div>
+          <iframe class="lj-preview-frame" data-src="projects/html-music-player/index.html" title="Build an HTML Music Player preview" loading="lazy"></iframe>
+          <div class="lj-project-links"><a href="projects/html-music-player/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
     <div class="lj-archive-row">
       <span class="lj-archive-check">☐</span>
       <span class="lj-archive-name">Build an HTML Video Player</span>
