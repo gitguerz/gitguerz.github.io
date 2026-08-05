@@ -1,29 +1,33 @@
 // guerz.lol — GuerzBook (guestbook)
-// Signatures POST to Formspree — collected privately in your dashboard + emailed to you.
-// The visible wall still uses localStorage so a signer sees their own mark land;
-// it is NOT shared across visitors yet (static site, no shared backend).
-// name + email required (email regex-checked). email is collected, never displayed.
+// Shared wall backed by a Cloudflare Worker + KV: every visitor sees every signature.
+// name + email required (email regex-checked). email is stored server-side, never displayed.
+// Falls back to a local-only wall if the backend is unset or unreachable.
 (function () {
-  // ⬇️⬇️⬇️ REPLACE THIS after Formspree signup — paste your endpoint here ⬇️⬇️⬇️
-  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mojgwbwj';
-  // ⬆️⬆️⬆️ looks like https://formspree.io/f/abcdwxyz ⬆️⬆️⬆️
+  // ⬇️ paste the Cloudflare Worker URL here (no trailing slash) ⬇️
+  var API_BASE = '';
+  // e.g. 'https://guerzbook.yoursubdomain.workers.dev' or 'https://gb.guerz.lol'
 
-  var STORAGE_KEY = 'guerz-guestbook';
+  // optional: keeps emailing you a copy of each signature. set to '' to turn off.
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mojgwbwj';
+
+  var CACHE_KEY = 'guerz-guestbook-cache';
+  var LOCAL_KEY = 'guerz-guestbook';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  function loadEntries() {
+  var SEED = [
+    { name: 'get-up-kid88', when: 'jul 14', message: 'rooting for you, ship the ugly version!!' },
+    { name: 'dialup_dana', when: 'jul 16', message: 'the y2k lj energy is immaculate. bookmarked <3' }
+  ];
+
+  function readStore(key) {
     try {
-      var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (Array.isArray(saved) && saved.length) return saved;
-    } catch (e) {}
-    return [
-      { name: 'get-up-kid88', when: 'jul 14', message: 'rooting for you, ship the ugly version!!' },
-      { name: 'dialup_dana', when: 'jul 16', message: 'the y2k lj energy is immaculate. bookmarked <3' }
-    ];
+      var saved = JSON.parse(localStorage.getItem(key));
+      return Array.isArray(saved) ? saved : null;
+    } catch (e) { return null; }
   }
 
-  function saveEntries(entries) {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(entries)); } catch (e) {}
+  function writeStore(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
   }
 
   function escapeHTML(str) {
@@ -34,14 +38,19 @@
 
   function renderEntry(entry) {
     var wrap = document.createElement('div');
-    wrap.className = 'lj-guestbook-entry';
+    wrap.className = 'guestbook-entry';
     wrap.style.marginTop = '10px';
     wrap.innerHTML =
-      '<div class="lj-guestbook-user">' + escapeHTML(entry.name) +
+      '<div class="guestbook-user">' + escapeHTML(entry.name) +
         (entry.when ? ' · <span style="font-weight:400">' + escapeHTML(entry.when) + '</span>' : '') +
       '</div>' +
-      '<div class="lj-guestbook-text">' + escapeHTML(entry.message) + '</div>';
+      '<div class="guestbook-text">' + escapeHTML(entry.message) + '</div>';
     return wrap;
+  }
+
+  function paint(list, entries) {
+    list.innerHTML = '';
+    entries.forEach(function (entry) { list.appendChild(renderEntry(entry)); });
   }
 
   function init() {
@@ -50,67 +59,104 @@
     var status = document.getElementById('gb-status');
     if (!form || !list) return;
 
-    var entries = loadEntries();
-    entries.forEach(function (entry) { list.appendChild(renderEntry(entry)); });
+    var live = !!API_BASE;
+    // show something instantly: cached wall, local marks, or the seeds
+    var entries = (live ? readStore(CACHE_KEY) : readStore(LOCAL_KEY)) || SEED.slice();
+    paint(list, entries);
+
+    if (live) {
+      fetch(API_BASE + '/entries', { headers: { Accept: 'application/json' } })
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          if (!data || !Array.isArray(data.entries)) return;
+          entries = SEED.concat(data.entries);
+          writeStore(CACHE_KEY, entries);
+          paint(list, entries);
+        })
+        .catch(function () {});
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      var nameEl = document.getElementById('gb-name');
-      var emailEl = document.getElementById('gb-email');
-      var msgEl = document.getElementById('gb-message');
-      var name = nameEl.value.trim();
-      var email = emailEl.value.trim();
-      var message = msgEl.value.trim();
+      var name = document.getElementById('gb-name').value.trim();
+      var email = document.getElementById('gb-email').value.trim();
+      var message = document.getElementById('gb-message').value.trim();
 
       if (!name || !email || !message) {
         status.textContent = 'name, email + a note are all required ♥';
-        status.className = 'lj-form-status lj-form-status--err';
+        status.className = 'form-status form-status--err';
         return;
       }
       if (!EMAIL_RE.test(email)) {
         status.textContent = "that email doesn't look right";
-        status.className = 'lj-form-status lj-form-status--err';
+        status.className = 'form-status form-status--err';
         return;
       }
 
       var btn = form.querySelector('button[type="submit"]');
       if (btn) btn.disabled = true;
       status.textContent = 'signing...';
-      status.className = 'lj-form-status';
+      status.className = 'form-status';
 
-      fetch(FORMSPREE_ENDPOINT, {
+      var payload = { name: name, email: email, message: message };
+      var target = live ? API_BASE + '/entries' : FORMSPREE_ENDPOINT;
+      if (!live) payload._subject = 'new guerz.lol guestbook signature';
+
+      fetch(target, {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          message: message,
-          _subject: 'new guerz.lol guestbook signature'
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (data) {
+            return { ok: res.ok, data: data };
+          });
         })
-      })
-      .then(function (res) {
-        if (res.ok) {
+        .then(function (result) {
+          if (!result.ok) {
+            status.textContent = result.data && result.data.error
+              ? result.data.error
+              : 'hmm, that didn\u2019t go through \u2014 try again?';
+            status.className = 'form-status form-status--err';
+            return;
+          }
+
           var when = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toLowerCase();
-          var entry = { name: name, email: email, when: when, message: message };
-          entries.push(entry);
-          saveEntries(entries);
-          list.appendChild(renderEntry(entry));
+          var entry = (result.data && result.data.entry) || { name: name, when: when, message: message };
+
+          if (result.data && result.data.pending) {
+            status.textContent = 'signed! it\u2019ll show up once guerz waves it through ^_^';
+          } else {
+            entries = entries.concat([{ name: entry.name, when: entry.when || when, message: entry.message }]);
+            writeStore(live ? CACHE_KEY : LOCAL_KEY, entries);
+            list.appendChild(renderEntry(entry));
+            status.textContent = 'signed! thanks for stopping by ^_^';
+          }
+          status.className = 'form-status form-status--ok';
           form.reset();
-          status.textContent = 'signed! thanks for stopping by ^_^';
-          status.className = 'lj-form-status lj-form-status--ok';
-        } else {
-          status.textContent = 'hmm, that didn\u2019t go through \u2014 try again?';
-          status.className = 'lj-form-status lj-form-status--err';
-        }
-      })
-      .catch(function () {
-        status.textContent = 'network hiccup \u2014 try again in a sec?';
-        status.className = 'lj-form-status lj-form-status--err';
-      })
-      .then(function () {
-        if (btn) btn.disabled = false;
-      });
+
+          // keep the email notification going even on the live backend
+          if (live && FORMSPREE_ENDPOINT) {
+            fetch(FORMSPREE_ENDPOINT, {
+              method: 'POST',
+              headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name: name,
+                email: email,
+                message: message,
+                _subject: 'new guerz.lol guestbook signature'
+              })
+            }).catch(function () {});
+          }
+        })
+        .catch(function () {
+          status.textContent = 'network hiccup \u2014 try again in a sec?';
+          status.className = 'form-status form-status--err';
+        })
+        .then(function () {
+          if (btn) btn.disabled = false;
+        });
     });
   }
 

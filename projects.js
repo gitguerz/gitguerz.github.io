@@ -9,7 +9,7 @@
 
   // numbered lines + html comments styled as annotations (educational read-along)
   function markComments() {
-    document.querySelectorAll('.lj-code code').forEach(function (code) {
+    document.querySelectorAll('.code code').forEach(function (code) {
       if (code.dataset.cmt) return;
       code.dataset.cmt = '1';
       var raw = code.textContent;
@@ -18,19 +18,19 @@
       var frag = document.createDocumentFragment();
       lines.forEach(function (line, i) {
         var row = document.createElement('div');
-        row.className = 'lj-line';
+        row.className = 'line';
         var ln = document.createElement('span');
-        ln.className = 'lj-ln';
+        ln.className = 'ln';
         ln.setAttribute('aria-hidden', 'true');
         ln.textContent = String(i + 1);
         var srcEl = document.createElement('span');
-        srcEl.className = 'lj-src';
+        srcEl.className = 'src';
         var re = /<!--[\s\S]*?-->/g;
         var last = 0, m;
         while ((m = re.exec(line)) !== null) {
           if (m.index > last) srcEl.appendChild(document.createTextNode(line.slice(last, m.index)));
           var span = document.createElement('span');
-          span.className = 'lj-cmt';
+          span.className = 'cmt';
           span.textContent = m[0];
           srcEl.appendChild(span);
           last = m.index + m[0].length;
@@ -46,9 +46,9 @@
   }
 
   function initCopy() {
-    document.querySelectorAll('.lj-code-copy').forEach(function (btn) {
+    document.querySelectorAll('.code-copy').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var block = btn.closest('.lj-code-block');
+        var block = btn.closest('.code-block');
         var code = block ? block.querySelector('code') : null;
         if (!code) return;
         var text = code._raw || code.textContent;
@@ -75,27 +75,27 @@
   }
 
   function initTabs() {
-    document.querySelectorAll('.lj-project-inner').forEach(function (inner) {
-      var panes = [].slice.call(inner.querySelectorAll('.lj-view-pane'));
+    document.querySelectorAll('.project-inner').forEach(function (inner) {
+      var panes = [].slice.call(inner.querySelectorAll('.view-pane'));
       if (panes.length < 2) return;
       panes.sort(function (a, b) {
         return (a.getAttribute('data-pane') === 'code' ? 0 : 1) - (b.getAttribute('data-pane') === 'code' ? 0 : 1);
       });
       var bar = document.createElement('div');
-      bar.className = 'lj-view-tabs';
+      bar.className = 'view-tabs';
       bar.setAttribute('role', 'tablist');
       panes.forEach(function (pane, i) {
-        var label = pane.querySelector('.lj-pane-label');
+        var label = pane.querySelector('.pane-label');
         if (label) label.remove();
         var isCode = pane.getAttribute('data-pane') === 'code';
         var tab = document.createElement('button');
         tab.type = 'button';
-        tab.className = 'lj-view-tab';
+        tab.className = 'view-tab';
         tab.setAttribute('role', 'tab');
         tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
         tab.textContent = isCode ? '</> code' : '▶ preview';
         tab.addEventListener('click', function () {
-          bar.querySelectorAll('.lj-view-tab').forEach(function (t, j) {
+          bar.querySelectorAll('.view-tab').forEach(function (t, j) {
             t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
             panes[j].hidden = t !== tab;
           });
@@ -110,7 +110,7 @@
   }
 
   function initLazyPreview() {
-    document.querySelectorAll('.lj-project-box').forEach(function (box) {
+    document.querySelectorAll('.project-box').forEach(function (box) {
       box.addEventListener('toggle', function () {
         if (!box.open) return;
         loadFrame(box);
