@@ -1,0 +1,193 @@
+*,
+::before,
+::after {
+  padding: 0; /* removes default padding browsers add to every element */
+  margin: 0; /* removes default margin browsers add to every element */
+  box-sizing: border-box; /* padding/border count INSIDE the element's width, not added on top */
+}
+
+html {
+  font-size: 62.5%; /* resets base font to 10px (62.5% of default 16px), makes rem math easy: 1.6rem = 16px */
+}
+
+body {
+  font-family: 'Baskervville', serif; /* sets the default body text font */
+  color: linen; /* sets default text color (off-white) */
+  background-color: rgb(20, 30, 40); /* dark navy background for the whole page */
+}
+
+h1 {
+  font-family: 'Anton', sans-serif; /* bold display font just for h1 headings */
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif; /* different font for all other heading levels */
+}
+
+a {
+  text-decoration: none; /* removes the default underline on links */
+  color: linen; /* makes links match body text color instead of default blue */
+}
+
+main {
+  display: grid; /* turns <main> into a grid container */
+  grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr); /* 3 columns: flexible margin, capped-width center content, flexible margin — this centers the page */
+  row-gap: 3rem; /* vertical space between grid rows */
+}
+
+img {
+  width: 100%; /* image fills its container's width */
+  object-fit: cover; /* crops image to fill its box without stretching/distorting */
+}
+
+hr {
+  margin: 1.5rem 0; /* space above/below horizontal rule, none on the sides */
+  border: 1px solid rgba(120, 120, 120, 0.6); /* thin semi-transparent gray line */
+}
+
+.heading {
+  grid-column: 2 / 3; /* places this section in the center column of main's grid */
+  display: grid; /* this section is ALSO its own grid container */
+  grid-template-columns: repeat(2, 1fr); /* 2 equal-width columns inside .heading */
+  row-gap: 1.5rem; /* vertical space between rows inside .heading */
+}
+
+.text {
+  grid-column: 2 / 3; /* places this section in the center column of main's grid */
+  font-size: 1.8rem; /* body paragraph text size */
+  letter-spacing: 0.6px; /* slight spacing between letters for readability */
+  column-width: 25rem; /* text auto-flows into multiple columns, each ~25rem wide */
+  text-align: justify; /* stretches each line so both edges align, like a newspaper */
+}
+
+.hero {
+  grid-column: 1 / -1; /* spans the FULL width of main's grid (edge to edge, ignoring the centered column) */
+  position: relative; /* lets child elements be positioned relative to this box later if needed */
+}
+
+.hero-title {
+  text-align: center; /* centers the big headline text */
+  color: orangered; /* headline color */
+  font-size: 8rem; /* large headline size */
+}
+
+.hero-subtitle {
+  font-size: 2.4rem; /* subtitle text size */
+  color: orangered; /* subtitle color matches headline */
+  text-align: center; /* centers the subtitle text */
+}
+
+.author {
+  font-size: 2rem; /* byline text size */
+  font-family: "Raleway", sans-serif; /* byline uses the heading font instead of body font */
+}
+
+.author-name a:hover {
+  background-color: #306203; /* highlights the author link green when hovered */
+}
+
+.publish-date {
+  color: rgba(255, 255, 255, 0.5); /* faded/dimmed white for the date, de-emphasizing it */
+}
+
+.social-icons {
+  display: grid; /* icons row is its own grid */
+  font-size: 3rem; /* icon size */
+  grid-template-columns: repeat(5, 1fr); /* 5 equal columns, one per icon */
+  grid-auto-flow: column; /* lays items out column-by-column instead of row-by-row */
+  grid-auto-columns: 1fr; /* any extra icons get equal-width columns too */
+  align-items: center; /* vertically centers icons within their grid cell */
+}
+
+.first-paragraph::first-letter {
+  font-size: 6rem; /* makes just the first letter huge (drop cap effect) */
+  color: orangered; /* drop cap color */
+  float: left; /* pulls the letter left so text wraps around it */
+  margin-right: 1rem; /* space between the drop cap and the wrapped text */
+}
+
+.quote {
+  color: #00beef; /* pull-quote color (cyan) */
+  font-size: 2.4rem; /* pull-quote text size */
+  text-align: center; /* centers the quote */
+  font-family: "Raleway", sans-serif; /* quote uses heading font */
+}
+
+.quote::before {
+  content: '" '; /* inserts an opening quotation mark before the text, no HTML needed */
+}
+
+.quote::after {
+  content: ' "'; /* inserts a closing quotation mark after the text, no HTML needed */
+}
+
+.text-with-images {
+  display: grid; /* this section is its own grid */
+  grid-template-columns: 1fr 2fr; /* 2 columns: narrow (text list) + wide (images), 1:2 ratio */
+  column-gap: 3rem; /* horizontal space between the two columns */
+  margin-bottom: 3rem; /* space below this whole section */
+}
+
+.lists {
+  list-style-type: none; /* removes default bullet points */
+  margin-top: 2rem; /* space above the list */
+}
+
+.lists li {
+  margin-bottom: 1.5rem; /* space between each list item */
+}
+
+.list-title, .list-subtitle {
+  color: #00beef; /* matches the pull-quote cyan color for visual consistency */
+}
+
+.image-wrapper {
+  display: grid; /* image group is its own grid */
+  grid-template-columns: 2fr 1fr; /* 2 columns, left one twice as wide as right */
+  grid-template-rows: repeat(3, min-content); /* 3 rows, each only as tall as its content needs */
+  gap: 2rem; /* space between grid cells, both directions */
+  place-items: center; /* centers items both horizontally and vertically in their cells */
+}
+
+.image-1, .image-3 {
+  grid-column: 1 / -1; /* these two images span the FULL width of .image-wrapper */
+}
+
+@media only screen and (max-width: 720px) {
+  .image-wrapper {
+    grid-template-columns: 1fr; /* on narrow screens, collapse to a single column */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .text-with-images {
+    grid-template-columns: 1fr; /* on narrow screens, stack list and images instead of side-by-side */
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .hero-title {
+    font-size: 6rem; /* shrink headline for small screens */
+  }
+  
+  .hero-subtitle,
+  .author,
+  .quote,
+  .list-title {
+    font-size: 1.8rem; /* shrink several text elements together for small screens */
+  }
+  
+  .social-icons {
+    font-size: 2rem; /* shrink icons for small screens */
+  }
+
+  .text {
+    font-size: 1.6rem; /* shrink body text for small screens */
+  } 
+}
+
+@media only screen and (max-width: 420px) {
+  .hero-title {
+    font-size: 4.5rem; /* shrink headline further for the smallest screens */
+  }
+}

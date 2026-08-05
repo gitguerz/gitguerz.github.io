@@ -1,0 +1,28 @@
+<!DOCTYPE html>                          <!-- tells the browser this is modern HTML5 -->
+<html>                                   <!-- root element — everything lives inside it -->
+    <head>                               <!-- metadata + styles; nothing here renders on the page -->
+        <style>
+            /* .box — targets every element with class="box" */
+            .box {
+                box-sizing: border-box;      /* padding + border count INSIDE the width, not added on top */
+                width: 200px;                /* total outer width — 110px of it is actual content space */
+                padding: 40px;               /* inner breathing room, eats into the 200px */
+                border: 5px solid black;     /* also eats into the 200px because of border-box */
+                margin: 40px;                /* space OUTSIDE the box — never counted in the width */
+                background-color: lightblue; /* fills content + padding, stops at the border */
+            }
+
+            /* .container — targets the wrapper div holding both boxes */
+            .container {
+                display: flex;           /* children line up in a row instead of stacking vertically */
+                justify-content: center; /* pushes the whole group to the horizontal center */
+            }
+        </style>
+    </head>
+    <body>                               <!-- everything visible on the page goes here -->
+        <div class="container">          <!-- the flex parent — controls how the boxes are arranged -->
+            <div class="box">BOX 1</div> <!-- flex child, styled by .box -->
+            <div class="box">BOX 2</div> <!-- flex child, same styling -->
+        </div>
+    </body>
+</html>

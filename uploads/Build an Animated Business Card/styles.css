@@ -1,0 +1,54 @@
+body { /*styles the whole page*/
+  font-family: Arial, sans-serif; /*sets the default page font*/
+  background-color: #f4f4f4; /*sets the default background color*/
+  display: flex; /*turns on Flexbox layout*/
+  justify-content: center; /*centers items horizontally; main axis*/
+  align-items: center; /*centers items vertically; cross axis*/
+  height: 100vh; /*makes the page 100% of the viewport height*/
+  margin: 0; /*removes the default margin*/
+}
+
+#businessCard { /*styles the card container*/
+  box-shadow: 0 0 10px #ccc; /*adds a soft shadow around the card*/
+  background-color: white; /*sets the card background color*/
+  padding: 20px; /*adds inner space inside the card*/
+  width: 300px; /*sets the card width to 300px*/
+  text-align: center; /*centers the text inside the card*/
+}
+
+.profile-photo { /*styles the profile photo*/
+  width: 100px; /*sets the photo width to 100px*/
+  height: auto; /*keeps the image's aspect ratio*/
+  border-radius: 50%; /*makes the photo circular*/
+  margin: 0 auto; /*centers the photo horizontally*/
+}
+
+h1,
+h2 { /*targets all H1 and H2 headings*/
+  color: #333; /*sets heading text color to dark gray*/
+}
+
+p,
+a { /*targets paragraphs and links*/
+  color: #555; /*sets the text color to medium gray*/
+  font-size: 16px; /*sets the text size to 16px*/
+  text-decoration: none; /*removes the default link underline*/
+}
+
+a:hover { /*applies styles when a link is hovered*/
+  text-decoration: underline; /*underlines links on hover*/
+}
+
+.profile-photo:hover { /*applies styles when the profile photo is hovered*/
+  transform: scale(1.1); /*enlarges the photo by 10%*/
+  transition: transform 0.3s ease-in-out; /*smoothly animates the hover effect*/
+}
+
+@media only screen and (max-width: 600px) { /*applies responsive styles on screens 600px or smaller*/
+
+  #businessCard { /*styles the business card for smaller screens*/
+    width: 90%; /*sets card width to 90% of the screen*/
+    padding: 10px; /*reduces inner spacing on smaller screens*/
+  }
+
+}

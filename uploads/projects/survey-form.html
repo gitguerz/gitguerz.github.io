@@ -1,0 +1,116 @@
+<!-- Main heading of the page -->
+<h1 id="title">Survey Form</h1>
+
+<!-- Brief description explaining the purpose of the survey -->
+<p id="description">
+  Thank you for taking the time to help us improve the platform.
+</p>
+
+<!-- Contains all form fields that the user will complete -->
+<form id="survey-form">
+
+  <!-- Label associated with the Name input field -->
+  <label for="name" id="name-label">Name</label>
+
+  <!-- Collects the user's name. Required before the form can be submitted. -->
+  <input
+    type="text"
+    id="name"
+    name="name"
+    placeholder="Enter your name"
+    required
+  >
+
+  <!-- Label associated with the Email input field -->
+  <label for="email" id="email-label">Email</label>
+
+  <!-- Collects the user's email address. Browser validates the format. -->
+  <input
+    type="email"
+    id="email"
+    name="email"
+    placeholder="Enter your email"
+    required
+  >
+
+  <!-- Label associated with the Age input field -->
+  <label for="number" id="number-label">Age</label>
+
+  <!-- Collects the user's age. Only numbers from 10 to 99 are allowed. -->
+  <input
+    type="number"
+    id="number"
+    name="age"
+    min="10"
+    max="99"
+    placeholder="Age"
+    required
+  >
+
+  <!-- Label associated with the dropdown menu -->
+  <label for="dropdown" id="dropdown-label">
+    Which option best describes your current role?
+  </label>
+
+  <!-- Allows the user to choose one role -->
+  <select id="dropdown" name="role">
+    <option value="">Select an option</option>
+    <option value="student">Student</option>
+    <option value="full-time-job">Employee</option>
+    <option value="full-time-learner">Other</option>
+  </select>
+
+  <!-- Radio button group: only one option may be selected -->
+  <p>Would you recommend this platform to a friend?</p>
+
+  <label>
+    <input type="radio" name="recommend" value="definitely">
+    Definitely
+  </label>
+
+  <label>
+    <input type="radio" name="recommend" value="maybe">
+    Maybe
+  </label>
+
+  <label>
+    <input type="radio" name="recommend" value="not-sure">
+    Not Sure
+  </label>
+
+  <!-- Checkbox group: multiple options may be selected -->
+  <p>What is your favorite feature of the platform?</p>
+
+  <label>
+    <input type="checkbox" name="improvements" value="frontend">
+    Front-end Projects
+  </label>
+
+  <label>
+    <input type="checkbox" name="improvements" value="backend">
+    Back-end Projects
+  </label>
+
+  <label>
+    <input type="checkbox" name="improvements" value="data-visualization">
+    Data Visualization
+  </label>
+
+  <label>
+    <input type="checkbox" name="improvements" value="challenges">
+    Challenges
+  </label>
+
+  <!-- Allows the user to enter additional comments -->
+  <p>Any comments or suggestions?</p>
+
+  <textarea
+    id="comments"
+    name="comments"
+    placeholder="Enter your comments here..."
+  ></textarea>
+
+  <!-- Submits the completed form -->
+  <button id="submit" type="submit">Submit</button>
+
+</form>

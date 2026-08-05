@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Eczar:wght@400;600;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+@keyframes marquee{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+@keyframes blinker{50%{opacity:0}}
+</style>
+</helmet>
+
+<div style="--bg:{{ theme.bg }};--paper:{{ theme.paper }};--paper2:{{ theme.paper2 }};--ink:{{ theme.ink }};--muted:{{ theme.muted }};--shadow:{{ theme.shadow }};background:var(--bg);min-height:100vh;font-family:'Eczar',serif;color:var(--ink);transition:background .25s ease,color .25s ease" data-screen-label="blogguerz — index (WordPress target design)">
+
+  <!-- sticky header -->
+  <div style="position:sticky;top:0;z-index:20">
+    <div style="display:flex">
+      <div style="flex:1;background:#e8b48f;padding:8px 12px 8px 20px;display:flex;align-items:center;gap:10px;min-width:0">
+        <div style="font:800 18px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#3a2b22;white-space:nowrap">blogguerz</div>
+      </div>
+      <div style="flex:1;background:#b3a8cc;padding:8px 20px 8px 12px;display:flex;align-items:center;justify-content:flex-end;gap:8px">
+        <div style="display:flex;background:#fdf5ee;border:2px solid #3a2b22;font:700 9.5px 'IBM Plex Mono',monospace;overflow:hidden">
+          <span style="{{ dayTabStyle }}" onClick="{{ setDay }}">☼ DAY</span>
+          <span style="{{ nightTabStyle }}" onClick="{{ setNight }}">☾ NIGHT</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;padding:7px 20px;font:800 11px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#3a2b22;background:#fdf5ee;border-bottom:2px solid #3a2b22">
+      <a href="https://guerz.lol/index.html" style="color:#3a2b22">home</a>
+      <a href="https://guerz.lol/roadmap.html" style="color:#3a2b22">roadmap</a>
+      <a href="https://blogguerz.wordpress.com" style="color:#3a2b22">blogguerz</a>
+      <a href="https://twitch.tv/guerz" style="color:#3a2b22">ttv/guerz</a>
+      <a href="https://github.com/gitguerz" style="color:#3a2b22">github</a>
+    </div>
+    <div style="overflow:hidden;white-space:nowrap;background:#fdf5ee;border-bottom:2px solid #7d6fa3;padding:4px 20px">
+      <div style="display:inline-block;animation:marquee 24s linear infinite;font:700 11px 'IBM Plex Mono',monospace;color:#7d6fa3">
+        ☀ the learning log & life happenings ☾ track the work, not the fantasy of the work ☀ the learning log & life happenings ☾ track the work, not the fantasy of the work ☀
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:960px;margin:0 auto;padding:20px 20px 40px;display:flex;gap:24px;flex-wrap:wrap-reverse">
+
+    <!-- MAIN: post list -->
+    <div style="flex:3;min-width:320px;display:flex;flex-direction:column;gap:18px">
+
+      <div style="font:800 20px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.02em">the learning log</div>
+
+      <sc-for list="{{ allPosts }}" as="post" hint-placeholder-count="3">
+        <div style="background:var(--paper);border:2px solid var(--ink);box-shadow:5px 5px 0 {{ post.shadow }};padding:16px;display:flex;flex-direction:column;gap:10px">
+
+          <!-- title -->
+          <div style="font:800 20px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.02em;line-height:1.15">{{ post.title }}</div>
+
+          <!-- body -->
+          <div style="font:15px/1.6 'Eczar',serif">{{ post.body }}</div>
+
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:14px">
+      <div style="background:var(--paper);border:2px solid var(--ink);box-shadow:4px 4px 0 #7d6fa3;padding:12px;display:flex;flex-direction:column;gap:8px">
+        <div style="font:800 11px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)">elsewhere</div>
+        <div style="display:flex;flex-direction:column;gap:5px;font:13.5px/1.5 'Eczar',serif">
+          <a href="https://guerz.lol">guerz.lol</a>
+          <a href="https://twitch.tv/guerz">ttv/guerz</a>
+          <a href="https://github.com/gitguerz">github</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="border-top:2px solid var(--ink);background:var(--paper2)">
+    <div style="max-width:960px;margin:0 auto;padding:18px 20px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between">
+      <div style="font:11px/1.6 'IBM Plex Mono',monospace;color:var(--muted)">© blogguerz<br>no cookies, just cache</div>
+      <div style="display:flex;flex-direction:column;gap:2px;font:700 10.5px 'Big Shoulders Display',sans-serif;text-transform:uppercase">
+        <a href="https://guerz.lol/index.html">home</a>
+        <a href="https://guerz.lol/roadmap.html">roadmap</a>
+        <a href="https://blogguerz.wordpress.com">blogguerz</a>
+      </div>
+      <div style="font:11px/1.6 'IBM Plex Mono',monospace;color:var(--muted);text-align:right">best viewed at<br>any resolution</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mode: 'day' };
+
+  posts = [
+    { title: 'week 5 · flexbox', date: 'posted june 10, 2026', mood: 'focused', music: "The Get Up Kids – Action & Action",
+      body: "flexbox finally clicked this week. rows, columns, wrapping, alignment — rebuilt guerz.lol's layout with it instead of fighting floats. small win, but it's the kind that compounds.",
+      categories: [{ label: 'html & css', bg: '#e8b48f' }, { label: 'flexbox', bg: '#b3a8cc' }],
+      commentCount: 2, comment: { user: 'get-up-kid88', text: 'rooting for you, ship the ugly version!!', reply: "that's the plan lol, ugly > invisible" }, shadow: '#b3a8cc' },
+    { title: 'week 4 · portfolio shell goes live', date: 'posted june 3, 2026', mood: 'proud', music: "Taking Back Sunday – Cute Without The 'E'",
+      body: "guerz.lol v1.0 is live on github pages. it is not pretty yet. it exists, which is the whole point of shipping weekly instead of waiting for perfect.",
+      categories: [{ label: 'portfolio', bg: '#e8b48f' }, { label: 'milestones', bg: '#b3a8cc' }],
+      commentCount: 1, comment: { user: 'xoxo-taffy', text: 'the mood field is so real, subscribing', reply: 'ty!! more soon' }, shadow: '#e8b48f' },
+    { title: 'week 3 · layout basics, rebuilt', date: 'posted may 27, 2026', mood: 'tired but wired', music: 'The Blood Brothers – Trash Flavored Trash',
+      body: "rebuilt an old page with actual positioning intent instead of default flow. mobile-first is still not intuitive to me yet, but overflow finally makes sense.",
+      categories: [{ label: 'css', bg: '#b3a8cc' }, { label: 'layout', bg: '#e8b48f' }],
+      commentCount: 1, comment: { user: 'staythru3rdwave', text: 'blood brothers as coding music is unmatched', reply: 'no other way to debug tbh' }, shadow: '#7d6fa3' },
+    { title: 'week 2 · css fundamentals', date: 'posted may 20, 2026', mood: 'determined', music: 'The Get Up Kids – Off the Wagon',
+      body: "selectors, box model, colors, typography. styled last week's pages with actual spacing instead of eyeballing it. a design system of two, for now.",
+      categories: [{ label: 'css', bg: '#b3a8cc' }],
+      commentCount: 1, comment: { user: 'anonymous', text: 'the box model finally made sense reading this', reply: 'glad it helped, it took me way too long' }, shadow: '#b3a8cc' },
+    { title: 'week 1 · hello world', date: 'posted may 13, 2026', mood: 'nervous, excited', music: 'The Blood Brothers – Ambulance vs. Ambulance',
+      body: "first static pages. semantic tags, single-page layouts, an about page and a landing page. it's ugly. it's mine. it's the first rep.",
+      categories: [{ label: 'html & css', bg: '#e8b48f' }],
+      commentCount: 1, comment: { user: 'get-up-kid88', text: "let's go, week 1 in the books", reply: '23 more to go' }, shadow: '#e8b48f' },
+    { title: 'soft launch era; hard study mode', date: 'posted may 6, 2026', mood: 'caffeinated', music: 'The Get Up Kids – Action & Action',
+      body: "welcome to the Guerz corner of the world wide web — a cyber gravity blanket fort for learning in public. this is where the 24-week curriculum starts.",
+      categories: [{ label: 'about', bg: '#7d6fa3' }],
+      commentCount: 1, comment: { user: 'xoxo-taffy', text: 'been waiting for this, welcome to the internet (again)', reply: 'feels like coming home tbh' }, shadow: '#b3a8cc' },
+  ];
+
+  componentDidMount() {
+    try {
+      const saved = localStorage.getItem('guerz-theme');
+      if (saved === 'day' || saved === 'night') this.setState({ mode: saved });
+    } catch (e) {}
+  }
+
+  setMode(mode) {
+    this.setState({ mode });
+    try { localStorage.setItem('guerz-theme', mode); } catch (e) {}
+  }
+
+  renderVals() {
+    const day = { bg: '#fdf5ee', paper: '#ffffff', paper2: '#fdf0e4', ink: '#3a2b22', muted: '#7d6fa3', shadow: '#3a2b22' };
+    const night = { bg: '#17131f', paper: '#221d2d', paper2: '#241f30', ink: '#eee6f5', muted: '#b3a8cc', shadow: '#000000' };
+    const isDay = this.state.mode !== 'night';
+    const theme = isDay ? day : night;
+    const activeTab = 'padding:4px 8px;background:#3a2b22;color:#e8b48f;cursor:pointer;user-select:none';
+    const inactiveTab = 'padding:4px 8px;color:#3a2b22;cursor:pointer;user-select:none';
+
+    return {
+      theme,
+      dayTabStyle: isDay ? activeTab : inactiveTab,
+      nightTabStyle: isDay ? inactiveTab : activeTab,
+      setDay: () => this.setMode('day'),
+      setNight: () => this.setMode('night'),
+      allPosts: this.posts,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html> <!-- tells the browser this is a modern HTML5 document; must be the very first line -->
+<html lang="en"> <!-- root element wrapping the whole page; lang="en" tells screen readers and search engines the content is English -->
+<head> <!-- opens the head: metadata the browser needs but the user never sees on the page -->
+  <meta charset="UTF-8"> <!-- sets character encoding to UTF-8 so accented letters, symbols, and emoji render correctly instead of as garbage -->
+  <title>Registration Form</title> <!-- text shown in the browser tab and used as the default bookmark name; also read first by screen readers -->
+  <link rel="stylesheet" href="styles.css" /> <!-- pulls in the external CSS file; rel says what kind of link it is, href says where the file lives -->
+</head> <!-- closes the head section -->
+<body> <!-- opens the body: everything visible on the page goes here -->
+  <h1>Registration Form</h1> <!-- the page's main heading; there should only ever be one h1 per page for proper document outline -->
+  <p>Please fill out this form with the required information</p> <!-- short instruction paragraph telling the user what to do -->
+  <form method="post" action='https://register-demo.freecodecamp.org'> <!-- opens the form; method="post" sends data in the request body (not the URL), action is the server endpoint receiving it -->
+    <fieldset> <!-- groups related form controls together; browsers and screen readers treat the group as one logical unit -->
+      <label for="first-name">Enter Your First Name: <input id="first-name" name="first-name" type="text" required /></label> <!-- label's for matches the input's id, so clicking the text focuses the input; name is the key the server receives; required blocks submit if empty -->
+      <label for="last-name">Enter Your Last Name: <input id="last-name" name="last-name" type="text" required /></label> <!-- same pattern as above; type="text" is the default single-line text field -->
+      <label for="email">Enter Your Email: <input id="email" name="email" type="email" required /></label> <!-- type="email" makes the browser validate the @ format and shows an email-optimized keyboard on mobile -->
+      <label for="new-password">Create a New Password: <input id="new-password" name="new-password" type="password" pattern="[a-z0-5]{8,}" required /></label> <!-- type="password" masks the characters; pattern is a regex requiring 8+ chars using only a-z and 0-5 -->
+    </fieldset> <!-- closes the first fieldset (personal details) -->
+    <fieldset> <!-- opens the second fieldset (account type) -->
+      <legend>Account type (required)</legend> <!-- legend is the visible caption for a fieldset; screen readers announce it before each control in the group -->
+      <label for="personal-account"><input id="personal-account" type="radio" name="account-type" value="personal" class="inline" checked /> Personal</label> <!-- radio buttons sharing the same name become mutually exclusive; value is what the server receives; checked makes this the default selection -->
+      <label for="business-account"><input id="business-account" type="radio" name="account-type" value="business" class="inline" /> Business</label> <!-- same name="account-type" as above, so selecting this one automatically deselects Personal -->
+    </fieldset> <!-- closes the account type fieldset -->
+    <fieldset> <!-- opens the third fieldset (optional profile info) -->
+      <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" name="file" /></label> <!-- type="file" renders a file picker button that opens the OS file browser -->
+      <label for="age">Input your age (years): <input id="age" type="number" name="age" min="13" max="120" /></label> <!-- type="number" restricts input to digits and adds stepper arrows; min and max set the allowed range -->
+      <label for="referrer">How did you hear about us? <!-- label text sits above the dropdown; the for attribute still ties it to the select below -->
+        <select id="referrer" name="referrer"> <!-- select creates a dropdown menu; the chosen option's value is what gets submitted -->
+          <option value="">(select one)</option> <!-- empty value acts as a placeholder prompt so no real choice is pre-selected -->
+          <option value="1">freeCodeCamp News</option> <!-- each option's value is the data sent to the server; the text between the tags is what the user sees -->
+          <option value="2">freeCodeCamp YouTube Channel</option> <!-- second choice -->
+          <option value="3">freeCodeCamp Forum</option> <!-- third choice -->
+          <option value="4">Other</option> <!-- catch-all final choice -->
+        </select> <!-- closes the dropdown -->
+      </label> <!-- closes the referrer label, which wraps both the text and the select -->
+      <label for="bio">Provide a bio: <!-- label text for the multi-line text area below -->
+        <textarea id="bio" name="bio" rows="3" cols="30" placeholder="I like coding on the beach..."></textarea> <!-- textarea is for multi-line input; rows/cols set its default size, placeholder shows greyed hint text that disappears on typing -->
+      </label> <!-- closes the bio label -->
+    </fieldset> <!-- closes the third fieldset -->
+    <a href="https://www.freecodecamp.org/news/terms-of-service">Read our terms and conditions</a> <!-- anchor element creating a clickable link; href is the destination URL -->
+    <label for="terms-and-conditions"> <!-- label for the checkbox below; put on its own line here because the text sits after the input -->
+      <input class="inline" name="terms" id="terms-and-conditions" type="checkbox" required /> <!-- type="checkbox" is an independent on/off toggle; required means the form won't submit unless it's ticked -->
+      I accept the terms and conditions <!-- the visible label text, placed after the checkbox so it reads left-to-right naturally -->
+    </label> <!-- closes the terms label -->
+    <input type="submit" value="Submit" /> <!-- type="submit" renders a button that sends the form to the action URL; value sets the button's visible text -->
+  </form> <!-- closes the form -->
+</body> <!-- closes the body -->
+</html> <!-- closes the root html element; end of document -->
