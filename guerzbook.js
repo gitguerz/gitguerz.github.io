@@ -4,7 +4,7 @@
 // Falls back to a local-only wall if the backend is unset or unreachable.
 (function () {
   // ⬇️ paste the Cloudflare Worker URL here (no trailing slash) ⬇️
-  var API_BASE = '';
+  var API_BASE = 'https://guerzbook.guerz.workers.dev';
   // e.g. 'https://guerzbook.yoursubdomain.workers.dev' or 'https://gb.guerz.lol'
 
   // optional: keeps emailing you a copy of each signature. set to '' to turn off.
@@ -14,10 +14,7 @@
   var LOCAL_KEY = 'guerz-guestbook';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  var SEED = [
-    { name: 'get-up-kid88', when: 'jul 14', message: 'rooting for you, ship the ugly version!!' },
-    { name: 'dialup_dana', when: 'jul 16', message: 'the y2k lj energy is immaculate. bookmarked <3' }
-  ];
+  var SEED = [];
 
   function readStore(key) {
     try {
@@ -50,6 +47,15 @@
 
   function paint(list, entries) {
     list.innerHTML = '';
+    if (!entries.length) {
+      var empty = document.createElement('div');
+      empty.className = 'guestbook-text';
+      empty.style.marginTop = '10px';
+      empty.style.opacity = '.7';
+      empty.textContent = 'no marks on the wall yet — be the first ^_^';
+      list.appendChild(empty);
+      return;
+    }
     entries.forEach(function (entry) { list.appendChild(renderEntry(entry)); });
   }
 
@@ -130,7 +136,7 @@
           } else {
             entries = entries.concat([{ name: entry.name, when: entry.when || when, message: entry.message }]);
             writeStore(live ? CACHE_KEY : LOCAL_KEY, entries);
-            list.appendChild(renderEntry(entry));
+            paint(list, entries);
             status.textContent = 'signed! thanks for stopping by ^_^';
           }
           status.className = 'form-status form-status--ok';
