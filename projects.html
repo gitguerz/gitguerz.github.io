@@ -795,7 +795,7 @@ a:hover { /*applies styles when a link is hovered*/
     <summary>
       <span class="section-caret">▸</span>
       <span class="section-title">freeCodeCamp - RWD v9 Build Archive</span>
-      <span class="section-count">19 built · 67 total · worked chronologically</span>
+      <span class="section-count">23 built · 67 total · worked chronologically</span>
     </summary>
     <div class="section-body">
     <div class="module">
@@ -1815,28 +1815,415 @@ a:hover { /*applies styles when a link is hovered*/
     <div class="module">
       <span class="module-kicker">HTML</span>
       <span class="module-title">Forms and Tables</span>
-      <span class="module-count">4 items</span>
+      <span class="module-count">4 items · 4 built</span>
     </div>
-    <div class="archive-row">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Build a Hotel Feedback Form</span>
-      <span class="archive-type">workshop</span>
-    </div>
-    <div class="archive-row">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Build a Final Exams Table</span>
-      <span class="archive-type">workshop</span>
-    </div>
-    <div class="archive-row">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Build a Book Catalog Table</span>
-      <span class="archive-type">lab</span>
-    </div>
-    <div class="archive-row archive-row--cert">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Build a Survey Form</span>
-      <span class="archive-type">cert project</span>
-    </div>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd workshop</span>
+        <span class="project-name">Build a Hotel Feedback Form</span>
+        <span class="project-stack">html</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Concepts Learned</span><span class="meta-val">form element • method attribute • action attribute • fieldset element • legend element • label element • for attribute • input element • type attribute • placeholder attribute • required attribute • name attribute • size attribute • min &amp; max attributes • checked attribute • value attribute • select element • option element • selected attribute • textarea element • rows &amp; cols attributes • button element</span></div>
+        </div>
+        <div class="view-pane" data-pane="code">
+          <div class="pane-label">code</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;Hotel Feedback Form&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Hotel Feedback Form&lt;/h1&gt;
+      &lt;p&gt;
+        Thank you for staying with us. Please provide feedback on your recent
+        stay.
+      &lt;/p&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;form method="POST" action="https://hotel-feedback.freecodecamp.org"&gt;
+        &lt;fieldset&gt; &lt;!-- fieldset defines a group of related form elements --&gt;
+          &lt;legend&gt;Personal Information&lt;/legend&gt; &lt;!-- legend defines a caption for the fieldset --&gt;
+          &lt;label for="full-name"&gt;Name (required):&lt;/label&gt; &lt;!-- label provides a text description for the input field --&gt;
+          &lt;input type="text" id="full-name" name="name" placeholder="e.g., John Doe" required size="20"&gt; &lt;!-- input defines a field where the user can enter data. name attribute adds a name to the input field. placeholder attribute defines a hint about what to enter. required attribute makes the field mandatory. size attribute sets the width of the input field --&gt;
+
+
+          &lt;label for="email"&gt;Email address (required):&lt;/label&gt;
+          &lt;input
+            placeholder="example@email.com"
+            required
+            id="email"
+            type="email"
+            name="email"
+            size="20"
+          /&gt;
+          &lt;label for="age"&gt;Age (optional):&lt;/label&gt;
+          &lt;input type="number" name="age" id="age" min="3" max="100" /&gt; &lt;!--min and max attributes set the range of values for the input field --&gt;
+        &lt;/fieldset&gt;
+
+        &lt;fieldset&gt;
+          &lt;legend&gt;Was this your first time at our hotel?&lt;/legend&gt;
+          &lt;input id="yes-option" type="radio" name="hotel-stay" value="yes" /&gt; &lt;!-- radio value used when you want users to select one option from a list of options. in this example, the radio buttons are grouped together by using the same name attribute value. This means that only one radio button can be selected at a time. value attribute sets the value of the radio button. --&gt;
+          &lt;label for="yes-option"&gt;Yes&lt;/label&gt;
+          &lt;input id="no-option" type="radio" name="hotel-stay" value="no" /&gt;
+          &lt;label for="no-option"&gt;No&lt;/label&gt;
+        &lt;/fieldset&gt;
+
+        &lt;fieldset&gt;
+          &lt;legend&gt;
+            Why did you choose to stay at our hotel? (Check all that apply)
+          &lt;/legend&gt;
+
+          &lt;input type="checkbox" id="ads" name="choice" value="ads" /&gt; &lt;!-- checkbox defines a checkable box --&gt;
+          &lt;label for="ads"&gt;Social Media Ads&lt;/label&gt;
+
+          &lt;input
+            type="checkbox"
+            id="recommendation"
+            name="choice"
+            value="recommendation"
+          /&gt;
+          &lt;label for="recommendation"&gt;Personal Recommendation&lt;/label&gt;
+          
+          &lt;input type="checkbox" id="location" name="choice" value="location" /&gt;
+          &lt;label for="location"&gt;Location&lt;/label&gt;
+
+          &lt;input
+            checked
+            type="checkbox"
+            id="reputation"
+            name="choice"
+            value="reputation"
+          /&gt; &lt;!-- checked attribute pre-selects a checkbox --&gt;
+          &lt;label for="reputation"&gt;Reputation&lt;/label&gt;
+          
+          &lt;input type="checkbox" id="price" name="choice" value="price" /&gt;
+          &lt;label for="price"&gt;Price&lt;/label&gt;
+        &lt;/fieldset&gt;
+
+        &lt;fieldset&gt;
+          &lt;legend&gt;Ratings&lt;/legend&gt;
+
+          &lt;label for="service"&gt;How was the service?&lt;/label&gt;
+
+          &lt;select name="service" id="service"&gt; &lt;!-- select defines a drop-down list --&gt;
+            &lt;option value="poor"&gt;Poor&lt;/option&gt; &lt;!-- option defines an option in a drop-down list. value attribute sets the value of the option --&gt;
+            &lt;option value="satisfactory"&gt;Satisfactory&lt;/option&gt;
+            &lt;option value="good"&gt;Good&lt;/option&gt;
+            &lt;option value="very-good"&gt;Very Good&lt;/option&gt;
+            &lt;option selected value="excellent"&gt;Excellent&lt;/option&gt;
+          &lt;/select&gt;
+
+          &lt;label for="food"&gt;How was the food?&lt;/label&gt;
+
+          &lt;select name="food" id="food"&gt;
+            &lt;option value="poor"&gt;Poor&lt;/option&gt;
+            &lt;option value="satisfactory"&gt;Satisfactory&lt;/option&gt;
+            &lt;option value="good"&gt;Good&lt;/option&gt;
+            &lt;option value="very-good"&gt;Very Good&lt;/option&gt;
+            &lt;option selected value="excellent"&gt;Excellent&lt;/option&gt; &lt;!-- selected attribute pre-selects an option --&gt;
+          &lt;/select&gt;
+        &lt;/fieldset&gt;
+
+        &lt;label for="comments"&gt;Other Comments?&lt;/label&gt;
+        &lt;textarea cols="30" rows="10" name="comments" id="comments"&gt;&lt;/textarea&gt; &lt;!-- textarea defines a multi-line text input field. cols and rows attributes set the dimensions of the text area --&gt;
+
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;        
+      &lt;/form&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="projects/hotel-feedback-form/index.html" title="Build a Hotel Feedback Form preview" loading="lazy"></iframe>
+          <div class="project-links"><a href="projects/hotel-feedback-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd workshop</span>
+        <span class="project-name">Build a Final Exams Table</span>
+        <span class="project-stack">html</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Concepts Learned</span><span class="meta-val">table element • caption element • thead element • tr element • th element • tbody element • td element • tfoot element • colspan attribute</span></div>
+        </div>
+        <div class="view-pane" data-pane="code">
+          <div class="pane-label">code</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Calculus Final Exams Table&lt;/title&gt;
+    &lt;meta charset="UTF-8" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;table&gt;
+      &lt;caption&gt; &lt;!-- caption element defines a caption for the table --&gt;
+        Calculus Final Exam Grades
+      &lt;/caption&gt;
+
+      &lt;thead&gt; &lt;!--thead element defines a set of rows that define the column headers of the table --&gt;
+        &lt;tr&gt; &lt;!-- tr element defines a row of cells in the table --&gt;
+          &lt;th&gt;Last Name&lt;/th&gt; &lt;!-- th element defines a header cell in the table --&gt;
+          &lt;th&gt;First Name&lt;/th&gt;
+          &lt;th&gt;Grade&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+
+      &lt;tbody&gt; &lt;!-- tbody element defines a set of rows that define the main content of the table --&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Davis&lt;/td&gt;
+          &lt;td&gt;Alex&lt;/td&gt;
+          &lt;td&gt;54&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td&gt;Doe&lt;/td&gt;
+          &lt;td&gt;Samantha&lt;/td&gt;
+          &lt;td&gt;92&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td&gt;Rodriguez&lt;/td&gt;
+          &lt;td&gt;Marcus&lt;/td&gt;
+          &lt;td&gt;88&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td&gt;Thompson&lt;/td&gt;
+          &lt;td&gt;Jane&lt;/td&gt;
+          &lt;td&gt;77&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td&gt;Williams&lt;/td&gt;
+          &lt;td&gt;Natalie&lt;/td&gt;
+          &lt;td&gt;83&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+
+      &lt;tfoot&gt; &lt;!-- tfoot defines a set of rows that define the footer of the table --&gt;
+        &lt;tr&gt;
+          &lt;td colspan="2"&gt;Average Grade&lt;/td&gt; &lt;!--colspan attribute defines the number of columns a cell should span --&gt;
+          &lt;td&gt;78.8&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tfoot&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="projects/final-exams-table/index.html" title="Build a Final Exams Table preview" loading="lazy"></iframe>
+          <div class="project-links"><a href="projects/final-exams-table/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd lab</span>
+        <span class="project-name">Build a Book Catalog Table</span>
+        <span class="project-stack">html</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Concepts Learned</span><span class="meta-val">Reinforces Tables</span></div>
+        </div>
+        <div class="view-pane" data-pane="code">
+          <div class="pane-label">code</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Book Catalog&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Title&lt;/th&gt;
+        &lt;th&gt;Author&lt;/th&gt;
+        &lt;th&gt;Genre&lt;/th&gt;
+        &lt;th&gt;Publication Year&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Lullaby&lt;/td&gt;
+        &lt;td&gt;Chuck Palahniuk&lt;/td&gt;
+        &lt;td&gt;Dark Comedy/Transgressive Fiction&lt;/td&gt;
+        &lt;td&gt;2002&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;Player Piano&lt;/td&gt;
+        &lt;td&gt;Kurt Vonnegut&lt;/td&gt;
+        &lt;td&gt;Social Satire/Dystopian Fiction&lt;/td&gt;
+        &lt;td&gt;1952&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;What We Talk About When We Talk About Love&lt;/td&gt;
+        &lt;td&gt;Raymond Carver&lt;/td&gt;
+        &lt;td&gt;Dirty Realism/Minimalist Fiction&lt;/td&gt;
+        &lt;td&gt;1974&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;Twelve&lt;/td&gt;
+        &lt;td&gt;Nick McDonell&lt;/td&gt;
+        &lt;td&gt;Bildungsroman/Urban Fiction&lt;/td&gt;
+        &lt;td&gt;2002&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;The Rules of Attraction&lt;/td&gt;
+        &lt;td&gt;Bret Easton Ellis&lt;/td&gt;
+        &lt;td&gt;Black Comedy/Literary Fiction&lt;/td&gt;
+        &lt;td&gt;1978&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+      &lt;tr&gt;
+        &lt;td colspan="4"&gt;Total Books: 5&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tfoot&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="projects/book-catalog-table/index.html" title="Build a Book Catalog Table preview" loading="lazy"></iframe>
+          <div class="project-links"><a href="projects/book-catalog-table/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd cert project</span>
+        <span class="project-name">Build a Survey Form</span>
+        <span class="project-stack">html</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Concepts Learned</span><span class="meta-val">Reinforces Forms</span></div>
+        </div>
+        <div class="view-pane" data-pane="code">
+          <div class="pane-label">code</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Survey Form&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1 id="title"&gt;Guerz's Web Dev Bootcamp Survey&lt;/h1&gt;
+    
+    &lt;p id="description"&gt;Week 1 is done. Tell us how it's going.&lt;/p&gt;
+    &lt;form id="survey-form"&gt;
+      &lt;label id="name-label" for="name"&gt;Name&lt;/label&gt;
+      &lt;input id="name" type="text" placeholder="Enter your name" required/&gt;
+
+      &lt;label id="email-label" for="email"&gt;Email&lt;/label&gt;
+      &lt;input id="email" type="email" placeholder="Enter your email" required/&gt;
+      
+      &lt;label id="number-label" for="number"&gt;Age&lt;/label&gt;
+      &lt;input id="number" type="number" min="10" max="120" placeholder="Enter your age"/&gt;
+      
+      &lt;label for="dropdown"&gt;How are you feeling about HTML so far?&lt;/label&gt;
+      &lt;select id="dropdown"&gt;
+        &lt;option value=""&gt;Select one&lt;/option&gt;
+        &lt;option value="confident"&gt;Confident&lt;/option&gt;
+        &lt;option value="okay"&gt;Okay&lt;/option&gt;
+        &lt;option value="lost"&gt;A bit lost&lt;/option&gt;
+      &lt;/select&gt;
+      
+      &lt;p&gt;What's your current learning style?&lt;/p&gt;
+      &lt;label&gt;
+        &lt;input class="inline" type="radio" name="learning-style" value="visual"/&gt;Visual (videos, diagrams)
+      &lt;/label&gt;
+
+      &lt;label&gt;
+        &lt;input class="inline" type="radio" name="learning-style"value="hands-on"/&gt;Hands-on (just build stuff)
+      &lt;/label&gt;
+      
+      &lt;label&gt;
+        &lt;input class="inline" type="radio" name="learning-style" value="reading"/&gt;Reading docs
+      &lt;/label&gt;
+      
+      &lt;p&gt;Which topics have you covered? (check all that apply)&lt;/p&gt;
+      &lt;label&gt;
+        &lt;input class="inline" type="checkbox" value="html-basics"/&gt;HTML Basics
+      &lt;/label&gt;
+      
+      &lt;label&gt;
+        &lt;input class="inline" type="checkbox" value="tables"/&gt;Tables
+      &lt;/label&gt;
+      
+      &lt;label&gt;
+        &lt;input class="inline" type="checkbox" value="forms"/&gt;Forms
+      &lt;/label&gt;
+      
+      &lt;label&gt;
+        &lt;input class="inline" type="checkbox" value="css"/&gt;CSS
+      &lt;/label&gt;
+      
+      &lt;label for="comments"&gt;Additional comments&lt;/label&gt;
+      &lt;textarea id="comments" name="comments" rows="4" placeholder="Anything else you'd like to share?"&gt;&lt;/textarea&gt;
+      
+      &lt;button id="submit" type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="projects/survey-form/index.html" title="Build a Survey Form preview" loading="lazy"></iframe>
+          <div class="project-links"><a href="projects/survey-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
     <div class="module">
       <span class="module-kicker">HTML</span>
       <span class="module-title">Accessibility</span>

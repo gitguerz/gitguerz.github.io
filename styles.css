@@ -121,10 +121,6 @@ img { max-width: 100%; display: block; }
 .card--lavender{ box-shadow: 5px 5px 0 var(--lavender); }
 .card--slate   { box-shadow: 5px 5px 0 #7d6fa3; }
 .card--sm      { box-shadow: 4px 4px 0 var(--peach); padding: 12px; }
-.card--bg-peach    { background: var(--peach); color: var(--ink); }
-.card--bg-lavender { background: var(--lavender); color: var(--ink); }
-.card--bg-peach .card-eyebrow,
-.card--bg-lavender .card-eyebrow { color: var(--ink); }
 
 .title-wrap {
   display: flex;
@@ -166,20 +162,6 @@ img { max-width: 100%; display: block; }
 .tag--peach { background: var(--peach); }
 .tag--lavender { background: var(--lavender); }
 
-/* landing-page hero variant of .userinfo — centered, boxed, oversized name */
-.userinfo--hero {
-  background: var(--lavender); color: var(--ink);
-  box-shadow: 5px 5px 0 var(--peach);
-  width: fit-content; margin: 0 auto;
-}
-.userinfo-body--hero { min-width: 0; flex-direction: row; align-items: center; gap: 16px; flex-wrap: wrap; }
-.userinfo-name--hero { font-size: 64px; font-weight: 900; }
-.role-badge {
-  background: #1c1a20; color: var(--peach);
-  display: inline-block; padding: 4px 10px; width: fit-content;
-  font: 700 12px 'IBM Plex Mono', monospace;
-}
-
 /* ---------- lanes / two-up blocks ---------- */
 .row { display: flex; flex-wrap: wrap; gap: 12px; }
 .row > * { flex: 1; min-width: 200px; }
@@ -192,7 +174,6 @@ img { max-width: 100%; display: block; }
   background: var(--peach); border: 2px solid var(--ink); padding: 16px;
   display: flex; flex-direction: column; gap: 8px; color: var(--ink);
 }
-.callout--lavender { background: var(--lavender); box-shadow: 5px 5px 0 var(--peach); }
 .callout-title {
   font: 800 clamp(18px, 3vw, 24px) 'Inter', sans-serif;
   text-transform: uppercase; letter-spacing: .05em;
