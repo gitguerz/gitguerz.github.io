@@ -334,13 +334,19 @@ img { max-width: 100%; display: block; }
 .badge--soon { background: transparent; border: 1px dashed var(--muted); color: var(--muted); }
 
 /* ---------- rwd v9 archive: module headers + unbuilt rows ---------- */
+.module-group { margin-top: 18px; }
+.module-group:first-child { margin-top: 0; }
+.module-group > summary.module { list-style: none; cursor: pointer; }
+.module-group > summary.module::-webkit-details-marker { display: none; }
+.module-caret { font: 800 13px 'IBM Plex Mono', monospace; color: var(--ink); transition: transform .18s ease; }
+.module-group[open] > summary.module .module-caret { transform: rotate(90deg); }
+.module-body { display: flex; flex-direction: column; gap: 12px; padding-top: 12px; }
 .module {
   display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
-  margin-top: 18px; padding: 8px 10px;
+  margin-top: 0; padding: 8px 10px;
   border: 2px solid var(--ink); background: var(--lavender);
   box-shadow: 4px 4px 0 var(--ink);
 }
-.module:first-child { margin-top: 0; }
 .module-kicker {
   font: 800 9px 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .12em;
   color: var(--ink); border: 1px solid var(--ink); padding: 2px 6px; background: #fff;
