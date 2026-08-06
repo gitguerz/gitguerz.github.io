@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Accessible Controls</title>
+  </head>
+  <body>
+
+    <h1>Audio Controls</h1>
+
+    <button type="button">Play</button>
+
+    <div>
+      <span id="volume-label">Volume</span>
+      <span id="volume-description">Adjust the sound level</span> <!-- span element for descriptive text -->
+      <input type="range" min="0" max="100" value="50" aria-labelledby="volume-label volume-description"> <!-- input element for volume control. type="range" is used for slider controls. min and max specify the range. value specifies the initial value. aria-labelledby links the input to its labels for accessibility -->
+    </div>
+
+    <button type="button">Mute</button>
+
+  </body>
+</html>

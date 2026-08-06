@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Checkout Page</title>
+</head>
+
+<body>
+<h1>Checkout</h1>
+<section>
+<h2>Your Cart</h2>
+<img src="https://cdn.freecodecamp.org/curriculum/labs/cube.jpg" alt="Rubik's Cube">
+</section>
+
+<section>
+<h2>Payment Information</h2>
+<form>
+    <label for="card-name">
+    <input id="card-name" name="card-name" type="text" required aria-hidden="true"> <!-- aria-hidden="true" indicates that the element and its children are not visible to accessibility tools, such as screen readers. This is useful for elements that are purely decorative or redundant, and do not provide any meaningful information to users who rely on assistive technologies. -->
+    <span aria-hidden="true">*</span>
+    </label>
+
+    <label for="card-number">
+    <input id="card-number" name="card-number" type="text" required aria-describedby="card-number-help"> <!-- aria-describedby attribute is used to associate the input field with a descriptive text element that provides additional information or instructions about the input. In this case, it links the input field with the paragraph element that has the id "card-number-help", which contains the text "Debit/Credit Card Number". This helps users understand what information is expected in the input field, especially for those using assistive technologies. -->
+    <span aria-hidden="true">*</span> 
+    </label>
+    <p id="card-number-help">Debit/Credit Card Number + Expiration Date</p>
+</form>
+</section>
+</body>
+
+</html>
