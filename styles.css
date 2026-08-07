@@ -2,7 +2,7 @@
    LiveJournal-inspired system: peach (#e8b48f) + lavender (#b3a8cc)
    Fonts: Inter (display/titles/eyebrows), Space Grotesk (body), IBM Plex Mono (labels/mono) */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500;700&family=Space+Mono:wght@400;700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Orelega+One&family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap');
 
 :root {
   --peach: #e8b48f;
@@ -144,15 +144,24 @@ img { max-width: 100%; display: block; }
 }
 .card-body { font: 15px/1.6 'Space Grotesk', sans-serif; }
 
+/* --- hero banner ------------------------------------------------------- */
+.banner-wrap { margin: 0; display: flex; justify-content: center; }
+.banner {
+  display: block; width: 100%; min-width: 300px; height: auto;
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--lavender);
+}
+
 /* ---------- userinfo module ---------- */
 .userinfo {
   display: flex; gap: 0; align-items: center; background: var(--paper); border: 2px solid var(--ink);
   box-shadow: 5px 5px 0 var(--shadow); overflow: hidden; flex-wrap: wrap;
 }
-.avatar {
+.avatar-frame {
   width: 64px; height: 64px; flex: none; border: 2px solid var(--ink);
-  margin: 12px 0 12px 12px; object-fit: cover;
+  margin: 12px 0 12px 12px; overflow: hidden; display: block;
 }
+.avatar { width: 100%; height: 100%; display: block; object-fit: cover; transform: scale(1.34); }
 .userinfo-body { flex: 1; min-width: 220px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
 .userinfo-name { font: 700 17px 'Space Grotesk', sans-serif; }
 .userinfo-role { font: 700 10.5px 'IBM Plex Mono', monospace; color: var(--muted); }
