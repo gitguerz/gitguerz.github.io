@@ -74,6 +74,8 @@
     });
   }
 
+  // WAI-ARIA APG tabs pattern: roving tabindex + arrow / home / end keys
+  var tabUid = 0;
   function initTabs() {
     document.querySelectorAll('.project-inner').forEach(function (inner) {
       var panes = [].slice.call(inner.querySelectorAll('.view-pane'));
@@ -81,28 +83,57 @@
       panes.sort(function (a, b) {
         return (a.getAttribute('data-pane') === 'code' ? 0 : 1) - (b.getAttribute('data-pane') === 'code' ? 0 : 1);
       });
+      var uid = ++tabUid;
       var bar = document.createElement('div');
       bar.className = 'view-tabs';
       bar.setAttribute('role', 'tablist');
+      bar.setAttribute('aria-label', 'project view');
+      var tabs = [];
+
+      function select(index, moveFocus) {
+        tabs.forEach(function (t, j) {
+          var on = j === index;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panes[j].hidden = !on;
+        });
+        if (moveFocus) tabs[index].focus();
+        loadFrame(inner);
+      }
+
       panes.forEach(function (pane, i) {
         var label = pane.querySelector('.pane-label');
         if (label) label.remove();
         var isCode = pane.getAttribute('data-pane') === 'code';
+        var tabId = 'tab-' + uid + '-' + i;
+        var paneId = 'pane-' + uid + '-' + i;
         var tab = document.createElement('button');
         tab.type = 'button';
         tab.className = 'view-tab';
+        tab.id = tabId;
         tab.setAttribute('role', 'tab');
         tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        tab.setAttribute('aria-controls', paneId);
+        tab.tabIndex = i === 0 ? 0 : -1;
         tab.textContent = isCode ? '</> code' : '▶ preview';
-        tab.addEventListener('click', function () {
-          bar.querySelectorAll('.view-tab').forEach(function (t, j) {
-            t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-            panes[j].hidden = t !== tab;
-          });
-          loadFrame(inner);
+        tab.addEventListener('click', function () { select(i, false); });
+        tab.addEventListener('keydown', function (e) {
+          var next = null;
+          if (e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+          else if (e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+          else if (e.key === 'Home') next = 0;
+          else if (e.key === 'End') next = tabs.length - 1;
+          if (next === null) return;
+          e.preventDefault();
+          select(next, true);
         });
-        bar.appendChild(tab);
+        pane.id = paneId;
+        pane.setAttribute('role', 'tabpanel');
+        pane.setAttribute('aria-labelledby', tabId);
+        pane.tabIndex = 0;
         pane.hidden = i !== 0;
+        tabs.push(tab);
+        bar.appendChild(tab);
         inner.appendChild(pane);
       });
       inner.insertBefore(bar, panes[0]);

@@ -16,8 +16,9 @@
   --paper: #ffffff;
   --paper2: #fdf0e4;
   --text: #3a2b22;
-  --muted: #7d6fa3;
+  --muted: #6a5d94; /* 5.2:1 on paper — SC 1.4.3 */
   --shadow: #3a2b22;
+  --focus-ring: #3a2b22;
 }
 
 html[data-theme="night"] {
@@ -28,6 +29,7 @@ html[data-theme="night"] {
   --muted: #b3a8cc;
   --remix: oklch(0.62 0.075 25);
   --shadow: #000000;
+  --focus-ring: #e8b48f;
 }
 
 * { box-sizing: border-box; }
@@ -405,7 +407,7 @@ img { max-width: 100%; display: block; }
 }
 .code .line { display: grid; grid-template-columns: calc(3ch + 12px) 1fr; gap: 12px; }
 .code .ln {
-  color: #5f5878; text-align: right; user-select: none; -webkit-user-select: none;
+  color: #8b83a8; text-align: right; user-select: none; -webkit-user-select: none;
   border-right: 1px solid #2e2840; padding-right: 8px; margin-right: -4px;
   white-space: nowrap; overflow-wrap: normal;
 }
@@ -437,6 +439,47 @@ img { max-width: 100%; display: block; }
   .project-stack { margin-left: 0; }
   .code { font-size: 11px; }
 }
+
+/* ---------- a11y (WCAG 2.2 AA) — focus, skip link, hit areas ---------- */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--ink); color: var(--peach); border: 2px solid var(--peach);
+  padding: 10px 16px; text-decoration: none;
+  font: 800 11px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+}
+.skip-link:focus { left: 8px; top: 8px; }
+
+/* SC 2.4.7 / 2.4.13 — visible 3px ring, never suppressed */
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.toggle button:focus-visible,
+.view-tab:focus-visible,
+.code-copy:focus-visible { outline-offset: -3px; }
+main:focus { outline: none; }
+
+/* hover feedback that never relies on color alone */
+a:hover { text-decoration-thickness: 2px; text-underline-offset: 2px; }
+
+/* SC 2.5.8 — 24px minimum target size */
+.nav a, .footer-nav a, .project-links a {
+  display: inline-flex; align-items: center; min-height: 24px; padding: 3px 2px;
+}
+.toggle button { padding: 6px 10px; min-height: 24px; }
+.code-copy { padding: 6px 12px; min-height: 24px; }
+.view-tab { padding: 8px 15px; min-height: 24px; }
+.button { min-height: 32px; }
+.section > summary, .project-box > summary { min-height: 32px; }
+
+/* SC 1.3.1 / 3.3.2 — visible field labels (never placeholder-only) */
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.field-label {
+  font: 700 9.5px 'IBM Plex Mono', monospace; text-transform: uppercase;
+  letter-spacing: .06em; color: inherit;
+}
+.field .input { flex: none; width: 100%; }
+.input[aria-invalid="true"] { border-color: #c2452d; }
+
+/* headings promoted from divs keep their original rhythm */
+h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title { margin: 0; }
 
 /* ---------- respect reduced-motion ---------- */
 @media (prefers-reduced-motion: reduce) {

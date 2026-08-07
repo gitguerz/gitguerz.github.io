@@ -9,19 +9,21 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">skip to main content</a>
+
 <header class="header">
   <div class="topbar">
     <div class="topbar-left">
       <div class="brand">guerz.lol</div>
     </div>
     <div class="topbar-right">
-      <div class="toggle">
+      <div class="toggle" role="group" aria-label="color theme">
         <button type="button" data-theme-btn="day" class="is-active">☼ DAY</button>
         <button type="button" data-theme-btn="night">☾ NIGHT</button>
       </div>
     </div>
   </div>
-  <nav class="nav">
+  <nav class="nav" aria-label="primary">
     <a href="index.html">home</a>
     <a href="about.html">about</a>
     <a href="roadmap.html">roadmap</a>
@@ -30,12 +32,12 @@
     <a href="https://twitch.tv/guerz" target="_blank" rel="noopener noreferrer">ttv/guerz</a>
     <a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">github</a>
   </nav>
-  <div class="marquee">
+  <div class="marquee" aria-hidden="true">
     <span>☀ things i actually built ☾ code you can copy, paste, and pick apart ☀ cold builds + freeCodeCamp cert projects ☾ ugly but working &gt; perfect but stuck ☀ view source is a love language ☾ things i actually built ☀</span>
   </div>
 </header>
 
-<main class="container container--wide">
+<main class="container container--wide" id="main" tabindex="-1">
 
   <div class="construction">⚠ UNDER CONSTRUCTION — PARDON THE DUST ⚠</div>
 
@@ -3354,7 +3356,7 @@ a:hover { /*applies styles when a link is hovered*/
 <footer class="footer">
   <div class="footer-inner footer-inner--wide">
     <div class="footer-copy">© guerz.lol<br>no cookies, just cache</div>
-    <nav class="footer-nav">
+    <nav class="footer-nav" aria-label="footer">
       <a href="index.html">home</a>
       <a href="about.html">about</a>
       <a href="roadmap.html">roadmap</a>

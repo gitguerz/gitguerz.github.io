@@ -6,6 +6,7 @@
     document.querySelectorAll('[data-theme-btn]').forEach(function (btn) {
       var isActive = btn.getAttribute('data-theme-btn') === mode;
       btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     var favicon = document.getElementById('favicon');
     if (favicon) favicon.setAttribute('href', mode === 'night' ? 'favicon-lavender.svg' : 'favicon-peach.svg');

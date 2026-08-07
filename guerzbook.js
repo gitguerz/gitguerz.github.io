@@ -89,14 +89,29 @@
       var email = document.getElementById('gb-email').value.trim();
       var message = document.getElementById('gb-message').value.trim();
 
+      // SC 3.3.1 — flag the offending field and move focus to it, not just a message
+      ['gb-name', 'gb-email', 'gb-message'].forEach(function (id) {
+        var f = document.getElementById(id);
+        if (f) f.removeAttribute('aria-invalid');
+      });
+      function flag(id) {
+        var field = document.getElementById(id);
+        if (!field) return;
+        field.setAttribute('aria-invalid', 'true');
+        field.setAttribute('aria-describedby', 'gb-status');
+        field.focus();
+      }
+
       if (!name || !email || !message) {
         status.textContent = 'name, email + a note are all required ♥';
         status.className = 'form-status form-status--err';
+        flag(!name ? 'gb-name' : (!email ? 'gb-email' : 'gb-message'));
         return;
       }
       if (!EMAIL_RE.test(email)) {
         status.textContent = "that email doesn't look right";
         status.className = 'form-status form-status--err';
+        flag('gb-email');
         return;
       }
 
