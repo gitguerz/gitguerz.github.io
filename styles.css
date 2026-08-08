@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500;700&family=Space+Mono:wght@400;700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Orelega+One&family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap');
 
 :root {
-  --peach: ##F4AD7D;
+  --peach: #F4AD7D;
   --lavender: #b3a8cc;
   --remix: oklch(0.79 0.075 25);
   --ink: #3a2b22;
