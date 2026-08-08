@@ -7,41 +7,78 @@
     });
   }
 
-  // numbered lines + html comments styled as annotations (educational read-along)
-  function markComments() {
+  // numbered lines + syntax-colored tokens + comments styled as italic annotations
+  function escHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  var HTML_RE = /(<!DOCTYPE[^>]*>)|(<\/?[a-zA-Z][\w:-]*)|(\/>|>)|([a-zA-Z_:][\w:-]*)(=)("[^"]*"|'[^']*')|(&[a-zA-Z#0-9]+;)/g;
+  function tokenizeHtml(code) {
+    var out = '', last = 0, m;
+    HTML_RE.lastIndex = 0;
+    while ((m = HTML_RE.exec(code)) !== null) {
+      if (m.index > last) out += escHtml(code.slice(last, m.index));
+      if (m[1]) out += '<span class="tok-punct">' + escHtml(m[1]) + '</span>';
+      else if (m[2]) out += '<span class="tok-name">' + escHtml(m[2]) + '</span>';
+      else if (m[3]) out += '<span class="tok-punct">' + escHtml(m[3]) + '</span>';
+      else if (m[4]) out += '<span class="tok-attr">' + escHtml(m[4]) + '</span><span class="tok-punct">' + escHtml(m[5]) + '</span><span class="tok-val">' + escHtml(m[6]) + '</span>';
+      else if (m[7]) out += '<span class="tok-func">' + escHtml(m[7]) + '</span>';
+      last = HTML_RE.lastIndex;
+    }
+    out += escHtml(code.slice(last));
+    return out;
+  }
+
+  var CSS_RE = /(@[a-zA-Z-]+)|(::?[a-zA-Z-][\w-]*)|(\.[a-zA-Z][\w-]*)|(#[0-9a-fA-F]{3,8}\b)|(#[a-zA-Z][\w-]*)|([a-zA-Z-]+)(\()|(\))|(-?\d*\.?\d+[a-zA-Z%]*)|(["'][^"']*["'])|([a-zA-Z-]+(?=\s*:(?!:)))|([a-zA-Z-]+(?=\s*[,{]))|([a-zA-Z][a-zA-Z0-9-]*)|([{}:;,])/g;
+  function tokenizeCss(code) {
+    var out = '', last = 0, m;
+    CSS_RE.lastIndex = 0;
+    while ((m = CSS_RE.exec(code)) !== null) {
+      if (m.index > last) out += escHtml(code.slice(last, m.index));
+      if (m[1]) out += '<span class="tok-func">' + escHtml(m[1]) + '</span>';
+      else if (m[2]) out += '<span class="tok-func">' + escHtml(m[2]) + '</span>';
+      else if (m[3]) out += '<span class="tok-attr">' + escHtml(m[3]) + '</span>';
+      else if (m[4]) out += '<span class="tok-num">' + escHtml(m[4]) + '</span>';
+      else if (m[5]) out += '<span class="tok-num">' + escHtml(m[5]) + '</span>';
+      else if (m[6]) out += '<span class="tok-func">' + escHtml(m[6]) + '</span><span class="tok-punct">' + escHtml(m[7]) + '</span>';
+      else if (m[8]) out += '<span class="tok-punct">' + escHtml(m[8]) + '</span>';
+      else if (m[9]) out += '<span class="tok-num">' + escHtml(m[9]) + '</span>';
+      else if (m[10]) out += '<span class="tok-val">' + escHtml(m[10]) + '</span>';
+      else if (m[11]) out += '<span class="tok-attr">' + escHtml(m[11]) + '</span>';
+      else if (m[12]) out += '<span class="tok-name">' + escHtml(m[12]) + '</span>';
+      else if (m[13]) out += '<span class="tok-val">' + escHtml(m[13]) + '</span>';
+      else if (m[14]) out += '<span class="tok-punct">' + escHtml(m[14]) + '</span>';
+      last = CSS_RE.lastIndex;
+    }
+    out += escHtml(code.slice(last));
+    return out;
+  }
+
+  var COMMENT_RE = /(<!--[\s\S]*?-->)|(\/\*[\s\S]*?\*\/)/g;
+
+  function highlightCode() {
     document.querySelectorAll('.code code').forEach(function (code) {
       if (code.dataset.cmt) return;
       code.dataset.cmt = '1';
       var raw = code.textContent;
       code._raw = raw;
+      var block = code.closest('.code-block');
+      var fileEl = block ? block.querySelector('.code-file') : null;
+      var fileName = fileEl ? fileEl.textContent.trim() : '';
+      var tokenize = /\.css$/i.test(fileName) ? tokenizeCss : tokenizeHtml;
       var lines = raw.replace(/\n$/, '').split('\n');
-      var frag = document.createDocumentFragment();
-      lines.forEach(function (line, i) {
-        var row = document.createElement('div');
-        row.className = 'line';
-        var ln = document.createElement('span');
-        ln.className = 'ln';
-        ln.setAttribute('aria-hidden', 'true');
-        ln.textContent = String(i + 1);
-        var srcEl = document.createElement('span');
-        srcEl.className = 'src';
-        var re = /<!--[\s\S]*?-->/g;
-        var last = 0, m;
-        while ((m = re.exec(line)) !== null) {
-          if (m.index > last) srcEl.appendChild(document.createTextNode(line.slice(last, m.index)));
-          var span = document.createElement('span');
-          span.className = 'cmt';
-          span.textContent = m[0];
-          srcEl.appendChild(span);
-          last = m.index + m[0].length;
+      var html = lines.map(function (line, i) {
+        var out = '', last = 0, m;
+        COMMENT_RE.lastIndex = 0;
+        while ((m = COMMENT_RE.exec(line)) !== null) {
+          if (m.index > last) out += tokenize(line.slice(last, m.index));
+          out += '<span class="cmt">' + escHtml(m[0]) + '</span>';
+          last = COMMENT_RE.lastIndex;
         }
-        if (last < line.length) srcEl.appendChild(document.createTextNode(line.slice(last)));
-        row.appendChild(ln);
-        row.appendChild(srcEl);
-        frag.appendChild(row);
-      });
-      code.textContent = '';
-      code.appendChild(frag);
+        out += tokenize(line.slice(last));
+        return '<div class="line"><span class="ln" aria-hidden="true">' + (i + 1) + '</span><span class="src">' + out + '</span></div>';
+      }).join('');
+      code.innerHTML = html;
     });
   }
 
@@ -80,8 +117,9 @@
     document.querySelectorAll('.project-inner').forEach(function (inner) {
       var panes = [].slice.call(inner.querySelectorAll('.view-pane'));
       if (panes.length < 2) return;
+      var order = { html: 0, code: 0, css: 1, preview: 2 };
       panes.sort(function (a, b) {
-        return (a.getAttribute('data-pane') === 'code' ? 0 : 1) - (b.getAttribute('data-pane') === 'code' ? 0 : 1);
+        return order[a.getAttribute('data-pane')] - order[b.getAttribute('data-pane')];
       });
       var uid = ++tabUid;
       var bar = document.createElement('div');
@@ -104,7 +142,7 @@
       panes.forEach(function (pane, i) {
         var label = pane.querySelector('.pane-label');
         if (label) label.remove();
-        var isCode = pane.getAttribute('data-pane') === 'code';
+        var kind = pane.getAttribute('data-pane');
         var tabId = 'tab-' + uid + '-' + i;
         var paneId = 'pane-' + uid + '-' + i;
         var tab = document.createElement('button');
@@ -115,7 +153,7 @@
         tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
         tab.setAttribute('aria-controls', paneId);
         tab.tabIndex = i === 0 ? 0 : -1;
-        tab.textContent = isCode ? '</> code' : '▶ preview';
+        tab.textContent = kind === 'html' ? '</> html' : kind === 'css' ? '</> css' : kind === 'code' ? '</> code' : '▶ preview';
         tab.addEventListener('click', function () { select(i, false); });
         tab.addEventListener('keydown', function (e) {
           var next = null;
@@ -150,7 +188,7 @@
   }
 
   function init() {
-    markComments();
+    highlightCode();
     initCopy();
     initTabs();
     initLazyPreview();
