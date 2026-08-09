@@ -149,7 +149,7 @@ img { max-width: 100%; display: block; }
 .banner {
   display: block; width: 100%; min-width: 300px; height: auto;
   border: none;
-  box-shadow: 5px 5px 0 var(--peach);
+  box-shadow: 5px 5px 0 var(--lavender);
 }
 
 /* ---------- userinfo module ---------- */
