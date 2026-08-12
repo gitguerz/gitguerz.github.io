@@ -1,8 +1,8 @@
 /* guerz.lol — shared stylesheet
    LiveJournal-inspired system: peach (#e8b48f) + lavender (#b3a8cc)
-   Fonts: Inter (display/titles/eyebrows), Space Grotesk (body), IBM Plex Mono (labels/mono) */
+   Fonts: Recursive (display/titles/eyebrows), Space Grotesk (body), IBM Plex Mono (labels/mono) */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500;700&family=Space+Mono:wght@400;700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Orelega+One&family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500;700&family=Space+Mono:wght@400;700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Orelega+One&family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap');
 
 :root {
   --peach: #F4AD7D;
@@ -68,7 +68,7 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; gap: 10px; min-width: 0;
 }
 .brand {
-  font: 800 18px 'Inter', sans-serif;
+  font: 800 18px 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: .04em; color: var(--ink); white-space: nowrap;
 }
 .topbar-right {
@@ -87,7 +87,7 @@ img { max-width: 100%; display: block; }
 
 .nav {
   display: flex; gap: 16px; flex-wrap: wrap; padding: 7px 20px;
-  font: 800 11px 'Inter', sans-serif; text-transform: uppercase;
+  font: 800 11px 'Recursive', sans-serif; text-transform: uppercase;
   letter-spacing: .06em; color: var(--ink); background: #fdf5ee; border-bottom: none;
 }
 
@@ -109,7 +109,7 @@ img { max-width: 100%; display: block; }
 
 .construction {
   background: repeating-linear-gradient(45deg, var(--ink), var(--ink) 10px, var(--peach) 10px, var(--peach) 20px);
-  color: #FFF200; font: 800 10px 'Inter', sans-serif; text-align: center;
+  color: #FFF200; font: 800 10px 'Recursive', sans-serif; text-align: center;
   padding: 6px; letter-spacing: .08em; animation: blink 1.4s step-start infinite;
 }
 
@@ -130,16 +130,17 @@ img { max-width: 100%; display: block; }
 }
 
 .card-title {
-  font: 900 clamp(52px, 12vw, 104px)/.88 'Inter', sans-serif;
+  margin: .08em 0;
+  font: 900 clamp(52px, 12vw, 104px)/.88 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: -.04em;
 }
 .card-title--brutal {
   margin: 0;
-  font: 900 clamp(28px, 4vw, 44px)/.95 'Inter', sans-serif;
+  font: 900 clamp(28px, 4vw, 44px)/.95 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: -.02em;
 }
 .card-eyebrow {
-  font: 800 clamp(18px, 3vw, 24px)/1.15 'Inter', sans-serif;
+  font: 800 clamp(18px, 3vw, 24px)/1.15 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
 }
 .card-body { font: 15px/1.6 'Space Grotesk', sans-serif; }
@@ -186,7 +187,7 @@ img { max-width: 100%; display: block; }
   display: flex; flex-direction: column; gap: 8px; color: var(--ink);
 }
 .callout-title {
-  font: 800 clamp(18px, 3vw, 24px) 'Inter', sans-serif;
+  font: 800 clamp(18px, 3vw, 24px) 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: .05em;
 }
 
@@ -219,7 +220,7 @@ img { max-width: 100%; display: block; }
 }
 .footer-inner--wide { max-width: 1160px; }
 .footer-copy { font: 11px/1.6 'IBM Plex Mono', monospace; color: var(--muted); }
-.footer-nav { display: flex; flex-direction: column; gap: 2px; font: 700 10.5px 'Inter', sans-serif; text-transform: uppercase; }
+.footer-nav { display: flex; flex-direction: column; gap: 2px; font: 700 10.5px 'Recursive', sans-serif; text-transform: uppercase; }
 .footer-note { font: 11px/1.6 'IBM Plex Mono', monospace; color: var(--muted); text-align: right; }
 
 /* ---------- support lanes (aside) ---------- */
@@ -256,7 +257,7 @@ img { max-width: 100%; display: block; }
 .phase-header--lavender { background: var(--lavender); color: var(--ink); }
 .phase-header--ink { background: var(--ink); color: var(--peach); }
 .phase-header .card-eyebrow {
-  color: inherit; font: 900 clamp(24px, 4.5vw, 40px)/.95 'Inter', sans-serif; letter-spacing: -.02em;
+  color: inherit; font: 900 clamp(24px, 4.5vw, 40px)/.95 'Recursive', sans-serif; letter-spacing: -.02em;
 }
 
 .week-list { display: flex; flex-direction: column; gap: 10px; }
@@ -284,10 +285,11 @@ img { max-width: 100%; display: block; }
 .section--lav > summary { background: var(--lavender); }
 .section--remix > summary { background: var(--peach); }
 .section > summary::-webkit-details-marker { display: none; }
-.section-caret { font: 800 18px 'Inter', sans-serif; color: var(--ink); transition: transform .18s ease; }
+.section-caret { font: 800 18px 'Recursive', sans-serif; color: var(--ink); transition: transform .18s ease; }
 .section[open] > summary .section-caret { transform: rotate(90deg); }
 .section-title {
-  font: 900 clamp(24px, 4.5vw, 40px)/.95 'Inter', sans-serif;
+  margin: .08em 0;
+  font: 900 clamp(24px, 4.5vw, 40px)/.95 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: -.02em; color: var(--ink);
   min-width: 0; overflow-wrap: anywhere;
 }
@@ -302,7 +304,7 @@ img { max-width: 100%; display: block; }
 .project-box > summary::-webkit-details-marker { display: none; }
 .project-caret { font: 800 13px 'IBM Plex Mono', monospace; color: var(--muted); transition: transform .18s ease; }
 .project-box[open] > summary .project-caret { transform: rotate(90deg); }
-.project-name { font: 800 15px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .01em; color: var(--text); }
+.project-name { font: 800 15px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .01em; color: var(--text); }
 .project-stack { margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 /* tabbed panes — the source tab reads first */
 .project-inner {
@@ -320,11 +322,11 @@ img { max-width: 100%; display: block; }
   flex: 0 0 128px; font: 800 9px 'IBM Plex Mono', monospace; text-transform: uppercase;
   letter-spacing: .12em; color: var(--ink);
 }
-.meta-val { font: 600 12.5px 'Inter', sans-serif; color: var(--text); }
+.meta-val { font: 600 12.5px 'Recursive', sans-serif; color: var(--text); }
 .view-tabs { display: flex; width: fit-content; border: none; overflow: hidden; }
 .view-tab {
   background: var(--paper); color: var(--muted); border: none; border-right: none;
-  font: 800 9.5px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+  font: 800 9.5px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .06em;
   padding: 7px 15px; cursor: pointer;
 }
 .view-tab:last-child { border-right: none; }
@@ -363,7 +365,8 @@ img { max-width: 100%; display: block; }
   color: var(--ink); border: none; padding: 2px 6px; background: #fff;
 }
 .module-title {
-  font: 900 15px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink);
+  margin: .1em 0;
+  font: 900 15px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink);
 }
 .module-count {
   margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--ink); opacity: .7;
@@ -374,7 +377,7 @@ img { max-width: 100%; display: block; }
   padding: 7px 10px; border: none; background: var(--paper2);
 }
 .archive-check { font: 700 13px 'IBM Plex Mono', monospace; color: var(--muted); }
-.archive-name { font: 600 13px 'Inter', sans-serif; color: var(--muted); }
+.archive-name { font: 600 13px 'Recursive', sans-serif; color: var(--muted); }
 .archive-type {
   margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--muted);
   text-transform: uppercase; letter-spacing: .06em;
@@ -386,13 +389,14 @@ img { max-width: 100%; display: block; }
 /* ---------- projects / code blocks ---------- */
 .project-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .project-title {
-  font: 900 clamp(22px, 3.2vw, 30px)/1 'Inter', sans-serif;
+  margin: .1em 0;
+  font: 900 clamp(22px, 3.2vw, 30px)/1 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: -.02em; border-bottom: 2px solid var(--peach);
 }
 .project-title--lav { border-bottom-color: var(--lavender); }
 .project-links {
   display: flex; gap: 14px; flex-wrap: wrap;
-  font: 800 10px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+  font: 800 10px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .06em;
 }
 .project-links a { color: var(--muted); border-bottom: 2px solid var(--muted); }
 
@@ -405,7 +409,7 @@ img { max-width: 100%; display: block; }
 .code-file { font: 700 9.5px 'IBM Plex Mono', monospace; color: var(--lavender); letter-spacing: .04em; }
 .code-copy {
   background: var(--peach); color: var(--ink); border: none;
-  font: 800 9px 'Inter', sans-serif; padding: 3px 10px; text-transform: uppercase;
+  font: 800 9px 'Recursive', sans-serif; padding: 3px 10px; text-transform: uppercase;
   letter-spacing: .06em; cursor: pointer;
 }
 .code-copy:hover { background: var(--lavender); }
@@ -435,7 +439,7 @@ img { max-width: 100%; display: block; }
 .blog-layout { display: flex; gap: 24px; flex-wrap: wrap-reverse; }
 .blog-main { flex: 3; min-width: 320px; display: flex; flex-direction: column; gap: 18px; }
 .blog-sidebar { flex: 1; min-width: 220px; display: flex; flex-direction: column; gap: 14px; }
-.post-title { font: 800 20px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .02em; line-height: 1.15; }
+.post-title { margin: .1em 0; font: 800 20px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .02em; line-height: 1.15; }
 
 
 /* ---------- mobile ---------- */
@@ -460,7 +464,7 @@ img { max-width: 100%; display: block; }
   position: absolute; left: -9999px; top: 0; z-index: 100;
   background: var(--ink); color: var(--peach); border: none;
   padding: 10px 16px; text-decoration: none;
-  font: 800 11px 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .06em;
+  font: 800 11px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .06em;
 }
 .skip-link:focus { left: 8px; top: 8px; }
 
