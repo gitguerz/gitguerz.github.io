@@ -9,9 +9,9 @@
       btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     var favicon = document.getElementById('favicon');
-    if (favicon) favicon.setAttribute('href', mode === 'night' ? 'favicon-lavender.svg' : 'favicon-peach.svg');
+    if (favicon) favicon.setAttribute('href', mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png');
     var avatar = document.getElementById('avatar-img');
-    if (avatar) avatar.setAttribute('src', mode === 'night' ? 'favicon-lavender.svg' : 'favicon-peach.svg');
+    if (avatar) avatar.setAttribute('src', mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png');
     try { localStorage.setItem('guerz-theme', mode); } catch (e) {}
   }
 
