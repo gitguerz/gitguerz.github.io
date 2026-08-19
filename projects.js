@@ -82,6 +82,20 @@
     });
   }
 
+  function announce(msg) {
+    var live = document.getElementById('sr-live');
+    if (!live) {
+      live = document.createElement('div');
+      live.id = 'sr-live';
+      live.className = 'sr-only';
+      live.setAttribute('role', 'status');
+      live.setAttribute('aria-live', 'polite');
+      document.body.appendChild(live);
+    }
+    live.textContent = '';
+    setTimeout(function () { live.textContent = msg; }, 60);
+  }
+
   function initCopy() {
     document.querySelectorAll('.code-copy').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -91,6 +105,7 @@
         var text = code._raw || code.textContent;
         var done = function () {
           btn.textContent = 'copied \u2713';
+          announce('code copied to clipboard');
           clearTimeout(btn._t);
           btn._t = setTimeout(function () { btn.textContent = 'copy'; }, 1600);
         };
@@ -111,7 +126,7 @@
     });
   }
 
-  // WAI-ARIA APG tabs pattern: roving tabindex + arrow / home / end keys
+  // Tabs: every tab is Tab-reachable (SC 2.1.1) and arrow / home / end also work
   var tabUid = 0;
   function initTabs() {
     document.querySelectorAll('.project-inner').forEach(function (inner) {
@@ -132,7 +147,7 @@
         tabs.forEach(function (t, j) {
           var on = j === index;
           t.setAttribute('aria-selected', on ? 'true' : 'false');
-          t.tabIndex = on ? 0 : -1;
+          t.tabIndex = 0;
           panes[j].hidden = !on;
         });
         if (moveFocus) tabs[index].focus();
@@ -152,7 +167,7 @@
         tab.setAttribute('role', 'tab');
         tab.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
         tab.setAttribute('aria-controls', paneId);
-        tab.tabIndex = i === 0 ? 0 : -1;
+        tab.tabIndex = 0;
         tab.textContent = kind === 'html' ? '</> html' : kind === 'css' ? '</> css' : kind === 'code' ? '</> code' : '▶ preview';
         tab.addEventListener('click', function () { select(i, false); });
         tab.addEventListener('keydown', function (e) {

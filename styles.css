@@ -343,7 +343,7 @@ img { max-width: 100%; display: block; }
   padding: 16px 4px; font: 700 13px 'IBM Plex Mono', monospace; color: var(--muted);
   display: flex; align-items: center; gap: 8px;
 }
-.project-box--soon > summary { opacity: .65; }
+.project-box--soon > summary { opacity: .85; }
 .badge--soon { background: transparent; border: none; color: var(--muted); }
 
 /* ---------- rwd v9 archive: module headers + unbuilt rows ---------- */
@@ -473,6 +473,10 @@ img { max-width: 100%; display: block; }
 .toggle button:focus-visible,
 .view-tab:focus-visible,
 .code-copy:focus-visible { outline-offset: -3px; }
+/* selected tab + pressed toggle sit on ink, so an ink ring would vanish into them */
+.view-tab[aria-selected="true"]:focus-visible,
+.toggle button[aria-pressed="true"]:focus-visible { outline-color: var(--peach); }
+.code-block :focus-visible, .code-bar :focus-visible { outline-color: var(--peach); }
 main:focus { outline: none; }
 
 /* hover feedback that never relies on color alone */
@@ -495,7 +499,11 @@ a:hover { text-decoration-thickness: 2px; text-underline-offset: 2px; }
   letter-spacing: .06em; color: inherit;
 }
 .field .input { flex: none; width: 100%; }
-.input[aria-invalid="true"] { border-color: #c2452d; }
+.input[aria-invalid="true"] { outline: 2px solid #c2452d; outline-offset: 0; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
 
 /* headings promoted from divs keep their original rhythm */
 h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title { margin: 0; }
