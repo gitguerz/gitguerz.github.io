@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  text-align: center;
+  background-color: brown;
+}
+
+.card {
+  background-color: white;
+  max-width: 400px;
+  padding: 40px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px gray;
+  transition: transform 0.3s, background-color 0.3s ease; /* transition property for smooth transform and background color change. 0.3s is the duration of the transition. ease is the timing function */
+}
+
+.card:hover { /* .card:hover is a pseudo-class that applies styles when the card is hovered over */
+  background-color: khaki;
+  transform: scale(1.1);
+}
+
+h1::before { /* h1::before is a pseudo-element that adds content before the h1 element */
+  content: "🥳 ";
+}
+
+h1::after { /* h1::after is a pseudo-element that adds content after the h1 element */
+  content: " 🥳";
+}
+
+.message {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.card-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-links a {
+  text-decoration: none;
+  font-size: 1em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  background-color: midnightblue;
+  transition: background-color 0.3s ease; /* transition property for smooth background color change. 0.3s is the duration of the transition. ease is the timing function */
+}
+
+.card-links a:hover { /* a hover creates a new state for the link */
+  background-color: orangered; /* background color changes to orangered when hovered */
+}
+
+.card-links a:active { /* a active creates a new state for the link */
+  background-color: midnightblue; /* background color changes to midnightblue when active */
+}
+
+.card-links a:focus { /* a focus creates a new state for the link */
+  outline: 2px solid yellow; /* outline appears when the link is focused */
+}
+
+.card-links a:visited { /* a visited creates a new state for the link */
+  color: crimson; /* color changes to crimson when the link has been visited */
+}
+
+section {
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  display: none;  
+}
+
+section:hover { /* section hover creates a new state for the section */
+  transform: skewX(10deg); /* transform changes section's orientation. skewX(10deg) changes the section's orientation 10 degrees */
+}
+
+section:target { /* section target creates a new state for the section */
+  display: block; /* display changes to block when the section is targeted */
+}

@@ -296,7 +296,26 @@ img { max-width: 100%; display: block; }
 .section-count { margin-left: auto; font: 700 10px 'IBM Plex Mono', monospace; color: var(--ink); opacity: .75; white-space: normal; text-align: right; }
 .section-body { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
 
-.project-box { border: none; background: var(--paper2); }
+.project-box {
+  border: none; background: var(--paper2);
+  box-shadow: 0 3px 10px rgba(0,0,0,.16), 0 1px 3px rgba(0,0,0,.10);
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+.project-box:hover,
+.project-box:focus-within,
+.project-box[open] {
+  transform: scale(1.012);
+  box-shadow: 0 7px 20px rgba(0,0,0,.24), 0 2px 6px rgba(0,0,0,.14);
+}
+/* unbuilt rows keep their flat, unfinished look */
+.project-box--soon,
+.project-box--soon:hover,
+.project-box--soon:focus-within,
+.project-box--soon[open] { box-shadow: none; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .project-box { transition: none; }
+  .project-box:hover, .project-box:focus-within, .project-box[open] { transform: none; }
+}
 .project-box > summary {
   list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px;
   flex-wrap: wrap; padding: 10px 12px;

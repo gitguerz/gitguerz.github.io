@@ -2392,7 +2392,7 @@ a:active { /* a:active selector is used to style links when they are being click
       </summary>
       <div class="project-inner">
         <div class="project-meta">
-          <div class="meta-row"><span class="meta-key">Learned Concepts</span><span class="meta-val">border-radius property<br />Reinforced: Basic CSS</span></div>
+          <div class="meta-row"><span class="meta-key">Learned Concepts</span><span class="meta-val">Introduced: border-radius property<br />Reinforced: Basic CSS</span></div>
         </div>
         <div class="view-pane" data-pane="html">
           <div class="pane-label">html</div>
@@ -2476,14 +2476,87 @@ section {
       <span class="module-caret">▸</span>
       <span class="module-kicker">CSS</span>
       <span class="module-title">Absolute and Relative Units</span>
-      <span class="module-count">1 items</span>
+      <span class="module-count">1 items · 1 built</span>
     </summary>
     <div class="module-body">
-    <div class="archive-row">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Build an Event Flyer Page</span>
-      <span class="archive-type">lab</span>
-    </div>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd lab</span>
+        <span class="project-name">Build an Event Flyer Page</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Learned Concepts</span><span class="meta-val">Introduced: absolute units • relative units<br />Reinforced: px absolute unit • vw relative unit • vh relative unit • percentage relative unit • calc() function • auto value • min-height property • Basic HTML</span></div>
+        </div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Build an Event Flyer Page&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;header&gt;&lt;img src="https://cdn.freecodecamp.org/curriculum/labs/event.jpg"&gt;
+  &lt;h1&gt;{decompress} 8/20&lt;/h1&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;{decompress}&lt;/h2&gt;
+    &lt;/section&gt;
+    &lt;hr&gt;
+    &lt;section&gt;
+      &lt;h2&gt;August 20th&lt;/h2&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>body {
+  padding-top: 50px; /* px is an absolute unit, fixed, never scales with the viewport */
+  padding-bottom: 50px;
+  margin-top: 0; /* 0 is the one length that needs no unit (0px = 0% = 0) */
+  margin-bottom: 0;
+  margin-left: auto; /* auto eats leftover space evenly → centers the body */
+  margin-right: auto;
+  width: 60vw; /* vw is a relative unit, scales with the viewport. 1vw = 1% of the viewport width */
+  min-height: calc(100vh - 100px); /* vh is a relative unit, scales with the viewport height. calc() mixes relative (100vh) + absolute (100px) to reserve top+bottom padding */
+}
+
+hr {
+  width: 90%; /* 90% = relative to the parent's width */
+}
+
+section {
+  width: 60%; /* 60% of the parent (body = 60vw), so it compounds to ~36vw. relative units nest */
+}</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="projects/build-an-event-flyer-page/index.html" title="Build an Event Flyer Page preview" loading="lazy"></iframe>
+          <div class="project-links"><a href="projects/build-an-event-flyer-page/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
     
     </div>
   </details>
@@ -2492,14 +2565,157 @@ section {
       <span class="module-caret">▸</span>
       <span class="module-kicker">CSS</span>
       <span class="module-title">Pseudo Classes and Elements</span>
-      <span class="module-count">3 items</span>
+      <span class="module-count">3 items · 1 built</span>
     </summary>
     <div class="module-body">
-    <div class="archive-row">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Design a Greeting Card</span>
-      <span class="archive-type">workshop</span>
-    </div>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd workshop</span>
+        <span class="project-name">Design a Greeting Card</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Learned Concepts</span><span class="meta-val">Introduced: pseudo-classes • pseudo-elements • ::before pseudo-element • ::after pseudo-element • content property • :target pseudo-class • transition property • transform property • scale() function • skewX() function • box-shadow property • em relative unit<br />Reinforced: :hover pseudo-class • :active pseudo-class • :focus pseudo-class • :visited pseudo-class • outline property • border-radius property • max-width property • display: flex • justify-content property • space-around value • fragment links (#id)</span></div>
+        </div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Greeting Card&lt;/title&gt;
+    &lt;link href="styles.css" rel="stylesheet"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="card" id="greeting-card"&gt;
+      &lt;h1&gt;Happy Birthday!&lt;/h1&gt;
+      &lt;p class="message"&gt;
+        Wishing you all the happiness and joy on your special day!
+      &lt;/p&gt;
+      &lt;div class="card-links"&gt;
+        &lt;a href="#send" class="send-link"&gt;Send Card&lt;/a&gt; &lt;!-- This is a link that will navigate to the "send" section of the page --&gt;
+        &lt;a href="#share" class="share-link"&gt;Share on Social Media&lt;/a&gt; &lt;!-- This is a link that will navigate to the "share" section of the page --&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;section id="send"&gt; &lt;!-- This is a section with the id "send" that will be navigated to when the "Send Card" link is clicked --&gt;
+      &lt;h2&gt;Sending your card...&lt;/h2&gt;
+      &lt;p&gt;Card successfully sent to your recipient!&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section id="share"&gt; &lt;!-- This is a section with the id "share" that will be navigated to when the "Share on Social Media" link is clicked --&gt;
+      &lt;h2&gt;Sharing your card...&lt;/h2&gt;
+      &lt;p&gt;Your card was shared on social media!&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  text-align: center;
+  background-color: brown;
+}
+
+.card {
+  background-color: white;
+  max-width: 400px;
+  padding: 40px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px gray;
+  transition: transform 0.3s, background-color 0.3s ease; /* transition property for smooth transform and background color change. 0.3s is the duration of the transition. ease is the timing function */
+}
+
+.card:hover { /* .card:hover is a pseudo-class that applies styles when the card is hovered over */
+  background-color: khaki;
+  transform: scale(1.1);
+}
+
+h1::before { /* h1::before is a pseudo-element that adds content before the h1 element */
+  content: "🥳 ";
+}
+
+h1::after { /* h1::after is a pseudo-element that adds content after the h1 element */
+  content: " 🥳";
+}
+
+.message {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.card-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-links a {
+  text-decoration: none;
+  font-size: 1em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  background-color: midnightblue;
+  transition: background-color 0.3s ease; /* transition property for smooth background color change. 0.3s is the duration of the transition. ease is the timing function */
+}
+
+.card-links a:hover { /* a hover creates a new state for the link */
+  background-color: orangered; /* background color changes to orangered when hovered */
+}
+
+.card-links a:active { /* a active creates a new state for the link */
+  background-color: midnightblue; /* background color changes to midnightblue when active */
+}
+
+.card-links a:focus { /* a focus creates a new state for the link */
+  outline: 2px solid yellow; /* outline appears when the link is focused */
+}
+
+.card-links a:visited { /* a visited creates a new state for the link */
+  color: crimson; /* color changes to crimson when the link has been visited */
+}
+
+section {
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  display: none;  
+}
+
+section:hover { /* section hover creates a new state for the section */
+  transform: skewX(10deg); /* transform changes section's orientation. skewX(10deg) changes the section's orientation 10 degrees */
+}
+
+section:target { /* section target creates a new state for the section */
+  display: block; /* display changes to block when the section is targeted */
+}</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="projects/design-a-greeting-card/index.html" title="Design a Greeting Card preview" loading="lazy"></iframe>
+          <div class="project-links"><a href="projects/design-a-greeting-card/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        </div>
+      </div>
+    </details>
     <div class="archive-row">
       <span class="archive-check">☐</span>
       <span class="archive-name">Design a Parent Teacher Conference Form</span>

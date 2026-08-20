@@ -1,0 +1,18 @@
+body {
+  padding-top: 50px; /* px is an absolute unit, fixed, never scales with the viewport */
+  padding-bottom: 50px;
+  margin-top: 0; /* 0 is the one length that needs no unit (0px = 0% = 0) */
+  margin-bottom: 0;
+  margin-left: auto; /* auto eats leftover space evenly → centers the body */
+  margin-right: auto;
+  width: 60vw; /* vw is a relative unit, scales with the viewport. 1vw = 1% of the viewport width */
+  min-height: calc(100vh - 100px); /* vh is a relative unit, scales with the viewport height. calc() mixes relative (100vh) + absolute (100px) to reserve top+bottom padding */
+}
+
+hr {
+  width: 90%; /* 90% = relative to the parent's width */
+}
+
+section {
+  width: 60%; /* 60% of the parent (body = 60vw), so it compounds to ~36vw. relative units nest */
+}
