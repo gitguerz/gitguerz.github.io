@@ -51,9 +51,6 @@ img { max-width: 100%; display: block; }
   0%   { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
 }
-@keyframes blink {
-  50% { opacity: 0; }
-}
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -69,7 +66,7 @@ img { max-width: 100%; display: block; }
 }
 .brand {
   font: 800 18px 'Recursive', sans-serif;
-  text-transform: uppercase; letter-spacing: .04em; color: var(--ink); white-space: nowrap;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--ink); white-space: nowrap; text-decoration: none;
 }
 .topbar-right {
   flex: 1; background: var(--lavender); padding: 8px 20px 8px 12px;
@@ -106,12 +103,6 @@ img { max-width: 100%; display: block; }
   display: flex; flex-direction: column; gap: 18px;
 }
 .container--wide { max-width: 1160px; }
-
-.construction {
-  background: repeating-linear-gradient(45deg, var(--ink), var(--ink) 10px, var(--peach) 10px, var(--peach) 20px);
-  color: #FFF200; font: 800 10px 'Recursive', sans-serif; text-align: center;
-  padding: 6px; letter-spacing: .08em; animation: blink 1.4s step-start infinite;
-}
 
 /* ---------- generic card ---------- */
 .card {
@@ -162,7 +153,7 @@ img { max-width: 100%; display: block; }
   width: 64px; height: 64px; flex: none; border: none;
   margin: 12px 0 12px 12px; overflow: hidden; display: block;
 }
-.avatar { width: 100%; height: 100%; display: block; object-fit: cover; transform: scale(1.34); }
+.avatar { width: 100%; height: 100%; display: block; object-fit: cover; transform: scale(1.05); }
 .userinfo-body { flex: 1; min-width: 220px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
 .userinfo-name { font: 700 17px 'Space Grotesk', sans-serif; }
 .userinfo-role { font: 700 10.5px 'IBM Plex Mono', monospace; color: var(--muted); }
@@ -222,6 +213,10 @@ img { max-width: 100%; display: block; }
 .footer-copy { font: 11px/1.6 'IBM Plex Mono', monospace; color: var(--muted); }
 .footer-nav { display: flex; flex-direction: column; gap: 2px; font: 700 10.5px 'Recursive', sans-serif; text-transform: uppercase; }
 .footer-note { font: 11px/1.6 'IBM Plex Mono', monospace; color: var(--muted); text-align: right; }
+.footer-left { display: flex; flex-direction: column; gap: 6px; }
+.footer-social { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; font: 700 10px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .03em; }
+.footer-social a { color: var(--muted); text-decoration: none; }
+.footer-social a:hover { color: var(--ink); text-decoration: underline; }
 
 /* ---------- support lanes (aside) ---------- */
 .support-lanes { display: flex; flex-direction: column; gap: 10px; }
@@ -502,7 +497,7 @@ main:focus { outline: none; }
 a:hover { text-decoration-thickness: 2px; text-underline-offset: 2px; }
 
 /* SC 2.5.8 — 24px minimum target size */
-.nav a, .footer-nav a, .project-links a {
+.nav a, .footer-nav a, .project-links a, .footer-social a {
   display: inline-flex; align-items: center; min-height: 24px; padding: 3px 2px;
 }
 .toggle button { padding: 6px 10px; min-height: 24px; }
@@ -530,7 +525,6 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
 /* ---------- respect reduced-motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .marquee span { animation: none; }
-  .blink { animation: none; }
   *, *::before, *::after {
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;

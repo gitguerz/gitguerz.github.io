@@ -31,7 +31,7 @@
 <header class="header">
   <div class="topbar">
     <div class="topbar-left">
-      <div class="brand">guerz.lol</div>
+      <a class="brand" href="index.html">guerz.lol</a>
     </div>
     <div class="topbar-right">
       <div class="toggle" role="group" aria-label="color theme">
@@ -41,19 +41,15 @@
     </div>
   </div>
   <nav class="nav" aria-label="primary">
-    <a href="index.html" aria-current="page">home</a>
-    <a href="about.html">about</a>
     <a href="roadmap.html">roadmap</a>
-    <a href="projects.html">projects</a>
+    <a href="projects.html">fcc build archive</a>
+    <a href="guerzbox.html">guerzbox</a>
+    <a href="about.html">guerzography</a>
     <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">blogguerz</a>
-    <a href="https://twitch.tv/guerz" target="_blank" rel="noopener noreferrer">ttv/guerz</a>
-    <a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">github</a>
   </nav>
 </header>
 
 <main class="container" id="main" tabindex="-1">
-
-  <div class="construction">⚠ UNDER CONSTRUCTION — PARDON THE DUST ⚠</div>
 
   <figure class="banner-wrap">
     <img class="banner" src="banner-wipeout.png" width="1200" height="675" alt="GUERZ.LOL brutalist flyer — wireframe craft over a peach grid; web. code. vibes.; full-stack web developer in training; front-end by june 9, 2027">
@@ -63,7 +59,7 @@
     <span class="avatar-frame"><img class="avatar" id="avatar-img" src="favicon-peach.png" alt="guerz avatar"></span>
     <div class="userinfo-body" style="min-width:0;flex-direction:row;align-items:center;gap:16px;flex-wrap:wrap">
       <div class="userinfo-name" style="font-family:'Platypi',serif;font-size:64px;font-weight:800">Guerz</div>
-      <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;flex-direction:column;gap:6px;align-self:flex-end;margin-bottom:16px">
         <div style="background:#1c1a20;color:var(--peach);display:inline-block;padding:4px 10px;width:fit-content;font-size:12px">full-stack developer in training</div>
         <div style="display:flex;gap:6px">
           <div style="background:var(--peach);color:var(--ink);display:inline-block;padding:2px 7px;width:fit-content;font-size:10.5px">y2k-web-vibes</div>
@@ -76,7 +72,7 @@
   <div class="card card--lavender" style="background:var(--peach);color:var(--ink)">
     <div class="title-wrap"><h1 class="card-title">soft launch era; hard study mode</h1></div>
     <div class="card-body">
-      welcome to the <b>Guerz</b> corner of the world wide web, and this is my cyber gravity blanket fort for learning in public! ^_^ follow along as the journey unfolds through the curriculum i designed, plus whatever neat little reinforcement loops i happen upon that will help the code click. this is a space to log and document my journey towards a full-stack web developer. that said, what you see is mostly representative of where i am at in my studies plus built with the slight help of Bonnie (aka Claude) to get the GuerzBook operable and to add in the builds in the <a href="projects.html"><em>Projects</em></a> page.
+      welcome to the <b>Guerz</b> corner of the world wide web, and this is my cyber gravity blanket fort for learning in public! ^_^ follow along as the journey unfolds through the curriculum i designed, plus whatever neat little reinforcement loops i happen upon that will help the code click. this is a space to log and document my journey towards a full-stack web developer. that said, what you see is mostly representative of where i am at in my studies plus built with the slight help of Bonnie (aka Claude) to get the <a href="#guerzbook">GuerzBook</a> operable and to add in the builds in the <a href="projects.html">FCC Build Archive</a> page.
     </div>
 
     <div class="row" style="margin-top:4px">
@@ -106,7 +102,7 @@
     </div>
   </div>
 
-  <div class="card card--slate" style="background:var(--peach);color:var(--ink)">
+  <div class="card card--slate" id="guerzbook" style="background:var(--peach);color:var(--ink)">
     <h2 class="card-eyebrow" style="color:var(--ink)">guerzbook</h2>
     <div class="guestbook-text" style="opacity:.75">leave a note in the guestbo- errr... guerzbook! ^_^</div>
     <div id="guerzbook-entries">
@@ -142,12 +138,19 @@
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-copy">© guerz.lol<br>no cookies, just cache</div>
+    <div class="footer-left">
+      <div class="footer-copy">© guerz.lol<br>no cookies, just cache</div>
+      <ul class="footer-social" aria-label="social">
+        <li><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">gitguerz</a></li>
+        <li><a href="https://twitch.tv/guerz" target="_blank" rel="noopener noreferrer">ttv/guerz</a></li>
+      </ul>
+    </div>
     <nav class="footer-nav" aria-label="footer">
       <a href="index.html">home</a>
-      <a href="about.html">about</a>
+      <a href="about.html">guerzography</a>
       <a href="roadmap.html">roadmap</a>
-      <a href="projects.html">projects</a>
+      <a href="projects.html">fcc build archive</a>
+      <a href="guerzbox.html">guerzbox</a>
       <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">blogguerz</a>
     </nav>
     <div class="footer-note">best viewed at<br>any resolution</div>
