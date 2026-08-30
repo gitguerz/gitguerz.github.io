@@ -150,11 +150,11 @@ img { max-width: 100%; display: block; }
   box-shadow: 5px 5px 0 var(--shadow); overflow: hidden; flex-wrap: wrap;
 }
 .avatar-frame {
-  width: 64px; height: 64px; flex: none; border: none;
-  margin: 12px 0 12px 12px; overflow: hidden; display: block;
+  width: 161px; height: 161px; flex: none; border: none;
+  margin: 0; overflow: hidden; display: block;
 }
 .avatar { width: 100%; height: 100%; display: block; object-fit: cover; transform: scale(1.05); }
-.userinfo-body { flex: 1; min-width: 220px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.userinfo-body { flex: 1; min-width: 220px; padding: 0px 12px 6px; display: flex; flex-direction: column; gap: 8px; }
 .userinfo-name { font: 700 17px 'Space Grotesk', sans-serif; }
 .userinfo-role { font: 700 10.5px 'IBM Plex Mono', monospace; color: var(--muted); }
 
