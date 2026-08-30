@@ -190,6 +190,8 @@
         inner.appendChild(pane);
       });
       inner.insertBefore(bar, panes[0]);
+      var links = inner.querySelector(':scope > .project-links');
+      if (links) inner.appendChild(links);
     });
   }
 
