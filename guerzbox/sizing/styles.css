@@ -1,0 +1,52 @@
+/* border-box makes declared widths include padding and borders, which keeps sizing predictable. */
+* {
+  box-sizing: border-box;
+}
+
+/* A little fixed px padding gives the page consistent space around its content. */
+body {
+  margin: 0;
+  padding: 32px;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+}
+
+/* A percentage width lets the wrapper shrink and grow with its parent, while max-width stops it becoming too wide. */
+.wrapper {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* The card uses a responsive percentage width but fixed px padding and border thickness for a stable frame. */
+.card {
+  width: 75%;
+  padding: 24px;
+  border: 4px solid #2563eb;
+  border-radius: 12px;
+  background: white;
+}
+
+/* clamp() scales the heading with the viewport (vw) but never below 2rem or above 4rem. */
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-top: 0;
+  color: #1e3a8a;
+}
+
+/* rem sizes text relative to the root font size, which supports consistent and accessible text scaling. */
+p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Fixed px dimensions make this button keep a dependable tap target size. */
+button {
+  width: 160px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #0f766e;
+  color: white;
+  font-size: 1rem;
+}

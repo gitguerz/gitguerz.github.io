@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filters and Transforms Playground</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Filters and Transforms Playground</h1>
+
+    <main>
+      <section aria-labelledby="filters-heading">
+        <h2 id="filters-heading">CSS Filters</h2>
+
+        <div class="image-row">
+          <figure>
+            <!-- filter: blur(4px) -->
+            <img class="blur" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 320'%3E%3Crect width='440' height='320' fill='%2387ceeb'/%3E%3Ccircle cx='350' cy='70' r='42' fill='%23ffd166'/%3E%3Cpath d='M0 230 125 105l95 105 55-65 165 175H0Z' fill='%235d8a66'/%3E%3Cpath d='M0 270 125 145l95 105 55-65 130 135H0Z' fill='%233f6b4b'/%3E%3C/svg%3E" alt="Stylized landscape with mountains and a sun">
+            <figcaption>Blur</figcaption>
+          </figure>
+
+          <figure>
+            <!-- filter: grayscale(100%) -->
+            <img class="grayscale" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 320'%3E%3Crect width='440' height='320' fill='%2387ceeb'/%3E%3Ccircle cx='350' cy='70' r='42' fill='%23ffd166'/%3E%3Cpath d='M0 230 125 105l95 105 55-65 165 175H0Z' fill='%235d8a66'/%3E%3Cpath d='M0 270 125 145l95 105 55-65 130 135H0Z' fill='%233f6b4b'/%3E%3C/svg%3E" alt="Stylized landscape with mountains and a sun">
+            <figcaption>Grayscale</figcaption>
+          </figure>
+
+          <figure>
+            <!-- filter: sepia(100%) -->
+            <img class="sepia" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 320'%3E%3Crect width='440' height='320' fill='%2387ceeb'/%3E%3Ccircle cx='350' cy='70' r='42' fill='%23ffd166'/%3E%3Cpath d='M0 230 125 105l95 105 55-65 165 175H0Z' fill='%235d8a66'/%3E%3Cpath d='M0 270 125 145l95 105 55-65 130 135H0Z' fill='%233f6b4b'/%3E%3C/svg%3E" alt="Stylized landscape with mountains and a sun">
+            <figcaption>Sepia</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section aria-labelledby="transforms-heading">
+        <h2 id="transforms-heading">CSS Transforms</h2>
+
+        <div class="box-row">
+          <!-- transform: rotate(12deg) scale(1.15) -->
+          <div class="box rotate-and-scale">Rotated and scaled</div>
+
+          <!-- transform: translateX(-200vw); this box is invisible off-screen but is STILL in the accessibility tree. -->
+          <div class="box off-screen">Moved off-screen</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

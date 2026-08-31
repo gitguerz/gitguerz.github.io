@@ -1,0 +1,156 @@
+/*
+  TRBL is the order used by four-value shorthand properties:
+  top, right, bottom, left (clockwise from the top).
+  Example: margin: 10px 20px 30px 40px;
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 48px 24px;
+  background: #f8fafc;
+  color: #172033;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+.intro {
+  margin: 0 0 32px;
+  color: #475569;
+}
+
+.box-stage {
+  position: relative;
+  display: flow-root;
+  margin-bottom: 48px;
+  padding: 1px;
+  background: #ffd6e5;
+  outline: 3px dashed #e11d78;
+  outline-offset: 4px;
+}
+
+.margin-label {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  padding: 3px 7px;
+  background: #e11d78;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.border-layer {
+  position: relative;
+  margin: 58px;
+  border: 14px solid #f97316;
+  background: #fed7aa;
+  outline: 2px solid #c2410c;
+}
+
+.border-label {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  padding: 2px 6px;
+  background: #c2410c;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.padding-layer {
+  position: relative;
+  padding: 52px;
+  background: #bfdbfe;
+  outline: 2px solid #2563eb;
+}
+
+.padding-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 2px 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.content-layer {
+  display: grid;
+  min-height: 112px;
+  place-items: center;
+  background: #bbf7d0;
+  outline: 2px solid #16a34a;
+  color: #14532d;
+  font-weight: 700;
+}
+
+.content-layer span {
+  padding: 5px 9px;
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+}
+
+.comparison {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.sizing-box {
+  padding: 24px;
+  border: 6px solid #4f46e5;
+  background: #e0e7ff;
+  color: #312e81;
+}
+
+/* Declared width: 200px; actual rendered width: 260px (200 + 48px padding + 12px border). */
+.content-box {
+  box-sizing: content-box;
+  width: 200px;
+}
+
+/* Declared width: 200px; actual rendered width: 200px (padding and border are included). */
+.border-box {
+  box-sizing: border-box;
+  width: 200px;
+}
+
+.sizing-box strong,
+.sizing-box span {
+  display: block;
+}
+
+.sizing-box strong {
+  margin-bottom: 8px;
+}
+
+.sizing-box span {
+  font-size: 0.85rem;
+}

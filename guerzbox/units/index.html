@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Units Playground</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>CSS Units Playground</h1>
+  <p class="hint">
+    Resize the browser window or drag the container's bottom-right corner.
+    Watch which boxes track the container and which stay fixed.
+  </p>
+
+  <main class="container">
+    <!-- px is an absolute CSS unit, so this width is not relative to the parent. -->
+    <div class="box box-1">Box 1 — width: 240px</div>
+
+    <!-- % is relative to the width of this box's containing parent. -->
+    <div class="box box-2">Box 2 — width: 60%</div>
+
+    <!-- rem is relative to the root html element's font size (16px here). -->
+    <div class="box box-3">Box 3 — width: 18rem</div>
+
+    <!-- calc() combines values: 50% is relative to the parent, then 20px is subtracted. -->
+    <div class="box box-4">Box 4 — width: calc(50% - 20px)</div>
+  </main>
+</body>
+</html>

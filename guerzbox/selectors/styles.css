@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background: #f6f8fb;
+  color: #1f2937;
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+  padding: 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  background: white;
+}
+
+nav,
+footer {
+  margin-top: 16px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+}
+
+/* Group selector: targets every h1, h2, and h3 heading. */
+h1,
+h2,
+h3 {
+  color: #3730a3;
+  border-bottom: 2px solid #c4b5fd;
+}
+
+/* Element selector: targets every paragraph on the page. */
+p {
+  color: #0f766e;
+}
+
+/* Class selector: targets every element with class="card". */
+.card {
+  padding: 14px;
+  border: 3px solid #f59e0b;
+  border-radius: 8px;
+  background: #fffbeb;
+}
+
+/* ID selector: targets the one element with id="cta". */
+#cta {
+  border: 3px solid #db2777;
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+/* Descendant selector: targets paragraphs anywhere inside a .card. */
+.card p {
+  background: #dbeafe;
+  border-left: 5px solid #2563eb;
+  padding: 6px;
+}
+
+/* Child selector: targets only paragraphs directly inside a .card. */
+.card > p {
+  background: #dcfce7;
+  border-left-color: #16a34a;
+  color: #166534;
+}
+
+/* Attribute selector: targets links whose href begins with "https". */
+a[href^="https"] {
+  color: #7c3aed;
+  font-weight: bold;
+}
+
+/* Attribute selector: targets email input fields. */
+input[type="email"] {
+  border: 3px solid #0891b2;
+  background: #ecfeff;
+  padding: 8px;
+}
+
+/* Attribute selector: targets disabled buttons. */
+button[disabled] {
+  border: 2px dashed #64748b;
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+button {
+  padding: 8px 12px;
+  border: 2px solid #1d4ed8;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+}
+
+label,
+input,
+button {
+  display: block;
+  margin-top: 8px;
+}

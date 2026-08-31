@@ -51,6 +51,10 @@
 
 <main class="container container--wide" id="main" tabindex="-1">
 
+  <figure class="banner-wrap">
+    <img class="banner" style="box-shadow:5px 5px 0 var(--peach)" src="banner-guerzbox.png" width="1200" height="675" alt="GUERZ.LOL brutalist flyer — sector-g/00, wireframe pyramid sculpture over a lavender grid; internet connected, reality optional; analog dreams, digital grind, future primitive.">
+  </figure>
+
   <div class="card card--lavender" style="background:var(--lavender);color:var(--ink);box-shadow:5px 5px 0 var(--peach)">
     <div class="title-wrap"><h1 class="card-title">GUERZBOX</h1></div>
     <div class="card-body">guerzbox is where i throw shit at the wall. not to see what sticks — to see what i like. no aesthetic obligation, no “does this fit the site” — just me testing technique for technique's sake. cold builds live here too, unguided and untouched by the syllabus. take it as the raw, unfiltered version of how i actually learn.</div>
@@ -60,9 +64,563 @@
     <summary>
       <span class="section-caret">▸</span>
       <span class="section-title">cold builds</span>
-      <span class="section-count">5 builds · from scratch, no tutorial</span>
+      <span class="section-count">16 builds · from scratch, no tutorial</span>
     </summary>
     <div class="section-body">
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Selectors</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">a full page — header, nav, cards, sidebar, footer — with every selector type wired into it: grouped, element, class, <b>#id</b>, descendant, direct child, and attribute selectors matching on <b>href^="https"</b>, <b>type="email"</b> and <b>[disabled]</b>. the descendant and child rules paint different colors on purpose, so the gap between <b>.card p</b> and <b>.card &gt; p</b> is something you see, not something you take on faith.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;CSS Selectors Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Selectors Playground&lt;/h1&gt;
+      &lt;p&gt;A tiny page for seeing CSS selectors in action.&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;nav aria-label="Main navigation"&gt;
+      &lt;a href="#articles"&gt;Articles&lt;/a&gt; |
+      &lt;a href="https://developer.mozilla.org/"&gt;MDN reference&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="layout"&gt;
+      &lt;main id="articles"&gt;
+        &lt;h2&gt;Featured Articles&lt;/h2&gt;
+
+        &lt;section class="cards" aria-label="Article cards"&gt;
+          &lt;article class="card"&gt;
+            &lt;h3&gt;Direct Child Paragraph&lt;/h3&gt;
+            &lt;p&gt;This direct child paragraph gets the green child-selector style.&lt;/p&gt;
+            &lt;div&gt;
+              &lt;p&gt;This nested paragraph gets the blue descendant-selector style.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;button id="cta"&gt;Read article&lt;/button&gt;
+          &lt;/article&gt;
+
+          &lt;article class="card"&gt;
+            &lt;h3&gt;Second Card&lt;/h3&gt;
+            &lt;p&gt;This is another direct child paragraph inside a card.&lt;/p&gt;
+            &lt;button disabled&gt;Coming soon&lt;/button&gt;
+          &lt;/article&gt;
+        &lt;/section&gt;
+      &lt;/main&gt;
+
+      &lt;aside&gt;
+        &lt;h2&gt;Newsletter&lt;/h2&gt;
+        &lt;p&gt;Get one short CSS tip each week.&lt;/p&gt;
+        &lt;label for="email"&gt;Email address&lt;/label&gt;
+        &lt;input id="email" type="email" placeholder="you@example.com"&gt;
+        &lt;button&gt;Subscribe&lt;/button&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;
+
+    &lt;footer&gt;
+      &lt;p&gt;Built to explore CSS selectors.&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background: #f6f8fb;
+  color: #1f2937;
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+  padding: 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  background: white;
+}
+
+nav,
+footer {
+  margin-top: 16px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+}
+
+/* Group selector: targets every h1, h2, and h3 heading. */
+h1,
+h2,
+h3 {
+  color: #3730a3;
+  border-bottom: 2px solid #c4b5fd;
+}
+
+/* Element selector: targets every paragraph on the page. */
+p {
+  color: #0f766e;
+}
+
+/* Class selector: targets every element with class="card". */
+.card {
+  padding: 14px;
+  border: 3px solid #f59e0b;
+  border-radius: 8px;
+  background: #fffbeb;
+}
+
+/* ID selector: targets the one element with id="cta". */
+#cta {
+  border: 3px solid #db2777;
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+/* Descendant selector: targets paragraphs anywhere inside a .card. */
+.card p {
+  background: #dbeafe;
+  border-left: 5px solid #2563eb;
+  padding: 6px;
+}
+
+/* Child selector: targets only paragraphs directly inside a .card. */
+.card &gt; p {
+  background: #dcfce7;
+  border-left-color: #16a34a;
+  color: #166534;
+}
+
+/* Attribute selector: targets links whose href begins with "https". */
+a[href^="https"] {
+  color: #7c3aed;
+  font-weight: bold;
+}
+
+/* Attribute selector: targets email input fields. */
+input[type="email"] {
+  border: 3px solid #0891b2;
+  background: #ecfeff;
+  padding: 8px;
+}
+
+/* Attribute selector: targets disabled buttons. */
+button[disabled] {
+  border: 2px dashed #64748b;
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+button {
+  padding: 8px 12px;
+  border: 2px solid #1d4ed8;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+}
+
+label,
+input,
+button {
+  display: block;
+  margin-top: 8px;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/selectors/index.html" title="Selectors preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/selectors/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/selectors/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Specificity</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">three head-to-head matchups, each labeled with which rule wins and why: two <b>.card</b> rules at identical specificity where the later one takes it, <b>p</b> losing to <b>.message</b>, and <b>.button-style</b> losing to <b>#cta</b>. the winning value is the one on screen, so the cascade is legible without opening devtools.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Specificity Mini Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;article class="card"&gt;
+      &lt;h1&gt;Specificity&lt;/h1&gt;
+      &lt;p class="message"&gt;This paragraph is green because the class rule wins.&lt;/p&gt;
+      &lt;button id="cta" class="button-style" type="button"&gt;This button is pink&lt;/button&gt;
+    &lt;/article&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+}
+
+.card {
+  max-width: 360px;
+  padding: 20px;
+  border: 4px solid #2563eb; /* Loses: the next .card rule has the same specificity. */
+}
+
+.card {
+  border-color: #f97316; /* Wins: same specificity, but this rule comes later. */
+}
+
+p {
+  color: #2563eb; /* Loses: an element selector is less specific than a class selector. */
+}
+
+.message {
+  color: #16a34a; /* Wins: a class selector is more specific than p. */
+}
+
+.button-style {
+  background: #7c3aed; /* Loses: an ID selector is more specific than a class selector. */
+}
+
+#cta {
+  background: #db2777; /* Wins: an ID selector is more specific than a class selector. */
+}
+
+button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 6px;
+  color: white;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/specificity/index.html" title="Specificity preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/specificity/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/specificity/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Inheritance</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">which properties come down the tree and which don't — <b>color</b> and <b>font-family</b> inherit into the heading and paragraph automatically, <b>background-color</b> doesn't. then the three override keywords in practice: <b>inherit</b> pulling the card's color into a button that would otherwise use the browser default, <b>initial</b> resetting a <b>strong</b> back to spec, and <b>unset</b> letting <b>font-family</b> fall back to inheriting.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Inheritance Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;article class="card"&gt;
+      &lt;h1&gt;Inheritance Playground&lt;/h1&gt;
+      &lt;p&gt;The card's color and font are inherited by this paragraph, but &lt;strong&gt;this strong text resets its color.&lt;/strong&gt;&lt;/p&gt;
+      &lt;button type="button"&gt;Inherited button color&lt;/button&gt;
+    &lt;/article&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>/* color and font-family inherit by default, so the heading and paragraph use these values; background-color does not inherit, so children stay transparent. */
+.card {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 24px;
+  border: 3px solid #7c3aed;
+  border-radius: 12px;
+  background-color: #f3e8ff;
+  color: #5b21b6;
+  font-family: Georgia, serif;
+}
+
+/* inherit explicitly makes the button take the card's text color instead of its browser-default button color. */
+button {
+  padding: 10px 14px;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  background: #fef3c7;
+  color: inherit;
+}
+
+/* initial resets color to its CSS initial value, so this strong text does not use the card's purple color. */
+strong {
+  color: initial;
+}
+
+/* unset checks the property's normal behavior: font-family inherits, so the button receives the card's Georgia font. */
+button {
+  font-family: unset;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/inheritance/index.html" title="Inheritance preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/inheritance/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/inheritance/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Pseudo-classes</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body"><b>:nth-child(2)</b> and <b>p:nth-of-type(2)</b> applied to the same container of mixed elements — both selectors say "2", and they highlight different things. one counts every sibling, the other counts only siblings of its own type. the matched elements are color-coded and the markup labels its own positions, so the miscount you'd otherwise make is visible instead of theoretical.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Pseudo-class Playground&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="container"&gt;
+    &lt;p&gt;First element: first paragraph&lt;/p&gt;
+    &lt;div&gt;Second element: first div — matched by :nth-child(2)&lt;/div&gt;
+    &lt;span&gt;Third element: span&lt;/span&gt;
+    &lt;p&gt;Fourth element: second paragraph — matched by p:nth-of-type(2)&lt;/p&gt;
+    &lt;div&gt;Fifth element: second div&lt;/div&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>.container {
+  max-width: 560px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border: 2px solid #334155;
+  border-radius: 12px;
+  font-family: system-ui, sans-serif;
+}
+
+.container &gt; * {
+  display: block;
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+/* Selects the second child overall, no matter what kind of element it is. */
+.container &gt; :nth-child(2) {
+  background-color: #fde68a;
+  border-color: #d97706;
+}
+
+/* Selects the second &lt;p&gt; among its sibling &lt;p&gt; elements. */
+.container &gt; p:nth-of-type(2) {
+  background-color: #bfdbfe;
+  border-color: #2563eb;
+}
+
+/*
+  Both selectors use "2", but they count different things:
+  :nth-child(2) counts every child, so it highlights the second element overall
+  (the first &lt;div&gt;). p:nth-of-type(2) counts only &lt;p&gt; siblings, so it highlights
+  the second &lt;p&gt;, which is the fourth element overall.
+*/
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/pseudo-class/index.html" title="Pseudo-classes preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/pseudo-class/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/pseudo-class/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Pseudo-elements</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">two paragraphs styled identically — same background, padding, border on both <b>::before</b> rules — except one declares <b>content</b> and one doesn't. only one renders. <b>content</b> isn't decoration, it's the switch that generates the pseudo-element at all; without it there's nothing for the other properties to decorate.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Pseudo-element Playground&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="container"&gt;
+    &lt;p class="with-content"&gt;Pseudo-element playground paragraph.&lt;/p&gt;
+    &lt;p class="without-content"&gt;Pseudo-element playground paragraph.&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>/* Keeps the example centered and easy to compare. */
+.container {
+  max-width: 560px;
+  margin: 3rem auto;
+  font-family: system-ui, sans-serif;
+}
+
+/* Gives both paragraphs the same appearance. */
+p {
+  padding: 1rem;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+}
+
+/* content generates this ::before box and places "NEW" inside it. */
+.with-content::before {
+  content: "NEW";
+  background-color: #fde68a;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d97706;
+  margin-right: 0.75rem;
+}
+
+/*
+  Without content, the browser does not generate this ::before box at all.
+  content is not just its text; it tells the browser to create the
+  pseudo-element, so the other styles have nothing to decorate.
+*/
+.without-content::before {
+  background-color: #fde68a;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d97706;
+  margin-right: 0.75rem;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/pseudo-element/index.html" title="Pseudo-elements preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/pseudo-element/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/pseudo-element/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
     <details class="project-box">
       <summary>
         <span class="project-caret">▸</span>
@@ -71,60 +629,485 @@
         <span class="project-stack">html + css</span>
       </summary>
       <div class="project-inner">
-        <div class="card-body">a two-box demo proving how <b>box-sizing: border-box</b> folds padding and border <i>into</i> the declared width instead of adding on top, centered with a flex container. every line is commented so the model actually sticks.</div>
-        <div class="view-pane" data-pane="code">
-          <div class="pane-label">code</div>
+        <div class="card-body">a labeled cutaway of the box model — margin, border, padding and content each rendered as its own colored layer, nested the way the model actually stacks. below it, two boxes both declared <b>width: 200px</b>: <b>content-box</b> renders at 260px, <b>border-box</b> renders at 200px. same number in, different number out. TRBL shorthand order explained up top.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
           <div class="code-block code-block--peach">
             <div class="code-bar">
-              <span class="code-file">boxmodel.html</span>
+              <span class="code-file">index.html</span>
               <button class="code-copy" type="button">copy</button>
             </div>
-            <pre class="code"><code>&lt;!DOCTYPE html&gt;                          &lt;!-- tells the browser this is modern HTML5 --&gt;
-&lt;html&gt;                                   &lt;!-- root element — everything lives inside it --&gt;
-    &lt;head&gt;                               &lt;!-- metadata + styles; nothing here renders on the page --&gt;
-        &lt;style&gt;
-            /* .box — targets every element with class="box" */
-            .box {
-                box-sizing: border-box;      /* padding + border count INSIDE the width, not added on top */
-                width: 200px;                /* total outer width — 110px of it is actual content space */
-                padding: 40px;               /* inner breathing room, eats into the 200px */
-                border: 5px solid black;     /* also eats into the 200px because of border-box */
-                margin: 40px;                /* space OUTSIDE the box — never counted in the width */
-                background-color: lightblue; /* fills content + padding, stops at the border */
-            }
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Box Model Playground&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main&gt;
+    &lt;h1&gt;CSS Box Model Playground&lt;/h1&gt;
+    &lt;p class="intro"&gt;The pink space around the orange border is the element's actual margin.&lt;/p&gt;
 
-            /* .container — targets the wrapper div holding both boxes */
-            .container {
-                display: flex;           /* children line up in a row instead of stacking vertically */
-                justify-content: center; /* pushes the whole group to the horizontal center */
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-    &lt;body&gt;                               &lt;!-- everything visible on the page goes here --&gt;
-        &lt;div class="container"&gt;          &lt;!-- the flex parent — controls how the boxes are arranged --&gt;
-            &lt;div class="box"&gt;BOX 1&lt;/div&gt; &lt;!-- flex child, styled by .box --&gt;
-            &lt;div class="box"&gt;BOX 2&lt;/div&gt; &lt;!-- flex child, same styling --&gt;
+    &lt;section class="box-stage" aria-label="A labeled CSS box model example"&gt;
+      &lt;span class="margin-label"&gt;margin&lt;/span&gt;
+      &lt;div class="border-layer"&gt;
+        &lt;span class="border-label"&gt;border&lt;/span&gt;
+        &lt;div class="padding-layer"&gt;
+          &lt;span class="padding-label"&gt;padding&lt;/span&gt;
+          &lt;div class="content-layer"&gt;&lt;span&gt;content&lt;/span&gt;&lt;/div&gt;
         &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section aria-labelledby="sizing-heading"&gt;
+      &lt;h2 id="sizing-heading"&gt;Same declared width, different rendered widths&lt;/h2&gt;
+      &lt;div class="comparison"&gt;
+        &lt;div class="sizing-box content-box"&gt;
+          &lt;strong&gt;content-box&lt;/strong&gt;
+          &lt;span&gt;Declared: 200px&lt;/span&gt;
+          &lt;span&gt;Rendered: 260px&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="sizing-box border-box"&gt;
+          &lt;strong&gt;border-box&lt;/strong&gt;
+          &lt;span&gt;Declared: 200px&lt;/span&gt;
+          &lt;span&gt;Rendered: 200px&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>/*
+  TRBL is the order used by four-value shorthand properties:
+  top, right, bottom, left (clockwise from the top).
+  Example: margin: 10px 20px 30px 40px;
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 48px 24px;
+  background: #f8fafc;
+  color: #172033;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+.intro {
+  margin: 0 0 32px;
+  color: #475569;
+}
+
+.box-stage {
+  position: relative;
+  display: flow-root;
+  margin-bottom: 48px;
+  padding: 1px;
+  background: #ffd6e5;
+  outline: 3px dashed #e11d78;
+  outline-offset: 4px;
+}
+
+.margin-label {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  padding: 3px 7px;
+  background: #e11d78;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.border-layer {
+  position: relative;
+  margin: 58px;
+  border: 14px solid #f97316;
+  background: #fed7aa;
+  outline: 2px solid #c2410c;
+}
+
+.border-label {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  padding: 2px 6px;
+  background: #c2410c;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.padding-layer {
+  position: relative;
+  padding: 52px;
+  background: #bfdbfe;
+  outline: 2px solid #2563eb;
+}
+
+.padding-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 2px 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.content-layer {
+  display: grid;
+  min-height: 112px;
+  place-items: center;
+  background: #bbf7d0;
+  outline: 2px solid #16a34a;
+  color: #14532d;
+  font-weight: 700;
+}
+
+.content-layer span {
+  padding: 5px 9px;
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+}
+
+.comparison {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.sizing-box {
+  padding: 24px;
+  border: 6px solid #4f46e5;
+  background: #e0e7ff;
+  color: #312e81;
+}
+
+/* Declared width: 200px; actual rendered width: 260px (200 + 48px padding + 12px border). */
+.content-box {
+  box-sizing: content-box;
+  width: 200px;
+}
+
+/* Declared width: 200px; actual rendered width: 200px (padding and border are included). */
+.border-box {
+  box-sizing: border-box;
+  width: 200px;
+}
+
+.sizing-box strong,
+.sizing-box span {
+  display: block;
+}
+
+.sizing-box strong {
+  margin-bottom: 8px;
+}
+
+.sizing-box span {
+  font-size: 0.85rem;
+}
+</code></pre>
           </div>
         </div>
         <div class="view-pane" data-pane="preview">
           <div class="pane-label">preview</div>
-          <iframe class="preview-frame" data-src="guerzbox/boxmodel.html" title="Box Model preview" loading="lazy"></iframe>
+          <iframe class="preview-frame" data-src="guerzbox/box-model/index.html" title="Box Model preview" loading="lazy"></iframe>
         </div>
-        <div class="project-links"><a href="guerzbox/boxmodel.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/boxmodel.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        <div class="project-links"><a href="guerzbox/box-model/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/box-model/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
       </div>
     </details>
     <details class="project-box">
       <summary>
         <span class="project-caret">▸</span>
         <span class="badge badge--lavender">from scratch</span>
-        <span class="project-name">Flexbox</span>
+        <span class="project-name">Units</span>
         <span class="project-stack">html + css</span>
       </summary>
       <div class="project-inner">
-        <div class="card-body">a five-part flexbox reference — <b>flex-direction</b>, <b>justify-content</b>, <b>align-items</b>, <b>flex-wrap</b> and <b>flex-grow</b>, each with side-by-side demo boxes so the axis behaviour is visible. commented line-by-line.</div>
+        <div class="card-body">four boxes sized in <b>px</b>, <b>%</b>, <b>rem</b>, and <b>calc(50% - 20px)</b>, inside a container you can drag wider and narrower by its corner — <b>resize: horizontal</b>, no javascript. watch which boxes track the container and which refuse to move. each box comments what it's measured <em>relative to</em>.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;CSS Units Playground&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;CSS Units Playground&lt;/h1&gt;
+  &lt;p class="hint"&gt;
+    Resize the browser window or drag the container's bottom-right corner.
+    Watch which boxes track the container and which stay fixed.
+  &lt;/p&gt;
+
+  &lt;main class="container"&gt;
+    &lt;!-- px is an absolute CSS unit, so this width is not relative to the parent. --&gt;
+    &lt;div class="box box-1"&gt;Box 1 — width: 240px&lt;/div&gt;
+
+    &lt;!-- % is relative to the width of this box's containing parent. --&gt;
+    &lt;div class="box box-2"&gt;Box 2 — width: 60%&lt;/div&gt;
+
+    &lt;!-- rem is relative to the root html element's font size (16px here). --&gt;
+    &lt;div class="box box-3"&gt;Box 3 — width: 18rem&lt;/div&gt;
+
+    &lt;!-- calc() combines values: 50% is relative to the parent, then 20px is subtracted. --&gt;
+    &lt;div class="box box-4"&gt;Box 4 — width: calc(50% - 20px)&lt;/div&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>:root {
+  font-size: 16px;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: system-ui, sans-serif;
+  color: #172033;
+  background: #eef2ff;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.hint {
+  max-width: 65ch;
+  color: #4b5563;
+}
+
+.container {
+  width: min(80vw, 56rem);
+  min-width: 18rem;
+  max-width: 95vw;
+  margin-top: 2rem;
+  padding: 1.25rem;
+  overflow: auto;
+  resize: horizontal;
+  border: 3px dashed #64748b;
+  border-radius: 0.75rem;
+  background: white;
+  box-shadow: 0 1rem 2rem rgb(15 23 42 / 10%);
+}
+
+.box {
+  margin: 0.75rem 0 1.5rem;
+  padding: 1rem;
+  border: 2px solid #3730a3;
+  border-radius: 0.5rem;
+  color: white;
+  background: #4f46e5;
+  white-space: nowrap;
+}
+
+.box-1 {
+  width: 240px;
+}
+
+.box-2 {
+  width: 60%;
+}
+
+.box-3 {
+  width: 18rem;
+}
+
+.box-4 {
+  width: calc(50% - 20px);
+}
+
+code {
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  background: #e2e8f0;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/units/index.html" title="Units preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/units/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/units/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Sizing</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">the responsive-sizing toolkit in one card: <b>%</b> widths that flex with the parent, <b>max-width</b> capping how far they go, <b>rem</b> text that scales with the root, and a <b>clamp(2rem, 5vw, 4rem)</b> heading that tracks the viewport but refuses to pass its own floor or ceiling. <b>box-sizing: border-box</b> underneath keeping the math honest.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Sizing Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="wrapper"&gt;
+      &lt;article class="card"&gt;
+        &lt;h1&gt;Sizing Playground&lt;/h1&gt;
+        &lt;p&gt;Resize the browser window to see percentage widths and the clamped heading size respond.&lt;/p&gt;
+        &lt;button type="button"&gt;Try sizing&lt;/button&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>/* border-box makes declared widths include padding and borders, which keeps sizing predictable. */
+* {
+  box-sizing: border-box;
+}
+
+/* A little fixed px padding gives the page consistent space around its content. */
+body {
+  margin: 0;
+  padding: 32px;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+}
+
+/* A percentage width lets the wrapper shrink and grow with its parent, while max-width stops it becoming too wide. */
+.wrapper {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* The card uses a responsive percentage width but fixed px padding and border thickness for a stable frame. */
+.card {
+  width: 75%;
+  padding: 24px;
+  border: 4px solid #2563eb;
+  border-radius: 12px;
+  background: white;
+}
+
+/* clamp() scales the heading with the viewport (vw) but never below 2rem or above 4rem. */
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-top: 0;
+  color: #1e3a8a;
+}
+
+/* rem sizes text relative to the root font size, which supports consistent and accessible text scaling. */
+p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Fixed px dimensions make this button keep a dependable tap target size. */
+button {
+  width: 160px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #0f766e;
+  color: white;
+  font-size: 1rem;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/sizing/index.html" title="Sizing preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/sizing/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/sizing/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Flexbox — Property Reference</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">the glossary. five sections isolating one property each — <b>flex-direction</b>, <b>justify-content</b>, <b>align-items</b>, <b>flex-wrap</b>, <b>flex-grow</b> — with every value rendered side by side in the same row, so all five <b>justify-content</b> options are one glance apart instead of five separate demos.</div>
         <div class="view-pane" data-pane="html">
           <div class="pane-label">html</div>
           <div class="code-block code-block--peach">
@@ -300,87 +1283,66 @@ p.label {
         </div>
         <div class="view-pane" data-pane="preview">
           <div class="pane-label">preview</div>
-          <iframe class="preview-frame" data-src="guerzbox/flexbox/flexbox.html" title="Flexbox preview" loading="lazy"></iframe>
+          <iframe class="preview-frame" data-src="guerzbox/flexbox-reference/index.html" title="Flexbox — Property Reference preview" loading="lazy"></iframe>
         </div>
-        <div class="project-links"><a href="guerzbox/flexbox/flexbox.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/flexbox/flexbox.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        <div class="project-links"><a href="guerzbox/flexbox-reference/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/flexbox-reference/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
       </div>
     </details>
     <details class="project-box">
       <summary>
         <span class="project-caret">▸</span>
         <span class="badge badge--lavender">from scratch</span>
-        <span class="project-name">CSS Positioning</span>
+        <span class="project-name">Flexbox — Interactive Demo</span>
         <span class="project-stack">html + css</span>
       </summary>
       <div class="project-inner">
-        <div class="card-body">a full walkthrough of all five position values — static, relative, absolute, fixed and sticky — each in its own labelled section. built cold to lock the differences in.</div>
+        <div class="card-body">the applied version. four cards in a flex row you can squeeze and stretch by dragging the container's edge — <b>flex-wrap</b> kicking items onto a new row when they run out of space, and one card running <b>flex: 1</b> so it swallows whatever's left. the reference shows you the properties; this one lets you push on them.</div>
         <div class="view-pane" data-pane="html">
           <div class="pane-label">html</div>
           <div class="code-block code-block--peach">
             <div class="code-bar">
-              <span class="code-file">positioning.html</span>
+              <span class="code-file">index.html</span>
               <button class="code-copy" type="button">copy</button>
             </div>
-            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+            <pre class="code"><code>&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Flexbox Playground — Interactive Demo&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main class="playground"&gt;
+      &lt;h1&gt;Flexbox Playground — Interactive Demo&lt;/h1&gt;
+      &lt;p&gt;&lt;strong&gt;Drag the corner&lt;/strong&gt; of the dashed box below to resize it. Watch two things: the cards &lt;strong&gt;wrap&lt;/strong&gt; onto a new row once they run out of space, and the green card (&lt;code&gt;flex: 1&lt;/code&gt;) &lt;strong&gt;grows&lt;/strong&gt; to fill whatever room is left over.&lt;/p&gt;
 
-&lt;head&gt; &lt;!-- Open the head section where metadata is defined --&gt;
-    &lt;meta charset="UTF-8"&gt; &lt;!-- Tell the browser to use UTF-8 encoding for all text (includes emojis, accents, etc)--&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt; &lt;!-- Viewport tells mobile browsers to treat the page width as device width, not zoomed out --&gt;
-    &lt;title&gt;Positioning Cold Build Instructional&lt;/title&gt; &lt;!-- Title appears in browser tab and search results --&gt;
-    &lt;link rel="stylesheet" href="positioning.css"&gt; &lt;!-- Link to external CSS file so styles apply to this HTML --&gt;
-&lt;/head&gt; &lt;!-- Close the head section, page content starts after this --&gt;
+      &lt;div class="resize-wrap"&gt;
+        &lt;section class="card-container" aria-label="Four flexbox cards"&gt;
+          &lt;article class="card"&gt;
+            &lt;h2&gt;Card One&lt;/h2&gt;
+            &lt;p&gt;This card has a preferred width of 180 pixels.&lt;/p&gt;
+          &lt;/article&gt;
 
-&lt;body&gt; &lt;!-- Open body where all visible content lives --&gt;
-  &lt;div class="container"&gt; &lt;!-- Container div holds ALL content, opens once, closes once at the very end --&gt;
+          &lt;article class="card grow"&gt;
+            &lt;h2&gt;Card Two&lt;/h2&gt;
+            &lt;p&gt;This card grows into the available space with flex: 1.&lt;/p&gt;
+          &lt;/article&gt;
 
-    &lt;h1&gt;CSS Positioning Cold Build Instructional&lt;/h1&gt; &lt;!-- Main heading for the page, largest; most important--&gt;
-    &lt;p&gt;CSS positioning changes how elements flow on the page. There are five values: static (default), relative, absolute, fixed, and sticky.&lt;/p&gt;
+          &lt;article class="card"&gt;
+            &lt;h2&gt;Card Three&lt;/h2&gt;
+            &lt;p&gt;This card can wrap to a new line on a smaller screen.&lt;/p&gt;
+          &lt;/article&gt;
 
-    &lt;section class="positioning-section"&gt; &lt;!-- Section for static positioning examples --&gt;
-      &lt;h2&gt;Static Positioning&lt;/h2&gt; &lt;!-- Heading for static positioning section --&gt;
-      &lt;p&gt;Static positioning is the default value for all elements. Elements stack in normal document flow. Top, right, bottom, left properties do not apply; they are ignored.&lt;/p&gt; &lt;!-- Paragraph explaining static positioning --&gt;
-      &lt;div class="static-example"&gt; &lt;!-- Div showing a statically positioned element --&gt;
-        &lt;p&gt;I am static. I sit exactly where the document flow puts me.&lt;/p&gt; &lt;!-- Paragraph is statically positioned --&gt;
-      &lt;/div&gt; &lt;!-- Close the static example div — this was missing before, which broke everything after it --&gt;
-    &lt;/section&gt; &lt;!-- Close the static positioning section --&gt;
-
-    &lt;section class="positioning-section"&gt; &lt;!-- Section for relative positioning examples --&gt;
-      &lt;h2&gt;Relative Positioning&lt;/h2&gt; &lt;!-- Heading for relative positioning section --&gt;
-      &lt;p&gt;Relative positioning moves an element from its normal position using top, right, bottom, left. It still takes up space where it would normally sit.&lt;/p&gt; &lt;!-- Paragraph explaining relative positioning --&gt;
-      &lt;div class="relative-example"&gt; &lt;!-- Create a div with class "relative-example" to hold the relatively positioned element --&gt;
-        &lt;p&gt;I am relative. I moved 20px from the top, but my original spot is still reserved.&lt;/p&gt; &lt;!-- Paragraph that gets moved with CSS --&gt;
-      &lt;/div&gt; &lt;!-- Close the relative example div --&gt;
-    &lt;/section&gt; &lt;!-- Close the relative positioning section --&gt;
-
-    &lt;section class="positioning-section"&gt; &lt;!-- Section for absolute positioning examples, now with position:relative applied so absolute anchors HERE instead of the whole page --&gt;
-      &lt;h2&gt;Absolute Positioning&lt;/h2&gt; &lt;!-- Heading for absolute positioning section --&gt;
-      &lt;p&gt;Absolute positioning removes an element from normal document flow. It positions relative to the nearest positioned ancestor (this section), not the whole page.&lt;/p&gt; &lt;!-- Explain that absolute takes element out of flow --&gt;
-      &lt;div class="absolute-example"&gt; &lt;!-- Create a div with class "absolute-example" for the absolutely positioned element --&gt;
-        &lt;p&gt;I am absolutely positioned inside my section, not flying to the top of the page.&lt;/p&gt; &lt;!-- Paragraph positioned absolutely, doesn't reserve space --&gt;
-      &lt;/div&gt; &lt;!-- Close the absolute example div --&gt;
-    &lt;/section&gt; &lt;!-- Close the absolute positioning section --&gt;
-
-    &lt;section class="positioning-section"&gt; &lt;!-- Section for fixed positioning examples --&gt;
-      &lt;h2&gt;Fixed Positioning&lt;/h2&gt; &lt;!-- Heading for fixed positioning section --&gt;
-      &lt;p&gt;Fixed positioning anchors an element to the viewport. It stays in place even when you scroll. Removed from normal document flow.&lt;/p&gt; &lt;!-- Explain that fixed stays visible during scroll --&gt;
-      &lt;div class="fixed-example"&gt; &lt;!-- Create a div with class "fixed-example" for the fixed positioned element --&gt;
-        &lt;p&gt;I am fixed. I stay in place when you scroll.&lt;/p&gt; &lt;!-- Paragraph stays visible as page scrolls --&gt;
-      &lt;/div&gt; &lt;!-- Close the fixed example div --&gt;
-    &lt;/section&gt; &lt;!-- Close the fixed positioning section --&gt;
-
-    &lt;section class="positioning-section"&gt; &lt;!-- Section for sticky positioning examples --&gt;
-      &lt;h2&gt;Sticky Positioning&lt;/h2&gt; &lt;!-- Heading for sticky positioning section --&gt;
-      &lt;p&gt;Sticky positioning is a hybrid. Element flows normally until you scroll past it, then it sticks to the viewport edge you defined.&lt;/p&gt; &lt;!-- Explain that sticky is a hybrid of relative and fixed --&gt;
-      &lt;div class="sticky-example"&gt; &lt;!-- Create a div with class "sticky-example" for the sticky positioned element --&gt;
-        &lt;p&gt;I am sticky. I flow normally, then stick when you scroll.&lt;/p&gt; &lt;!-- Paragraph that sticks on scroll --&gt;
-      &lt;/div&gt; &lt;!-- Close the sticky example div --&gt;
-    &lt;/section&gt; &lt;!-- Close the sticky positioning section --&gt;
-
-  &lt;/div&gt; &lt;!-- Close the container div — matches the single open tag at the top --&gt;
-&lt;/body&gt; &lt;!-- Close the body section --&gt;
-
-&lt;/html&gt; &lt;!-- Close the HTML document --&gt;
+          &lt;article class="card"&gt;
+            &lt;h2&gt;Card Four&lt;/h2&gt;
+            &lt;p&gt;This card is another child of the same flex container.&lt;/p&gt;
+          &lt;/article&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
           </div>
         </div>
@@ -388,94 +1350,87 @@ p.label {
           <div class="pane-label">css</div>
           <div class="code-block">
             <div class="code-bar">
-              <span class="code-file">positioning.css</span>
+              <span class="code-file">styles.css</span>
               <button class="code-copy" type="button">copy</button>
             </div>
-            <pre class="code"><code>/* Reset default browser margins and padding on all elements */
-* {
-  margin: 0; /* Remove default margin from all elements */
-  padding: 0; /* Remove default padding from all elements */
-  box-sizing: border-box; /* Make width and height include padding and border */
+            <pre class="code"><code>/* Adds comfortable page spacing so the layout is easier to inspect. */
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1f2937;
 }
 
-/* Style the container div that wraps all positioning examples */
-.container {
-  max-width: 1000px; /* Limit container width so it doesn't stretch too wide */
-  margin: 0 auto; /* Center the container on the page (auto margins on sides) */
-  padding: 2rem; /* Add space inside the container around all content */
+/* Limits the page width so the flex layout stays readable on wide screens. */
+.playground {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Style all positioning section divs */
-.positioning-section {
-  position: relative; /* THE FIX: gives absolute-positioned children something to anchor to besides the whole page */
-  margin-bottom: 3rem; /* Add space below each section so they don't feel cramped */
-  padding: 1.5rem; /* Add internal padding inside the section */
-  border: 2px solid #333; /* Add a border around each section for clarity */
-  background-color: #f5f5f5; /* Light gray background to distinguish sections */
-  min-height: 180px; /* Guarantees room for the absolutely-positioned box to sit below the text without overlapping it */
+/* Makes the container itself draggable by its bottom-right corner, so the
+   flex behavior can be tested without resizing the whole browser window. */
+.resize-wrap {
+  resize: horizontal;
+  overflow: auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 260px;
+  padding: 1rem;
+  border: 3px dashed #94a3b8;
+  border-radius: 0.75rem;
+  background: #e2e8f0;
 }
 
-/* Style the static positioning example */
-.static-example {
-  position: static; /* Static is the default, element follows normal document flow */
-  background-color: #e8f5e9; /* Light green background to see the element */
-  padding: 1rem; /* Add space inside the element */
-  margin-bottom: 1rem; /* Add space below this element */
+/* Turns the parent into a flex container so its cards can be laid out together. */
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  border: 3px solid #2563eb;
+  border-radius: 0.75rem;
+  background: white;
 }
 
-/* Style the relative positioning example */
-.relative-example {
-  position: relative; /* Position relative to where it would normally sit */
-  top: 20px; /* Move the element 20px down from its normal position */
-  background-color: #e3f2fd; /* Light blue background to see the element */
-  padding: 1rem; /* Add space inside the element */
-  margin-bottom: 1rem; /* Add space below this element */
+/* Gives each card a useful starting size while allowing it to shrink if needed. */
+.card {
+  flex: 0 1 180px;
+  min-height: 130px;
+  padding: 1rem;
+  border: 2px solid #93c5fd;
+  border-radius: 0.5rem;
+  background: #dbeafe;
 }
 
-/* Style the absolute positioning example */
-.absolute-example {
-  position: absolute; /* Position relative to nearest positioned ancestor — now .positioning-section, since it has position:relative */
-  bottom: 1rem; /* Anchored to the BOTTOM of the section instead of the top — this is the actual fix, since a top offset can't predict how tall the heading/paragraph text above it will be */
-  right: 1rem; /* Distance from the right edge of the section */
-  background-color: #fff3e0; /* Light orange background to see the element */
-  padding: 1rem; /* Add space inside the element */
+/* Lets this card use remaining row space, demonstrating flex: 1. */
+.card.grow {
+  flex: 1;
+  background: #dcfce7;
+  border-color: #4ade80;
 }
-
-/* Style the fixed positioning example — was missing entirely, so it had zero styling */
-.fixed-example {
-  position: fixed; /* Anchors to the viewport, not the document — stays put on scroll */
-  bottom: 20px; /* Distance from the bottom of the visible screen */
-  right: 20px; /* Distance from the right of the visible screen */
-  background-color: #fce4ec; /* Light pink background to see the element */
-  padding: 1rem; /* Add space inside the element */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow so it visually "floats" above the page */
-}
-
-/* Style the sticky positioning example — was missing entirely, so it had zero styling */
-.sticky-example {
-  position: sticky; /* Hybrid of relative and fixed — acts relative until a scroll threshold, then sticks */
-  top: 10px; /* The point where it "sticks" as you scroll past it */
-  background-color: #ede7f6; /* Light purple background to see the element */
-  padding: 1rem; /* Add space inside the element */
-}</code></pre>
+</code></pre>
           </div>
         </div>
         <div class="view-pane" data-pane="preview">
           <div class="pane-label">preview</div>
-          <iframe class="preview-frame" data-src="guerzbox/positioning/positioning.html" title="CSS Positioning preview" loading="lazy"></iframe>
+          <iframe class="preview-frame" data-src="guerzbox/flexbox-interactive/index.html" title="Flexbox — Interactive Demo preview" loading="lazy"></iframe>
         </div>
-        <div class="project-links"><a href="guerzbox/positioning/positioning.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/positioning/positioning.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        <div class="project-links"><a href="guerzbox/flexbox-interactive/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/flexbox-interactive/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
       </div>
     </details>
     <details class="project-box">
       <summary>
         <span class="project-caret">▸</span>
         <span class="badge badge--lavender">from scratch</span>
-        <span class="project-name">Contact Form</span>
+        <span class="project-name">Positioning</span>
         <span class="project-stack">html + css</span>
       </summary>
       <div class="project-inner">
-        <div class="card-body">a semantic contact form built cold — <b>label</b> / <b>input</b> pairs wired with <b>for</b> + <b>id</b>, HTML5 <b>required</b> validation, and a flex-column layout. focus states, a resizable <b>textarea</b>, and hover/active button feedback, styled as a clean card. every line commented.</div>
+        <div class="card-body">the positioning cases that are hard to keep straight, each with something to actually watch: an <b>absolute</b> child anchored to its <b>relative</b> parent's bottom-right, a <b>fixed</b> element pinned to the viewport while the page scrolls past it, and a <b>sticky</b> header inside its own scroll container so you can watch it catch and hold. every block comments what it's anchored to and why.</div>
         <div class="view-pane" data-pane="html">
           <div class="pane-label">html</div>
           <div class="code-block code-block--peach">
@@ -488,50 +1443,52 @@ p.label {
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Contact Form&lt;/title&gt;
+  &lt;title&gt;Positioning Playground&lt;/title&gt;
   &lt;link rel="stylesheet" href="styles.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;main&gt;&lt;!-- contains the page's primary content --&gt;
-    &lt;h1&gt;Contact Form&lt;/h1&gt; &lt;!-- tells users and screen readers the main purpose of the page --&gt;
+  &lt;main&gt;
+    &lt;h1&gt;CSS Positioning Playground&lt;/h1&gt;
 
-    &lt;form action="#" method="post"&gt; &lt;!-- specifies where the form data is sent and how it is submitted --&gt;
+    &lt;section&gt;
+      &lt;!-- This child is anchored to the relatively positioned parent because absolute positioning uses the nearest positioned ancestor. --&gt;
+      &lt;p class="note"&gt;Relative parent with an absolute child in its bottom-right corner.&lt;/p&gt;
+      &lt;div class="relative-parent"&gt;
+        &lt;strong&gt;Relative parent&lt;/strong&gt;
+        &lt;p&gt;This parent establishes the containing block for the absolute child.&lt;/p&gt;
+        &lt;div class="absolute-child"&gt;Absolute child&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
 
-      &lt;label for="full-name"&gt;Full Name&lt;/label&gt; &lt;!-- provides an accessible text label for the input below --&gt;
-      &lt;input
-        type="text"
-        id="full-name"
-        name="full-name"
-        placeholder="Enter your full name"
-        required&gt;
+    &lt;section&gt;
+      &lt;!-- This element is anchored to the viewport because fixed positioning ignores normal document flow and stays in place while the page scrolls. --&gt;
+      &lt;div class="fixed-corner"&gt;Fixed to viewport&lt;/div&gt;
+    &lt;/section&gt;
 
-      &lt;label for="email"&gt;Email&lt;/label&gt; &lt;!-- provides an accessible text label for the email input below --&gt;
-      &lt;input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Enter your email address"
-        required&gt;
-
-      &lt;label for="message"&gt;Message&lt;/label&gt; &lt;!-- provides an accessible text label for the message field below --&gt;
-      &lt;textarea
-        id="message"
-        name="message"
-        placeholder="Enter your message"
-        required&gt;&lt;/textarea&gt; &lt;!-- creates a multi-line text field for longer user input --&gt;
-
-      &lt;button type="submit"&gt;Send Message&lt;/button&gt; &lt;!-- submits the form after all validation requirements have been met --&gt;
-
-    &lt;/form&gt;
-
+    &lt;section&gt;
+      &lt;!-- This sticky element is anchored to the scroll container because it sticks to top: 0 while its container is being scrolled. --&gt;
+      &lt;p class="note"&gt;Scrollable container with a sticky header. Scroll inside the box below.&lt;/p&gt;
+      &lt;div class="scroll-container"&gt;
+        &lt;div class="sticky-header"&gt;Sticky inside this scroll container&lt;/div&gt;
+        &lt;div class="scroll-content"&gt;
+          &lt;p&gt;Scroll this panel and watch the yellow header stay pinned to the top of the container.&lt;/p&gt;
+          &lt;p&gt;Content row 1: Sticky positioning behaves like relative positioning until the element reaches its threshold.&lt;/p&gt;
+          &lt;p&gt;Content row 2: Here the threshold is top: 0, measured against the scrollable container.&lt;/p&gt;
+          &lt;p&gt;Content row 3: The header will keep sticking while its parent container remains in view.&lt;/p&gt;
+          &lt;p&gt;Content row 4: This makes sticky useful for section labels, table headers, and in-page navigation.&lt;/p&gt;
+          &lt;p&gt;Content row 5: Keep scrolling to see the sticky behavior continue.&lt;/p&gt;
+          &lt;p&gt;Content row 6: The element remains part of the normal document flow.&lt;/p&gt;
+          &lt;p&gt;Content row 7: Unlike fixed positioning, it is constrained by its parent container.&lt;/p&gt;
+          &lt;p&gt;Content row 8: Once the container's scroll area ends, the sticky behavior ends too.&lt;/p&gt;
+          &lt;p&gt;Content row 9: A tall container gives enough room to see the effect clearly.&lt;/p&gt;
+          &lt;p&gt;Content row 10: End of the demo content.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
   &lt;/main&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-
-&lt;!-- ========================= --&gt;
-&lt;!-- HTML Complete --&gt;
-&lt;!-- Begin CSS --&gt;
-&lt;!-- ========================= --&gt;</code></pre>
+</code></pre>
           </div>
         </div>
         <div class="view-pane" data-pane="css">
@@ -541,110 +1498,123 @@ p.label {
               <span class="code-file">styles.css</span>
               <button class="code-copy" type="button">copy</button>
             </div>
-            <pre class="code"><code>/* Reset default browser margins and padding */
-* {
-  margin: 0; /* Remove default margin from all elements */
-  padding: 0; /* Remove default padding from all elements */
-  box-sizing: border-box; /* Include padding and border in an element's total width and height */
+            <pre class="code"><code>* {
+  box-sizing: border-box;
 }
 
-/* Style the page's main content */
+body {
+  margin: 0;
+  min-height: 140vh;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+  background: #f7f7fb;
+}
+
 main {
-  max-width: 600px; /* Prevent the content from stretching too wide on larger screens */
-  margin: 2rem auto; /* Center the main element horizontally and add vertical spacing */
-  padding: 2rem; /* Add space between the content and the edges of the main element */
-  font-family: Arial, sans-serif; /* Apply a clean, readable font to all content inside the main element */
-  line-height: 1.5; /* Increase the spacing between lines of text to improve readability */
-  background-color: #fff; /* Give the form container a white background so it stands out from the page */
-  border-radius: 0.75rem; /* Round the corners of the form container to create a card-like appearance */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to lift the form container off the page */
+  width: min(920px, calc(100% - 32px));
+  margin: 40px auto 120px;
 }
 
-/* Style the page heading */
 h1 {
-  margin-bottom: 1.5rem; /* Add space below the heading before the form begins */
-  text-align: center; /* Center the heading horizontally */
+  margin: 0 0 24px;
+  font-size: 2rem;
 }
 
-/* Style the contact form */
-form {
-  display: flex; /* Arrange the form controls using Flexbox */
-  flex-direction: column; /* Stack the form controls vertically */
-  gap: 1rem; /* Add consistent spacing between each form element */
+section {
+  margin-bottom: 40px;
 }
 
-/* Style form labels */
-label {
-  display: block; /* Allow the label to occupy its own line */
-  margin-bottom: 0.5rem; /* Separate each label from its corresponding form control */
-  font-weight: bold; /* Make each label stand out from its corresponding form control */
+.note {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  color: #4b5563;
 }
 
-/* Style all form controls */
-input,
-textarea,
-button {
-  width: 100%; /* Make each form control span the full width of the form */
-  padding: 0.75rem; /* Add internal spacing so text doesn't touch the edges */
-  border: 1px solid #ccc; /* Add a light gray border around each form control */
-  border-radius: 0.5rem; /* Round the corners of each form control */
-  font-family: inherit; /* Use the same font as the parent element instead of the browser's default form font */
-  transition: border-color 0.3s ease; /* Smoothly animate border color changes */
+/* This parent stays in normal flow and anchors the absolute child to itself. */
+.relative-parent {
+  position: relative;
+  min-height: 260px;
+  padding: 24px;
+  border: 2px dashed #64748b;
+  border-radius: 8px;
+  background: #ffffff;
 }
 
-/* Style form controls when focused */
-input:focus,
-textarea:focus {
-  outline: none; /* Remove the browser's default focus outline */
-  border-color: #0077cc; /* Highlight the focused field with a blue border */
+/* This child is anchored to its relative parent, so bottom-right stays inside it. */
+.absolute-child {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 16px 18px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #2563eb;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24);
 }
 
-/* Style the message field */
-textarea {
-  min-height: 150px; /* Ensure the message field provides enough room for multiple lines of text */
-  resize: vertical; /* Allow the user to resize the textarea vertically while preventing horizontal resizing */
+/* This element is anchored to the viewport, so it remains bottom-left while the page scrolls. */
+.fixed-corner {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 10;
+  padding: 14px 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #047857;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(4, 120, 87, 0.25);
 }
 
-/* Style the submit button */
-button {
-  background-color: #0077cc; /* Give the button a blue background */
-  color: #fff; /* Make the button text white for better contrast */
-  border: none; /* Remove the default browser border from the button */
-  cursor: pointer; /* Display a pointer cursor when hovering over the button */
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease; /* Smoothly animate color and shadow changes */
+/* This container owns the scrolling area, giving the sticky item a boundary to stick within. */
+.scroll-container {
+  height: 340px;
+  overflow-y: auto;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
 }
 
-/* Style the button when hovered */
-button:hover {
-  background-color: #005fa3; /* Darken the button to provide visual feedback during hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Lift the button visually by adding a subtle shadow */
+/* This header is anchored to the scroll container's top, so it sticks only while that container scrolls. */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 16px 20px;
+  color: #111827;
+  background: #facc15;
+  font-weight: 700;
+  border-bottom: 1px solid #eab308;
 }
 
-/* Style the button while it is being clicked */
-button:active {
-  background-color: #004b82; /* Darken the button even further while the mouse button is held down */
-}</code></pre>
+.scroll-content {
+  padding: 18px 20px 28px;
+}
+
+.scroll-content p {
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+</code></pre>
           </div>
         </div>
         <div class="view-pane" data-pane="preview">
           <div class="pane-label">preview</div>
-          <iframe class="preview-frame" data-src="guerzbox/contact-form/index.html" title="Contact Form preview" loading="lazy"></iframe>
+          <iframe class="preview-frame" data-src="guerzbox/positioning/index.html" title="Positioning preview" loading="lazy"></iframe>
         </div>
-        <div class="project-links"><a href="guerzbox/contact-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/contact-form/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        <div class="project-links"><a href="guerzbox/positioning/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/positioning/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
       </div>
     </details>
     <details class="project-box">
       <summary>
         <span class="project-caret">▸</span>
         <span class="badge badge--lavender">from scratch</span>
-        <span class="project-name">Animated Business Card</span>
+        <span class="project-name">Layout</span>
         <span class="project-stack">html + css</span>
       </summary>
       <div class="project-inner">
-        <div class="card-body">a self-contained business card built cold — a circular <b>profile photo</b>, contact + social links, and an about blurb inside a shadowed card, centered on the page with flexbox. a <b>:hover</b> <b>transform: scale</b> gives the photo a smooth zoom, and a <b>@media</b> query reflows it for small screens. every line commented.</div>
+        <div class="card-body">a full small-page skeleton — a <b>sticky</b> header that holds while the page scrolls under it, a <b>flex</b> nav row, two cards splitting a <b>flex-wrap</b> row, a <b>grid</b> nested inside one of them, and a note pulled from the flow entirely with <b>display: none</b>. the layout primitives you actually reach for, in one page instead of five demos.</div>
         <div class="view-pane" data-pane="html">
           <div class="pane-label">html</div>
           <div class="code-block code-block--peach">
@@ -652,82 +1622,61 @@ button:active {
               <span class="code-file">index.html</span>
               <button class="code-copy" type="button">copy</button>
             </div>
-            <pre class="code"><code>&lt;!DOCTYPE html&gt; &lt;!--tells browser that this is an HTML5 document--&gt;
+            <pre class="code"><code>&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Layout Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header class="site-header"&gt;
+      &lt;h1&gt;Layout Playground&lt;/h1&gt;
+      &lt;nav class="site-nav" aria-label="Primary navigation"&gt;
+        &lt;a href="#home"&gt;Home&lt;/a&gt;
+        &lt;a href="#cards"&gt;Cards&lt;/a&gt;
+        &lt;a href="#footer"&gt;Contact&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
 
-&lt;head&gt; &lt;!--where all the metadata lives--&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;!--sets page width to the device width--&gt;
-  &lt;title&gt;Animated Business Card&lt;/title&gt; &lt;!--appears in browser tab and/or bookmarks--&gt;
-  &lt;link rel="stylesheet" href="styles.css"&gt; &lt;!--links styles.css to this page--&gt;
-&lt;/head&gt;
+    &lt;main class="page-main" id="home"&gt;
+      &lt;h2 id="cards"&gt;Two-Card Flexbox Layout&lt;/h2&gt;
+      &lt;section class="cards" aria-label="Layout examples"&gt;
+        &lt;article class="card"&gt;
+          &lt;h3&gt;Flexbox Card&lt;/h3&gt;
+          &lt;p&gt;This card shares its row with the card beside it.&lt;/p&gt;
+          &lt;p class="hidden-note"&gt;This sentence is hidden with display: none.&lt;/p&gt;
+        &lt;/article&gt;
 
-&lt;body&gt; &lt;!--everything the user actually sees--&gt;
+        &lt;article class="card"&gt;
+          &lt;h3&gt;Grid Card&lt;/h3&gt;
+          &lt;p&gt;These small items use a two-column grid.&lt;/p&gt;
+          &lt;div class="grid-example"&gt;
+            &lt;div class="grid-item"&gt;One&lt;/div&gt;
+            &lt;div class="grid-item"&gt;Two&lt;/div&gt;
+            &lt;div class="grid-item"&gt;Three&lt;/div&gt;
+            &lt;div class="grid-item"&gt;Four&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;
+      &lt;/section&gt;
 
-  &lt;div id="businessCard"&gt; &lt;!--where to add business card content--&gt;
+      &lt;section class="content-block" aria-label="Sticky positioning demonstration"&gt;
+        &lt;h2&gt;Keep scrolling&lt;/h2&gt;
+        &lt;p&gt;You're scrolling past this content right now, and the header above is staying put — that's &lt;code&gt;position: sticky&lt;/code&gt; at work. It behaves like a normal element until it hits its &lt;code&gt;top: 0&lt;/code&gt; threshold, then it locks in place and holds while the rest of the page moves underneath it.&lt;/p&gt;
+        &lt;p&gt;This is different from &lt;code&gt;position: fixed&lt;/code&gt;, which anchors to the viewport from the moment the page loads and never moves at all. Sticky only kicks in once you scroll far enough for it to matter — the rest of the time it just sits in normal document flow like any other element.&lt;/p&gt;
+        &lt;p&gt;It's also different from &lt;code&gt;position: static&lt;/code&gt;, the default every element starts with. Static elements just flow top to bottom with everything else and never anchor to anything.&lt;/p&gt;
+        &lt;p&gt;Sticky positioning is scoped to its nearest scrolling ancestor — in this case, the whole page — so the header sticks relative to the browser window, not to some smaller inner container.&lt;/p&gt;
+        &lt;p&gt;Once you reach the footer below, the header will simply run out of page to stick to and scroll away with everything else, since there's nothing left underneath it to hold its position against.&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
 
-    &lt;img src="profile-pic.JPG" alt="Selfie Profile Pic" class="profile-photo"&gt;
-    &lt;!--img src displays image, alt describes image to screen readers, class is targeted by CSS--&gt;
-
-    &lt;h1&gt;Guerz&lt;/h1&gt;
-
-    &lt;p&gt;Full-Stack Developer in Training&lt;/p&gt;
-
-    &lt;p&gt;
-      Email:
-      &lt;a href="mailto:nick@guerz.lol"&gt;nick@guerz.lol&lt;/a&gt;
-    &lt;/p&gt;
-    &lt;!--makes the email address clickable--&gt;
-
-    &lt;div id="socialLinks"&gt;
-
-      &lt;h2&gt;Connect with Me&lt;/h2&gt;
-
-      &lt;p&gt;
-        LinkedIn:
-        &lt;a href="https://www.linkedin.com/in/nicholas-guerzon-5baa77410/" target="_blank"&gt;
-          LinkedIn
-        &lt;/a&gt;
-      &lt;/p&gt;
-      &lt;!--makes LinkedIn clickable to my LinkedIn profile--&gt;
-
-      &lt;p&gt;
-        Instagram:
-        &lt;a href="https://instagram.com/guerz" target="_blank"&gt;
-          @Guerz
-        &lt;/a&gt;
-      &lt;/p&gt;
-      &lt;!--makes Instagram clickable to my Instagram profile--&gt;
-
-      &lt;p&gt;
-        Twitch:
-        &lt;a href="https://twitch.tv/guerz" target="_blank"&gt;
-          ttv/guerz
-        &lt;/a&gt;
-      &lt;/p&gt;
-      &lt;!--makes Twitch clickable to my Twitch profile--&gt;
-
-    &lt;/div&gt;
-
-    &lt;div id="bio"&gt;
-
-      &lt;h2&gt;About Me&lt;/h2&gt;
-
-      &lt;p&gt;
-        I'm Guerz, a self-taught dev getting back into the web! I like clear,
-        accessible front ends, small experiments, and late-night problem
-        solving. Connect with me and follow the projects!
-      &lt;/p&gt;
-
-      &lt;!--brief personal bio--&gt;
-
-    &lt;/div&gt;
-
-  &lt;/div&gt;
-
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
+    &lt;footer class="site-footer" id="footer"&gt;
+      &lt;p&gt;Layout Playground footer&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
           </div>
         </div>
         <div class="view-pane" data-pane="css">
@@ -737,67 +1686,789 @@ button:active {
               <span class="code-file">styles.css</span>
               <button class="code-copy" type="button">copy</button>
             </div>
-            <pre class="code"><code>body { /*styles the whole page*/
-  font-family: Arial, sans-serif; /*sets the default page font*/
-  background-color: #f4f4f4; /*sets the default background color*/
-  display: flex; /*turns on Flexbox layout*/
-  justify-content: center; /*centers items horizontally; main axis*/
-  align-items: center; /*centers items vertically; cross axis*/
-  height: 100vh; /*makes the page 100% of the viewport height*/
-  margin: 0; /*removes the default margin*/
+            <pre class="code"><code>/* Sets shared colors so the page stays consistent and easy to update. */
+:root {
+  color: #1f2937;
+  background: #f3f4f6;
+  font-family: Arial, sans-serif;
 }
 
-#businessCard { /*styles the card container*/
-  box-shadow: 0 0 10px #ccc; /*adds a soft shadow around the card*/
-  background-color: white; /*sets the card background color*/
-  padding: 20px; /*adds inner space inside the card*/
-  width: 300px; /*sets the card width to 300px*/
-  text-align: center; /*centers the text inside the card*/
+/* Removes the default page margin so each layout section aligns cleanly. */
+body {
+  margin: 0;
 }
 
-.profile-photo { /*styles the profile photo*/
-  width: 100px; /*sets the photo width to 100px*/
-  height: auto; /*keeps the image's aspect ratio*/
-  border-radius: 50%; /*makes the photo circular*/
-  margin: 0 auto; /*centers the photo horizontally*/
+/* Keeps the header visible while scrolling, so navigation is always available. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1rem 2rem;
+  background: #1d4ed8;
+  color: white;
 }
 
-h1,
-h2 { /*targets all H1 and H2 headings*/
-  color: #333; /*sets heading text color to dark gray*/
+/* Makes the navigation links sit in a flexible horizontal row with even spacing. */
+.site-nav {
+  display: flex;
+  gap: 1rem;
 }
 
-p,
-a { /*targets paragraphs and links*/
-  color: #555; /*sets the text color to medium gray*/
-  font-size: 16px; /*sets the text size to 16px*/
-  text-decoration: none; /*removes the default link underline*/
+/* Makes each navigation link clear and easy to read against the header. */
+.site-nav a {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-a:hover { /*applies styles when a link is hovered*/
-  text-decoration: underline; /*underlines links on hover*/
+/* Centers the page content and gives it comfortable breathing room. */
+.page-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
 }
 
-.profile-photo:hover { /*applies styles when the profile photo is hovered*/
-  transform: scale(1.1); /*enlarges the photo by 10%*/
-  transition: transform 0.3s ease-in-out; /*smoothly animates the hover effect*/
+/* Uses flexbox to place the two cards side by side and wrap them on narrow screens. */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
-@media only screen and (max-width: 600px) { /*applies responsive styles on screens 600px or smaller*/
+/* Lets each card grow evenly, keeping the two-card layout balanced. */
+.card {
+  flex: 1 1 280px;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: white;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+}
 
-  #businessCard { /*styles the business card for smaller screens*/
-    width: 90%; /*sets card width to 90% of the screen*/
-    padding: 10px; /*reduces inner spacing on smaller screens*/
-  }
+/* Creates a two-column grid so small items line up in both rows and columns. */
+.grid-example {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
 
-}</code></pre>
+/* Styles each grid item so the grid structure is easy to see. */
+.grid-item {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: #dbeafe;
+  text-align: center;
+}
+
+/* Hides optional content completely so it takes up no page space. */
+.hidden-note {
+  display: none;
+}
+
+/* Gives content sections enough vertical rhythm to actually force scroll,
+   so the sticky header below has real distance to demonstrate sticking. */
+.content-block {
+  margin-top: 2.5rem;
+}
+
+.content-block h2 {
+  margin-bottom: 0.5rem;
+}
+
+.content-block p {
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+/* Gives the footer a distinct ending area that matches the header. */
+.site-footer {
+  padding: 1.5rem 2rem;
+  background: #1f2937;
+  color: white;
+  text-align: center;
+}
+</code></pre>
           </div>
         </div>
         <div class="view-pane" data-pane="preview">
           <div class="pane-label">preview</div>
-          <iframe class="preview-frame" data-src="guerzbox/business-card/index.html" title="Animated Business Card preview" loading="lazy"></iframe>
+          <iframe class="preview-frame" data-src="guerzbox/layout/index.html" title="Layout preview" loading="lazy"></iframe>
         </div>
-        <div class="project-links"><a href="guerzbox/business-card/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/business-card/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+        <div class="project-links"><a href="guerzbox/layout/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/layout/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Filters &amp; Transforms</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">the same image three times with <b>blur(4px)</b>, <b>grayscale(100%)</b> and <b>sepia(100%)</b> side by side, so the filters are a direct comparison rather than three separate claims. plus <b>rotate()</b> and <b>scale()</b> stacked on one element, and a box shoved off-screen with <b>translateX(-200vw)</b> — invisible, but still in the accessibility tree and still announced. that last one is the point.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Filters and Transforms Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Filters and Transforms Playground&lt;/h1&gt;
+
+    &lt;main&gt;
+      &lt;section aria-labelledby="filters-heading"&gt;
+        &lt;h2 id="filters-heading"&gt;CSS Filters&lt;/h2&gt;
+
+        &lt;div class="image-row"&gt;
+          &lt;figure&gt;
+            &lt;!-- filter: blur(4px) --&gt;
+            &lt;img class="blur" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 320'%3E%3Crect width='440' height='320' fill='%2387ceeb'/%3E%3Ccircle cx='350' cy='70' r='42' fill='%23ffd166'/%3E%3Cpath d='M0 230 125 105l95 105 55-65 165 175H0Z' fill='%235d8a66'/%3E%3Cpath d='M0 270 125 145l95 105 55-65 130 135H0Z' fill='%233f6b4b'/%3E%3C/svg%3E" alt="Stylized landscape with mountains and a sun"&gt;
+            &lt;figcaption&gt;Blur&lt;/figcaption&gt;
+          &lt;/figure&gt;
+
+          &lt;figure&gt;
+            &lt;!-- filter: grayscale(100%) --&gt;
+            &lt;img class="grayscale" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 320'%3E%3Crect width='440' height='320' fill='%2387ceeb'/%3E%3Ccircle cx='350' cy='70' r='42' fill='%23ffd166'/%3E%3Cpath d='M0 230 125 105l95 105 55-65 165 175H0Z' fill='%235d8a66'/%3E%3Cpath d='M0 270 125 145l95 105 55-65 130 135H0Z' fill='%233f6b4b'/%3E%3C/svg%3E" alt="Stylized landscape with mountains and a sun"&gt;
+            &lt;figcaption&gt;Grayscale&lt;/figcaption&gt;
+          &lt;/figure&gt;
+
+          &lt;figure&gt;
+            &lt;!-- filter: sepia(100%) --&gt;
+            &lt;img class="sepia" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 320'%3E%3Crect width='440' height='320' fill='%2387ceeb'/%3E%3Ccircle cx='350' cy='70' r='42' fill='%23ffd166'/%3E%3Cpath d='M0 230 125 105l95 105 55-65 165 175H0Z' fill='%235d8a66'/%3E%3Cpath d='M0 270 125 145l95 105 55-65 130 135H0Z' fill='%233f6b4b'/%3E%3C/svg%3E" alt="Stylized landscape with mountains and a sun"&gt;
+            &lt;figcaption&gt;Sepia&lt;/figcaption&gt;
+          &lt;/figure&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section aria-labelledby="transforms-heading"&gt;
+        &lt;h2 id="transforms-heading"&gt;CSS Transforms&lt;/h2&gt;
+
+        &lt;div class="box-row"&gt;
+          &lt;!-- transform: rotate(12deg) scale(1.15) --&gt;
+          &lt;div class="box rotate-and-scale"&gt;Rotated and scaled&lt;/div&gt;
+
+          &lt;!-- transform: translateX(-200vw); this box is invisible off-screen but is STILL in the accessibility tree. --&gt;
+          &lt;div class="box off-screen"&gt;Moved off-screen&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.image-row,
+.box-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem auto 4rem;
+}
+
+figure {
+  margin: 0;
+  text-align: center;
+}
+
+img {
+  display: block;
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  font-weight: bold;
+}
+
+.blur {
+  filter: blur(4px);
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.sepia {
+  filter: sepia(100%);
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  width: 180px;
+  min-height: 120px;
+  padding: 1rem;
+  border: 3px solid #583d72;
+  border-radius: 0.75rem;
+  background-color: #c9b1ff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.rotate-and-scale {
+  transform: rotate(12deg) scale(1.15);
+}
+
+.off-screen {
+  transform: translateX(-200vw);
+}
+
+@media (max-width: 800px) {
+  .image-row {
+    flex-direction: column;
+  }
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/filters-transforms/index.html" title="Filters & Transforms preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/filters-transforms/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/filters-transforms/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Animations</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">a box that travels and shifts color on a loop via <b>@keyframes</b> and the full <b>animation</b> shorthand — name, duration, timing function, infinite iteration. paired with the standard <b>prefers-reduced-motion: reduce</b> block that collapses animation duration to near-zero, because motion you can't turn off is an accessibility failure, not a flourish.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Animations Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Animations Playground&lt;/h1&gt;
+      &lt;p&gt;The box moves from left to right while changing color.&lt;/p&gt;
+
+      &lt;div class="animation-track"&gt;
+        &lt;!-- animation: move-and-change 3s ease-in-out infinite --&gt;
+        &lt;div class="animated-box"&gt;Animate!&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+}
+
+main {
+  width: min(700px, 100%);
+}
+
+h1,
+p {
+  text-align: center;
+}
+
+.animation-track {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1rem;
+  overflow: hidden;
+  border: 3px solid #333;
+  border-radius: 0.75rem;
+  background-color: #fff;
+}
+
+.animated-box {
+  display: grid;
+  width: 100px;
+  height: 100px;
+  place-items: center;
+  border-radius: 0.5rem;
+  background-color: #4f46e5;
+  color: #fff;
+  font-weight: bold;
+  animation: move-and-change 3s ease-in-out infinite;
+}
+
+@keyframes move-and-change {
+  from {
+    transform: translateX(0);
+    background-color: #4f46e5;
+  }
+
+  to {
+    transform: translateX(calc(min(700px, 100vw - 4rem) - 138px));
+    background-color: #e11d48;
+  }
+}
+
+/* If the user requests reduced motion, this standard fix makes animations finish almost instantly instead of repeatedly moving, while !important ensures it overrides component animation settings. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/animations/index.html" title="Animations preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/animations/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/animations/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Forms</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">semantic form structure done properly — an <b>explicit</b> label wired <b>for</b>/<b>id</b>, an <b>implicit</b> label wrapping its input, three radios correctly grouped by a shared <b>name</b> inside a <b>fieldset</b> with a <b>legend</b>, and a clear button declaring <b>type="button"</b> so it doesn't silently submit. <b>:focus-visible</b> rings throughout.<br><br><em>* this build contains a small amount of working javascript to make the clear button function. the javascript isn't the point and wasn't part of my skill level when this was built — it's here so the html concept can be demonstrated end to end. shouts out to Bonnie for the assist.</em></div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Forms Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Forms Playground&lt;/h1&gt;
+
+      &lt;form id="playground-form" action="#" method="post"&gt;
+        &lt;div class="form-control"&gt;
+          &lt;label for="full-name"&gt;Full name&lt;/label&gt;
+          &lt;input type="text" id="full-name" name="full-name"&gt;
+        &lt;/div&gt;
+
+        &lt;label class="form-control"&gt;
+          Email address
+          &lt;input type="email" name="email"&gt;
+        &lt;/label&gt;
+
+        &lt;fieldset&gt;
+          &lt;legend&gt;Choose a contact method&lt;/legend&gt;
+
+          &lt;label&gt;
+            &lt;input type="radio" name="contact-method" value="email"&gt;
+            Email
+          &lt;/label&gt;
+
+          &lt;label&gt;
+            &lt;input type="radio" name="contact-method" value="phone"&gt;
+            Phone
+          &lt;/label&gt;
+
+          &lt;label&gt;
+            &lt;input type="radio" name="contact-method" value="text-message"&gt;
+            Text message
+          &lt;/label&gt;
+        &lt;/fieldset&gt;
+
+        &lt;div class="button-row"&gt;
+          &lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+          &lt;!-- If type="button" were removed, this button would default to type="submit" and submit the form when clicked. --&gt;
+          &lt;button type="button" id="clear-button"&gt;Clear&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/main&gt;
+
+    &lt;script&gt;
+      const form = document.querySelector("#playground-form");
+      const clearButton = document.querySelector("#clear-button");
+
+      clearButton.addEventListener("click", () =&gt; {
+        form.reset();
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+main {
+  width: min(500px, 100%);
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-control {
+  display: grid;
+  gap: 0.5rem;
+}
+
+label,
+legend {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #9ca3af;
+  border-radius: 0.5rem;
+  font: inherit;
+}
+
+fieldset {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 1rem;
+  border: 2px solid #9ca3af;
+  border-radius: 0.5rem;
+}
+
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal;
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+button[type="button"] {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 3px;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/forms/index.html" title="Forms preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/forms/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/forms/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">from scratch</span>
+        <span class="project-name">Accessibility</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="card-body">four techniques that are invisible by design — that's what makes them accessibility work. an icon-only button given a name through <b>aria-label</b>, a decorative image pulled <em>out</em> of the accessibility tree with <b>aria-hidden</b>, text hidden visually but not from screen readers via the full <b>.sr-only</b> rule, and an input stripped with <b>appearance: none</b> then given its <b>:focus</b> ring back by hand. nothing here looks like much. that's the whole idea — every comment names what a screen reader gets that your eyes don't.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Accessibility Playground&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Accessibility Playground&lt;/h1&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Icon-only button&lt;/h2&gt;
+
+        &lt;!-- This icon-only button uses aria-label to provide the programmatic name "Close notification" to assistive technology. --&gt;
+        &lt;button class="icon-button" type="button" aria-label="Close notification"&gt;
+          &lt;svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"&gt;
+            &lt;path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"&gt;&lt;/path&gt;
+          &lt;/svg&gt;
+        &lt;/button&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Decorative image&lt;/h2&gt;
+
+        &lt;!-- This image is purely decorative, so aria-hidden="true" keeps it out of the accessibility tree. --&gt;
+        &lt;img class="decorative-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 120'%3E%3Cpath d='M10 75C70 5 125 115 185 45s95 20 125-15' fill='none' stroke='%237c3aed' stroke-width='18' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='35' r='16' fill='%23f59e0b'/%3E%3Ccircle cx='260' cy='85' r='20' fill='%2306b6d4'/%3E%3C/svg%3E" alt="" aria-hidden="true"&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Screen-reader-only text&lt;/h2&gt;
+
+        &lt;!-- This text is visually hidden by .sr-only but remains available to screen readers. --&gt;
+        &lt;p class="sr-only"&gt;This sentence is available to screen readers even though it is not visible on the page.&lt;/p&gt;
+
+        &lt;p&gt;The screen-reader-only sentence is hidden just above this visible explanation.&lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section&gt;
+        &lt;h2&gt;Custom input appearance&lt;/h2&gt;
+
+        &lt;div class="input-group"&gt;
+          &lt;label for="custom-name"&gt;Display name&lt;/label&gt;
+
+          &lt;!-- This input removes its native appearance, then manually restores a visible border and :focus outline in CSS. --&gt;
+          &lt;input class="custom-input" type="text" id="custom-name" name="custom-name"&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+main {
+  display: grid;
+  width: min(600px, 100%);
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+}
+
+section {
+  padding: 1.25rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.75rem;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.icon-button {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background-color: #dc2626;
+  color: #fff;
+  cursor: pointer;
+}
+
+.icon-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.decorative-image {
+  display: block;
+  width: 160px;
+  height: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.input-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-weight: bold;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 0.75rem;
+  appearance: none;
+  border: 2px solid #6b7280;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: #111827;
+  font: inherit;
+}
+
+.custom-input:focus {
+  border-color: #1d4ed8;
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="guerzbox/accessibility/index.html" title="Accessibility preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="guerzbox/accessibility/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/guerzbox/accessibility/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
       </div>
     </details>
     </div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Playground</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <h1>Forms Playground</h1>
+
+      <form id="playground-form" action="#" method="post">
+        <div class="form-control">
+          <label for="full-name">Full name</label>
+          <input type="text" id="full-name" name="full-name">
+        </div>
+
+        <label class="form-control">
+          Email address
+          <input type="email" name="email">
+        </label>
+
+        <fieldset>
+          <legend>Choose a contact method</legend>
+
+          <label>
+            <input type="radio" name="contact-method" value="email">
+            Email
+          </label>
+
+          <label>
+            <input type="radio" name="contact-method" value="phone">
+            Phone
+          </label>
+
+          <label>
+            <input type="radio" name="contact-method" value="text-message">
+            Text message
+          </label>
+        </fieldset>
+
+        <div class="button-row">
+          <button type="submit">Submit</button>
+
+          <!-- If type="button" were removed, this button would default to type="submit" and submit the form when clicked. -->
+          <button type="button" id="clear-button">Clear</button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      const form = document.querySelector("#playground-form");
+      const clearButton = document.querySelector("#clear-button");
+
+      clearButton.addEventListener("click", () => {
+        form.reset();
+      });
+    </script>
+  </body>
+</html>

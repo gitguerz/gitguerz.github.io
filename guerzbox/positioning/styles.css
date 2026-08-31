@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 140vh;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+  background: #f7f7fb;
+}
+
+main {
+  width: min(920px, calc(100% - 32px));
+  margin: 40px auto 120px;
+}
+
+h1 {
+  margin: 0 0 24px;
+  font-size: 2rem;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+.note {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+/* This parent stays in normal flow and anchors the absolute child to itself. */
+.relative-parent {
+  position: relative;
+  min-height: 260px;
+  padding: 24px;
+  border: 2px dashed #64748b;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+/* This child is anchored to its relative parent, so bottom-right stays inside it. */
+.absolute-child {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 16px 18px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #2563eb;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.24);
+}
+
+/* This element is anchored to the viewport, so it remains bottom-left while the page scrolls. */
+.fixed-corner {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 10;
+  padding: 14px 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: #047857;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(4, 120, 87, 0.25);
+}
+
+/* This container owns the scrolling area, giving the sticky item a boundary to stick within. */
+.scroll-container {
+  height: 340px;
+  overflow-y: auto;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+/* This header is anchored to the scroll container's top, so it sticks only while that container scrolls. */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 16px 20px;
+  color: #111827;
+  background: #facc15;
+  font-weight: 700;
+  border-bottom: 1px solid #eab308;
+}
+
+.scroll-content {
+  padding: 18px 20px 28px;
+}
+
+.scroll-content p {
+  margin: 0 0 18px;
+  line-height: 1.6;
+}

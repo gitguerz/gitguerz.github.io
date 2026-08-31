@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS Selectors Playground</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Selectors Playground</h1>
+      <p>A tiny page for seeing CSS selectors in action.</p>
+    </header>
+
+    <nav aria-label="Main navigation">
+      <a href="#articles">Articles</a> |
+      <a href="https://developer.mozilla.org/">MDN reference</a>
+    </nav>
+
+    <div class="layout">
+      <main id="articles">
+        <h2>Featured Articles</h2>
+
+        <section class="cards" aria-label="Article cards">
+          <article class="card">
+            <h3>Direct Child Paragraph</h3>
+            <p>This direct child paragraph gets the green child-selector style.</p>
+            <div>
+              <p>This nested paragraph gets the blue descendant-selector style.</p>
+            </div>
+            <button id="cta">Read article</button>
+          </article>
+
+          <article class="card">
+            <h3>Second Card</h3>
+            <p>This is another direct child paragraph inside a card.</p>
+            <button disabled>Coming soon</button>
+          </article>
+        </section>
+      </main>
+
+      <aside>
+        <h2>Newsletter</h2>
+        <p>Get one short CSS tip each week.</p>
+        <label for="email">Email address</label>
+        <input id="email" type="email" placeholder="you@example.com">
+        <button>Subscribe</button>
+      </aside>
+    </div>
+
+    <footer>
+      <p>Built to explore CSS selectors.</p>
+    </footer>
+  </body>
+</html>

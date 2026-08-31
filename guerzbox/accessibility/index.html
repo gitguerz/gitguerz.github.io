@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Playground</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <h1>Accessibility Playground</h1>
+
+      <section>
+        <h2>Icon-only button</h2>
+
+        <!-- This icon-only button uses aria-label to provide the programmatic name "Close notification" to assistive technology. -->
+        <button class="icon-button" type="button" aria-label="Close notification">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </section>
+
+      <section>
+        <h2>Decorative image</h2>
+
+        <!-- This image is purely decorative, so aria-hidden="true" keeps it out of the accessibility tree. -->
+        <img class="decorative-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 120'%3E%3Cpath d='M10 75C70 5 125 115 185 45s95 20 125-15' fill='none' stroke='%237c3aed' stroke-width='18' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='35' r='16' fill='%23f59e0b'/%3E%3Ccircle cx='260' cy='85' r='20' fill='%2306b6d4'/%3E%3C/svg%3E" alt="" aria-hidden="true">
+      </section>
+
+      <section>
+        <h2>Screen-reader-only text</h2>
+
+        <!-- This text is visually hidden by .sr-only but remains available to screen readers. -->
+        <p class="sr-only">This sentence is available to screen readers even though it is not visible on the page.</p>
+
+        <p>The screen-reader-only sentence is hidden just above this visible explanation.</p>
+      </section>
+
+      <section>
+        <h2>Custom input appearance</h2>
+
+        <div class="input-group">
+          <label for="custom-name">Display name</label>
+
+          <!-- This input removes its native appearance, then manually restores a visible border and :focus outline in CSS. -->
+          <input class="custom-input" type="text" id="custom-name" name="custom-name">
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+/* Sets shared colors so the page stays consistent and easy to update. */
+:root {
+  color: #1f2937;
+  background: #f3f4f6;
+  font-family: Arial, sans-serif;
+}
+
+/* Removes the default page margin so each layout section aligns cleanly. */
+body {
+  margin: 0;
+}
+
+/* Keeps the header visible while scrolling, so navigation is always available. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 1rem 2rem;
+  background: #1d4ed8;
+  color: white;
+}
+
+/* Makes the navigation links sit in a flexible horizontal row with even spacing. */
+.site-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Makes each navigation link clear and easy to read against the header. */
+.site-nav a {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Centers the page content and gives it comfortable breathing room. */
+.page-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* Uses flexbox to place the two cards side by side and wrap them on narrow screens. */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Lets each card grow evenly, keeping the two-card layout balanced. */
+.card {
+  flex: 1 1 280px;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: white;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+}
+
+/* Creates a two-column grid so small items line up in both rows and columns. */
+.grid-example {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* Styles each grid item so the grid structure is easy to see. */
+.grid-item {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: #dbeafe;
+  text-align: center;
+}
+
+/* Hides optional content completely so it takes up no page space. */
+.hidden-note {
+  display: none;
+}
+
+/* Gives content sections enough vertical rhythm to actually force scroll,
+   so the sticky header below has real distance to demonstrate sticking. */
+.content-block {
+  margin-top: 2.5rem;
+}
+
+.content-block h2 {
+  margin-bottom: 0.5rem;
+}
+
+.content-block p {
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+/* Gives the footer a distinct ending area that matches the header. */
+.site-footer {
+  padding: 1.5rem 2rem;
+  background: #1f2937;
+  color: white;
+  text-align: center;
+}
