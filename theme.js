@@ -10,8 +10,9 @@
     });
     var favicon = document.getElementById('favicon');
     if (favicon) favicon.setAttribute('href', mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png');
-    var avatar = document.getElementById('avatar-img');
-    if (avatar) avatar.setAttribute('src', mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png');
+    document.querySelectorAll('.avatar').forEach(function (avatar) {
+      avatar.setAttribute('src', mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png');
+    });
     try { localStorage.setItem('guerz-theme', mode); } catch (e) {}
   }
 
