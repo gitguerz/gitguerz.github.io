@@ -147,32 +147,41 @@ img { max-width: 100%; display: block; }
 /* ---------- userinfo module ---------- */
 /* .userinfo-row wraps hex + card + hex on every page — single source of truth for that layout, replaces the old per-page inline flex styles */
 .userinfo-row {
-  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px; margin: 8px auto;
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px; margin: 0 auto;
 }
 .userinfo {
-  display: flex; gap: 0; align-items: center; justify-content: center; overflow: hidden; flex-wrap: wrap; 
+  display: flex; gap: 0; align-items: center; justify-content: center; overflow: hidden; flex-wrap: wrap;
   background: var(--lavender); color: var(--ink); border: none;
   box-shadow: 5px 5px 0 var(--peach);
-  min-height: 165px; /* matches .avatar-frame's fixed height, so the card can't render shorter than the hexes flanking it no matter how much badge content a given page has */
+  min-height: 161px; /* matches .avatar-frame's fixed height, so the card can't render shorter than the hexes flanking it no matter how much badge content a given page has */
 }
 .avatar-frame {
   width: 161px; height: 161px; flex: none; border: none;
-  margin: 0; overflow: hidden; display: block;
+  margin: 0; overflow: visible; display: block;
+  animation: hex-pulse 1337ms cubic-bezier(.118, 4.96, 0.93, 5.99)  infinite alternate; 
+  /* "beacon" pulse — whole hex (border + glyph), not just the {g} inside it. hand-rolled spring curve standing in for Open Props' --ease-elastic-in-1, since the site doesn't import Open Props */
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar-frame { animation: none; }
+}
+@keyframes hex-pulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
 }
 .avatar-frame--secondary { display: block; } /* the second/right-hand hex — hidden on mobile below, single source of truth for that toggle */
 .avatar { width: 100%; height: 100%; display: block; object-fit: cover; transform: scale(1.05); }
 .userinfo-body {
-  flex: 1; min-width: 220px; padding: 12px; margin: -4px12px; display: flex; flex-direction: column; gap: 8px;
+  flex: 1; min-width: 220px; padding: 12px; display: flex; flex-direction: column; gap: 10px;
   align-items: center; text-align: center; /* was unset/left before — this is what actually centers "Guerz" and the badges, on every screen size, not just an artifact of the flanking hexes */
 }
 .userinfo-name {
-  font-family: 'Platypi', serif; font-size: clamp(24px, 20vw, 70px); font-weight: 800; line-height: 1.08; margin-top: -20px; margin-bottom: 4px
+  font-family: 'Platypi', serif; font-size: clamp(44px, 11vw, 84px); font-weight: 800; line-height: 1.08;
 }
-.userinfo-tags { display: flex; flex-direction: column; gap: 8px; align-items: center; margin-bottom: 4px }
+.userinfo-tags { display: flex; flex-direction: column; gap: 8px; align-items: center; }
 .userinfo-tag-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-.userinfo-tag { display: inline-block; padding: 4px 6px; width: fit-content; font-size: 13.5px; }
+.userinfo-tag { display: inline-block; padding: 4px 16px; width: fit-content; font-size: 12px; }
 .userinfo-tag--dark { background: #1c1a20; color: var(--peach); }
-.userinfo-tag--peach { background: var(--peach); color: var(--ink); padding: 4px 6px; font-size: 11.7px; }
+.userinfo-tag--peach { background: var(--peach); color: var(--ink); }
 .userinfo-role { font: 700 10.5px 'IBM Plex Mono', monospace; color: var(--muted); }
 
 @media (max-width: 640px) {
