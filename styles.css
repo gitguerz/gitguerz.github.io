@@ -158,12 +158,15 @@ img { max-width: 100%; display: block; }
 .avatar-frame {
   width: 161px; height: 161px; flex: none; border: none;
   margin: 0; overflow: visible; display: block;
-  animation: hex-pulse 1337ms cubic-bezier(.118, 4.96, 0.93, 5.99)  infinite alternate; 
-  /* "beacon" pulse — whole hex (border + glyph), not just the {g} inside it. hand-rolled spring curve standing in for Open Props' --ease-elastic-in-1, since the site doesn't import Open Props */
+  animation: hex-pulse 3600ms ease-in-out infinite alternate;
+  /* "beacon" pulse — whole hex (border + glyph), not just the {g} inside it.
+     ease-in-out slows at both ends, which is what reads as "breathing".
+     the old cubic-bezier had y-values of 4.96 and 5.99 — a cubic-bezier's y axis
+     is progress, so anything over 1 overshoots the target. ~6x overshoot twice per
+     cycle is what caused the jitter. */
 }
-@media (prefers-reduced-motion: reduce) {
-  .avatar-frame { animation: none; }
-}
+/* reduced-motion is handled by the global block at the bottom of this file,
+   which kills every animation site-wide — no per-element rule needed here */
 @keyframes hex-pulse {
   from { transform: scale(1); }
   to   { transform: scale(1.06); }
@@ -175,7 +178,13 @@ img { max-width: 100%; display: block; }
   align-items: center; text-align: center; /* was unset/left before — this is what actually centers "Guerz" and the badges, on every screen size, not just an artifact of the flanking hexes */
 }
 .userinfo-name {
-  font-family: 'Platypi', serif; font-size: clamp(84px, 80vw, 69px); font-weight: 800; line-height: 1.08; margin-top: -18px; margin-bottom:
+  font-family: 'Platypi', serif; font-weight: 800; line-height: 1.08;
+  /* clamp(MIN, PREFERRED, MAX) — the old value was clamp(84px, 80vw, 69px),
+     where min (84px) was larger than max (69px), so it could only ever resolve
+     to 84px at every screen size. now it actually scales down on narrow phones. */
+  font-size: clamp(44px, 11vw, 84px);
+  margin-top: -18px;
+  margin-bottom: 0; /* was `margin-bottom:` with no value — a parse error the browser dropped */
 }
 .userinfo-tags { display: flex; flex-direction: column; gap: 8px; align-items: center; }
 .userinfo-tag-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; padding: 0 7px 4px;  }
