@@ -175,13 +175,13 @@ img { max-width: 100%; display: block; }
   align-items: center; text-align: center; /* was unset/left before — this is what actually centers "Guerz" and the badges, on every screen size, not just an artifact of the flanking hexes */
 }
 .userinfo-name {
-  font-family: 'Platypi', serif; font-size: clamp(44px, 11vw, 84px); font-weight: 800; line-height: 1.08;
+  font-family: 'Platypi', serif; font-size: clamp(84px, 80vw, 69px); font-weight: 800; line-height: 1.08; margin-top: -18px; margin-bottom:
 }
 .userinfo-tags { display: flex; flex-direction: column; gap: 8px; align-items: center; }
-.userinfo-tag-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-.userinfo-tag { display: inline-block; padding: 4px 16px; width: fit-content; font-size: 12px; }
-.userinfo-tag--dark { background: #1c1a20; color: var(--peach); }
-.userinfo-tag--peach { background: var(--peach); color: var(--ink); }
+.userinfo-tag-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; padding: 0 7px 4px;  }
+.userinfo-tag { display: inline-block; padding: 5px 16px; width: fit-content;  }
+.userinfo-tag--dark { background: #1c1a20; color: var(--peach);font-size: 16.2px; }
+.userinfo-tag--peach { background: var(--peach); color: var(--ink); font-size: 13px;}
 .userinfo-role { font: 700 10.5px 'IBM Plex Mono', monospace; color: var(--muted); }
 
 @media (max-width: 640px) {
