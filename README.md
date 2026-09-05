@@ -27,10 +27,10 @@ guerz.lol documents a self-taught, in-public path toward full-stack web developm
 
 ```
 index.html               → home
-roadmap.html              → learning roadmap
+playbook.html             → learning roadmap
 fcc-build-archive.html    → freeCodeCamp curriculum builds
-guerzbox.html             → interactive CSS/JS concept demos (Guerzbox)
-guerzography.html         → about page
+sandbox.html              → interactive CSS/JS concept demos (Sandbox)
+about.html                → about page
 styles.css                → single site-wide stylesheet
 theme.js                  → day/night toggle
 guerzbook.js              → guestbook logic
@@ -38,7 +38,7 @@ projects.js               → build archive interactivity
 sitemap.xml / robots.txt  → SEO
 ```
 
-Nav order (top and footer) is: roadmap → fcc build archive → guerzbox → guerzography → blogguerz (external).
+Nav order (top and footer) is: about → playbook → fcc build archive → sandbox → blogguerz (external).
 
 ## Design tokens
 
@@ -74,8 +74,4 @@ Personal project. Code is visible for learning-in-public purposes; not licensed 
 
 ---
 
-<<<<<<< HEAD
 *Site voice, design system, and roadmap are documented separately — this README covers the repository itself.*
-=======
-*Site voice, design system, and roadmap are documented separately — this README covers the repository itself.*
->>>>>>> a6c9cb2e70466ee56cf461c9c2cb5b5dafba0b25
