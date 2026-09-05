@@ -74,4 +74,8 @@ Personal project. Code is visible for learning-in-public purposes; not licensed 
 
 ---
 
+<<<<<<< HEAD
 *Site voice, design system, and roadmap are documented separately — this README covers the repository itself.*
+=======
+*Site voice, design system, and roadmap are documented separately — this README covers the repository itself.*
+>>>>>>> a6c9cb2e70466ee56cf461c9c2cb5b5dafba0b25
