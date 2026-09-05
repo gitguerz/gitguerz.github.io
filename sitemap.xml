@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://guerz.lol/</loc></url>
-  <url><loc>https://guerz.lol/guerzography.html</loc></url>
-  <url><loc>https://guerz.lol/roadmap.html</loc></url>
+  <url><loc>https://guerz.lol/about.html</loc></url>
+  <url><loc>https://guerz.lol/playbook.html</loc></url>
   <url><loc>https://guerz.lol/fcc-build-archive.html</loc></url>
+  <url><loc>https://guerz.lol/sandbox.html</loc></url>
 </urlset>

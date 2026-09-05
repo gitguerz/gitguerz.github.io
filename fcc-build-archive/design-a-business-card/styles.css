@@ -1,0 +1,28 @@
+body {
+  background: rosybrown;
+  font-family: Arial, sans-serif;
+}
+
+.business-card {
+  background-color: beige;
+  width: 300px;
+  padding: 20px;
+  margin: 100px;
+  text-align: center;
+  font-size: 16px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.profile-image {
+  max-width: 100%; /* max-width is used to make the image responsive */
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+a {
+  text-decoration: none; /* text-decoration is used to remove the underline from the link */
+}

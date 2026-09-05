@@ -1,0 +1,100 @@
+body {
+  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg); /* background-image property sets the background image of the body element. url() function specifies the path to the image file. */
+  font-family: sans-serif; /* font-family property sets the font family for the body element. sans-serif is a keyword that defines a generic sans-serif font. */
+  padding: 20px; /* padding property adds space around the content of the body element. 20px value sets the padding to 20 pixels on all sides. */
+}
+
+h1 {
+  font-size: 40px; /* font-size property sets the size of the font for the h1 element. 40px value sets the font size to 40 pixels. */
+  margin-top: 0; /* margin-top property sets the top margin of the h1 element. 0 value removes any default top margin. */
+  margin-bottom: 15px; /* margin-bottom property sets the bottom margin of the h1 element. 15px value adds a 15-pixel space below the h1 element. */
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.established {
+  font-style: italic; /* font-style property sets the style of the font for the established class. italic value makes the text italicized. */
+}
+
+h1, h2, p {
+  text-align: center; /* text-align property sets the horizontal alignment of the text for h1, h2, and p elements. center value centers the text horizontally within its container. */
+}
+
+.menu {
+  width: 80%; /* width property sets the width of the menu class. 80% value makes the width 80% of the parent container's width. */
+  background-color: burlywood; /* background-color property sets the background color of the menu class. burlywood is a named color that gives a light brown shade. */
+  margin-left: auto; /* margin-left property sets the left margin of the menu class. auto value allows the browser to calculate the left margin automatically, centering the element horizontally. */
+  margin-right: auto; /* margin-right property sets the right margin of the menu class. auto value allows the browser to calculate the right margin automatically, centering the element horizontally. */
+  padding: 20px; /* padding property adds space around the content of the menu class. 20px value sets the padding to 20 pixels on all sides. */
+  max-width: 500px; /* max-width property sets the maximum width of the menu class. 500px value ensures that the width does not exceed 500 pixels, even if the parent container is larger. */
+}
+
+img {
+  display: block; /* display property sets the display behavior of the img element. block value makes the image a block-level element, allowing it to take up the full width available and start on a new line. */
+  margin-left: auto; /* margin-left property sets the left margin of the img element. auto value allows the browser to calculate the left margin automatically, centering the image horizontally. */
+  margin-right: auto; /* margin-right property sets the right margin of the img element. auto value allows the browser to calculate the right margin automatically, centering the image horizontally. */
+  margin: -25px; /* margin property sets the margin of the img element. -25px value moves the image up by 25 pixels, creating a negative top margin. */
+}
+
+hr {
+  height: 2px; /* height property sets the height of the hr element. 2px value makes the horizontal line 2 pixels tall. */
+  background-color: brown; /* background-color property sets the background color of the hr element. brown is a named color that gives a dark brown shade. */
+  border-color: brown; /* border-color property sets the color of the border of the hr element. brown value ensures that the border color matches t he background color, creating a consistent appearance. */
+}
+
+.bottom-line {
+  margin-top: 25px;
+}
+
+h1, h2 {
+  font-family: Impact, serif; <!-- font-family property sets the font family for h1 and h2 elements. Impact is a specific font, and serif is a generic font family that provides a fallback option if Impact is not available. -->
+}
+
+.item p {
+  display: inline-block; <!-- display property sets the display behavior of the p element within the item class. inline-block value allows the paragraph to be displayed inline with other elements while still maintaining block-level properties, such as width and height. -->
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.flavor, .dessert {
+  text-align: left;
+  width: 75%;
+}
+
+.price {
+  text-align: right;
+  width: 25%;
+}
+
+/* FOOTER */
+
+footer {
+  font-size: 14px;
+}
+
+address {
+  font-style: normal;
+}
+
+.address {
+  margin-bottom: 5px;
+}
+
+a {
+  color: black;
+}
+
+a:visited { /* a:visited pseudo-class targets links that have been visited by the user. */
+  color: black;
+}
+
+a:hover { /* a:hover pseudo-class targets links when the user hovers over them with the mouse pointer. */
+  color: brown;
+}
+
+a:active { /* a:active pseudo-class targets links when they are being clicked or activated by the user. */
+  color: brown;
+}

@@ -1,0 +1,23 @@
+a { /* a tag selector is for links */
+  text-decoration: none;
+}
+
+a:link { /* a:link selector is used to style unvisited links */
+  color: #0ce213;
+}
+
+a:visited { /* a:visited selector is used to style visited links */
+  color: #8e44ad;
+}
+
+a:hover { /* a:hover selector is used to style links when the user hovers over them */
+  color: #f39c12;
+}
+
+a:focus { /* a:focus selector is used to style links when they are focused (e.g., clicked or tabbed to) */
+  outline: 2px solid #c0392b;
+}
+
+a:active { /* a:active selector is used to style links when they are being clicked */
+  color: #9063f0;
+}
