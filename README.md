@@ -66,7 +66,7 @@ Changes to `main` deploy automatically via GitHub Pages.
 
 ## DNS
 
-`guerz.lol` is registered and managed through **Porkbun**, pointed at GitHub Pages via the standard `A`/`ALIAS` records for `gitguerz.github.io`.
+`guerz.lol` is **registered** through Porkbun, but DNS is managed and proxied through **Cloudflare** — the zone handles A/CNAME records, mail routing (MX + SPF/DKIM/DMARC), SSL cert validation, and Worker routes pointing `guerz.lol` and `www.guerz.lol` at `gitguerz.github.io`.
 
 ## License / usage
 
