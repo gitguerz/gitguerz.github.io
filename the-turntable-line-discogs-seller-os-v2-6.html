@@ -1,0 +1,2193 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="The Turntable Line: a persistent, interactive Discogs vinyl seller operating system."
+    />
+    <title>The Turntable Line — Discogs Seller OS v2.6</title>
+    <style>
+      /* ===== THEME TOKENS — color + font variables. Dark is the default; [data-theme="light"] overrides. ===== */
+      :root {
+        --bg: #151210;
+        --surface: #1e1a17;
+        --surface2: #27211d;
+        --surface3: #312923;
+        --text: #f2ede4;
+        --muted: #b6aca0;
+        --faint: #7d7267;
+        --line: #40372f;
+        --red: #e07469;
+        --gold: #d7ad59;
+        --lime: #d9e96a;
+        --paper: #fffdf9;
+        --ink: #201a16;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      [data-theme="light"] {
+        --bg: #f4f0e8;
+        --surface: #fffdf9;
+        --surface2: #eee8de;
+        --surface3: #dfd7cb;
+        --text: #231d18;
+        --muted: #746a61;
+        --faint: #9f9487;
+        --line: #d5ccc0;
+        --red: #a64942;
+        --gold: #89641f;
+        --lime: #b8c932;
+        --paper: #fffdf9;
+        --ink: #201a16;
+      }
+      /* ===== RESET + LAYOUT SHELL ===== */
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 7rem;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.52 var(--sans);
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .wrap {
+        max-width: 1240px;
+        margin: auto;
+        padding-inline: clamp(18px, 4vw, 60px);
+      }
+      .skip {
+        position: absolute;
+        left: -9999px;
+      }
+      .skip:focus {
+        left: 12px;
+        top: 12px;
+        z-index: 100;
+        background: var(--lime);
+        color: var(--ink);
+        padding: 8px;
+      }
+      /* ===== STICKY HEADER + NAV ===== */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: color-mix(in srgb, var(--bg) 90%, transparent);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--line);
+      }
+      .header-inner {
+        min-height: 62px;
+        max-width: 1280px;
+        padding: 8px clamp(18px, 4vw, 60px);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        color: var(--text);
+        text-decoration: none;
+        font: 800 12px var(--mono);
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+      }
+      .brand-mark {
+        color: var(--red);
+        font-size: 20px;
+        vertical-align: -2px;
+      }
+      .roadmap-nav {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        min-width: 0;
+        flex: 1;
+      }
+      .roadmap-nav::-webkit-scrollbar {
+        display: none;
+      }
+      .roadmap-nav a {
+        flex: 0 0 auto;
+        padding: 7px 8px;
+        border-radius: 5px;
+        color: var(--muted);
+        font: 700 10px var(--mono);
+        letter-spacing: 0.03em;
+        text-decoration: none;
+      }
+      .roadmap-nav a:hover,
+      .roadmap-nav a:focus-visible {
+        color: var(--text);
+        background: var(--surface2);
+        outline: none;
+      }
+      .header-status {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--muted);
+        font: 10px var(--mono);
+        white-space: nowrap;
+      }
+      .live-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--lime);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 18%, transparent);
+      }
+      .header-actions {
+        display: flex;
+        gap: 3px;
+      }
+      .icon-button {
+        width: 34px;
+        height: 34px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 17px;
+      }
+      .icon-button:hover {
+        border-color: var(--line);
+        background: var(--surface2);
+        color: var(--text);
+      }
+      .progress-rail {
+        height: 3px;
+        background: var(--line);
+      }
+      .progress-rail i {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: var(--red);
+        transition: width 0.35s ease;
+      }
+      /* ===== HERO ===== */
+      .hero {
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(
+            900px 350px at 15% 0%,
+            color-mix(in srgb, var(--red) 20%, transparent),
+            transparent 70%
+          ),
+          var(--bg);
+      }
+      .hero-inner {
+        padding-block: clamp(72px, 10vw, 145px) clamp(52px, 7vw, 100px);
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--red);
+        font: 700 10px var(--mono);
+        letter-spacing: 0.15em;
+      }
+      .hero h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: var(--serif);
+        letter-spacing: -0.04em;
+        line-height: 0.98;
+      }
+      .hero h1 {
+        font-size: clamp(54px, 9vw, 120px);
+        max-width: 850px;
+      }
+      .hero h1 em {
+        color: var(--red);
+        font-weight: 600;
+      }
+      .hero-copy {
+        max-width: 690px;
+        margin: 28px 0 0;
+        color: var(--muted);
+        font-size: clamp(18px, 2.1vw, 24px);
+        line-height: 1.28;
+      }
+      .hero-controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 41px;
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--surface);
+        color: var(--text);
+        font: 700 11px var(--mono);
+        letter-spacing: 0.04em;
+        text-decoration: none;
+      }
+      .button:hover {
+        transform: translateY(-1px);
+      }
+      .button.primary {
+        color: var(--ink);
+        background: var(--lime);
+        border-color: var(--lime);
+      }
+      .button.quiet {
+        background: transparent;
+      }
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 52px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .hero-stats div {
+        padding: 15px 30px 15px 0;
+        margin-right: 30px;
+        border-right: 1px solid var(--line);
+      }
+      .hero-stats div:last-child {
+        border: 0;
+      }
+      .hero-stats b {
+        display: block;
+        font: 700 26px/1 var(--serif);
+      }
+      .hero-stats span {
+        font: 9px var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--muted);
+      }
+      /* ===== COMMAND DECK — stats, next-move banner, phase checklist accordion ===== */
+      .command-section {
+        padding-block: 58px;
+        background: var(--lime);
+        color: var(--ink);
+      }
+      .section {
+        padding-block: clamp(60px, 8vw, 112px);
+      }
+      .alt {
+        background: var(--surface);
+      }
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 25px;
+        align-items: flex-start;
+        margin-bottom: 28px;
+      }
+      .section-heading h2 {
+        font-size: clamp(36px, 5vw, 64px);
+        max-width: 820px;
+      }
+      .lede {
+        max-width: 730px;
+        margin: 15px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+      .command-section .lede {
+        color: color-mix(in srgb, var(--ink) 76%, transparent);
+      }
+      .completion-disc {
+        width: 108px;
+        height: 108px;
+        flex: 0 0 108px;
+        border: 1px solid var(--ink);
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        text-align: center;
+      }
+      .completion-disc span {
+        font: 700 27px/1 var(--serif);
+      }
+      .completion-disc small {
+        font: 9px var(--mono);
+        text-transform: uppercase;
+      }
+      .command-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .span-2 {
+        grid-column: span 2;
+      }
+      label {
+        display: block;
+        font: 700 10px var(--mono);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+      input,
+      select,
+      textarea {
+        display: block;
+        width: 100%;
+        margin-top: 6px;
+        padding: 9px 10px;
+        border: 1px solid color-mix(in srgb, var(--ink) 55%, transparent);
+        border-radius: 3px;
+        color: var(--ink);
+        background: #ffffff8c;
+        font: 14px var(--sans);
+        letter-spacing: 0;
+        text-transform: none;
+        outline: 0;
+      }
+      textarea {
+        min-height: 76px;
+        resize: vertical;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        background: #fff;
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+      .next-move {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 23px;
+        padding: 13px;
+        border-top: 1px solid var(--ink);
+        border-bottom: 1px solid var(--ink);
+      }
+      .next-move span {
+        font: 10px var(--mono);
+        letter-spacing: 0.09em;
+      }
+      .next-move strong {
+        font: 600 17px var(--serif);
+      }
+      .text-button {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: 700 11px var(--mono);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .next-move .text-button {
+        margin-left: auto;
+      }
+      .phase {
+        margin: 0 auto 16px;
+        padding: 0 25px;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: var(--surface);
+        overflow: hidden;
+      }
+      .phase.done {
+        border-color: var(--lime);
+      }
+      .phase-header {
+        display: grid;
+        grid-template-columns: 57px 1fr 50px 18px;
+        gap: 14px;
+        align-items: start;
+        padding: 24px 0;
+        cursor: pointer;
+      }
+      .phase-header:focus-visible {
+        outline: 2px solid var(--lime);
+        outline-offset: -5px;
+      }
+      .phase-num {
+        color: var(--faint);
+        font: 800 34px/1 var(--serif);
+      }
+      .phase-meta {
+        display: flex;
+        gap: 7px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 7px;
+      }
+      .chip {
+        padding: 3px 7px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font: 9px var(--mono);
+        letter-spacing: 0.06em;
+      }
+      .checkpoint-count {
+        color: var(--red);
+        font: 700 10px var(--mono);
+      }
+      .phase h3 {
+        font-size: 28px;
+      }
+      .goal {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .collapse-hint {
+        display: block;
+        margin-top: 9px;
+        color: var(--faint);
+        font: 9px var(--mono);
+        letter-spacing: 0.05em;
+      }
+      .phase-chevron {
+        align-self: center;
+        color: var(--faint);
+        font: 700 20px/1 var(--mono);
+        transition: transform 0.25s;
+      }
+      .phase.is-collapsed .phase-chevron {
+        transform: rotate(-90deg);
+      }
+      .phase-body {
+        display: grid;
+        grid-template-rows: 1fr;
+        opacity: 1;
+        transition:
+          grid-template-rows 0.25s,
+          opacity 0.18s;
+      }
+      .phase-body-inner {
+        overflow: hidden;
+      }
+      .phase.is-collapsed .phase-body {
+        grid-template-rows: 0fr;
+        opacity: 0;
+      }
+      .ring {
+        width: 48px;
+        height: 48px;
+        position: relative;
+      }
+      .ring svg {
+        transform: rotate(-90deg);
+      }
+      .ring circle {
+        fill: none;
+        stroke-width: 4;
+      }
+      .ring .base {
+        stroke: var(--surface3);
+      }
+      .ring .fill {
+        stroke: var(--red);
+        stroke-linecap: round;
+      }
+      .ring b {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font: 9px var(--mono);
+        color: var(--muted);
+      }
+      .why {
+        margin: 0 0 18px;
+        padding: 12px 14px;
+        border-left: 3px solid var(--red);
+        background: var(--surface2);
+      }
+      .why b {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--red);
+        font: 9px var(--mono);
+        letter-spacing: 0.1em;
+      }
+      .why p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .checklist {
+        display: grid;
+        gap: 3px;
+        padding-bottom: 24px;
+      }
+      .checklist label {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 8px;
+        border-radius: 5px;
+        color: var(--text);
+        font: 14px/1.4 var(--sans);
+        letter-spacing: 0;
+        text-transform: none;
+        cursor: pointer;
+      }
+      .checklist label:hover {
+        background: var(--surface2);
+      }
+      .checklist input,
+      .packing-item input {
+        appearance: none;
+        flex: 0 0 18px;
+        width: 18px;
+        height: 18px;
+        margin: 1px 0 0;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        background: var(--surface);
+      }
+      .checklist input:checked {
+        background: var(--red);
+        border-color: var(--red);
+        box-shadow: inset 0 0 0 4px var(--surface);
+      }
+      .checklist input:checked + span {
+        text-decoration: line-through;
+        color: var(--faint);
+      }
+      .hint {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .rule-banner {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        gap: 18px;
+        margin: 27px 0;
+        padding: 16px;
+        border: 1px solid var(--gold);
+        background: color-mix(in srgb, var(--gold) 12%, var(--surface));
+        color: var(--text);
+      }
+      .rule-banner b {
+        color: var(--gold);
+        font: 700 10px var(--mono);
+        letter-spacing: 0.08em;
+      }
+      /* ===== GRADING SCALE + COMMENT LAB + TALLY TOOLBAR ===== */
+      .grade-scale {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .grade-row {
+        display: grid;
+        grid-template-columns: 160px 88px 1fr 175px;
+        gap: 13px;
+        padding: 15px;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface2);
+      }
+      .grade-row:last-child {
+        border: 0;
+      }
+      .grade-name {
+        font: 700 19px/1 var(--serif);
+      }
+      .grade-code {
+        display: block;
+        margin-top: 3px;
+        color: var(--red);
+        font: 10px var(--mono);
+      }
+      .grade-pct {
+        font: 700 12px var(--mono);
+        color: var(--gold);
+      }
+      .grade-copy,
+      .grade-callout {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .defect-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 34px;
+      }
+      .defect-grid article {
+        padding: 20px;
+        background: var(--surface2);
+        border-top: 5px solid var(--red);
+      }
+      .defect-grid article:nth-child(2) {
+        border-color: var(--gold);
+      }
+      .card-label {
+        margin: 0 0 8px;
+        color: var(--red);
+        font: 10px var(--mono);
+        letter-spacing: 0.1em;
+      }
+      .defect-grid h3 {
+        font-size: 23px;
+      }
+      .defect-grid dl {
+        margin: 17px 0 0;
+      }
+      .defect-grid dt {
+        margin-top: 11px;
+        font-weight: 700;
+      }
+      .defect-grid dd {
+        margin: 2px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .comment-lab {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 25px;
+        margin-top: 35px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        background: var(--surface3);
+      }
+      .comment-lab h3 {
+        font-size: 26px;
+      }
+      .comment-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+      }
+      .comment-lab label {
+        color: var(--muted);
+      }
+      .comment-output {
+        grid-column: 1/-1;
+        min-height: 100px;
+        background: var(--paper);
+        color: var(--ink);
+      }
+      .comment-actions {
+        grid-column: 1/-1;
+        display: flex;
+        gap: 8px;
+      }
+      .tally-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .tally-toolbar {
+        display: flex;
+        align-items: end;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .tally-toolbar label:first-child {
+        width: 180px;
+      }
+      .tally-toolbar label:nth-child(2) {
+        flex: 1;
+      }
+      .tally-toolbar input,
+      .tally-toolbar select {
+        color: var(--text);
+        background: var(--surface);
+        border-color: var(--line);
+      }
+      #visibleRows {
+        color: var(--muted);
+        font: 10px var(--mono);
+        white-space: nowrap;
+      }
+      .table-shell {
+        overflow: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+      .batch-table {
+        width: 100%;
+        min-width: 1510px;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+      .batch-table th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        padding: 10px 7px;
+        background: var(--surface3);
+        color: var(--muted);
+        font: 700 9px var(--mono);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        text-align: left;
+        white-space: nowrap;
+      }
+      .batch-table td {
+        padding: 4px;
+        border-top: 1px solid var(--line);
+        vertical-align: middle;
+      }
+      .batch-table .row-number {
+        width: 34px;
+        color: var(--faint);
+        font: 10px var(--mono);
+        text-align: center;
+      }
+      .batch-table input,
+      .batch-table select {
+        margin: 0;
+        min-width: 0;
+        padding: 6px;
+        border-color: transparent;
+        background: transparent;
+        color: var(--text);
+        font-size: 12px;
+      }
+      .batch-table input:focus,
+      .batch-table select:focus {
+        border-color: var(--red);
+        background: var(--surface2);
+        box-shadow: none;
+      }
+      .title {
+        width: 230px;
+      }
+      .release {
+        width: 95px;
+      }
+      .condition {
+        width: 108px;
+      }
+      .price {
+        width: 70px;
+      }
+      .shelf {
+        width: 86px;
+      }
+      .check-cell {
+        text-align: center;
+        width: 50px;
+      }
+      .batch-table input[type="checkbox"] {
+        appearance: none;
+        width: 17px;
+        height: 17px;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        background: var(--surface);
+      }
+      .batch-table input[type="checkbox"]:checked {
+        background: var(--red);
+        border-color: var(--red);
+        box-shadow: inset 0 0 0 3px var(--surface);
+      }
+      .notes {
+        width: 240px;
+      }
+      .session-totals {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1px;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+      .session-totals div {
+        padding: 13px;
+        background: var(--surface2);
+      }
+      .session-totals span {
+        display: block;
+        color: var(--muted);
+        font: 9px var(--mono);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .session-totals b {
+        display: block;
+        margin-top: 3px;
+        font: 700 22px/1 var(--serif);
+      }
+      .table-tip {
+        margin: 13px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      /* ===== PACKING CHECKLIST ===== */
+      .packing-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 42px;
+      }
+      .packing-list {
+        margin-top: 25px;
+      }
+      .packing-item {
+        display: grid;
+        grid-template-columns: 37px 1fr;
+        gap: 11px;
+        padding: 11px 0;
+        border-top: 1px solid var(--line);
+        align-items: start;
+      }
+      .packing-item .number {
+        color: var(--red);
+        font: 700 12px var(--mono);
+      }
+      .packing-item label {
+        color: var(--text);
+        font: 14px/1.3 var(--sans);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .packing-item small {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .packing-item input:checked {
+        background: var(--lime);
+        border-color: var(--lime);
+        box-shadow: inset 0 0 0 4px var(--surface);
+      }
+      .inventory-card {
+        align-self: start;
+        padding: 22px;
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 8px;
+      }
+      .inventory-card .card-label {
+        color: var(--lime);
+      }
+      .supply-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .supply-grid label {
+        color: var(--paper);
+        font-size: 9px;
+      }
+      .supply-grid input {
+        color: var(--paper);
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #675f55;
+        border-radius: 0;
+        padding: 7px 0;
+      }
+      .mini-copy {
+        margin: 20px 0 0;
+        padding-top: 15px;
+        border-top: 1px solid #4b433b;
+        color: #c9c0b5;
+        font-size: 12px;
+      }
+      /* ===== FEE CALCULATOR ===== */
+      .calculator {
+        display: grid;
+        grid-template-columns: 1fr 0.7fr;
+        gap: 1px;
+        border: 1px solid var(--line);
+        background: var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .calc-inputs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 13px;
+        padding: 22px;
+        background: var(--surface);
+      }
+      .calc-inputs input {
+        color: var(--text);
+        background: var(--surface2);
+        border-color: var(--line);
+      }
+      .calc-result {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 26px;
+        background: var(--red);
+        color: var(--ink);
+      }
+      .calc-result span {
+        font: 700 9px var(--mono);
+        letter-spacing: 0.08em;
+      }
+      .calc-result b {
+        display: block;
+        margin: 8px 0;
+        font: 700 clamp(43px, 6vw, 72px)/0.95 var(--serif);
+      }
+      .calc-result p {
+        margin: 0;
+        font-size: 13px;
+      }
+      /* ===== SITE FOOTER ===== */
+      footer {
+        padding: 45px 0;
+        background: var(--ink);
+        color: #c8c0b5;
+      }
+      footer p {
+        max-width: 900px;
+        margin: 0 0 11px;
+        font-size: 12px;
+      }
+      footer a {
+        color: var(--lime);
+      }
+      .credit-line {
+        padding-top: 14px;
+        border-top: 1px solid #4b433b;
+      }
+      .disclaimer-line {
+        color: #a79d91;
+        font-size: 10px;
+      }
+      .license-section {
+        padding: 38px 0;
+        background: var(--paper);
+        border-top: 1px solid var(--line);
+      }
+      .license-section p {
+        max-width: 900px;
+        margin: 0 0 11px;
+        font-size: 12px;
+        color: var(--ink);
+      }
+      .license-section p:last-child {
+        margin-bottom: 0;
+      }
+      .license-section a {
+        color: var(--red);
+      }
+      .toast {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 80;
+        max-width: 300px;
+        padding: 10px 13px;
+        background: var(--lime);
+        color: var(--ink);
+        border: 1px solid var(--ink);
+        box-shadow: 4px 4px 0 var(--ink);
+        font: 11px var(--mono);
+        opacity: 0;
+        transform: translateY(12px);
+        pointer-events: none;
+        transition: 0.25s;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: none;
+      }
+      /* ===== RESPONSIVE BREAKPOINTS ===== */
+      @media (max-width: 1050px) {
+        .header-status {
+          display: none;
+        }
+        .roadmap-nav {
+          order: 3;
+          flex-basis: 100%;
+          margin-left: -8px;
+        }
+        .command-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .comment-lab,
+        .packing-grid,
+        .calculator {
+          grid-template-columns: 1fr;
+        }
+        .session-totals {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .grade-row {
+          grid-template-columns: 140px 70px 1fr;
+        }
+        .grade-callout {
+          grid-column: 3;
+        }
+      }
+      @media (max-width: 600px) {
+        .header-inner {
+          gap: 8px;
+        }
+        .brand {
+          font-size: 10px;
+        }
+        .roadmap-nav a {
+          padding: 6px 7px;
+          font-size: 9px;
+        }
+        .section-heading {
+          display: block;
+        }
+        .completion-disc {
+          margin-top: 18px;
+        }
+        .command-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-2 {
+          grid-column: auto;
+        }
+        .phase {
+          padding: 0 17px;
+        }
+        .phase-header {
+          grid-template-columns: 40px 1fr 0 16px;
+          gap: 9px;
+        }
+        .ring {
+          display: none;
+        }
+        .phase-num {
+          font-size: 27px;
+        }
+        .grade-row {
+          grid-template-columns: 1fr;
+        }
+        .grade-callout {
+          grid-column: auto;
+        }
+        .rule-banner {
+          grid-template-columns: 1fr;
+        }
+        .defect-grid {
+          grid-template-columns: 1fr;
+        }
+        .comment-controls {
+          grid-template-columns: 1fr;
+        }
+        .tally-toolbar {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+        .tally-toolbar label:first-child {
+          width: auto;
+        }
+        .session-totals {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .supply-grid {
+          grid-template-columns: 1fr;
+        }
+        .calc-inputs {
+          grid-template-columns: 1fr;
+        }
+        .next-move {
+          align-items: flex-start;
+          flex-wrap: wrap;
+        }
+        .next-move .text-button {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#command-deck">Skip to command deck</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top"><span class="brand-mark">◉</span> THE TURNTABLE LINE</a>
+        <nav class="roadmap-nav">
+          <a href="#command-deck">Deck</a><a href="#line">Phases</a><a href="#grading-card">Grade</a
+          ><a href="#listing-comment-lab">Comments</a><a href="#batch-tally">Sheet</a
+          ><a href="#packing-card">Pack</a><a href="#math">Math</a>
+        </nav>
+        <div class="header-status">
+          <span class="live-dot"></span><span id="saveStatus">LOCAL SAVE READY</span><span>/</span
+          ><span id="headerProgress">0 / 0 CHECKPOINTS</span>
+        </div>
+        <div class="header-actions">
+          <button class="icon-button" id="themeButton" title="Toggle theme">◐</button
+          ><button class="icon-button" id="exportButton" title="Export full JSON backup">↓</button
+          ><button class="icon-button" id="printButton" title="Print page">⌘</button>
+        </div>
+      </div>
+      <div class="progress-rail"><i id="globalProgress"></i></div>
+    </header>
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="wrap hero-inner">
+          <p class="eyebrow">DISCOGS SELLER OPERATING SYSTEM · V2.6</p>
+          <h1>Stop listing records.<br /><em>Run a line.</em></h1>
+          <p class="hero-copy">
+            A persistent command deck for turning a stack of vinyl into accurately graded,
+            intelligently priced, properly packed inventory—without losing the thread halfway
+            through.
+          </p>
+          <div class="hero-controls">
+            <button class="button primary" id="newBatchButton">＋ Start / Name a Batch</button
+            ><a class="button quiet" href="#batch-tally">Jump to Batch Tally ↓</a>
+          </div>
+          <div class="hero-stats">
+            <div><b id="statTarget">10</b><span>Starting rows</span></div>
+            <div><b id="statListed">0</b><span>Listed</span></div>
+            <div><b id="statSold">0</b><span>Sold</span></div>
+            <div><b id="statNet">$0.00</b><span>Net logged</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="command-section" id="command-deck">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">COMMAND DECK</p>
+              <h2>Your batch has a name, a target, and exactly one next move.</h2>
+            </div>
+            <div class="completion-disc">
+              <span id="completionPct">0%</span><small>line complete</small>
+            </div>
+          </div>
+          <div class="command-grid">
+            <label
+              >Batch name<input
+                id="batchName"
+                data-persist
+                placeholder="Example: Sunday Crate 01" /></label
+            ><label>Session date<input id="sessionDate" data-persist type="date" /></label
+            ><label
+              >Batch target<input
+                id="batchTarget"
+                data-persist
+                type="number"
+                min="1"
+                value="10" /></label
+            ><label class="span-2"
+              >Session goal<input
+                id="sessionGoal"
+                data-persist
+                placeholder="Example: grade and list 10 sell-now copies" /></label
+            ><label class="span-2"
+              >One move before stopping<textarea
+                id="oneMove"
+                data-persist
+                placeholder="Write the exact next action so re-entry is easy."
+              ></textarea>
+            </label>
+          </div>
+          <div class="next-move">
+            <span>THE LINE SAYS</span
+            ><strong id="nextMoveText"
+              >Open Phase 00 or choose the first unchecked checkpoint.</strong
+            ><button id="goNext" class="text-button">Take me there →</button>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap" id="line">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE LINE · 00—08</p>
+            <h2>Nine phases. One direction.</h2>
+            <p class="lede">
+              Open the phase you are working. Collapse it when finished. Records only travel
+              forward.
+            </p>
+          </div>
+        </div>
+        <div id="phaseContainer"></div>
+      </section>
+      <section class="section alt" id="grading-card">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">REFERENCE CARD · TAPE THIS ABOVE THE LAMP</p>
+              <h2>The expanded grading card.</h2>
+              <p class="lede">
+                The browser guide is detailed; the print control generates a compact, independent
+                one-page wall card.
+              </p>
+            </div>
+            <button class="button quiet" id="printGrading">Print grading card</button>
+          </div>
+          <div class="rule-banner">
+            <b>THE 3-SECOND TEST</b
+            ><span
+              >Tilt under a directional lamp and rotate once. A line your fingernail
+              <strong>catches</strong> is a scratch; one it <strong>glides over</strong> is usually
+              a surface mark/hairline. If it repeats, skips, or is loud, say so plainly.</span
+            >
+          </div>
+          <div class="grade-scale" id="gradeScale"></div>
+          <div class="defect-grid">
+            <article>
+              <p class="card-label">MEDIA · VISUAL TERMS</p>
+              <h3>What your eyes are looking for</h3>
+              <dl>
+                <dt>Hairline</dt>
+                <dd>
+                  Fine, light superficial line; normally does not catch a nail. Example: “A few
+                  light hairlines visible only under angled light.”
+                </dd>
+                <dt>Scuff</dt>
+                <dd>
+                  Broad, cloudy rub mark from sleeve/storage contact; often cosmetic but can add
+                  noise. Example: “Light sleeve scuffs; no feelable scratches.”
+                </dd>
+                <dt>Scratch</dt>
+                <dd>
+                  Distinct groove mark, especially if it catches a fingernail. Do not soften the
+                  word. Example: “Feelable scratch across A2; causes several light ticks.”
+                </dd>
+                <dt>Groove wear</dt>
+                <dd>
+                  Dull, greyed, grainy groove area from repeated play/mistracking; usually audible
+                  as distortion or persistent noise.
+                </dd>
+                <dt>Warp</dt>
+                <dd>
+                  Dish, edge, or wave deformation. State whether it affects play: “Mild edge warp;
+                  tracks normally.”
+                </dd>
+                <dt>Spindle marks</dt>
+                <dd>Lines radiating from label hole; count heavy marks in your description.</dd>
+                <dt>Non-fill / pressing flaw</dt>
+                <dd>
+                  Manufacturing defect, often a zipper-like sound. Do not call it ordinary surface
+                  noise if you know it is pressing-related.
+                </dd>
+                <dt>Residue / contamination</dt>
+                <dd>
+                  Fingerprints, sticker residue, dust, smoke film, or unknown spots. Clean safely;
+                  disclose what remains.
+                </dd>
+              </dl>
+            </article>
+            <article>
+              <p class="card-label">SLEEVE · WHAT TO DISCLOSE</p>
+              <h3>Cover condition is its own grade.</h3>
+              <dl>
+                <dt>Ring wear</dt>
+                <dd>Visible circular wear or impression from the record inside.</dd>
+                <dt>Seam split</dt>
+                <dd>State side and length: “2-inch top-seam split.”</dd>
+                <dt>Corner wear / bumps</dt>
+                <dd>
+                  Blunting, whitening, crushing, or fraying of corners. Photograph severe damage.
+                </dd>
+                <dt>Crease / bend</dt>
+                <dd>
+                  Linear fold in cover; note whether artwork is broken or it is a light storage
+                  crease.
+                </dd>
+                <dt>Edge / spine wear</dt>
+                <dd>Rubbing, chipping, whitening, fray, split, or unreadable spine.</dd>
+                <dt>Cut-out / punch hole / saw cut</dt>
+                <dd>Promotional or clearance mark. Always disclose.</dd>
+                <dt>Writing / sticker / residue</dt>
+                <dd>Name location and whether removable: “price-sticker residue front cover.”</dd>
+              </dl>
+            </article>
+          </div>
+          <div class="comment-lab" id="listing-comment-lab">
+            <div>
+              <p class="eyebrow">LISTING COMMENT LAB</p>
+              <h3>Build a comment that prevents returns.</h3>
+              <p>
+                Formula:
+                <strong
+                  >specific flaw → playback impact → jacket condition → inserts/extras → shipping
+                  note if relevant.</strong
+                >
+              </p>
+            </div>
+            <div class="comment-controls">
+              <label
+                >Media flaw<select id="commentMedia" data-comment>
+                  <option value="">Choose a phrase</option>
+                  <option>Light hairlines and sleeve scuffs visible under angled light</option>
+                  <option>A few light hairlines; no feelable scratches</option>
+                  <option>Feelable scratch across [track]</option>
+                  <option>Light groove wear / inner-groove distortion</option>
+                  <option>Mild edge warp; tracks normally</option>
+                  <option>Clean visual copy with a few spindle marks</option>
+                </select></label
+              ><label
+                >Playback impact<select id="commentPlay" data-comment>
+                  <option value="">Choose a phrase</option>
+                  <option>plays clean throughout</option>
+                  <option>faint intermittent ticks in quiet passages</option>
+                  <option>light repeating ticks on [track]</option>
+                  <option>no skips or locks observed</option>
+                  <option>play-grade recommended for perfectionists</option>
+                </select></label
+              ><label
+                >Sleeve condition<select id="commentSleeve" data-comment>
+                  <option value="">Choose a phrase</option>
+                  <option>jacket has light corner wear</option>
+                  <option>jacket has moderate ring wear</option>
+                  <option>small top-seam split</option>
+                  <option>light edge/spine wear</option>
+                  <option>cover remains clean and presentable</option>
+                </select></label
+              ><label
+                >Extras<select id="commentExtra" data-comment>
+                  <option value="">Choose a phrase</option>
+                  <option>includes original inner sleeve</option>
+                  <option>includes insert</option>
+                  <option>no insert included</option>
+                  <option>record ships in a protective outer sleeve</option>
+                </select></label
+              ><textarea
+                class="comment-output"
+                id="commentOutput"
+                data-persist
+                placeholder="Generated comment appears here. Edit it to match the exact record."
+              ></textarea>
+              <div class="comment-actions">
+                <button class="button quiet" id="buildComment">Build comment</button
+                ><button class="button quiet" id="copyComment">Copy comment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap" id="batch-tally">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SESSION SHEET · LIVE BATCH TALLY</p>
+            <h2>Start with ten. Earn the next row.</h2>
+            <p class="lede">
+              Every field, checkbox, supply count, and generated comment autosaves in this browser.
+              Add rows only as the session grows.
+            </p>
+          </div>
+          <div class="tally-actions">
+            <button class="button quiet" id="addRow">＋ Add row</button
+            ><button class="button quiet" id="exportCsv">Export CSV</button>
+          </div>
+        </div>
+        <div class="tally-toolbar">
+          <label
+            >Show<select id="tallyFilter">
+              <option value="all">All records</option>
+              <option value="active">Rows with data</option>
+              <option value="ready">Ready to list</option>
+              <option value="listed">Listed</option>
+              <option value="sold">Sold</option>
+              <option value="packed">Packed</option>
+              <option value="shipped">Shipped</option>
+              <option value="attention">Needs attention</option>
+            </select></label
+          ><label
+            >Quick search<input
+              id="tallySearch"
+              placeholder="Artist, title, release ID, shelf…" /></label
+          ><span id="visibleRows">10 rows visible</span>
+        </div>
+        <div class="table-shell">
+          <table class="batch-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Artist / Title</th>
+                <th>Release ID</th>
+                <th>Media</th>
+                <th>Sleeve</th>
+                <th>Price</th>
+                <th>Shelf</th>
+                <th>Grade</th>
+                <th>Price</th>
+                <th>Listed</th>
+                <th>Sold</th>
+                <th>Packed</th>
+                <th>Shipped</th>
+                <th>Net</th>
+                <th>Notes / flaws</th>
+              </tr>
+            </thead>
+            <tbody id="batchBody"></tbody>
+          </table>
+        </div>
+        <div class="session-totals">
+          <div><span>Entered</span><b id="totalEntered">0</b></div>
+          <div><span>Graded</span><b id="totalGraded">0</b></div>
+          <div><span>Listed</span><b id="totalListed">0</b></div>
+          <div><span>Sold</span><b id="totalSold">0</b></div>
+          <div><span>Gross sold</span><b id="totalGross">$0.00</b></div>
+          <div><span>Net logged</span><b id="totalNet">$0.00</b></div>
+          <div><span>Shipped</span><b id="totalShipped">0</b></div>
+        </div>
+        <p class="table-tip">
+          TIP: release ID verifies the pressing; shelf location prevents “I sold it, where the hell
+          is it?”
+        </p>
+      </section>
+      <section class="section alt" id="packing-card">
+        <div class="wrap packing-grid">
+          <div>
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">TAPE THIS TO THE PACKING ZONE</p>
+                <h2>The packing card.</h2>
+                <p class="lede">
+                  The live guide stays detailed; its print button generates a compact, standalone
+                  one-page card.
+                </p>
+              </div>
+              <button class="button quiet" id="printPacking">Print packing card</button>
+            </div>
+            <div id="packingChecklist" class="packing-list"></div>
+          </div>
+          <aside class="inventory-card">
+            <p class="card-label">CONSUMABLES · RESTOCK BEFORE ZERO</p>
+            <div class="supply-grid" id="supplyGrid"></div>
+            <p class="mini-copy">
+              For four or more records: use a box, stand them upright like books, divide with
+              cardboard, never stack flat.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="section wrap" id="math">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MONEY LENS</p>
+            <h2>What actually lands in your account.</h2>
+            <p class="lede">
+              Working estimate only. Use actual order pages and current processor/platform terms for
+              final figures.
+            </p>
+          </div>
+        </div>
+        <div class="calculator">
+          <div class="calc-inputs">
+            <label
+              >Item price<input id="calcItem" type="number" min="0" step="0.01" value="20" /></label
+            ><label
+              >Shipping charged<input
+                id="calcShipping"
+                type="number"
+                min="0"
+                step="0.01"
+                value="11" /></label
+            ><label
+              >Actual postage<input
+                id="calcPostage"
+                type="number"
+                min="0"
+                step="0.01"
+                value="5.50" /></label
+            ><label
+              >Mailer + supplies<input
+                id="calcSupplies"
+                type="number"
+                min="0"
+                step="0.01"
+                value="1.25" /></label
+            ><label
+              >Platform fee %<input
+                id="calcFee"
+                type="number"
+                min="0"
+                step="0.01"
+                value="9" /></label
+            ><label
+              >Processing %<input
+                id="calcProcessing"
+                type="number"
+                min="0"
+                step="0.01"
+                value="3.49" /></label
+            ><label
+              >Processing fixed fee<input
+                id="calcFixed"
+                type="number"
+                min="0"
+                step="0.01"
+                value="0.49"
+            /></label>
+          </div>
+          <div class="calc-result">
+            <span>ESTIMATED KEEP AFTER FEES + POSTAGE + SUPPLIES</span><b id="calcKeep">$0.00</b>
+            <p id="calcSummary">Enter figures above.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <p>
+          <strong>The Turntable Line</strong> — locally persistent seller operating system. Export a
+          JSON backup and CSV regularly, especially before clearing browser data or changing
+          devices.
+        </p>
+        <p class="credit-line">
+          <strong
+            >Built by
+            <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer"
+              >Plexi / Perplexity</a
+            >, directed by Guerz.</strong
+          >
+          A living field guide conceived from Guerz’s real workflow, questions, and operating
+          principles, then designed and assembled with Plexi.
+        </p>
+        <p class="disclaimer-line">
+          Educational working reference, not legal, tax, financial, postal, platform-policy, or
+          professional advice. Fees, carrier rules, platform details, and shipping requirements can
+          change. Verify actual records, orders, costs, and platform/carrier rules before acting.
+        </p>
+      </div>
+    </footer>
+    <section class="license-section">
+      <div class="wrap">
+        <p class="eyebrow">Linear notes · license &amp; credits</p>
+        <p>
+          <strong>© 2026 Guerz.</strong> Unless otherwise noted, the original written content,
+          sequencing, grading/packing reference templates, and visual design of The Turntable Line
+          are licensed under
+          <a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International (CC
+            BY‑NC‑SA 4.0)</a
+          >.
+        </p>
+        <p>
+          Reuse is welcome for noncommercial purposes with attribution to Guerz, a link to the
+          original and license, and an indication of changes, under the same CC BY‑NC‑SA 4.0
+          terms. The reusable HTML, CSS, and JavaScript may be released under MIT separately if
+          Guerz chooses to provide a code license.
+        </p>
+        <p>
+          The Guerz name and brand identity are not granted for reuse or endorsement. Discogs,
+          PayPal, and USPS — along with any other third-party names, marks, and platform policies
+          referenced in this tool — belong to their respective owners and are not covered by this
+          license unless explicitly identified.
+        </p>
+        <p>
+          Primary author, editor, and implementer: Guerz. Research and drafting assistance:
+          Perplexity AI. Last reviewed: 2026‑09‑12. This is an educational working reference, not
+          a guarantee of platform policy, fees, or shipping requirements.
+        </p>
+      </div>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script>
+      (() => {
+        // ===== CONFIG + STATIC DATA — storage key, row limits, DOM helpers, phase/grading/packing/supply content =====
+        const KEY = "turntable-line-os-v2-6",
+          INITIAL_ROWS = 10,
+          MAX_ROWS = 120,
+          $ = (s, c = document) => c.querySelector(s),
+          $$ = (s, c = document) => [...c.querySelectorAll(s)];
+        const phases = [
+          [
+            "station",
+            "00",
+            "Build the Station",
+            "Once · ~2 hours",
+            "Three fixed zones on one surface. Records only ever move forward, never backward.",
+            "Clear continuous surface; Intake left, Grade center under directional lamp, Outbox right; stage supplies; set target.",
+          ],
+          [
+            "account",
+            "01",
+            "Lock the Account Settings",
+            "Once · ~30 min",
+            "Every seller setting confirmed before a new listing goes up.",
+            "Verify payment, seller terms, shipping regions/service/tiers, currency, address, checkout flow, inventory accuracy.",
+          ],
+          [
+            "triage",
+            "02",
+            "Triage the Stack",
+            "Per batch · ~20 min",
+            "Split the stack into Sell Now, Sell Later, and Skip before grading.",
+            "Pull 20–30; scan barcode; exact release; sold history; mark Sell Now/Later/Skip; count queue.",
+          ],
+          [
+            "grade",
+            "03",
+            "Grade Under the Lamp",
+            "~3–8 min per record",
+            "Two honest grades—media and sleeve—plus useful condition note.",
+            "Edges/label only; 360° under lamp; nail test; check defects/warp/sleeve; play-grade doubt; write note; grade lower.",
+          ],
+          [
+            "price",
+            "04",
+            "Price Against Sold Comps",
+            "~2 min per record",
+            "A price that can move within weeks, with fee math acknowledged.",
+            "Exact sold history; condition match; outlier check; competitive price; fees/postage; floor; offers; review date.",
+          ],
+          [
+            "list",
+            "05",
+            "List in Batches",
+            "~90 sec per record",
+            "Verified, graded batch listed without losing physical control.",
+            "Quicklister/batch workflow; exact release ID; grades; price; comment; shelf; inclusions; draft if unsure; move Outbox.",
+          ],
+          [
+            "pack",
+            "06",
+            "The Packing Line",
+            "~6 min per order",
+            "A parcel that cannot bend, cannot shift, and cannot get wet.",
+            "Correct pressing; secure media/jacket; inserts flat; stiffeners both sides; proper mailer; fill gaps; tape; labels; shake; photo.",
+          ],
+          [
+            "ship",
+            "07",
+            "Ship and Communicate",
+            "~10 min per order",
+            "Tracking uploaded, buyer informed, sale closed professionally.",
+            "Label and shipped status; verify tracking/order; dispatch message; note; delivery check; feedback; final log.",
+          ],
+          [
+            "loop",
+            "08",
+            "Close the Loop",
+            "Weekly · ~30 min",
+            "Pipeline stocked, stale inventory moving, actual money visible.",
+            "Count status; review stale; compare postage; reconcile payouts; restock; refill Intake; set next target.",
+          ],
+        ];
+        const grades = [
+          [
+            "Mint",
+            "M",
+            "100%",
+            "Factory sealed and genuinely unhandled. Once opened, do not call it Mint.",
+            "Use sparingly; Mint is a promise.",
+          ],
+          [
+            "Near Mint",
+            "NM or M-",
+            "80–90%",
+            "Exceptional used copy: no meaningful marks under angled light, no notable noise, nearly pristine jacket.",
+            "Do not use for visible hairlines or audible issues.",
+          ],
+          [
+            "Very Good Plus",
+            "VG+",
+            "50–70%",
+            "Few light hairlines or sleeve scuffs; no feelable scratches; strong playback.",
+            "Write actual flaws.",
+          ],
+          [
+            "Very Good",
+            "VG",
+            "25–40%",
+            "Visible scuffs/scratches, moderate sleeve wear, audible but tolerable noise.",
+            "Do not hide repeat ticks or groove wear.",
+          ],
+          [
+            "Good / Good Plus",
+            "G / G+",
+            "10–20%",
+            "Heavy wear: persistent noise and/or substantial cover damage.",
+            "List only if scarce; describe granularly.",
+          ],
+          [
+            "Fair / Poor",
+            "F / P",
+            "0–5%",
+            "Cracked, badly warped, skipping, locked, severely damaged, or incomplete.",
+            "Usually do not list.",
+          ],
+        ];
+        const packing = [
+          [
+            "Record out of jacket",
+            "When appropriate: disc weight inside cover can cause seam splits in impact.",
+          ],
+          [
+            "Clean inner sleeve / secure configuration",
+            "Place disc behind jacket within outer sleeve when proper materials are available.",
+          ],
+          ["Loose inserts out and flat", "Do not let lyric sheets or inserts slide and crease."],
+          ["Stiffener on both sides", "Rigidity defeats bends; bubble wrap alone does not."],
+          ["Use a real LP mailer", "Not a padded envelope. Do not force folds or allow bowing."],
+          ["Fill every gap", "Nothing should shift. Snug, never compressed."],
+          ["Tape seams and vulnerable edges", "Protect against opening and moisture."],
+          [
+            "Handling labels if available",
+            "FRAGILE / DO NOT BEND is supplemental, not the protection system.",
+          ],
+          ["Shake test", "Any movement or sound = reopen and correct."],
+          ["Photo sealed parcel + label", "Evidence before dispatch."],
+          ["Upload tracking when dispatched", "Match it to the correct order and log actual cost."],
+        ];
+        const supplies = [
+          "LP mailers",
+          "Cardboard stiffeners",
+          "Poly outer sleeves",
+          "Anti-static inner sleeves",
+          "Packing tape",
+          "Handling labels",
+          "Microfiber cloths",
+          "Sticky notes",
+        ];
+        const blank = (n) => ({
+          n,
+          artist: "",
+          release: "",
+          media: "",
+          sleeve: "",
+          price: "",
+          shelf: "",
+          graded: false,
+          priced: false,
+          listed: false,
+          sold: false,
+          packed: false,
+          shipped: false,
+          net: "",
+          notes: "",
+        });
+        // ===== STATE — load from localStorage, or fall back to a fresh default state =====
+        const defaults = () => ({
+          fields: { batchTarget: 10 },
+          checks: {},
+          rows: Array.from({ length: INITIAL_ROWS }, (_, i) => blank(i + 1)),
+          theme: "dark",
+        });
+        let state;
+        try {
+          state = JSON.parse(localStorage.getItem(KEY)) || defaults();
+        } catch {
+          state = defaults();
+        }
+        if (!Array.isArray(state.rows) || !state.rows.length) state.rows = defaults().rows;
+        state.rows.forEach((r, i) => (r.n = i + 1));
+        let timer;
+        const esc = (v) =>
+          String(v ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("<", "&lt;");
+        const money = (v) => (Number.isFinite(parseFloat(v)) ? parseFloat(v) : 0);
+        const fmt = (v) =>
+          new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(v);
+        // ===== PERSISTENCE + UI FEEDBACK — save to localStorage, toast messages =====
+        function save(msg = "Saved locally") {
+          localStorage.setItem(KEY, JSON.stringify(state));
+          $("#saveStatus").textContent = "SAVED LOCALLY";
+          toast(msg);
+          setTimeout(() => ($("#saveStatus").textContent = "LOCAL SAVE READY"), 1200);
+        }
+        function toast(t) {
+          const x = $("#toast");
+          x.textContent = t;
+          x.classList.add("show");
+          clearTimeout(timer);
+          timer = setTimeout(() => x.classList.remove("show"), 1500);
+        }
+        // ===== RENDER — build phase accordion, grading scale, packing checklist, batch-tally rows from state =====
+        function renderPhases() {
+          $("#phaseContainer").innerHTML = phases
+            .map(
+              (p) =>
+                `<article class="phase is-collapsed" id="phase-${p[0]}"><header class="phase-header" role="button" tabindex="0" aria-expanded="false"><div class="phase-num">${p[1]}</div><div><div class="phase-meta"><span class="chip">${p[3]}</span><span class="checkpoint-count" data-count="${p[0]}">0 / 9</span></div><h3>${p[2]}</h3><p class="goal">${p[4]}</p><span class="collapse-hint">Open phase</span></div><div class="ring"><svg viewBox="0 0 52 52"><circle class="base" cx="26" cy="26" r="20"></circle><circle class="fill" data-ring="${p[0]}" cx="26" cy="26" r="20" stroke-dasharray="125.7" stroke-dashoffset="125.7"></circle></svg><b data-pct="${p[0]}">0%</b></div><span class="phase-chevron">⌄</span></header><div class="phase-body"><div class="phase-body-inner"><div class="why"><b>WHY THIS MATTERS</b><p>${p[4]}</p></div><div class="checklist">${p[5]
+                  .split("; ")
+                  .map(
+                    (x, i) =>
+                      `<label><input type="checkbox" data-check="phase:${p[0]}:${i}" ${state.checks[`phase:${p[0]}:${i}`] ? "checked" : ""}><span>${x}<small class="hint">Complete, log, then move forward.</small></span></label>`,
+                  )
+                  .join("")}</div></div></div></article>`,
+            )
+            .join("");
+        }
+        function toggle(a) {
+          a.classList.toggle("is-collapsed");
+          let o = !a.classList.contains("is-collapsed");
+          $(".phase-header", a).setAttribute("aria-expanded", o);
+          $(".collapse-hint", a).textContent = o ? "Collapse phase" : "Open phase";
+        }
+        function renderGrades() {
+          $("#gradeScale").innerHTML = grades
+            .map(
+              (g) =>
+                `<div class="grade-row"><div><div class="grade-name">${g[0]}</div><span class="grade-code">${g[1]}</span></div><div class="grade-pct">${g[2]} of NM</div><div class="grade-copy">${g[3]}</div><div class="grade-callout">${g[4]}</div></div>`,
+            )
+            .join("");
+        }
+        function renderPacking() {
+          $("#packingChecklist").innerHTML = packing
+            .map(
+              (x, i) =>
+                `<div class="packing-item"><span class="number">${String(i + 1).padStart(2, "0")}</span><label><input type="checkbox" data-check="packing:${i}" ${state.checks[`packing:${i}`] ? "checked" : ""}> ${x[0]}<small>${x[1]}</small></label></div>`,
+            )
+            .join("");
+          $("#supplyGrid").innerHTML = supplies
+            .map(
+              (x, i) =>
+                `<label>${x}<input data-supply="${i}" value="${esc(state.fields[`supply:${i}`] || "")}" placeholder="# on hand"></label>`,
+            )
+            .join("");
+        }
+        function cond(v) {
+          return [
+            "Mint (M)",
+            "Near Mint (NM or M-)",
+            "Very Good Plus (VG+)",
+            "Very Good (VG)",
+            "Good Plus (G+)",
+            "Good (G)",
+            "Fair (F)",
+            "Poor (P)",
+          ]
+            .map((x) => `<option ${x === v ? "selected" : ""}>${x}</option>`)
+            .join("");
+        }
+        function renderRows() {
+          $("#batchBody").innerHTML = state.rows
+            .map(
+              (r, i) =>
+                `<tr data-row="${i}"><td class="row-number">${i + 1}</td><td><input class="title" data-field="artist" value="${esc(r.artist)}" placeholder="Artist — Title"></td><td><input class="release" data-field="release" value="${esc(r.release)}" placeholder="ID"></td><td><select class="condition" data-field="media"><option value=""></option>${cond(r.media)}</select></td><td><select class="condition" data-field="sleeve"><option value=""></option>${cond(r.sleeve)}</select></td><td><input class="price" data-field="price" value="${esc(r.price)}" placeholder="$0"></td><td><input class="shelf" data-field="shelf" value="${esc(r.shelf)}" placeholder="R03-S02"></td><td class="check-cell"><input type="checkbox" data-rowcheck="graded" ${r.graded ? "checked" : ""}></td><td class="check-cell"><input type="checkbox" data-rowcheck="priced" ${r.priced ? "checked" : ""}></td><td class="check-cell"><input type="checkbox" data-rowcheck="listed" ${r.listed ? "checked" : ""}></td><td class="check-cell"><input type="checkbox" data-rowcheck="sold" ${r.sold ? "checked" : ""}></td><td class="check-cell"><input type="checkbox" data-rowcheck="packed" ${r.packed ? "checked" : ""}></td><td class="check-cell"><input type="checkbox" data-rowcheck="shipped" ${r.shipped ? "checked" : ""}></td><td><input class="price" data-field="net" value="${esc(r.net)}" placeholder="$0"></td><td><input class="notes" data-field="notes" value="${esc(r.notes)}" placeholder="Flaws, playback, inserts…"></td></tr>`,
+            )
+            .join("");
+          filter();
+        }
+        function fields() {
+          $$("[data-persist]").forEach((x) => {
+            if (state.fields[x.id] !== undefined) x.value = state.fields[x.id];
+          });
+          $$("[data-comment]").forEach((x) => {
+            if (state.fields[x.id] !== undefined) x.value = state.fields[x.id];
+          });
+          document.documentElement.dataset.theme = state.theme || "dark";
+        }
+        function all() {
+          progress();
+          totals();
+          calc();
+        }
+        // ===== PROGRESS + TOTALS — completion %%, batch dollar totals (all() reruns this trio + calc()) =====
+        function progress() {
+          let boxes = $$("[data-check]"),
+            done = boxes.filter((x) => x.checked).length,
+            p = boxes.length ? done / boxes.length : 0;
+          $("#headerProgress").textContent = `${done} / ${boxes.length} CHECKPOINTS`;
+          $("#completionPct").textContent = `${Math.round(p * 100)}%`;
+          $("#globalProgress").style.width = `${p * 100}%`;
+          phases.forEach((x) => {
+            let b = $$(`[data-check^="phase:${x[0]}:"]`),
+              n = b.filter((z) => z.checked).length,
+              f = n / b.length;
+            $(`[data-count="${x[0]}"]`).textContent = `${n} / ${b.length}`;
+            $(`[data-pct="${x[0]}"]`).textContent = `${Math.round(f * 100)}%`;
+            $(`[data-ring="${x[0]}"]`).style.strokeDashoffset = 125.7 * (1 - f);
+            $(`#phase-${x[0]}`).classList.toggle("done", n === b.length);
+          });
+          let next = boxes.find((x) => !x.checked);
+          $("#nextMoveText").textContent = next
+            ? `Next checkpoint: ${next.nextElementSibling.childNodes[0].textContent.trim()}`
+            : "The line is fully checked. Export your batch and close the loop.";
+          $("#goNext").onclick = () => {
+            if (next) {
+              let a = next.closest(".phase");
+              if (a.classList.contains("is-collapsed")) toggle(a);
+              next.scrollIntoView({ behavior: "smooth", block: "center" });
+            } else $("#batch-tally").scrollIntoView({ behavior: "smooth" });
+          };
+        }
+        function totals() {
+          let r = state.rows,
+            entered = r.filter((x) => x.artist.trim() || x.release.trim()).length,
+            listed = r.filter((x) => x.listed).length,
+            sold = r.filter((x) => x.sold).length,
+            net = r.reduce((a, x) => a + money(x.net), 0);
+          $("#totalEntered").textContent = entered;
+          $("#totalGraded").textContent = r.filter((x) => x.graded).length;
+          $("#totalListed").textContent = listed;
+          $("#totalSold").textContent = sold;
+          $("#totalGross").textContent = fmt(
+            r.filter((x) => x.sold).reduce((a, x) => a + money(x.price), 0),
+          );
+          $("#totalNet").textContent = fmt(net);
+          $("#totalShipped").textContent = r.filter((x) => x.shipped).length;
+          $("#statTarget").textContent = state.fields.batchTarget || 10;
+          $("#statListed").textContent = listed;
+          $("#statSold").textContent = sold;
+          $("#statNet").textContent = fmt(net);
+        }
+        // ===== FEE CALCULATOR — buyer total, platform fee, processing cost, net keep =====
+        function calc() {
+          let buyer = money($("#calcItem").value) + money($("#calcShipping").value),
+            fee = (buyer * money($("#calcFee").value)) / 100,
+            proc = (buyer * money($("#calcProcessing").value)) / 100 + money($("#calcFixed").value),
+            keep =
+              buyer - fee - proc - money($("#calcPostage").value) - money($("#calcSupplies").value);
+          $("#calcKeep").textContent = fmt(keep);
+          $("#calcSummary").textContent =
+            `Buyer pays ${fmt(buyer)} · estimated platform fee ${fmt(fee)} · processing ${fmt(proc)}.`;
+        }
+        // ===== TALLY TABLE — search + status filter =====
+        function filter() {
+          let f = $("#tallyFilter")?.value || "all",
+            q = ($("#tallySearch")?.value || "").toLowerCase(),
+            n = 0;
+          $$("#batchBody tr").forEach((tr, i) => {
+            let r = state.rows[i],
+              has =
+                Object.values(r).some((v) => typeof v === "string" && v.trim()) ||
+                r.graded ||
+                r.priced ||
+                r.listed ||
+                r.sold ||
+                r.packed ||
+                r.shipped,
+              show =
+                f === "all" ||
+                (f === "active" && has) ||
+                (f === "ready" && r.graded && r.priced && !r.listed) ||
+                (f === "listed" && r.listed) ||
+                (f === "sold" && r.sold) ||
+                (f === "packed" && r.packed) ||
+                (f === "shipped" && r.shipped) ||
+                (f === "attention" &&
+                  ((r.sold && !r.shipped) || (r.listed && !r.shelf) || (!r.notes && r.graded)));
+            if (q && !Object.values(r).join(" ").toLowerCase().includes(q)) show = false;
+            tr.hidden = !show;
+            if (show) n++;
+          });
+          $("#visibleRows").textContent = `${n} row${n === 1 ? "" : "s"} visible`;
+        }
+        // ===== EXPORTS — CSV + JSON backup download =====
+        function download(c, n, t) {
+          let a = document.createElement("a");
+          a.href = URL.createObjectURL(new Blob([c], { type: t }));
+          a.download = n;
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(a.href), 800);
+        }
+        function csv() {
+          let h = [
+              "#",
+              "Artist / Title",
+              "Release ID",
+              "Media",
+              "Sleeve",
+              "Price",
+              "Shelf",
+              "Graded",
+              "Priced",
+              "Listed",
+              "Sold",
+              "Packed",
+              "Shipped",
+              "Net",
+              "Notes",
+            ],
+            q = (v) => `"${String(v ?? "").replaceAll('"', '""')}"`;
+          download(
+            [
+              h.map(q).join(","),
+              ...state.rows.map((r, i) =>
+                [
+                  i + 1,
+                  r.artist,
+                  r.release,
+                  r.media,
+                  r.sleeve,
+                  r.price,
+                  r.shelf,
+                  r.graded,
+                  r.priced,
+                  r.listed,
+                  r.sold,
+                  r.packed,
+                  r.shipped,
+                  r.net,
+                  r.notes,
+                ]
+                  .map(q)
+                  .join(","),
+              ),
+            ].join("\n"),
+            "turntable-line-batch.csv",
+            "text/csv",
+          );
+          toast("CSV exported");
+        }
+        function json() {
+          download(
+            JSON.stringify(state, null, 2),
+            "turntable-line-backup.json",
+            "application/json",
+          );
+          toast("Full backup exported");
+        }
+        // ===== PRINTABLE REFERENCE CARDS — grading + packing pop-out sheets =====
+        const wall = {
+          g: {
+            k: "TURNTABLE LINE · TAPE ABOVE THE LAMP",
+            t: "Vinyl Grading Card",
+            r: "TILT UNDER DIRECTIONAL LIGHT. NAIL CATCHES = SCRATCH. NAIL GLIDES = SURFACE MARK. WHEN TORN BETWEEN GRADES, USE THE LOWER ONE.",
+            b: `<div class="grades"><div><b>MINT <small>M</small></b><i>100%</i><span>Factory sealed only.</span></div><div><b>NEAR MINT <small>NM / M-</small></b><i>80–90%</i><span>Exceptional used copy; no meaningful marks/noise.</span></div><div><b>VERY GOOD PLUS <small>VG+</small></b><i>50–70%</i><span>Few light marks; no feelable scratches; strong playback.</span></div><div><b>VERY GOOD <small>VG</small></b><i>25–40%</i><span>Visible wear; audible but tolerable noise.</span></div><div><b>GOOD / GOOD PLUS <small>G / G+</small></b><i>10–20%</i><span>Heavy wear. Scarce copies only; disclose closely.</span></div><div><b>FAIR / POOR <small>F / P</small></b><i>0–5%</i><span>Cracked, warped, skipping, locked, or incomplete.</span></div></div><div class="two"><section><b>EVERY COPY</b><br>Edges/label only · both sides under lamp · check warp/spindle/residue · sleeve separately.</section><section><b>HIGH-VALUE / UNCERTAIN</b><br>Clean first · play-grade · listen intros/quiet/final tracks · write flaws immediately.</section></div><p class="formula">COMMENT: flaw → playback → jacket → extras.</p>`,
+          },
+          p: {
+            k: "TURNTABLE LINE · TAPE TO PACKING ZONE",
+            t: "Vinyl Packing Card",
+            r: "RIGIDITY + IMMOBILITY. BUBBLE WRAP CUSHIONS; IT DOES NOT REPLACE A RIGID PANEL ON BOTH SIDES.",
+            b: `<ol><li>Verify record + pressing + shelf.</li><li>Secure disc/jacket configuration.</li><li>Pack inserts flat.</li><li>Rigid panel on both sides.</li><li>Real LP mailer; no bowing.</li><li>Fill gaps: snug, not compressed.</li><li>Tape seams + vulnerable edges.</li><li>Handling labels if available.</li><li>Shake test: no movement/noise.</li><li>Photo parcel + label.</li><li>Upload correct tracking; log cost.</li></ol><div class="alert"><b>4+ RECORDS:</b> Use a proper box. Upright like books, cardboard dividers, fill gaps, never stack flat.</div><p class="formula">CLOSEOUT: flat? rigid? no bowing? no slide? no rattle?</p>`,
+          },
+        };
+        function printCard(k) {
+          let d = wall[k],
+            w = window.open("", "ttl-" + k, "width=850,height=900");
+          if (!w) {
+            alert("Allow pop-ups for this site, then try again.");
+            return;
+          }
+          w.document.open();
+          w.document.write(
+            `<!doctype html><html><head><meta charset="utf-8"><title>${d.t}</title><style>@page{size:letter;margin:.25in}*{box-sizing:border-box}body{margin:0;color:#201a16;background:#fffdf9;font:10px/1.22 Arial,sans-serif}.card{height:10.4in;display:flex;flex-direction:column}.k{margin:0 0 5px;color:#9d3732;font:800 8px ui-monospace,monospace;letter-spacing:.12em}.t{margin:0;font:800 27px/.95 Georgia,serif}.rule{margin:8px 0;padding:7px 9px;border:1px solid #201a16;background:#d9e96a;font:700 8.4px/1.23 ui-monospace,monospace}.grades{border:1px solid #201a16}.grades>div{display:grid;grid-template-columns:135px 55px 1fr;gap:6px;padding:4px 6px;border-bottom:1px solid #bcb1a5}.grades>div:last-child{border:0}.grades b{font:800 14px/1 Georgia,serif}.grades small{display:block;color:#9d3732;font:700 7px ui-monospace,monospace}.grades i{font:700 8px ui-monospace,monospace;color:#9d3732;font-style:normal}.grades span{font-size:8.7px}.two{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.two section{border:1px solid #201a16;padding:7px;font-size:8.6px}.formula{margin:7px 0 0;padding:6px 8px;border-left:3px solid #9d3732;background:#f1ebe2;font:700 8px ui-monospace,monospace}ol{margin:8px 0 0;padding:0;list-style:none;counter-reset:n;border:1px solid #201a16}li{counter-increment:n;display:grid;grid-template-columns:23px 1fr;gap:5px;padding:3px 6px;border-bottom:1px solid #bcb1a5;font-size:8.8px}li:last-child{border:0}li:before{content:counter(n,decimal-leading-zero);color:#9d3732;font:800 8px ui-monospace,monospace}.alert{margin-top:7px;padding:6px 8px;border:1px solid #9d3732;background:#fff0ed;font-size:8.6px}.alert b{color:#9d3732;font:800 8px ui-monospace,monospace}.foot{margin-top:auto;padding-top:6px;border-top:1px solid #201a16;color:#5f554d;font-size:7px}.foot a{color:#9d3732}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body><main class="card"><p class="k">${d.k}</p><h1 class="t">${d.t}</h1><div class="rule">${d.r}</div>${d.b}<p class="foot"><b>Built by <a href="https://www.perplexity.ai/">Plexi / Perplexity</a>, directed by Guerz.</b> Educational working reference; verify actual record, shipment, carrier, platform policy, and cost before acting.</p></main><script>window.onload=()=>setTimeout(()=>window.print(),120)<\/script></body></html>`,
+          );
+          w.document.close();
+        }
+        // ===== INIT + EVENT WIRING — first render on load, then every click/change/input listener =====
+        renderPhases();
+        renderGrades();
+        renderPacking();
+        renderRows();
+        fields();
+        all();
+        $("#phaseContainer").addEventListener("click", (e) => {
+          if (e.target.closest("input,label,button,a")) return;
+          let h = e.target.closest(".phase-header");
+          if (h) toggle(h.closest(".phase"));
+        });
+        $("#phaseContainer").addEventListener("keydown", (e) => {
+          if ((e.key === "Enter" || e.key === " ") && e.target.matches(".phase-header")) {
+            e.preventDefault();
+            toggle(e.target.closest(".phase"));
+          }
+        });
+        document.addEventListener("change", (e) => {
+          let t = e.target;
+          if (t.matches("[data-check]")) {
+            state.checks[t.dataset.check] = t.checked;
+            save();
+            all();
+          }
+          if (t.matches("[data-persist],[data-comment]")) {
+            state.fields[t.id] = t.value;
+            save();
+            all();
+          }
+          if (t.matches("[data-supply]")) {
+            state.fields[`supply:${t.dataset.supply}`] = t.value;
+            save();
+          }
+          if (t.matches("[data-field],[data-rowcheck]")) {
+            let r = state.rows[+t.closest("tr").dataset.row],
+              k = t.dataset.field || t.dataset.rowcheck;
+            r[k] = t.type === "checkbox" ? t.checked : t.value;
+            save();
+            all();
+            filter();
+          }
+        });
+        document.addEventListener("input", (e) => {
+          let t = e.target;
+          if (t.matches("[data-persist]")) {
+            state.fields[t.id] = t.value;
+            localStorage.setItem(KEY, JSON.stringify(state));
+            all();
+          }
+          if (t.matches("[data-field]")) {
+            state.rows[+t.closest("tr").dataset.row][t.dataset.field] = t.value;
+            localStorage.setItem(KEY, JSON.stringify(state));
+            totals();
+            filter();
+          }
+          if (t.matches(".calc-inputs input")) calc();
+        });
+        $("#themeButton").onclick = () => {
+          state.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = state.theme;
+          save("Theme saved");
+        };
+        $("#newBatchButton").onclick = () => {
+          let n = prompt("Name this batch:", state.fields.batchName || "");
+          if (n !== null) {
+            state.fields.batchName = n;
+            $("#batchName").value = n;
+            state.fields.sessionDate = new Date().toISOString().slice(0, 10);
+            $("#sessionDate").value = state.fields.sessionDate;
+            save("Batch named");
+          }
+        };
+        $("#addRow").onclick = () => {
+          if (state.rows.length >= MAX_ROWS) return toast("120-row maximum reached");
+          state.rows.push(blank(state.rows.length + 1));
+          save("Row added");
+          renderRows();
+          all();
+        };
+        $("#tallyFilter").onchange = filter;
+        $("#tallySearch").oninput = filter;
+        $("#exportCsv").onclick = csv;
+        $("#exportButton").onclick = json;
+        $("#printButton").onclick = () => window.print();
+        $("#buildComment").onclick = () => {
+          let a = [
+            $("#commentMedia").value,
+            $("#commentPlay").value,
+            $("#commentSleeve").value,
+            $("#commentExtra").value,
+          ].filter(Boolean);
+          $("#commentOutput").value = a.length
+            ? a
+                .map((x, i) => (i === 0 ? x.charAt(0).toUpperCase() + x.slice(1) + ";" : x))
+                .join(" ")
+            : "";
+          state.fields.commentOutput = $("#commentOutput").value;
+          save("Comment generated");
+        };
+        $("#copyComment").onclick = async () => {
+          try {
+            await navigator.clipboard.writeText($("#commentOutput").value);
+            toast("Comment copied");
+          } catch {
+            toast("Select and copy manually");
+          }
+        };
+        $("#printGrading").onclick = () => printCard("g");
+        $("#printPacking").onclick = () => printCard("p");
+      })();
+    </script>
+  </body>
+</html>

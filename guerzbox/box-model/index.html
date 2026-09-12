@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Playground</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>CSS Box Model Playground</h1>
+    <p class="intro">The pink space around the orange border is the element's actual margin.</p>
+
+    <section class="box-stage" aria-label="A labeled CSS box model example">
+      <span class="margin-label">margin</span>
+      <div class="border-layer">
+        <span class="border-label">border</span>
+        <div class="padding-layer">
+          <span class="padding-label">padding</span>
+          <div class="content-layer"><span>content</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="sizing-heading">
+      <h2 id="sizing-heading">Same declared width, different rendered widths</h2>
+      <div class="comparison">
+        <div class="sizing-box content-box">
+          <strong>content-box</strong>
+          <span>Declared: 200px</span>
+          <span>Rendered: 260px</span>
+        </div>
+        <div class="sizing-box border-box">
+          <strong>border-box</strong>
+          <span>Declared: 200px</span>
+          <span>Rendered: 200px</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Positioning Playground</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>CSS Positioning Playground</h1>
+
+    <section>
+      <!-- This child is anchored to the relatively positioned parent because absolute positioning uses the nearest positioned ancestor. -->
+      <p class="note">Relative parent with an absolute child in its bottom-right corner.</p>
+      <div class="relative-parent">
+        <strong>Relative parent</strong>
+        <p>This parent establishes the containing block for the absolute child.</p>
+        <div class="absolute-child">Absolute child</div>
+      </div>
+    </section>
+
+    <section>
+      <!-- This element is anchored to the viewport because fixed positioning ignores normal document flow and stays in place while the page scrolls. -->
+      <div class="fixed-corner">Fixed to viewport</div>
+    </section>
+
+    <section>
+      <!-- This sticky element is anchored to the scroll container because it sticks to top: 0 while its container is being scrolled. -->
+      <p class="note">Scrollable container with a sticky header. Scroll inside the box below.</p>
+      <div class="scroll-container">
+        <div class="sticky-header">Sticky inside this scroll container</div>
+        <div class="scroll-content">
+          <p>Scroll this panel and watch the yellow header stay pinned to the top of the container.</p>
+          <p>Content row 1: Sticky positioning behaves like relative positioning until the element reaches its threshold.</p>
+          <p>Content row 2: Here the threshold is top: 0, measured against the scrollable container.</p>
+          <p>Content row 3: The header will keep sticking while its parent container remains in view.</p>
+          <p>Content row 4: This makes sticky useful for section labels, table headers, and in-page navigation.</p>
+          <p>Content row 5: Keep scrolling to see the sticky behavior continue.</p>
+          <p>Content row 6: The element remains part of the normal document flow.</p>
+          <p>Content row 7: Unlike fixed positioning, it is constrained by its parent container.</p>
+          <p>Content row 8: Once the container's scroll area ends, the sticky behavior ends too.</p>
+          <p>Content row 9: A tall container gives enough room to see the effect clearly.</p>
+          <p>Content row 10: End of the demo content.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

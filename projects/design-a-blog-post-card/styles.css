@@ -1,0 +1,22 @@
+body { 
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin: 0 auto;
+  width: 90vw; /* 90vw is used to set the width of the body to 90% of the viewport width */
+  min-height: calc(100vh - 100px); /* calc() function can run calculations. 100vh represents the full viewport height 100px represents the total padding and margin, because min-height is used to ensure the body is at least as tall as the viewport minus the padding and margin */
+  background-color: #fdf6e3; font-family: sans-serif; text-align: center; 
+  } 
+  
+header img { 
+  width: 100%;
+  border-radius: 15opx/* border-radius property is used to create rounded corners */
+  8px; }
+
+hr, section { 
+   width: 80%;
+   margin: 20px auto; 
+} 
+
+section { 
+   padding: 10px; 
+}

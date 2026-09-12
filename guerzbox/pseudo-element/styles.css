@@ -1,0 +1,34 @@
+/* Keeps the example centered and easy to compare. */
+.container {
+  max-width: 560px;
+  margin: 3rem auto;
+  font-family: system-ui, sans-serif;
+}
+
+/* Gives both paragraphs the same appearance. */
+p {
+  padding: 1rem;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+}
+
+/* content generates this ::before box and places "NEW" inside it. */
+.with-content::before {
+  content: "NEW";
+  background-color: #fde68a;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d97706;
+  margin-right: 0.75rem;
+}
+
+/*
+  Without content, the browser does not generate this ::before box at all.
+  content is not just its text; it tells the browser to create the
+  pseudo-element, so the other styles have nothing to decorate.
+*/
+.without-content::before {
+  background-color: #fde68a;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #d97706;
+  margin-right: 0.75rem;
+}

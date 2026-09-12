@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Layout Playground</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Layout Playground</h1>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#cards">Cards</a>
+        <a href="#footer">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-main" id="home">
+      <h2 id="cards">Two-Card Flexbox Layout</h2>
+      <section class="cards" aria-label="Layout examples">
+        <article class="card">
+          <h3>Flexbox Card</h3>
+          <p>This card shares its row with the card beside it.</p>
+          <p class="hidden-note">This sentence is hidden with display: none.</p>
+        </article>
+
+        <article class="card">
+          <h3>Grid Card</h3>
+          <p>These small items use a two-column grid.</p>
+          <div class="grid-example">
+            <div class="grid-item">One</div>
+            <div class="grid-item">Two</div>
+            <div class="grid-item">Three</div>
+            <div class="grid-item">Four</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="content-block" aria-label="Sticky positioning demonstration">
+        <h2>Keep scrolling</h2>
+        <p>You're scrolling past this content right now, and the header above is staying put — that's <code>position: sticky</code> at work. It behaves like a normal element until it hits its <code>top: 0</code> threshold, then it locks in place and holds while the rest of the page moves underneath it.</p>
+        <p>This is different from <code>position: fixed</code>, which anchors to the viewport from the moment the page loads and never moves at all. Sticky only kicks in once you scroll far enough for it to matter — the rest of the time it just sits in normal document flow like any other element.</p>
+        <p>It's also different from <code>position: static</code>, the default every element starts with. Static elements just flow top to bottom with everything else and never anchor to anything.</p>
+        <p>Sticky positioning is scoped to its nearest scrolling ancestor — in this case, the whole page — so the header sticks relative to the browser window, not to some smaller inner container.</p>
+        <p>Once you reach the footer below, the header will simply run out of page to stick to and scroll away with everything else, since there's nothing left underneath it to hold its position against.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <p>Layout Playground footer</p>
+    </footer>
+  </body>
+</html>

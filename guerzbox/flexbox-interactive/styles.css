@@ -1,0 +1,59 @@
+/* Adds comfortable page spacing so the layout is easier to inspect. */
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #1f2937;
+}
+
+/* Limits the page width so the flex layout stays readable on wide screens. */
+.playground {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Makes the container itself draggable by its bottom-right corner, so the
+   flex behavior can be tested without resizing the whole browser window. */
+.resize-wrap {
+  resize: horizontal;
+  overflow: auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 260px;
+  padding: 1rem;
+  border: 3px dashed #94a3b8;
+  border-radius: 0.75rem;
+  background: #e2e8f0;
+}
+
+/* Turns the parent into a flex container so its cards can be laid out together. */
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  border: 3px solid #2563eb;
+  border-radius: 0.75rem;
+  background: white;
+}
+
+/* Gives each card a useful starting size while allowing it to shrink if needed. */
+.card {
+  flex: 0 1 180px;
+  min-height: 130px;
+  padding: 1rem;
+  border: 2px solid #93c5fd;
+  border-radius: 0.5rem;
+  background: #dbeafe;
+}
+
+/* Lets this card use remaining row space, demonstrating flex: 1. */
+.card.grow {
+  flex: 1;
+  background: #dcfce7;
+  border-color: #4ade80;
+}

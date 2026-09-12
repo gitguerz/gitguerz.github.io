@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flexbox Playground — Interactive Demo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="playground">
+      <h1>Flexbox Playground — Interactive Demo</h1>
+      <p><strong>Drag the corner</strong> of the dashed box below to resize it. Watch two things: the cards <strong>wrap</strong> onto a new row once they run out of space, and the green card (<code>flex: 1</code>) <strong>grows</strong> to fill whatever room is left over.</p>
+
+      <div class="resize-wrap">
+        <section class="card-container" aria-label="Four flexbox cards">
+          <article class="card">
+            <h2>Card One</h2>
+            <p>This card has a preferred width of 180 pixels.</p>
+          </article>
+
+          <article class="card grow">
+            <h2>Card Two</h2>
+            <p>This card grows into the available space with flex: 1.</p>
+          </article>
+
+          <article class="card">
+            <h2>Card Three</h2>
+            <p>This card can wrap to a new line on a smaller screen.</p>
+          </article>
+
+          <article class="card">
+            <h2>Card Four</h2>
+            <p>This card is another child of the same flex container.</p>
+          </article>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

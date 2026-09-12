@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+}
+
+.card {
+  max-width: 360px;
+  padding: 20px;
+  border: 4px solid #2563eb; /* Loses: the next .card rule has the same specificity. */
+}
+
+.card {
+  border-color: #f97316; /* Wins: same specificity, but this rule comes later. */
+}
+
+p {
+  color: #2563eb; /* Loses: an element selector is less specific than a class selector. */
+}
+
+.message {
+  color: #16a34a; /* Wins: a class selector is more specific than p. */
+}
+
+.button-style {
+  background: #7c3aed; /* Loses: an ID selector is more specific than a class selector. */
+}
+
+#cta {
+  background: #db2777; /* Wins: an ID selector is more specific than a class selector. */
+}
+
+button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 6px;
+  color: white;
+}

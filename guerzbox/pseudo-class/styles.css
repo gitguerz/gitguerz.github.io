@@ -1,0 +1,35 @@
+.container {
+  max-width: 560px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border: 2px solid #334155;
+  border-radius: 12px;
+  font-family: system-ui, sans-serif;
+}
+
+.container > * {
+  display: block;
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+/* Selects the second child overall, no matter what kind of element it is. */
+.container > :nth-child(2) {
+  background-color: #fde68a;
+  border-color: #d97706;
+}
+
+/* Selects the second <p> among its sibling <p> elements. */
+.container > p:nth-of-type(2) {
+  background-color: #bfdbfe;
+  border-color: #2563eb;
+}
+
+/*
+  Both selectors use "2", but they count different things:
+  :nth-child(2) counts every child, so it highlights the second element overall
+  (the first <div>). p:nth-of-type(2) counts only <p> siblings, so it highlights
+  the second <p>, which is the fourth element overall.
+*/

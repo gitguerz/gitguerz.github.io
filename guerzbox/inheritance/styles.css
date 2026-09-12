@@ -1,0 +1,30 @@
+/* color and font-family inherit by default, so the heading and paragraph use these values; background-color does not inherit, so children stay transparent. */
+.card {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 24px;
+  border: 3px solid #7c3aed;
+  border-radius: 12px;
+  background-color: #f3e8ff;
+  color: #5b21b6;
+  font-family: Georgia, serif;
+}
+
+/* inherit explicitly makes the button take the card's text color instead of its browser-default button color. */
+button {
+  padding: 10px 14px;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  background: #fef3c7;
+  color: inherit;
+}
+
+/* initial resets color to its CSS initial value, so this strong text does not use the card's purple color. */
+strong {
+  color: initial;
+}
+
+/* unset checks the property's normal behavior: font-family inherits, so the button receives the card's Georgia font. */
+button {
+  font-family: unset;
+}

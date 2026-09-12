@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Form</title>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">Guerz's Web Dev Bootcamp Survey</h1>
+    
+    <p id="description">Week 1 is done. Tell us how it's going.</p>
+    <form id="survey-form">
+      <label id="name-label" for="name">Name</label>
+      <input id="name" type="text" placeholder="Enter your name" required/>
+
+      <label id="email-label" for="email">Email</label>
+      <input id="email" type="email" placeholder="Enter your email" required/>
+      
+      <label id="number-label" for="number">Age</label>
+      <input id="number" type="number" min="10" max="120" placeholder="Enter your age"/>
+      
+      <label for="dropdown">How are you feeling about HTML so far?</label>
+      <select id="dropdown">
+        <option value="">Select one</option>
+        <option value="confident">Confident</option>
+        <option value="okay">Okay</option>
+        <option value="lost">A bit lost</option>
+      </select>
+      
+      <p>What's your current learning style?</p>
+      <label>
+        <input class="inline" type="radio" name="learning-style" value="visual"/>Visual (videos, diagrams)
+      </label>
+
+      <label>
+        <input class="inline" type="radio" name="learning-style"value="hands-on"/>Hands-on (just build stuff)
+      </label>
+      
+      <label>
+        <input class="inline" type="radio" name="learning-style" value="reading"/>Reading docs
+      </label>
+      
+      <p>Which topics have you covered? (check all that apply)</p>
+      <label>
+        <input class="inline" type="checkbox" value="html-basics"/>HTML Basics
+      </label>
+      
+      <label>
+        <input class="inline" type="checkbox" value="tables"/>Tables
+      </label>
+      
+      <label>
+        <input class="inline" type="checkbox" value="forms"/>Forms
+      </label>
+      
+      <label>
+        <input class="inline" type="checkbox" value="css"/>CSS
+      </label>
+      
+      <label for="comments">Additional comments</label>
+      <textarea id="comments" name="comments" rows="4" placeholder="Anything else you'd like to share?"></textarea>
+      
+      <button id="submit" type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
