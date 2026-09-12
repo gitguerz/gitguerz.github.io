@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Document metadata and local app assets. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive editorial quality-control roadmap for guerz.lol.">
+  <title>Guerz Site Quality Control Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <!-- defer guarantees the DOM exists before app.js attaches interactions. -->
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <!-- Keyboard users can bypass the desk header. -->
+  <a class="skip-link" href="#review-board">Skip to review board</a>
+
+  <!-- Editorial masthead and theme switch. -->
+  <header class="masthead" id="top">
+    <div class="shell masthead-inner">
+      <a class="wordmark" href="#top" aria-label="Guerz quality control desk home">
+        <span class="wordmark-mark" aria-hidden="true">G</span>
+        <span>Guerz / Quality Control Desk</span>
+      </a>
+      <p class="folio">Proofing desk · edition 01 · marks save in this browser</p>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme">◐</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- Editorial introduction: this roadmap is about proof, not cosmetic perfection. -->
+    <section class="hero" aria-labelledby="page-title">
+      <p class="overline">Publication pass · site quality control</p>
+      <h1 id="page-title">Make the site say what it means.<br>Then prove it works.</h1>
+      <p class="deck">A repeatable review desk for guerz.lol: content truth, working interactions, accessibility, performance, and the boring-but-important checks that make a portfolio feel real.</p>
+      <p class="hero-meta">Four review lanes · twenty checks · one exit gate</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#review-board">Begin review</a>
+        <button class="button" id="pick-next-task" type="button">Give me one next check</button>
+        <button class="button" id="export-progress" type="button">Export review log</button>
+      </div>
+    </section>
+
+    <!-- Scorecard: app.js updates the completion percentage and review status. -->
+    <section class="scorecard" aria-label="Review scorecard">
+      <article class="score score-primary">
+        <p class="label">Review completion</p>
+        <p class="score-number" id="score-number">0%</p>
+        <div class="rule-meter" id="progress-meter" role="progressbar" aria-label="Review completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progress-fill"></span></div>
+        <p class="small-note" id="progress-text">0 of 0 review checks complete</p>
+      </article>
+      <article class="score">
+        <p class="label">Current assignment</p>
+        <div class="assignment" id="next-task">Press “Give me one next check.” The desk will choose a visible unfinished item.</div>
+      </article>
+      <article class="score score-tools">
+        <p class="label">Desk controls</p>
+        <div class="tool-stack">
+          <button class="text-button" id="focus-toggle" type="button" aria-pressed="false">Enter focus review</button>
+          <button class="text-button" id="open-all-details" type="button">Expand evidence notes</button>
+          <button class="text-button" id="close-all-details" type="button">Collapse evidence notes</button>
+          <button class="text-button text-button-danger" id="reset-progress" type="button">Reset review marks</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Filter lets the reviewer narrow the board without mutating checklist data. -->
+    <nav class="filter-bar" aria-label="Review board filters">
+      <span class="filter-label">Review lane</span>
+      <select id="lane-filter">
+        <option value="all">Everything</option>
+        <option value="truth">Content truth</option>
+        <option value="function">Functionality</option>
+        <option value="access">Accessibility</option>
+        <option value="ship">Ship gate</option>
+      </select>
+      <span class="filter-note">Checks save locally in this browser. Export before changing devices.</span>
+    </nav>
+
+    <!-- Review board: cards are grouped by QA discipline, each with a publication exit gate. -->
+    <section class="review-board" id="review-board" aria-label="Site quality-control review board">
+      <article class="review-lane" id="lane-truth" data-lane="truth">
+        <header class="lane-header"><p class="lane-index">01</p><div><p class="overline">Editorial pass</p><h2>Content truth</h2></div><span class="stamp stamp-red">Read it like a stranger</span></header>
+        <div class="lane-body">
+          <p class="lane-intro">The page does not need to say everything. It needs to say the true thing, clearly, without promising features or history that do not exist.</p>
+          <div class="checklist">
+            <label class="check-row"><input id="truth-1" type="checkbox"><span><strong>Replace placeholder copy, fake metrics, and invented testimonials.</strong><small>Portfolio content should be attributable, current, and framed as fact, opinion, or experiment appropriately.</small></span><em>Truth.1</em></label>
+            <label class="check-row"><input id="truth-2" type="checkbox"><span><strong>Read every headline and call-to-action aloud.</strong><small>Make sure it describes the page it leads to and does not use generic “empower/unlock/journey” language.</small></span><em>Truth.2</em></label>
+            <label class="check-row"><input id="truth-3" type="checkbox"><span><strong>Verify dates, prices, availability claims, and named tool details.</strong><small>Time-sensitive claims need a source, a date, or deletion.</small></span><em>Truth.3</em></label>
+            <label class="check-row"><input id="truth-4" type="checkbox"><span><strong>Check every external link and label external destinations honestly.</strong><small>Links should open deliberately and never imply third-party endorsement.</small></span><em>Truth.4</em></label>
+            <label class="check-row"><input id="truth-5" type="checkbox"><span><strong>Confirm credits, copyright, and license scope match the actual work.</strong><small>License only your original content/design/code; keep brand and third-party material excluded.</small></span><em>Truth.5</em></label>
+          </div>
+          <aside class="margin-note"><strong>Pass condition:</strong> a stranger can explain what this page is, who made it, what it offers, and where its claims came from.</aside>
+        </div>
+      </article>
+
+      <article class="review-lane" id="lane-function" data-lane="function">
+        <header class="lane-header"><p class="lane-index">02</p><div><p class="overline">Interaction pass</p><h2>Functionality</h2></div><span class="stamp stamp-blue">Click every thing</span></header>
+        <div class="lane-body">
+          <p class="lane-intro">A polished page that has one dead button is not polished. Test what a person can actually touch—not just what looks good in a screenshot.</p>
+          <details><summary>Minimum browser test set</summary><div class="evidence"><p>Test one desktop browser, one second desktop browser, and a phone. Use a private/incognito window after each deploy so cache and old local data do not lie to you.</p></div></details>
+          <div class="checklist">
+            <label class="check-row"><input id="function-1" type="checkbox"><span><strong>Open every nav item, CTA, footer link, and project link.</strong><small>Confirm the destination exists, the route loads, and no link silently returns to the same page.</small></span><em>Function.1</em></label>
+            <label class="check-row"><input id="function-2" type="checkbox"><span><strong>Exercise every interactive state.</strong><small>Tabs, accordions, filters, theme toggles, forms, modal close buttons, downloads, and menu controls must work twice in a row.</small></span><em>Function.2</em></label>
+            <label class="check-row"><input id="function-3" type="checkbox"><span><strong>Test success, empty, loading, and error states.</strong><small>Do not ship a form that only looks good before a network failure or a list that only works when data exists.</small></span><em>Function.3</em></label>
+            <label class="check-row"><input id="function-4" type="checkbox"><span><strong>Open DevTools Console and fix errors before shipping.</strong><small>Warnings may need judgment; uncaught errors and failed critical requests need explanation or repair.</small></span><em>Function.4</em></label>
+            <label class="check-row"><input id="function-5" type="checkbox"><span><strong>Test refresh, deep links, 404 handling, and back-button behavior.</strong><small>A page should survive normal browsing, not just a first click from the homepage.</small></span><em>Function.5</em></label>
+          </div>
+          <aside class="margin-note"><strong>Pass condition:</strong> every visible control has a deliberate, reversible result or is removed.</aside>
+        </div>
+      </article>
+
+      <article class="review-lane" id="lane-access" data-lane="access">
+        <header class="lane-header"><p class="lane-index">03</p><div><p class="overline">People pass</p><h2>Accessibility &amp; resilience</h2></div><span class="stamp stamp-green">Use a keyboard</span></header>
+        <div class="lane-body">
+          <p class="lane-intro">The site should work for people who do not use your mouse, browser, connection, screen size, or attention bandwidth.</p>
+          <div class="checklist">
+            <label class="check-row"><input id="access-1" type="checkbox"><span><strong>Use keyboard only: Tab, Shift+Tab, Enter, Space, and Escape.</strong><small>Focus must be visible; keyboard users must be able to open, close, submit, and leave components.</small></span><em>Access.1</em></label>
+            <label class="check-row"><input id="access-2" type="checkbox"><span><strong>Verify heading order, labels, alt text, and landmark structure.</strong><small>Use semantic HTML first; add ARIA only when native elements cannot express the behavior.</small></span><em>Access.2</em></label>
+            <label class="check-row"><input id="access-3" type="checkbox"><span><strong>Check text contrast and never communicate status by color alone.</strong><small>Body text needs enough contrast; errors and completions need words or icons as well as color.</small></span><em>Access.3</em></label>
+            <label class="check-row"><input id="access-4" type="checkbox"><span><strong>Test at narrow phone width and 200% browser zoom.</strong><small>No horizontal trap, clipped controls, microscopic text, or hover-only instruction.</small></span><em>Access.4</em></label>
+            <label class="check-row"><input id="access-5" type="checkbox"><span><strong>Turn on reduced motion and test slow or failed media.</strong><small>Animations should not block use; images and content should fail gracefully.</small></span><em>Access.5</em></label>
+          </div>
+          <aside class="margin-note"><strong>Pass condition:</strong> the page remains understandable and operable under common constraints, not just ideal conditions.</aside>
+        </div>
+      </article>
+
+      <article class="review-lane" id="lane-ship" data-lane="ship">
+        <header class="lane-header"><p class="lane-index">04</p><div><p class="overline">Release pass</p><h2>Ship gate</h2></div><span class="stamp stamp-black">Evidence or it didn’t happen</span></header>
+        <div class="lane-body">
+          <p class="lane-intro">The last pass is not more tinkering. It is deciding the page is sufficiently true, functional, and traceable to publish.</p>
+          <div class="checklist">
+            <label class="check-row"><input id="ship-1" type="checkbox"><span><strong>Run a private-window final pass on the production or staging URL.</strong><small>Confirm the deployed version, not only your local copy, is what you reviewed.</small></span><em>Ship.1</em></label>
+            <label class="check-row"><input id="ship-2" type="checkbox"><span><strong>Check title, meta description, social preview, favicon, robots, and sitemap.</strong><small>These are part of the public product, not back-room chores.</small></span><em>Ship.2</em></label>
+            <label class="check-row"><input id="ship-3" type="checkbox"><span><strong>Record what changed and one thing to review later.</strong><small>Write a dated line in your build log so future-you can understand the decision.</small></span><em>Ship.3</em></label>
+            <label class="check-row"><input id="ship-4" type="checkbox"><span><strong>Commit, deploy, and verify the matching revision.</strong><small>Keep Git history meaningful; do not make a mystery production change you cannot trace.</small></span><em>Ship.4</em></label>
+            <label class="check-row"><input id="ship-5" type="checkbox"><span><strong>Stop when the exit gate passes.</strong><small>Save the next aesthetic idea in a backlog instead of reopening a working release at 2 AM.</small></span><em>Ship.5</em></label>
+          </div>
+          <aside class="margin-note"><strong>Pass condition:</strong> you can point to the live URL, the commit, the review log, and the next small improvement—then walk away.</aside>
+        </div>
+      </article>
+    </section>
+
+    <!-- The linear notes are specific to this roadmap: public educational QC tool, not platform documentation. -->
+    <section class="linear-notes" aria-labelledby="linear-title">
+      <p class="overline">Linear notes · rights and credits</p>
+      <h2 id="linear-title">The fine print, written like a human.</h2>
+      <div class="notes-grid">
+        <p><strong>© 2026 Guerz.</strong> Unless otherwise noted, this roadmap’s original writing, review structure, templates, and visual design are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International</a>.</p>
+        <p>Reuse is welcome for noncommercial purposes with credit to Guerz, a link to the source and license, an indication of changes, and CC BY‑NC‑SA 4.0 for publicly shared adaptations. Original code can be separately MIT-licensed if Guerz releases it as reusable software.</p>
+        <p>The Guerz name, logo, and identity are not licensed for reuse or endorsement. Third-party names, trademarks, screenshots, linked tools, platform documentation, and materials owned by others remain subject to their own terms and are not included in this license unless explicitly identified.</p>
+        <p>Primary author, editor, and implementer: Guerz. Research and drafting assistance: Perplexity AI. This checklist is educational workflow guidance, not legal, security, accessibility, or platform compliance certification.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer"><span class="footer-mark" aria-hidden="true">⁂</span>Quality control is not perfectionism. It is keeping promises small enough that you can actually keep them.</footer>
+  </main>
+
+  <!-- app.js uses this live region for non-blocking interaction feedback. -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

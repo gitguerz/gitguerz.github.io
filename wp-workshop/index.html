@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Document setup, workshop fonts, and the three-file application links. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive WordPress publishing workshop roadmap for beginners.">
+  <title>WordPress 101 · Side Quest Workshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <!-- defer lets app.js bind controls only after the workshop markup exists. -->
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <!-- Keyboard shortcut around the decorative masthead. -->
+  <a class="skip-link" href="#workshop">Skip to workshop plan</a>
+
+  <!-- Print-shop masthead: unique community-publishing workshop identity. -->
+  <header class="masthead" id="top">
+    <div class="shell masthead-row">
+      <a class="brand" href="#top" aria-label="WordPress Side Quest Workshop home">
+        <span class="brand-block">WP</span>
+        <span>WordPress 101 / Side Quest Workshop</span>
+      </a>
+      <p class="folio">Set in the shop · marks save in this browser</p>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch light and dark workshop theme">◐</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <!-- Hero: defines the practical publishing problem before tools enter the story. -->
+    <section class="hero" aria-labelledby="page-title">
+      <p class="kicker">Community publishing workshop · edition 01</p>
+      <div class="hero-grid">
+        <div>
+          <h1 id="page-title">Build a small WordPress site.<br>Keep the keys.</h1>
+          <p class="deck">A low-drama side quest for learning the WordPress basics: choose the right route, claim control of your domain and admin account, publish something real, and keep a rollback plan before plugin confetti begins.</p>
+          <p class="hero-meta">Four stations · one battle-test register · no accounts, no cloud</p>
+          <div class="hero-actions">
+            <a class="button button-publish" href="#route-picker">Choose your route</a>
+            <button class="button" id="pick-next-task" type="button">Give me one next move</button>
+            <button class="button" id="export-progress" type="button">Export workshop log</button>
+          </div>
+        </div>
+        <aside class="hero-poster" aria-label="Workshop rule">
+          <span class="poster-top">THE FIRST RULE OF CMS</span>
+          <strong>OWN<br>YOUR<br>WAY<br>BACK.</strong>
+          <span class="poster-bottom">BACKUP · TEST · PUBLISH</span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Route picker: two explicit publishing paths with a local, reversible decision. -->
+    <section class="route-picker" id="route-picker" aria-labelledby="route-title">
+      <div class="section-heading"><p class="kicker">Workshop station 00</p><h2 id="route-title">Pick the road before packing the car.</h2><p>WordPress.com is a hosted service; self-hosted WordPress uses WordPress software on hosting you choose. They share a name, but their control, cost, and maintenance tradeoffs are different.</p></div>
+      <fieldset class="route-options">
+        <legend>Which learning route matches today?</legend>
+        <label class="route-card">
+          <input type="radio" name="wordpress-route" value="hosted" checked>
+          <span class="route-tab">A</span>
+          <span><strong>Hosted WordPress.com</strong><small>Lower setup load. Good for publishing quickly and learning the editor. Platform plan limits and features vary, so check the current plan before assuming plugin/theme access.</small></span>
+        </label>
+        <label class="route-card">
+          <input type="radio" name="wordpress-route" value="self-hosted">
+          <span class="route-tab">B</span>
+          <span><strong>Self-hosted WordPress</strong><small>More responsibility and flexibility. You choose a hosting provider, manage updates/backups, and can use plugins/themes subject to your host and software setup.</small></span>
+        </label>
+      </fieldset>
+      <div class="route-result" id="route-result" aria-live="polite"></div>
+    </section>
+
+    <!-- Workshop ledger: progress, one selected assignment, and utilities. -->
+    <section class="ledger" aria-label="Workshop progress ledger">
+      <article class="ledger-cell ink-cell"><p class="ledger-label">Workshop completion</p><p class="ledger-number" id="progress-number">0%</p><div class="progress-track" id="progress-meter" role="progressbar" aria-label="Workshop completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progress-fill"></span></div><p id="progress-text">0 of 0 workshop tasks complete</p></article>
+      <article class="ledger-cell"><p class="ledger-label">Current assignment</p><div class="assignment" id="next-task">Choose “Give me one next move” and the workshop will hand you a visible unfinished task.</div></article>
+      <article class="ledger-cell utility-cell"><p class="ledger-label">Desk controls</p><button class="utility-button" id="focus-toggle" type="button" aria-pressed="false">Focus workshop: off</button><button class="utility-button" id="open-all-details" type="button">Open instructor notes</button><button class="utility-button" id="close-all-details" type="button">Close instructor notes</button><button class="utility-button utility-danger" id="reset-progress" type="button">Reset task marks</button></article>
+    </section>
+
+    <!-- Filter strip: changes the workshop view but never discards any saved completion data. -->
+    <nav class="filter-strip" aria-label="Workshop filters"><label for="station-filter">Show station</label><select id="station-filter"><option value="all">All stations</option><option value="foundation">Foundation</option><option value="build">Build & publish</option><option value="care">Care & security</option></select><span>Progress is stored only in this browser. Export before changing devices.</span></nav>
+
+    <!-- Workshop stations: organized as a print-shop course, not a generic card dashboard. -->
+    <section class="workshop" id="workshop" aria-label="WordPress workshop roadmap">
+      <article class="station" id="station-1" data-group="foundation"><header class="station-head"><span class="station-number">01</span><div><p class="kicker">Foundation</p><h2>Claim the keys</h2></div><span class="station-badge">Before design</span></header><div class="station-body"><p class="station-intro">The first WordPress skill is not picking a theme. It is knowing which account owns the domain, hosting, recovery email, and administrator access.</p><div class="task-list"><label class="task"><input id="foundation-1" type="checkbox"><span><strong>Choose hosted WordPress.com or self-hosted WordPress on purpose.</strong><small>Write why you chose it, what it costs now, what could cost later, and where you would check plan limits.</small></span><em>F.01</em></label><label class="task"><input id="foundation-2" type="checkbox"><span><strong>Record domain registrar, hosting provider, renewal date, and recovery email.</strong><small>“I can log in today” is not the same as having a recoverable ownership record.</small></span><em>F.02</em></label><label class="task"><input id="foundation-3" type="checkbox"><span><strong>Create one strong admin account and enable two-factor authentication where available.</strong><small>Do not share one all-powerful login casually; use the least privilege that fits a person’s role.</small></span><em>F.03</em></label><label class="task"><input id="foundation-4" type="checkbox"><span><strong>Create a private build log with the URL, route, credentials locations, and decisions.</strong><small>Never put actual passwords, API keys, or recovery codes in a public repo or roadmap.</small></span><em>F.04</em></label></div><aside class="instructor-note"><strong>Exit ticket:</strong> You can name who controls the domain, the site account, the recovery path, and the place your decisions are written down.</aside></div></article>
+
+      <article class="station" id="station-2" data-group="build"><header class="station-head"><span class="station-number">02</span><div><p class="kicker">Build & publish</p><h2>Make the smallest real site</h2></div><span class="station-badge">One page first</span></header><div class="station-body"><p class="station-intro">A one-page, truthful site you can update is more useful than a ten-page template you do not understand. Build a page, a menu, and one thing that invites a response.</p><details><summary>What “small but real” means</summary><div class="details-content"><p>Start with a homepage, an about/contact route or section, a page title and meta description, a clear navigation path, and one personally meaningful piece of original content. Add more only after the basics are usable.</p></div></details><div class="task-list"><label class="task"><input id="build-1" type="checkbox"><span><strong>Choose one maintained theme and document why.</strong><small>Install only from a source you trust; check its update history and compatibility before treating it as infrastructure.</small></span><em>B.01</em></label><label class="task"><input id="build-2" type="checkbox"><span><strong>Set site title, tagline, permalink structure, timezone, and language deliberately.</strong><small>These settings affect URLs, publishing dates, and how the site appears to readers.</small></span><em>B.02</em></label><label class="task"><input id="build-3" type="checkbox"><span><strong>Publish one original page with a clear purpose and a path back home.</strong><small>Use real copy—not placeholder text—and check it on desktop and phone.</small></span><em>B.03</em></label><label class="task"><input id="build-4" type="checkbox"><span><strong>Add a contact path and test it end to end.</strong><small>If using a form, submit a test message and confirm delivery, spam behavior, and error feedback.</small></span><em>B.04</em></label><label class="task"><input id="build-5" type="checkbox"><span><strong>Set a favicon and a basic social-preview image or check how the platform handles it.</strong><small>Preview the shared link before assuming social cards are correct.</small></span><em>B.05</em></label></div><aside class="instructor-note"><strong>Exit ticket:</strong> A visitor can understand what the site is, reach its key pages, and send a test contact message without you narrating the interface.</aside></div></article>
+
+      <article class="station" id="station-3" data-group="care"><header class="station-head"><span class="station-number">03</span><div><p class="kicker">Care & security</p><h2>Protect the boring parts</h2></div><span class="station-badge">No plugin confetti</span></header><div class="station-body"><p class="station-intro">WordPress maintenance is a publishing practice. Backups, updates, roles, comments, and plugins are not exciting—until one breaks a site you need.</p><details><summary>Before an update, run this tiny ritual</summary><div class="details-content"><ol><li>Confirm you have a current backup and know where it lives.</li><li>Check the update’s source and compatibility notes.</li><li>Use staging when the host/platform offers it, or record how to roll back.</li><li>Update one change group at a time; then test the public site and admin.</li></ol></div></details><div class="task-list"><label class="task"><input id="care-1" type="checkbox"><span><strong>Confirm backups exist and run one restore drill or documented recovery test.</strong><small>A backup is only a plan after you know it can be found and restored.</small></span><em>C.01</em></label><label class="task"><input id="care-2" type="checkbox"><span><strong>Remove unused plugins and themes; update the ones you retain.</strong><small>Each unused component is another thing to monitor. Never install a plugin just because a listicle said “essential.”</small></span><em>C.02</em></label><label class="task"><input id="care-3" type="checkbox"><span><strong>Review user roles, password hygiene, and recovery access.</strong><small>Administrators can do everything. Give editors/authors only the access they need.</small></span><em>C.03</em></label><label class="task"><input id="care-4" type="checkbox"><span><strong>Set comment/form spam rules and test their failure path.</strong><small>Decide whether comments are off, moderated, or open; verify legitimate messages can still arrive.</small></span><em>C.04</em></label><label class="task"><input id="care-5" type="checkbox"><span><strong>Run a monthly 15-minute care pass.</strong><small>Updates, backups, broken links, forms, speed, and one mobile check—then stop.</small></span><em>C.05</em></label></div><aside class="instructor-note"><strong>Exit ticket:</strong> You know how to recover, update, moderate, and hand the site back to yourself next month.</aside></div></article>
+
+      <article class="station" id="station-4" data-group="build"><header class="station-head"><span class="station-number">04</span><div><p class="kicker">Publish proof</p><h2>Do the public pass</h2></div><span class="station-badge">Open a private window</span></header><div class="station-body"><p class="station-intro">The admin screen is not the website. Review the public URL like someone who has never met you, using an incognito/private window and a phone.</p><div class="task-list"><label class="task"><input id="ship-1" type="checkbox"><span><strong>Test links, nav, contact form, images, and downloads in a private window.</strong><small>Private mode exposes cached assumptions and missing login-only content.</small></span><em>P.01</em></label><label class="task"><input id="ship-2" type="checkbox"><span><strong>Test keyboard navigation, text zoom, alt text, headings, and contrast.</strong><small>People do not all browse with your mouse, eyesight, screen size, bandwidth, or patience.</small></span><em>P.02</em></label><label class="task"><input id="ship-3" type="checkbox"><span><strong>Review visibility and search settings before inviting people in.</strong><small>Confirm whether the site should be indexed now, later, or not at all.</small></span><em>P.03</em></label><label class="task"><input id="ship-4" type="checkbox"><span><strong>Write a one-line release note and one future improvement.</strong><small>Document the publish date and avoid reopening a working site just to chase a new plugin idea.</small></span><em>P.04</em></label></div><aside class="instructor-note"><strong>Exit ticket:</strong> The live site works for a new visitor, you can show what changed, and you know the next tiny maintenance date.</aside></div></article>
+    </section>
+
+    <!-- Pressure-test register: independent from ordinary completion so safety cannot disappear into “done.” -->
+    <section class="test-register" aria-labelledby="test-title"><div><p class="kicker">Battle test register</p><h2 id="test-title">Before you call it published.</h2><p>Use this as a quick failure-oriented pass. The point is not to become a security engineer overnight; it is to discover predictable breakage before visitors do.</p></div><div class="test-list"><label><input type="checkbox" class="test-check"> Backup is located, dated, and tested or the recovery route is documented.</label><label><input type="checkbox" class="test-check"> Admin account uses a unique password and 2FA where offered.</label><label><input type="checkbox" class="test-check"> Form/contact route sends a real test and has understandable error behavior.</label><label><input type="checkbox" class="test-check"> Comment/spam settings were tested, not simply enabled.</label><label><input type="checkbox" class="test-check"> Theme/plugin update was reviewed for source, compatibility, and rollback.</label><label><input type="checkbox" class="test-check"> The public site was tested on phone, private window, keyboard, and zoom.</label><label><input type="checkbox" class="test-check"> Unused plugins/themes and public secrets/screenshots were removed.</label><label><input type="checkbox" class="test-check"> Domain renewal and recovery contact information are written down.</label></div></section>
+
+    <!-- Case-specific licensing, authorship, and third-party rights boundary. -->
+    <section class="linear-notes" aria-labelledby="linear-title"><p class="kicker">Linear notes · rights &amp; credits</p><h2 id="linear-title">Share the workshop. Keep the keys.</h2><div class="notes-grid"><p><strong>© 2026 Guerz.</strong> Unless otherwise noted, this roadmap’s original writing, workshop structure, templates, and visual design are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International</a>.</p><p>Reuse is welcome for noncommercial purposes with credit to Guerz, a source/license link, an indication of changes, and CC BY‑NC‑SA 4.0 on publicly shared adaptations. Original reusable code may be separately MIT-licensed if Guerz releases it as software.</p><p>WordPress, WordPress.com, Automattic, themes, plugins, hosting providers, screenshots, trademarks, linked documentation, and other third-party material remain subject to their owners’ terms and are not licensed here unless explicitly identified.</p><p>Primary author, editor, and implementer: Guerz. Research and drafting assistance: Perplexity AI. This is educational workflow guidance, not legal advice, security certification, or a substitute for a host/platform’s current documentation.</p></div></section>
+
+    <footer class="site-footer"><span class="footer-mark" aria-hidden="true">◆ ◆ ◆</span>Publish small. Write down where the keys are. Keep a way back.</footer>
+  </main>
+
+  <!-- App status messages are announced without interrupting the review flow. -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

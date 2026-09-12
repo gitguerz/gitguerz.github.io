@@ -33,18 +33,35 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:
 img{max-width:100%;display:block}
 a{color:inherit}
 
-.rm-main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-.rm-kicker{font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
-.rm-title{margin:0 0 8px;font:800 clamp(28px,5vw,44px)/1 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.01em}
-.rm-sub{margin:0 0 28px;max-width:640px;font:16px/1.55 'Eczar',serif;color:var(--muted)}
+.rm-main{max-width:1140px;margin:0 auto;padding:32px 20px 56px}
+.rm-intro{margin:0 0 30px;padding-bottom:22px;border-bottom:2px solid var(--lavender)}
+.rm-kicker{font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 8px}
+.rm-title{margin:0 0 10px;font:800 clamp(30px,5vw,48px)/.98 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.015em}
+.rm-sub{margin:0;max-width:56ch;font:16px/1.55 'Eczar',serif;color:var(--muted);text-wrap:pretty}
 
-.rm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+/* 3-up on desktop, 2-up on tablet, 1-up on phones — auto-fit handles the steps,
+   the row gap is a little larger than the column gap so stacked rows breathe */
+.rm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px 22px;align-items:stretch}
 
-.rm-card{background:var(--card);border:2px solid var(--muted);box-shadow:5px 5px 0 var(--lavender);display:flex;flex-direction:column;overflow:hidden}
+.rm-card{
+  position:relative;background:var(--card);border:2px solid var(--muted);
+  box-shadow:4px 4px 0 var(--lavender);display:flex;flex-direction:column;overflow:hidden;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.rm-card:hover,.rm-card:focus-within{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--lavender)}
 
-.rm-thumb-wrap{display:block;position:relative;border-bottom:2px solid var(--muted)}
+.rm-thumb-wrap{display:block;position:relative;border-bottom:2px solid var(--muted);overflow:hidden}
 .rm-thumb-link{display:block;position:relative;aspect-ratio:16/9;background:var(--paper)}
-.rm-thumb-link img{width:100%;height:100%;object-fit:cover}
+.rm-thumb-link img{width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .3s ease}
+.rm-card:hover .rm-thumb-link img{transform:scale(1.03)}
+/* "open" affordance so the thumbnail reads as the primary action, not decoration */
+.rm-thumb-link::after{
+  content:"open ↗";position:absolute;right:8px;bottom:8px;
+  background:var(--ink);color:var(--peach);font:700 9.5px 'IBM Plex Mono',monospace;
+  text-transform:uppercase;letter-spacing:.08em;padding:4px 8px;
+  opacity:0;transform:translateY(4px);transition:opacity .18s ease,transform .18s ease;
+}
+.rm-card:hover .rm-thumb-link::after,.rm-thumb-link:focus-visible::after{opacity:1;transform:none}
 .rm-thumb-placeholder{
   display:none;position:absolute;inset:0;align-items:center;justify-content:center;
   background:repeating-linear-gradient(135deg,var(--peach),var(--peach) 14px,var(--lavender) 14px,var(--lavender) 28px);
@@ -54,24 +71,42 @@ a{color:inherit}
   text-transform:uppercase;letter-spacing:.08em;padding:5px 10px;
 }
 
-.rm-card-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
-.rm-card-name{margin:0;font:800 20px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1}
-.rm-card-desc{margin:0;font:14.5px/1.5 'Eczar',serif;color:var(--text);min-height:calc(1.5em * 3)}
-.rm-tag{align-self:flex-start;white-space:nowrap;font:700 9.5px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:var(--peach);padding:3px 8px}
+.rm-card-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.rm-card-name{margin:0;font:800 21px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.01em;line-height:1.05}
+.rm-card-desc{margin:0;font:14.5px/1.5 'Eczar',serif;color:var(--text);min-height:calc(1.5em * 3);text-wrap:pretty}
+.rm-tag{align-self:flex-start;white-space:nowrap;font:700 9.5px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:var(--peach);padding:4px 9px}
 
-.rm-actions{margin-top:4px;display:flex;align-items:center;gap:8px;padding-top:6px}
+.rm-actions{margin-top:6px;display:flex;align-items:center;gap:8px;padding-top:8px;border-top:2px dotted var(--lavender)}
 .rm-btn-dl{
-  display:flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;width:38px;height:38px;flex:0 0 auto;
   border:2px solid var(--muted);background:var(--paper);color:var(--text);font-size:16px;text-decoration:none;
+  transition:background .15s ease,color .15s ease;
 }
 .rm-btn-dl:hover{background:var(--peach);color:var(--ink)}
 .rm-btn-code{
   border:2px solid var(--ink);background:var(--ink);color:var(--peach);
   font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;
-  padding:0 14px;height:34px;display:flex;align-items:center;text-decoration:none;
+  padding:0 16px;height:38px;display:flex;align-items:center;text-decoration:none;
+  transition:background .15s ease,color .15s ease;
 }
 .rm-btn-code:hover{background:var(--lavender);color:var(--ink)}
-.rm-dl-note{font:11px/1.3 'IBM Plex Mono',monospace;color:var(--muted)}
+/* margin-top:auto drops the note to the card floor, so the actions row sits at the
+   same height on cards that have a note and cards that don't */
+.rm-dl-note{margin-top:auto;padding-top:8px;font:11px/1.35 'IBM Plex Mono',monospace;color:var(--muted)}
+
+@media (max-width:620px){
+  .rm-main{padding:24px 16px 44px}
+  .rm-card-body{padding:15px}
+  .rm-card-desc{min-height:0}
+  .rm-dl-note{margin-top:6px}
+  .rm-btn-dl,.rm-btn-code{height:44px}
+  .rm-btn-dl{width:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rm-card,.rm-thumb-link img,.rm-thumb-link::after{transition:none}
+  .rm-card:hover,.rm-card:focus-within{transform:none}
+  .rm-card:hover .rm-thumb-link img{transform:none}
+}
 
 </style>
 </head>
@@ -105,9 +140,11 @@ a{color:inherit}
 </header>
 
 <main class="rm-main" id="main" tabindex="-1">
-  <p class="rm-kicker">roadmaps / working tools</p>
-  <h1 class="rm-title">the tool shed</h1>
-  <p class="rm-sub">live builds, not exercises — open one, download it, or go read how it works.</p>
+  <div class="rm-intro">
+    <p class="rm-kicker">roadmaps / working tools</p>
+    <h1 class="rm-title">the tool shed</h1>
+    <p class="rm-sub">live builds, not exercises — open one, download it, or go read how it works.</p>
+  </div>
 
   <div class="rm-grid">
 
@@ -177,6 +214,46 @@ a{color:inherit}
         <div class="rm-actions">
           <a class="rm-btn-dl" href="cloudflare-field-plan/index.html" download aria-label="Download Cloudflare Field Plan">↓</a>
           <a class="rm-btn-code" href="https://github.com/gitguerz/gitguerz.github.io/tree/main/cloudflare-field-plan" target="_blank" rel="noopener noreferrer">code</a>
+        </div>
+        <p class="rm-dl-note">html only — app.js &amp; styles.css live alongside it in the folder</p>
+      </div>
+    </article>
+
+    <article class="rm-card">
+      <div class="rm-thumb-wrap">
+        <a class="rm-thumb-link" href="quality-control-desk/index.html" aria-label="Open Quality Control Desk — live preview">
+          <img src="assets/roadmap-thumbs/qc-desk.png" alt="Screenshot preview of the Quality Control Desk" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="rm-thumb-placeholder"><span>screenshot pending</span></div>
+        </a>
+      </div>
+      <div class="rm-card-body">
+        <h3 class="rm-card-name">Quality Control Desk</h3>
+        <p class="rm-card-desc">Pre-publish review checklist for guerz.lol — content truth, functionality, accessibility &amp; resilience, and a ship gate. 20 checks across 4 review lanes.</p>
+        <span class="rm-tag">v1 · live</span>
+        <div class="rm-actions">
+          <a class="rm-btn-dl" href="quality-control-desk/index.html" download aria-label="Download Quality Control Desk">↓</a>
+          <a class="rm-btn-code" href="https://github.com/gitguerz/gitguerz.github.io/tree/main/quality-control-desk" target="_blank" rel="noopener noreferrer">code</a>
+        </div>
+        <p class="rm-dl-note">html only — app.js &amp; styles.css live alongside it in the folder</p>
+      </div>
+    </article>
+
+    <article class="rm-card">
+      <div class="rm-thumb-wrap">
+        <a class="rm-thumb-link" href="wp-workshop/index.html" aria-label="Open WordPress 101 / Side Quest Workshop — live preview">
+          <img src="assets/roadmap-thumbs/wp-workshop.png" alt="Screenshot preview of the WordPress 101 Side Quest Workshop" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="rm-thumb-placeholder"><span>screenshot pending</span></div>
+        </a>
+      </div>
+      <div class="rm-card-body">
+        <h3 class="rm-card-name">WordPress 101 / Side Quest Workshop</h3>
+        <p class="rm-card-desc">Beginner WordPress workshop — hosted vs. self-hosted route picker, 4 stations from claiming the keys to publish-day checks, plus an independent battle-test register.</p>
+        <span class="rm-tag">v1 · live</span>
+        <div class="rm-actions">
+          <a class="rm-btn-dl" href="wp-workshop/index.html" download aria-label="Download WordPress 101 Side Quest Workshop">↓</a>
+          <a class="rm-btn-code" href="https://github.com/gitguerz/gitguerz.github.io/tree/main/wp-workshop" target="_blank" rel="noopener noreferrer">code</a>
         </div>
         <p class="rm-dl-note">html only — app.js &amp; styles.css live alongside it in the folder</p>
       </div>

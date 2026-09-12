@@ -1,0 +1,336 @@
+/* Guerz Site Quality Control Desk — styles.css */
+/* Art direction: editorial proofing desk — newsprint paper, double rules, stamp accents.
+   Deliberately not the record-store look of the Turntable Line or the graph-paper zine
+   look of the Cloudflare roadmap. Structure/IDs are owned by app.js; this file only styles. */
+
+/* 1. Theme tokens: paper, ink, proof-red, verification-green, display/body/mono type. */
+:root,
+[data-theme="light"] {
+  --paper:#f4f0e8; --paper2:#fcfaf5; --ink:#23211d; --ink-soft:#605b52; --line:#c7c0b5;
+  --red:#a6332d; --red-soft:#f0d8d4; --blue:#2e5c8d; --blue-soft:#dbe7f2;
+  --green:#386649; --green-soft:#dcebdc;
+  --on-red:#fffdf8;
+  --shadow:0 12px 30px rgb(31 28 22 / 8%);
+}
+[data-theme="dark"] {
+  --paper:#1a1916; --paper2:#22201c; --ink:#efe9dd; --ink-soft:#bdb4a6; --line:#49443c;
+  --red:#ee9188; --red-soft:#4b2c29; --blue:#91b9e3; --blue-soft:#26394f;
+  --green:#9cc9a1; --green-soft:#273d2c;
+  --on-red:#1a1916;
+  --shadow:0 12px 30px rgb(0 0 0 / 28%);
+}
+:root {
+  --display:"Fraunces",Georgia,serif;
+  --body:"Manrope",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,monospace;
+  --xs:clamp(.75rem,.72rem + .2vw,.875rem);
+  --sm:clamp(.875rem,.83rem + .25vw,1rem);
+  --base:clamp(1rem,.95rem + .25vw,1.125rem);
+  --lg:clamp(1.15rem,1rem + .6vw,1.45rem);
+  --xl:clamp(1.75rem,1.2rem + 1.8vw,2.8rem);
+  --hero:clamp(2.65rem,1.4rem + 4.4vw,5.9rem);
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.25rem; --s6:1.5rem;
+  --s8:2rem; --s10:2.5rem; --s12:3rem; --s16:4rem;
+  --r:3px;
+  --ease:180ms cubic-bezier(.16,1,.3,1);
+  --gutter:88px; /* width of the lane-number margin — header and body share it */
+}
+
+/* 2. Baseline: readable defaults, faint newsprint tone, visible focus. */
+* { box-sizing:border-box; margin:0; }
+html { scroll-behavior:smooth; scroll-padding-top:7rem; }
+body {
+  min-height:100dvh; background:var(--paper); color:var(--ink);
+  font:400 var(--base)/1.65 var(--body);
+  background-image:radial-gradient(color-mix(in srgb,var(--ink) 5%,transparent) .5px,transparent .5px);
+  background-size:4px 4px; /* newsprint grain, barely there */
+}
+button, input, select { font:inherit; color:inherit; }
+button { cursor:pointer; }
+a { color:var(--red); text-decoration-thickness:1.5px; text-underline-offset:2px; }
+a:hover { text-decoration-thickness:2.5px; }
+:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+.shell { width:min(1120px,calc(100% - 2.5rem)); margin:auto; }
+.skip-link { position:absolute; left:-9999px; }
+.skip-link:focus { top:1rem; left:1rem; z-index:30; padding:var(--s3); background:var(--paper2); color:var(--ink); }
+
+/* 3. Masthead: newspaper folio bar with a double rule, not a product header. */
+.masthead {
+  position:sticky; top:0; z-index:25;
+  background:color-mix(in srgb,var(--paper2) 90%,transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:3px double var(--line);
+}
+.masthead-inner { display:flex; min-height:70px; align-items:center; gap:var(--s4); }
+.wordmark {
+  display:flex; align-items:center; gap:var(--s3); margin-right:auto;
+  color:var(--ink); font:700 var(--sm)/1 var(--body); letter-spacing:.01em; text-decoration:none;
+}
+.wordmark-mark {
+  display:grid; width:32px; height:32px; place-items:center;
+  border:1.5px solid var(--red); border-radius:50%;
+  color:var(--red); font:700 1.05rem/1 var(--display);
+}
+.folio {
+  font:500 var(--xs)/1 var(--mono); letter-spacing:.06em; text-transform:uppercase;
+  color:var(--ink-soft); text-align:right;
+}
+.theme-toggle {
+  display:grid; width:44px; height:44px; flex:none; place-items:center;
+  border:1px solid var(--line); border-radius:50%; background:transparent;
+  transition:background var(--ease), border-color var(--ease);
+}
+.theme-toggle:hover { border-color:var(--ink); background:color-mix(in srgb,var(--ink) 6%,transparent); }
+
+/* 4. Hero: serif-led editorial title, red-ruled deck, restrained actions. */
+.hero { padding:clamp(var(--s10),8vw,var(--s16)) 0 var(--s10); border-bottom:3px double var(--line); }
+.overline, .label, .filter-label { font:700 var(--xs)/1 var(--body); letter-spacing:.11em; text-transform:uppercase; }
+.overline { color:var(--red); }
+.hero h1 {
+  max-width:19ch; margin:var(--s4) 0 var(--s6);
+  font:700 var(--hero)/.95 var(--display); letter-spacing:-.04em; text-wrap:balance;
+}
+.deck {
+  max-width:58ch; padding-left:var(--s5); border-left:3px solid var(--red);
+  color:var(--ink-soft); font-size:var(--lg); text-wrap:pretty;
+}
+.hero-meta {
+  margin-top:var(--s6); color:var(--ink-soft);
+  font:500 var(--xs)/1 var(--mono); letter-spacing:.09em; text-transform:uppercase;
+}
+.hero-actions { display:flex; flex-wrap:wrap; gap:var(--s3); margin-top:var(--s5); }
+.button {
+  display:inline-flex; min-height:44px; align-items:center; justify-content:center;
+  padding:.6rem 1rem; border:1.5px solid var(--ink); border-radius:var(--r);
+  background:var(--paper2); color:var(--ink); font:700 var(--sm)/1 var(--body); text-decoration:none;
+  box-shadow:3px 3px 0 color-mix(in srgb,var(--ink) 16%,transparent);
+  transition:background var(--ease), color var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+.button:hover {
+  transform:translate(-1px,-1px); background:var(--ink); color:var(--paper2);
+  box-shadow:5px 5px 0 color-mix(in srgb,var(--ink) 22%,transparent);
+}
+.button-primary {
+  border-color:var(--red); background:var(--red); color:var(--on-red);
+  box-shadow:3px 3px 0 color-mix(in srgb,var(--red) 40%,transparent);
+}
+.button-primary:hover {
+  background:var(--red); color:var(--on-red);
+  box-shadow:5px 5px 0 color-mix(in srgb,var(--red) 45%,transparent);
+}
+
+/* 5. Scorecard: asymmetric review summary — number, assignment, desk controls. */
+.scorecard { display:grid; grid-template-columns:.95fr 1.25fr .85fr; border-bottom:3px double var(--line); }
+.score {
+  display:flex; flex-direction:column; min-height:236px; padding:var(--s6);
+  border-right:1px solid var(--line); background:var(--paper2);
+}
+.score:last-child { border-right:0; }
+.score-primary { background:var(--red-soft); }
+.score-tools { background:var(--blue-soft); }
+.score .label { color:var(--ink-soft); }
+.score-primary .label { color:var(--red); }
+.score-tools .label { color:var(--blue); }
+.score-number {
+  margin-top:auto; font:700 clamp(3.25rem,9vw,6.4rem)/.82 var(--display);
+  letter-spacing:-.07em; font-variant-numeric:tabular-nums;
+}
+.rule-meter {
+  position:relative; height:10px; margin-top:var(--s4); overflow:hidden;
+  background:color-mix(in srgb,var(--ink) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);
+}
+.rule-meter span { display:block; width:0; height:100%; background:var(--red); transition:width .25s ease; }
+.rule-meter::after { /* 5% tick marks — one per check on the board */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(90deg,
+    transparent 0 calc(5% - 1px),
+    color-mix(in srgb,var(--ink) 20%,transparent) calc(5% - 1px) 5%);
+}
+.small-note { margin-top:var(--s3); color:var(--ink-soft); font:500 var(--xs)/1.4 var(--mono); letter-spacing:.03em; }
+.assignment {
+  display:flex; flex-direction:column; justify-content:center; margin-top:var(--s4);
+  padding-left:var(--s5); border-left:3px solid var(--red);
+  font:600 var(--lg)/1.4 var(--display); text-wrap:pretty; flex:1;
+}
+.assignment strong { display:block; margin-bottom:var(--s1); color:var(--red); font:700 var(--xs)/1.2 var(--body); letter-spacing:.11em; text-transform:uppercase; }
+.tool-stack { display:grid; gap:var(--s1); margin-top:var(--s4); align-content:start; }
+.text-button {
+  display:flex; min-height:32px; align-items:center; gap:var(--s2);
+  padding:var(--s1) 0; border:0; background:transparent; color:var(--ink);
+  text-align:left; text-decoration:none; font:600 var(--sm)/1.3 var(--body);
+  transition:color var(--ease), gap var(--ease);
+}
+.text-button::before { content:"→"; color:var(--blue); font:500 var(--sm)/1 var(--mono); }
+.text-button:hover { color:var(--blue); gap:var(--s3); }
+.text-button-danger { color:var(--red); }
+.text-button-danger::before { color:var(--red); }
+.text-button-danger:hover { color:var(--red); }
+
+/* 6. Filter bar: narrow control strip above the proof sheets. */
+.filter-bar {
+  display:flex; flex-wrap:wrap; align-items:center; gap:var(--s3) var(--s4);
+  padding:var(--s5) 0; border-bottom:1px solid var(--line);
+}
+.filter-label { color:var(--ink-soft); }
+.filter-bar select {
+  min-height:42px; padding:.4rem .7rem; border:1.5px solid var(--ink); border-radius:var(--r);
+  background:var(--paper2); font:600 var(--sm)/1 var(--body);
+}
+.filter-note { margin-left:auto; color:var(--ink-soft); font:500 var(--xs)/1.4 var(--mono); letter-spacing:.03em; }
+
+/* 7. Review lanes: proof sheets with numbered margins and verification stamps. */
+.review-board { display:grid; }
+.review-lane { border-bottom:1px solid var(--line); }
+.review-lane[hidden] { display:none; }
+.lane-header {
+  display:grid; grid-template-columns:var(--gutter) 1fr auto; align-items:start;
+  gap:var(--s5); padding:var(--s10) 0 var(--s5);
+}
+.lane-index {
+  color:var(--line); font:700 clamp(2.75rem,6vw,4.75rem)/.78 var(--display); letter-spacing:-.07em;
+}
+@supports (-webkit-text-stroke:1px currentColor) {
+  .lane-index { color:transparent; -webkit-text-stroke:1.5px var(--line); } /* outlined proof numeral */
+}
+.lane-header h2 { margin-top:var(--s2); font:700 var(--xl)/1 var(--display); letter-spacing:-.04em; }
+.stamp {
+  align-self:center; padding:.42rem .7rem; border:1.5px solid currentColor; border-radius:999px;
+  font:700 var(--xs)/1 var(--body); letter-spacing:.08em; text-transform:uppercase;
+  transform:rotate(-2deg); opacity:.9;
+}
+.stamp-red { color:var(--red); }
+.stamp-blue { color:var(--blue); transform:rotate(2deg); }
+.stamp-green { color:var(--green); transform:rotate(-1deg); }
+.stamp-black { color:var(--ink); transform:rotate(1deg); }
+.lane-body {
+  display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:var(--s10);
+  padding:0 0 var(--s10) calc(var(--gutter) + var(--s5));
+}
+.lane-intro { max-width:66ch; margin-bottom:var(--s6); color:var(--ink-soft); font-size:var(--lg); text-wrap:pretty; }
+.checklist { display:grid; border-top:1.5px solid var(--ink); }
+.check-row {
+  display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:var(--s4);
+  padding:var(--s4) var(--s3); margin-inline:calc(var(--s3) * -1);
+  border-bottom:1px solid var(--line); cursor:pointer;
+  transition:background var(--ease), opacity var(--ease);
+}
+.check-row:hover { background:color-mix(in srgb,var(--ink) 4%,transparent); }
+.check-row input {
+  appearance:none; -webkit-appearance:none;
+  display:grid; width:22px; height:22px; margin-top:.2rem; flex:none; place-items:center;
+  border:1.5px solid var(--ink); border-radius:2px; background:var(--paper2);
+  transition:background var(--ease), border-color var(--ease);
+}
+.check-row input::after {
+  content:"✓"; color:var(--green); font:700 15px/1 var(--body);
+  opacity:0; transform:scale(.6) rotate(-8deg);
+  transition:opacity var(--ease), transform var(--ease);
+}
+.check-row input:checked { border-color:var(--green); background:var(--green-soft); }
+.check-row input:checked::after { opacity:1; transform:scale(1) rotate(-8deg); }
+.check-row strong { display:block; font-weight:700; text-wrap:pretty; }
+.check-row small { display:block; margin-top:var(--s1); color:var(--ink-soft); font-size:var(--sm); text-wrap:pretty; }
+.check-row em {
+  align-self:start; min-width:6ch; padding-top:.2rem; color:var(--ink-soft);
+  font:400 var(--xs)/1 var(--mono); font-style:normal; letter-spacing:.03em;
+  text-align:right; white-space:nowrap;
+}
+.check-row:has(input:checked) { opacity:.6; }
+.check-row:has(input:checked) strong {
+  text-decoration:line-through; text-decoration-color:var(--green); text-decoration-thickness:2px;
+}
+.margin-note {
+  position:sticky; top:7rem; align-self:start; margin-top:var(--s10);
+  padding:var(--s5); border-top:3px solid var(--red); background:var(--paper2);
+  box-shadow:var(--shadow); color:var(--ink-soft); font-size:var(--sm); text-wrap:pretty;
+}
+.margin-note strong {
+  display:block; margin-bottom:var(--s2); color:var(--red);
+  font:700 var(--xs)/1 var(--body); letter-spacing:.11em; text-transform:uppercase;
+}
+details {
+  grid-column:1; margin:0 0 var(--s6);
+  border:1px solid var(--line); border-left:3px solid var(--blue); background:var(--paper2);
+}
+summary {
+  display:flex; align-items:center; gap:var(--s3); padding:var(--s3) var(--s4);
+  list-style:none; cursor:pointer; font:700 var(--sm)/1.3 var(--body);
+}
+summary::-webkit-details-marker { display:none; }
+summary::before { content:"+"; width:1ch; color:var(--blue); font:500 var(--base)/1 var(--mono); }
+details[open] summary::before { content:"–"; }
+.evidence { padding:0 var(--s4) var(--s4) calc(var(--s4) + 1ch + var(--s3)); color:var(--ink-soft); font-size:var(--sm); text-wrap:pretty; }
+
+/* 8. Linear notes: licensing and credits set as a back-page colophon. */
+.linear-notes { margin-top:var(--s12); padding:var(--s8); border-top:5px solid var(--ink); background:var(--paper2); }
+.linear-notes h2 { max-width:22ch; margin:var(--s3) 0 var(--s8); font:700 var(--xl)/1 var(--display); letter-spacing:-.04em; }
+.notes-grid {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--s6) var(--s8);
+  color:var(--ink-soft); font-size:var(--sm);
+}
+.notes-grid p { padding-top:var(--s4); border-top:1px solid var(--line); text-wrap:pretty; }
+.notes-grid strong { color:var(--ink); }
+.site-footer {
+  display:grid; max-width:60ch; margin:auto; padding:var(--s12) 0;
+  gap:var(--s4); justify-items:center; text-align:center;
+  color:var(--ink-soft); font:600 var(--lg)/1.45 var(--display); text-wrap:pretty;
+}
+.footer-mark { color:var(--red); font:400 1.6rem/1 var(--display); }
+
+/* 9. Feedback and Focus Mode: short status notice and single-lane reviewing. */
+.toast {
+  position:fixed; right:var(--s4); bottom:var(--s4); z-index:20;
+  max-width:min(400px,calc(100% - 2rem)); padding:var(--s3) var(--s4);
+  border:1.5px solid var(--ink); border-left:5px solid var(--red);
+  background:var(--paper2); box-shadow:var(--shadow);
+  font:700 var(--sm)/1.4 var(--body);
+  opacity:0; pointer-events:none; transform:translateY(8px);
+  transition:opacity var(--ease), transform var(--ease);
+}
+.toast.show { opacity:1; transform:none; }
+body.focused .hero,
+body.focused .score-primary,
+body.focused .score:not(.score-tools),
+body.focused .filter-bar,
+body.focused .linear-notes { display:none; }
+/* score-tools deliberately stays visible in focus mode — it holds the focus-toggle
+   button itself. Hiding the whole .scorecard would hide the only way back out. */
+body.focused .scorecard { grid-template-columns:1fr; }
+body.focused .score-tools { border-right:0; }
+body.focused .score-tools .tool-stack { grid-auto-flow:column; grid-auto-columns:max-content; gap:var(--s6); }
+body.focused .review-lane:not(.focus-lane) { display:none; }
+.review-lane.focus-lane {
+  outline:2px solid var(--blue); outline-offset:10px;
+  background:color-mix(in srgb,var(--blue) 4%,transparent);
+}
+
+/* 10. Mobile, reduced motion, and print behavior. */
+@media (max-width:900px) {
+  .scorecard { grid-template-columns:1fr 1fr; }
+  .score-tools { grid-column:span 2; border-top:1px solid var(--line); }
+  .lane-body { grid-template-columns:minmax(0,1fr) 220px; gap:var(--s6); }
+}
+@media (max-width:760px) {
+  .shell { width:min(100% - 2rem,1120px); }
+  .folio { display:none; }
+  .scorecard { grid-template-columns:1fr; }
+  .score { min-height:auto; border-right:0; border-bottom:1px solid var(--line); }
+  .score-tools { grid-column:auto; }
+  .lane-header { grid-template-columns:58px 1fr; gap:var(--s4); padding-top:var(--s8); }
+  .lane-header .stamp { grid-column:2; justify-self:start; }
+  .lane-body { grid-template-columns:1fr; padding-left:0; }
+  .margin-note { position:static; margin-top:0; }
+  .notes-grid { grid-template-columns:1fr; }
+  body.focused .score-tools .tool-stack { grid-auto-flow:row; gap:var(--s1); }
+}
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after { scroll-behavior:auto !important; transition-duration:.01ms !important; }
+}
+@media print {
+  body { background:#fff; }
+  .masthead, .hero-actions, .filter-bar, .toast, .score-tools { display:none; }
+  .review-lane[hidden] { display:block !important; }
+  .review-lane, .linear-notes, .check-row, .margin-note { break-inside:avoid; }
+  .margin-note { position:static; box-shadow:none; }
+}
