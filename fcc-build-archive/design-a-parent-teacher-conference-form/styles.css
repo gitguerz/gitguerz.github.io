@@ -1,0 +1,99 @@
+body {
+  background-color: MidnightBlue;
+  color: whitesmoke;
+}
+
+.container {
+    background-color: #ffffff1a; /* 8-digit hex: the last 2 digits (1a) are the alpha channel, making this white at roughly 10% opacity instead of solid */
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    box-shadow: 0 5px 15px black;  
+}
+
+.center {
+  text-align: center;
+}
+
+.description {
+  font-size: 1.2rem;
+}
+
+fieldset {
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+fieldset legend {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+label {
+  font-size: 1.2rem;
+}
+
+label:not(.contact-method) { /* :not() is a negation pseudo-class — applies to every label EXCEPT ones carrying the contact-method class */
+  display: block;
+  margin: 10px 0;
+}
+
+input:not(.contact-method-radio-btn), /* :not() again excludes the custom radios, which get their own separate rule below */
+textarea {
+  background-color: #ffffff1a;
+  width: 95%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+input,
+input::placeholder, /* ::placeholder is a pseudo-element targeting the greyed hint text specifically, not the real typed value */
+textarea {
+  color: whitesmoke;
+}
+
+
+.contact-method-radio-btn {
+  appearance: none; /* strips the browser's default radio styling entirely, giving a blank box to restyle from scratch */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  vertical-align: bottom;
+}
+
+.contact-method-radio-btn::before {
+  display: block;
+  content: " ";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(3px, 3px) scale(0); /* translate() shifts the dot to visually center it inside the circle; scale(0) starts it invisible */
+  transition: all 0.3s ease-in;
+}
+
+.contact-method-radio-btn:checked::before { /* :checked matches only while this specific radio is the selected one in its group */
+  transform: translate(3px, 3px) scale(1);
+  background-color: lightgreen;
+}
+
+.submit-btn {
+  cursor: pointer;
+  background-color: royalblue;
+  color: whitesmoke;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  display: block;
+  margin: auto;
+}
+
+.submit-btn:hover {
+  background-color: midnightblue;
+}

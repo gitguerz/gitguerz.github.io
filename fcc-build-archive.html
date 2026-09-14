@@ -2562,7 +2562,7 @@ section {
       <span class="module-caret">▸</span>
       <span class="module-kicker">CSS</span>
       <span class="module-title">Pseudo Classes and Elements</span>
-      <span class="module-count">3 items · 1 built</span>
+      <span class="module-count">3 items · 3 built</span>
     </summary>
     <div class="module-body">
     <details class="project-box">
@@ -2713,16 +2713,425 @@ section:target { /* section target creates a new state for the section */
         <div class="project-links"><a href="fcc-build-archive/design-a-greeting-card/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/fcc-build-archive/design-a-greeting-card/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
       </div>
     </details>
-    <div class="archive-row">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Design a Parent Teacher Conference Form</span>
-      <span class="archive-type">workshop</span>
-    </div>
-    <div class="archive-row">
-      <span class="archive-check">☐</span>
-      <span class="archive-name">Build a Job Application Form</span>
-      <span class="archive-type">lab</span>
-    </div>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd workshop</span>
+        <span class="project-name">Design a Parent Teacher Conference Form</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Learned Concepts</span><span class="meta-val">Introduced: :not() negation pseudo-class • :checked pseudo-class • appearance: none • translate() function • ::placeholder pseudo-element • 8-digit hex with alpha channel (#ffffff1a)<br />Reinforced: fieldset element • legend element • radio inputs with checked • ::before pseudo-element • content property • transition property • border-radius property • box-shadow property • rem relative unit</span></div>
+        </div>
+        <div class="card-body">a parent-teacher conference scheduler — four <b>fieldset</b> groups over a translucent card. the interesting part is the contact-method radios: <b>appearance: none</b> wipes the native control, then a <b>::before</b> dot scales in from zero on <b>:checked</b>, with <b>:not()</b> keeping the generic input rules off them.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Parent Teacher Conference Form&lt;/title&gt;
+    &lt;link rel="stylesheet" href="./styles.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;main class="container"&gt;
+    &lt;h1 class="title center"&gt;Parent Teacher Conference Form&lt;/h1&gt;
+    &lt;p class="description center"&gt;Please fill out the form below to help schedule your parent-teacher conference.&lt;/p&gt;
+
+    &lt;form&gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;Student Information&lt;/legend&gt;
+          &lt;label for="student-name"&gt;Full Name: &lt;/label&gt;
+          &lt;input
+            type="text"
+            name="student-name"
+            id="student-name"
+            required
+            placeholder="E.g., Jane Doe"
+          /&gt;
+
+          &lt;label for="grade"&gt;Student Grade: &lt;/label&gt;
+          &lt;input
+            type="number"
+            name="grade"
+            id="grade"
+            required
+            placeholder="E.g., 4"
+          /&gt;
+        &lt;/fieldset&gt;
+        
+        &lt;fieldset&gt;
+          &lt;legend&gt;Parent/Guardian Information&lt;/legend&gt;
+          &lt;label for="parent-name"&gt;Parent/Guardian Name: &lt;/label&gt;
+          &lt;input
+            type="text"
+            name="parent-name"
+            id="parent-name"
+            required
+            placeholder="E.g., Nancy Doe"
+          /&gt;
+        &lt;/fieldset&gt;
+
+        &lt;fieldset&gt;
+          &lt;legend&gt;Preferred Contact Method&lt;/legend&gt;
+          &lt;label class="contact-method" for="email"&gt;Email: &lt;/label&gt;
+          &lt;input
+            id="email"
+            class="contact-method-radio-btn"
+            type="radio"
+            name="contact-method"
+            value="email"
+            checked
+          /&gt;
+
+          &lt;label class="contact-method" for="phone"&gt;Phone: &lt;/label&gt;
+          &lt;input
+            id="phone"
+            class="contact-method-radio-btn"
+            type="radio"
+            name="contact-method"
+            value="phone"
+          /&gt;
+        &lt;/fieldset&gt;
+
+        &lt;fieldset&gt;
+          &lt;legend&gt;Additional Notes&lt;/legend&gt;
+          &lt;label for="notes"
+            &gt;Any specific concerns or topics you'd like to discuss?&lt;/label
+          &gt;
+          &lt;textarea id="notes" name="notes" rows="4" cols="50"&gt;&lt;/textarea&gt;
+        &lt;/fieldset&gt;
+
+        &lt;button class="submit-btn" type="submit"&gt;Submit Form&lt;/button&gt;
+      &lt;/form&gt;
+  &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>body {
+  background-color: MidnightBlue;
+  color: whitesmoke;
+}
+
+.container {
+    background-color: #ffffff1a; /* 8-digit hex: the last 2 digits (1a) are the alpha channel, making this white at roughly 10% opacity instead of solid */
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    box-shadow: 0 5px 15px black;  
+}
+
+.center {
+  text-align: center;
+}
+
+.description {
+  font-size: 1.2rem;
+}
+
+fieldset {
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+fieldset legend {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+label {
+  font-size: 1.2rem;
+}
+
+label:not(.contact-method) { /* :not() is a negation pseudo-class — applies to every label EXCEPT ones carrying the contact-method class */
+  display: block;
+  margin: 10px 0;
+}
+
+input:not(.contact-method-radio-btn), /* :not() again excludes the custom radios, which get their own separate rule below */
+textarea {
+  background-color: #ffffff1a;
+  width: 95%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+input,
+input::placeholder, /* ::placeholder is a pseudo-element targeting the greyed hint text specifically, not the real typed value */
+textarea {
+  color: whitesmoke;
+}
+
+
+.contact-method-radio-btn {
+  appearance: none; /* strips the browser's default radio styling entirely, giving a blank box to restyle from scratch */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  vertical-align: bottom;
+}
+
+.contact-method-radio-btn::before {
+  display: block;
+  content: " ";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(3px, 3px) scale(0); /* translate() shifts the dot to visually center it inside the circle; scale(0) starts it invisible */
+  transition: all 0.3s ease-in;
+}
+
+.contact-method-radio-btn:checked::before { /* :checked matches only while this specific radio is the selected one in its group */
+  transform: translate(3px, 3px) scale(1);
+  background-color: lightgreen;
+}
+
+.submit-btn {
+  cursor: pointer;
+  background-color: royalblue;
+  color: whitesmoke;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  display: block;
+  margin: auto;
+}
+
+.submit-btn:hover {
+  background-color: midnightblue;
+}</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="fcc-build-archive/design-a-parent-teacher-conference-form/index.html" title="Design a Parent Teacher Conference Form preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="fcc-build-archive/design-a-parent-teacher-conference-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/fcc-build-archive/design-a-parent-teacher-conference-form/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
+    <details class="project-box">
+      <summary>
+        <span class="project-caret">▸</span>
+        <span class="badge badge--lavender">rwd lab</span>
+        <span class="project-name">Build a Job Application Form</span>
+        <span class="project-stack">html + css</span>
+      </summary>
+      <div class="project-inner">
+        <div class="project-meta">
+          <div class="meta-row"><span class="meta-key">Learned Concepts</span><span class="meta-val">Introduced: box-sizing: border-box • :invalid pseudo-class • :valid pseudo-class • :first-of-type pseudo-class • adjacent-sibling combinator (+) • rgba() function • resize property • flex-direction property<br />Reinforced: attribute selectors (input[type="..."]) • :focus pseudo-class • :hover pseudo-class • display: flex • border-radius property • box-shadow property • padding • margin</span></div>
+        </div>
+        <div class="card-body">a job application form on a white card — name, email, a position <b>select</b>, an availability <b>fieldset</b> of radios, and a vertically-resizable textarea. fields border red or green live off <b>:invalid</b> / <b>:valid</b>, and the <b>+</b> combinator tints a radio's label the moment its input is checked.</div>
+        <div class="view-pane" data-pane="html">
+          <div class="pane-label">html</div>
+          <div class="code-block code-block--peach">
+            <div class="code-bar">
+              <span class="code-file">index.html</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Job Application Form&lt;/title&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="container"&gt;
+&lt;h1&gt;Job Application Form&lt;/h1&gt;
+&lt;form&gt;
+&lt;label for="name"&gt;Full Name&lt;/label&gt;
+&lt;input type="text" id="name" name="name" placeholder="Enter your full name" required&gt;
+
+&lt;label for="email"&gt;Email Address&lt;/label&gt;
+&lt;input type="email" id="email" name="email" placeholder="Enter your email" required&gt;
+
+&lt;label for="position"&gt;Position Applying For&lt;/label&gt;
+&lt;select id="position" name="position" required&gt;
+&lt;option value=""&gt;Select a position&lt;/option&gt;
+&lt;option value="developer"&gt;Developer&lt;/option&gt;
+&lt;option value="designer"&gt;Designer&lt;/option&gt;
+&lt;option value="manager"&gt;Project Manager&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;fieldset class="radio-group"&gt;
+&lt;legend&gt;Availability&lt;/legend&gt;
+&lt;input type="radio" id="full-time" name="availability" value="full-time" required&gt;
+&lt;label for="full-time"&gt;Full-Time&lt;/label&gt;
+
+&lt;input type="radio" id="part-time" name="availability" value="part-time" required&gt;
+&lt;label for="part-time"&gt;Part-Time&lt;/label&gt;
+&lt;/fieldset&gt;
+
+&lt;label for="message"&gt;Additional Message&lt;/label&gt;
+&lt;textarea id="message" name="message" placeholder="Tell us about yourself"&gt;&lt;/textarea&gt;
+
+&lt;button type="submit"&gt;Submit Application&lt;/button&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="css">
+          <div class="pane-label">css</div>
+          <div class="code-block">
+            <div class="code-bar">
+              <span class="code-file">styles.css</span>
+              <button class="code-copy" type="button">copy</button>
+            </div>
+            <pre class="code"><code>* {
+  box-sizing: border-box; /* padding and border are now included inside the declared width/height instead of adding to it */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* rgba() sets color with an added alpha value for transparency — black at 10% opacity here */
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input:first-of-type { /* :first-of-type is a structural pseudo-class matching only the first &lt;input&gt; among its siblings */
+  border-radius: 20px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid { /* :invalid is a native pseudo-class that auto-matches any field currently failing its own built-in validation — no JS needed */
+  border-color: red;
+}
+
+input:valid,
+select:valid,
+textarea:valid { /* :valid is the inverse — matches fields currently passing validation */
+  border-color: green;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical; /* lets the user drag-resize the textarea vertically only; horizontal resize is disabled */
+}
+
+.radio-group {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 14px;
+  padding: 10px 14px;
+}
+
+.radio-group legend {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.radio-group label {
+  margin-left: 6px;
+  margin-right: 20px;
+  font-weight: normal;
+  display: inline;
+}
+
+.radio-group input[type="radio"] { /* attribute selector — targets only inputs whose type attribute is exactly "radio" */
+  width: 16px;
+  height: 16px;
+}
+
+.radio-group input[type="radio"]:checked {
+  border-color: #3498db;
+  background-color: #3498db;
+  box-shadow: 0 0 5px 1px rgba(52, 152, 219, 0.8);
+}
+
+.radio-group input[type="radio"]:checked + label { /* the + is an adjacent-sibling combinator — matches an element only when it comes immediately after the matched one in the markup */
+  color: #3498db;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}</code></pre>
+          </div>
+        </div>
+        <div class="view-pane" data-pane="preview">
+          <div class="pane-label">preview</div>
+          <iframe class="preview-frame" data-src="fcc-build-archive/build-a-job-application-form/index.html" title="Build a Job Application Form preview" loading="lazy"></iframe>
+        </div>
+        <div class="project-links"><a href="fcc-build-archive/build-a-job-application-form/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/fcc-build-archive/build-a-job-application-form/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
+      </div>
+    </details>
     
     </div>
   </details>

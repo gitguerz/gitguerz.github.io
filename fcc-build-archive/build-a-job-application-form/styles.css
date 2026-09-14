@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box; /* padding and border are now included inside the declared width/height instead of adding to it */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* rgba() sets color with an added alpha value for transparency — black at 10% opacity here */
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input:first-of-type { /* :first-of-type is a structural pseudo-class matching only the first <input> among its siblings */
+  border-radius: 20px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid { /* :invalid is a native pseudo-class that auto-matches any field currently failing its own built-in validation — no JS needed */
+  border-color: red;
+}
+
+input:valid,
+select:valid,
+textarea:valid { /* :valid is the inverse — matches fields currently passing validation */
+  border-color: green;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical; /* lets the user drag-resize the textarea vertically only; horizontal resize is disabled */
+}
+
+.radio-group {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 14px;
+  padding: 10px 14px;
+}
+
+.radio-group legend {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.radio-group label {
+  margin-left: 6px;
+  margin-right: 20px;
+  font-weight: normal;
+  display: inline;
+}
+
+.radio-group input[type="radio"] { /* attribute selector — targets only inputs whose type attribute is exactly "radio" */
+  width: 16px;
+  height: 16px;
+}
+
+.radio-group input[type="radio"]:checked {
+  border-color: #3498db;
+  background-color: #3498db;
+  box-shadow: 0 0 5px 1px rgba(52, 152, 219, 0.8);
+}
+
+.radio-group input[type="radio"]:checked + label { /* the + is an adjacent-sibling combinator — matches an element only when it comes immediately after the matched one in the markup */
+  color: #3498db;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
