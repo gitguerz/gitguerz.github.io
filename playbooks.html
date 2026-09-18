@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playbooks — the two routes | guerz.lol</title>
+<meta name="description" content="Guerz's two learning routes side by side — the self-directed fCC playbook and the Full Sail Web Development B.S. playbook.">
+<link rel="canonical" href="https://guerz.lol/playbooks.html">
+<meta property="og:title" content="Playbooks — the two routes | guerz.lol">
+<meta property="og:description" content="Two routes, one destination — the self-directed fCC playbook and the Full Sail Web Development B.S. playbook.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://guerz.lol/playbooks.html">
+<meta property="og:image" content="https://guerz.lol/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Playbooks — the two routes | guerz.lol">
+<meta name="twitter:description" content="Two routes, one destination — the self-directed fCC playbook and the Full Sail Web Development B.S. playbook.">
+<meta name="twitter:image" content="https://guerz.lol/og-banner.png">
+<link rel="icon" id="favicon" type="image/png" href="favicon-peach.png">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://guerz.lol/"},{"@type":"ListItem","position":2,"name":"Playbooks","item":"https://guerz.lol/playbooks.html"}]}
+</script>
+<style>
+/* gallery layout — same pattern as the tool shed, scoped to this page */
+/* --card is the card surface; toolshed.html defines it in its own scoped block,
+   so this page needs its own copy (styles.css doesn't ship one) */
+:root{--card:#fdf0e4}
+html[data-theme="night"]{--card:#241f30}
+.pb-main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
+.pb-kicker{font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
+.pb-title{margin:0 0 8px;font-family:'Platypi',serif;font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.05;letter-spacing:-.01em}
+.pb-sub{margin:0 0 28px;max-width:640px;font:15px/1.55 'Space Grotesk',sans-serif;color:var(--muted)}
+
+.pb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.pb-card{background:var(--card);border:2px solid var(--muted);box-shadow:5px 5px 0 var(--lavender);display:flex;flex-direction:column;overflow:hidden}
+
+.pb-thumb-wrap{display:block;position:relative;border-bottom:2px solid var(--muted)}
+.pb-thumb-link{display:block;position:relative;aspect-ratio:16/9;background:var(--paper)}
+.pb-thumb-link img{width:100%;height:100%;object-fit:cover}
+.pb-thumb-placeholder{display:none;position:absolute;inset:0;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(135deg,var(--peach),var(--peach) 14px,var(--lavender) 14px,var(--lavender) 28px)}
+.pb-thumb-placeholder span{background:var(--ink);color:var(--peach);font:700 10px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;padding:5px 10px}
+
+.pb-card-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pb-card-name{margin:0;font-family:'Platypi',serif;font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.01em}
+.pb-card-desc{margin:0;font:14.5px/1.55 'Space Grotesk',sans-serif;color:var(--text)}
+.pb-tag{align-self:flex-start;white-space:nowrap;font:700 9.5px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:var(--peach);padding:3px 8px}
+
+.pb-facts{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.pb-facts li{font:700 10px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--text);border:2px solid var(--muted);padding:3px 8px}
+
+.pb-actions{margin-top:auto;display:flex;align-items:center;gap:8px;padding-top:10px}
+.pb-btn{border:2px solid var(--ink);background:var(--ink);color:var(--peach);
+  font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;
+  padding:0 14px;height:34px;display:flex;align-items:center;text-decoration:none}
+.pb-btn:hover{background:var(--lavender);color:var(--ink)}
+.pb-btn--ghost{background:var(--paper);color:var(--text);border-color:var(--muted)}
+.pb-btn--ghost:hover{background:var(--peach);color:var(--ink);border-color:var(--ink)}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">skip to main content</a>
+
+<header class="header">
+  <div class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="index.html">{guerz.lol}</a>
+    </div>
+    <div class="topbar-right">
+      <div class="toggle" role="group" aria-label="color theme">
+        <button type="button" data-theme-btn="day" class="is-active">☼ DAY</button>
+        <button type="button" data-theme-btn="night">☾ NIGHT</button>
+      </div>
+    </div>
+  </div>
+  <nav class="nav" aria-label="primary">
+    <a href="about.html">{about}</a>
+    <a href="playbooks.html" aria-current="page">{playbooks}</a>
+    <a href="fcc-build-archive.html">{fcc build archive}</a>
+    <a href="sandbox.html">{sandbox}</a>
+    <a href="toolshed.html">{toolshed}</a>
+    <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">{blogguerz}</a>
+  </nav>
+  <div class="marquee" aria-hidden="true">
+    <span>☀ two routes, one destination ☾ self-directed on one side, accredited on the other ☀ the calendar is theirs, the effort is mine ☾ direction, not deadlines ☀ two routes, one destination ☾</span>
+  </div>
+</header>
+
+<main class="pb-main" id="main" tabindex="-1">
+
+  <figure class="banner-wrap">
+    <img class="banner" src="banner-playbook.png" width="1200" height="675" alt="GUERZ.LOL brutalist flyer — sector-g/03, wireframe star-form sculpture over a peach grid; digital grind. analog dreams. future primitive; full-stack web developer in training; target front-end by june 9, 2027">
+  </figure>
+
+  <h1 class="pb-title">the playbooks</h1>
+  <p class="pb-sub">two routes toward the same job. one i wrote myself, one the university wrote for me — both running at once.</p>
+
+  <div class="pb-grid">
+
+    <article class="pb-card">
+      <div class="pb-thumb-wrap">
+        <a class="pb-thumb-link" href="playbook.html" aria-label="Open the freeCodeCamp Playbook">
+          <img src="playbooks/thumbs/fcc-playbook.png" alt="Preview of the fCC playbook — stacked HTML, CSS, JavaScript, Python and Git slabs" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pb-thumb-placeholder"><span>screenshot pending</span></div>
+        </a>
+      </div>
+      <div class="pb-card-body">
+        <h2 class="pb-card-name">freeCodeCamp Playbook</h2>
+        <p class="pb-card-desc">the self-directed route. six freeCodeCamp certifications in order, each one its own module — html and css into javascript, python, and the git habits that hold it together. no weekly clock; a module opens when the one before it is actually earned.</p>
+        <ul class="pb-facts">
+          <li>self-paced</li>
+          <li>6 modules</li>
+          <li>front-end by jun 9, 2027</li>
+        </ul>
+        <span class="pb-tag">v4 · live</span>
+        <div class="pb-actions">
+          <a class="pb-btn" href="playbook.html">open</a>
+          <a class="pb-btn pb-btn--ghost" href="https://github.com/gitguerz/gitguerz.github.io/blob/main/playbook.html" target="_blank" rel="noopener noreferrer">code</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pb-card">
+      <div class="pb-thumb-wrap">
+        <a class="pb-thumb-link" href="fullsail-playbook.html" aria-label="Open the Full Sail Playbook">
+          <img src="playbooks/thumbs/fullsail-playbook.png" alt="Preview of the Full Sail playbook — a 27-month grid with six project and portfolio checkpoints marked" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="pb-thumb-placeholder"><span>screenshot pending</span></div>
+        </a>
+      </div>
+      <div class="pb-card-body">
+        <h2 class="pb-card-name">Full Sail Playbook</h2>
+        <p class="pb-card-desc">the accredited route. the Web Development B.S. laid out month by month — 120 credit hours across 27 months, with six Project &amp; Portfolio checkpoints marking where the coursework has to turn into something shippable.</p>
+        <ul class="pb-facts">
+          <li>27 months</li>
+          <li>120 credits</li>
+          <li>6 p&amp;p checkpoints</li>
+        </ul>
+        <span class="pb-tag">live</span>
+        <div class="pb-actions">
+          <a class="pb-btn" href="fullsail-playbook.html">open</a>
+          <a class="pb-btn pb-btn--ghost" href="https://github.com/gitguerz/gitguerz.github.io/blob/main/fullsail-playbook.html" target="_blank" rel="noopener noreferrer">code</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-copy">© guerz.lol<br>no cookies, just cache</div>
+      <ul class="footer-social" aria-label="social">
+        <li><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">gitguerz</a></li>
+        <li><a href="https://twitch.tv/guerz" target="_blank" rel="noopener noreferrer">ttv/guerz</a></li>
+      </ul>
+    </div>
+    <nav class="footer-nav" aria-label="footer">
+      <a href="index.html">{home}</a>
+      <a href="about.html">{about}</a>
+      <a href="playbooks.html">{playbooks}</a>
+      <a href="fcc-build-archive.html">{fcc build archive}</a>
+      <a href="sandbox.html">{sandbox}</a>
+      <a href="toolshed.html">{toolshed}</a>
+      <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">{blogguerz}</a>
+    </nav>
+    <div class="footer-note">best viewed at<br>any resolution</div>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+</body>
+</html>

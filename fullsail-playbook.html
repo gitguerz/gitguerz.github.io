@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Full Sail Playbook — Web Development B.S., month by month | guerz.lol</title>
+<meta name="description" content="Guerz's Full Sail University Web Development B.S. playbook: 27 months, 120 credit hours, six Project &amp; Portfolio checkpoints.">
+<link rel="canonical" href="https://guerz.lol/fullsail-playbook.html">
+<meta property="og:title" content="Full Sail Playbook | guerz.lol">
+<meta property="og:description" content="27 months, 120 credit hours, six Project &amp; Portfolio checkpoints.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://guerz.lol/fullsail-playbook.html">
+<meta property="og:image" content="https://guerz.lol/og-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Full Sail Playbook | guerz.lol">
+<meta name="twitter:description" content="27 months, 120 credit hours, six Project &amp; Portfolio checkpoints.">
+<meta name="twitter:image" content="https://guerz.lol/og-banner.png">
+<link rel="icon" id="favicon" type="image/png" href="favicon-peach.png">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://guerz.lol/"},{"@type":"ListItem","position":2,"name":"Full Sail Playbook","item":"https://guerz.lol/fullsail-playbook.html"}]}
+</script>
+
+<!-- scoped collapse styling — self-contained so it works regardless of what's
+     currently in styles.css. uses your existing design tokens only. -->
+<style>
+  /* the <details> wrapper around each module */
+  .fs-module { margin: 0 0 14px; }
+
+  /* the clickable header bar — reuses .phase-header's look, adds pointer + caret room */
+  .fs-module > summary {
+    list-style: none;              /* kill the default disclosure triangle */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  /* safari's version of the same default triangle */
+  .fs-module > summary::-webkit-details-marker { display: none; }
+
+  /* the ▸ that rotates when the module is open */
+  .fs-caret {
+    font: 800 13px 'IBM Plex Mono', monospace;
+    transition: transform .18s ease;
+    flex: none;
+  }
+  .fs-module[open] > summary .fs-caret { transform: rotate(90deg); }
+  .fs-sub > summary::-webkit-details-marker { display: none; }
+  .fs-sub[open] > summary .fs-caret { transform: rotate(90deg); }
+
+  /* respect users who've asked their OS to reduce animation */
+  @media (prefers-reduced-motion: reduce) {
+    .fs-caret { transition: none; }
+  }
+
+  /* small breathing room under an opened module */
+  .fs-module[open] > .row { margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">skip to main content</a>
+
+<header class="header">
+  <div class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="index.html">{guerz.lol}</a>
+    </div>
+    <div class="topbar-right">
+      <div class="toggle" role="group" aria-label="color theme">
+        <button type="button" data-theme-btn="day" class="is-active">☼ DAY</button>
+        <button type="button" data-theme-btn="night">☾ NIGHT</button>
+      </div>
+    </div>
+  </div>
+  <nav class="nav" aria-label="primary">
+    <a href="about.html">{about}</a>
+    <a href="playbooks.html">{playbooks}</a>
+    <a href="fcc-build-archive.html">{fcc build archive}</a>
+    <a href="sandbox.html">{sandbox}</a>
+    <a href="toolshed.html">{toolshed}</a>
+    <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">{blogguerz}</a>
+  </nav>
+  <div class="marquee" aria-hidden="true">
+    <span>☀ 27 months ☾ 120 credit hours ☀ six project &amp; portfolio checkpoints ☾ the calendar is theirs, the effort is mine ☀ 27 months ☾ 120 credit hours ☀</span>
+  </div>
+</header>
+
+<main class="container container--wide" id="main" tabindex="-1">
+
+  <!-- title card — same structure as playbook.html's opening card -->
+  <div class="card card--lavender" style="background:var(--peach);color:var(--ink)">
+    <div class="userinfo-role" style="color:var(--ink)"><time datetime="2026-09-18">updated: Sep 18, 2026</time></div>
+    <div class="title-wrap"><h1 class="card-title">the full sail playbook v.1</h1></div>
+    <div class="card-body">
+      <p>Web Development, Bachelor of Science — online. 27 months, 108 weeks, 120 credit hours.</p>
+      <p>six modules, each closing on a Project &amp; Portfolio course. those checkpoints are Full Sail's own placement, not mine.</p>
+      <p>i don't set this pace. a module opens when the calendar opens it. the sequence isn't mine to reorder — what i control is how hard i lean in, and what comes out the other side.</p>
+    </div>
+    <!-- module strip, same badge pattern as playbook.html -->
+    <div class="badges">
+      <span class="badge badge--peach" style="background:var(--bg)">1 · foundations</span>
+      <span class="badge badge--lavender">2 · programming core</span>
+      <span class="badge badge--peach" style="background:var(--bg)">3 · server-side</span>
+      <span class="badge badge--lavender">4 · integration &amp; security</span>
+      <span class="badge badge--peach" style="background:var(--bg)">5 · data &amp; content</span>
+      <span class="badge badge--lavender">6 · capstone</span>
+    </div>
+  </div>
+
+  <!-- you are here -->
+  <div class="card card--peach" style="background:var(--lavender);color:var(--ink)">
+    <h2 class="card-eyebrow" style="color:var(--ink)">you are here — pre-enrollment</h2>
+    <div style="display:flex;flex-direction:column;gap:5px;font:14px/1.55 'Space Grotesk', sans-serif">
+      <div><b>STARTS:</b> September 28, 2026</div>
+      <div><b>FORMAT:</b> online, 27 months</div>
+      <div><b>NEXT CHECKPOINT:</b> Project &amp; Portfolio I — month 7</div>
+      <div><b>DEGREE:</b> Web Development B.S., <a href="https://www.fullsail.edu/">Full Sail University</a></div>
+    </div>
+  </div>
+
+  <!-- ============ MODULE 1 ============ -->
+  <details class="fs-module" open>
+    <summary class="phase-header" style="background:var(--soft-black);color:var(--bg-day)">
+      <h2 class="card-eyebrow">module 1 — foundations {months 1–7}</h2>
+      <span class="fs-caret" aria-hidden="true">▸</span>
+    </summary>
+    <div class="row">
+      <div class="card card--sm" style="flex:2;background:var(--lavender);color:var(--ink)">
+        <div class="card-eyebrow" style="color:var(--ink)">the spine</div>
+        <div class="card-body">
+          <div class="support-lanes" style="gap:4px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M1</span> <span class="support-lane-body">GEN1011 Creative Presentation <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M2</span> <span class="support-lane-body">TEM1001 Technology in the Entertainment and Media Industries <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M3</span> <span class="support-lane-body">PHY3020 Physical Science <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M4</span> <span class="support-lane-body">WDV1100 Introduction to Web Architecture <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M5</span> <span class="support-lane-body">DEV2319 Interfaces and Usability <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M5</span> <span class="support-lane-body">MAD1100 Discrete Mathematics <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M6</span> <span class="support-lane-body">DEV1001 Introduction to Development I <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M7</span> <span class="support-lane-body">WDV119 Project &amp; Portfolio I <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M7</span> <span class="support-lane-body">WDV3111 Professional Development Seminar I <em>(1 cr)</em></span></div>
+          </div>
+          <p>*<em>first real code lands in month 6. everything before it is groundwork.</em></p>
+        </div>
+      </div>
+      <aside class="card card--sm" style="box-shadow:4px 4px 0 var(--lavender);background:var(--peach);color:var(--ink)">
+        <details class="fs-sub"><summary class="card-eyebrow" style="color:var(--ink);cursor:pointer;list-style:none">checkpoint <span class="fs-caret" aria-hidden="true">▸</span></summary>
+        <div class="support-lanes" style="gap:6px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">anchor</span> <span class="support-lane-body">Project &amp; Portfolio I (WDV119)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">seminar</span> <span class="support-lane-body">Professional Development Seminar I (WDV3111)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">credits</span> <span class="support-lane-body">23 hours</span></div>
+        </div></details>
+      </aside>
+    </div>
+  </details>
+
+  <!-- ============ MODULE 2 ============ -->
+  <details class="fs-module">
+    <summary class="phase-header" style="background:var(--soft-black);color:var(--bg-day)">
+      <h2 class="card-eyebrow">module 2 — programming core {months 8–12}</h2>
+      <span class="fs-caret" aria-hidden="true">▸</span>
+    </summary>
+    <div class="row">
+      <div class="card card--sm" style="flex:2;box-shadow:4px 4px 0 var(--lavender);background:var(--lavender);color:var(--ink)">
+        <div class="card-eyebrow" style="color:var(--ink)">the spine</div>
+        <div class="card-body">
+          <div class="support-lanes" style="gap:4px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M8</span> <span class="support-lane-body">DEV2001 Introduction to Development II <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M9</span> <span class="support-lane-body">DEV2301 Application Development <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M10</span> <span class="support-lane-body">WDV3322 Programming for Web Applications <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M11</span> <span class="support-lane-body">DEV2501 Interface Programming <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M11</span> <span class="support-lane-body">CTI3622 Database Systems <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M12</span> <span class="support-lane-body">WDV229 Project &amp; Portfolio II <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M12</span> <span class="support-lane-body">WDV3222 Professional Development Seminar II <em>(1 cr)</em></span></div>
+          </div>
+          <p>*<em>five straight development courses, no gen-ed. the heaviest stretch in the program.</em></p>
+        </div>
+      </div>
+      <aside class="card card--sm" style="box-shadow:4px 4px 0 var(--lavender);background:var(--peach);color:var(--ink)">
+        <details class="fs-sub"><summary class="card-eyebrow" style="color:var(--ink);cursor:pointer;list-style:none">checkpoint <span class="fs-caret" aria-hidden="true">▸</span></summary>
+        <div class="support-lanes" style="gap:6px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">anchor</span> <span class="support-lane-body">Project &amp; Portfolio II (WDV229)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">seminar</span> <span class="support-lane-body">Professional Development Seminar II (WDV3222)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">credits</span> <span class="support-lane-body">23 hours</span></div>
+        </div></details>
+      </aside>
+    </div>
+  </details>
+
+  <!-- ============ MODULE 3 ============ -->
+  <details class="fs-module">
+    <summary class="phase-header" style="background:var(--soft-black);color:var(--bg-day)">
+      <h2 class="card-eyebrow">module 3 — server-side {months 13–16}</h2>
+      <span class="fs-caret" aria-hidden="true">▸</span>
+    </summary>
+    <div class="row">
+      <div class="card card--sm" style="flex:2;background:var(--lavender);color:var(--ink)">
+        <div class="card-eyebrow" style="color:var(--ink)">the spine</div>
+        <div class="card-body">
+          <div class="support-lanes" style="gap:4px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M13</span> <span class="support-lane-body">WDV353 Server-Side Languages <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M14</span> <span class="support-lane-body">WDV463 Deployment of Web Applications <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M15</span> <span class="support-lane-body">WDV442 Advanced Server-Side Languages <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M15</span> <span class="support-lane-body">DEP1013 Psychology of Play <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M16</span> <span class="support-lane-body">WDV339 Project &amp; Portfolio III <em>(3 cr)</em></span></div>
+          </div>
+          <p>*<em>where the back end lands.</em></p>
+        </div>
+      </div>
+      <aside class="card card--sm" style="background:var(--peach);color:var(--ink)">
+        <details class="fs-sub"><summary class="card-eyebrow" style="color:var(--ink);cursor:pointer;list-style:none">checkpoint <span class="fs-caret" aria-hidden="true">▸</span></summary>
+        <div class="support-lanes" style="gap:6px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">anchor</span> <span class="support-lane-body">Project &amp; Portfolio III (WDV339)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">credits</span> <span class="support-lane-body">18 hours</span></div>
+        </div></details>
+      </aside>
+    </div>
+  </details>
+
+  <!-- ============ MODULE 4 ============ -->
+  <details class="fs-module">
+    <summary class="phase-header" style="background:var(--soft-black);color:var(--bg-day)">
+      <h2 class="card-eyebrow">module 4 — integration &amp; security {months 17–21}</h2>
+      <span class="fs-caret" aria-hidden="true">▸</span>
+    </summary>
+    <div class="row">
+      <div class="card card--sm" style="flex:2;box-shadow:4px 4px 0 var(--lavender);background:var(--lavender);color:var(--ink)">
+        <div class="card-eyebrow" style="color:var(--ink)">the spine</div>
+        <div class="card-body">
+          <div class="support-lanes" style="gap:4px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M17</span> <span class="support-lane-body">ENC1101 English Composition I <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M18</span> <span class="support-lane-body">WDV3300 Cloud Application Development <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M19</span> <span class="support-lane-body">WDV4424 Application Integration and Security <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M20</span> <span class="support-lane-body">WDV4416 Web Application Integration <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M20</span> <span class="support-lane-body">ENC3110 Technical Writing <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M21</span> <span class="support-lane-body">WDV349 Project &amp; Portfolio IV <em>(3 cr)</em></span></div>
+          </div>
+          <p>*<em>cloud deployment is where this stops being coursework and starts being infrastructure.</em></p>
+        </div>
+      </div>
+      <aside class="card card--sm" style="box-shadow:4px 4px 0 var(--lavender);background:var(--peach);color:var(--ink)">
+        <details class="fs-sub"><summary class="card-eyebrow" style="color:var(--ink);cursor:pointer;list-style:none">checkpoint <span class="fs-caret" aria-hidden="true">▸</span></summary>
+        <div class="support-lanes" style="gap:6px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">anchor</span> <span class="support-lane-body">Project &amp; Portfolio IV (WDV349)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">credits</span> <span class="support-lane-body">22 hours</span></div>
+        </div></details>
+      </aside>
+    </div>
+  </details>
+
+  <!-- ============ MODULE 5 ============ -->
+  <details class="fs-module">
+    <summary class="phase-header" style="background:var(--soft-black);color:var(--bg-day)">
+      <h2 class="card-eyebrow">module 5 — data &amp; content {months 22–26}</h2>
+      <span class="fs-caret" aria-hidden="true">▸</span>
+    </summary>
+    <div class="row">
+      <div class="card card--sm" style="flex:2;background:var(--lavender);color:var(--ink)">
+        <div class="card-eyebrow" style="color:var(--ink)">the spine</div>
+        <div class="card-body">
+          <div class="support-lanes" style="gap:4px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M22</span> <span class="support-lane-body">STA3300 Data Visualization <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M23</span> <span class="support-lane-body">WDV3400 Content Management System Development <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M24</span> <span class="support-lane-body">WDV3421 Connected Devices and Applications <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M24</span> <span class="support-lane-body">HUM302 Cultural Studies <em>(4 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M25</span> <span class="support-lane-body">WDV4200 Secure Application Development <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M26</span> <span class="support-lane-body">WDV359 Project &amp; Portfolio V <em>(3 cr)</em></span></div>
+          </div>
+          <p>*<em>Content Management System Development is the WordPress work, for credit.</em></p>
+        </div>
+      </div>
+      <aside class="card card--sm" style="background:var(--peach);color:var(--ink)">
+        <details class="fs-sub"><summary class="card-eyebrow" style="color:var(--ink);cursor:pointer;list-style:none">checkpoint <span class="fs-caret" aria-hidden="true">▸</span></summary>
+        <div class="support-lanes" style="gap:6px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">anchor</span> <span class="support-lane-body">Project &amp; Portfolio V (WDV359)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">credits</span> <span class="support-lane-body">20 hours</span></div>
+        </div></details>
+      </aside>
+    </div>
+  </details>
+
+  <!-- ============ MODULE 6 ============ -->
+  <details class="fs-module">
+    <summary class="phase-header" style="background:var(--soft-black);color:var(--bg-day)">
+      <h2 class="card-eyebrow">module 6 — capstone {month 27}</h2>
+      <span class="fs-caret" aria-hidden="true">▸</span>
+    </summary>
+    <div class="row">
+      <div class="card card--sm" style="flex:2;background:var(--lavender);color:var(--ink)">
+        <div class="card-eyebrow" style="color:var(--ink)">the spine</div>
+        <div class="card-body">
+          <div class="support-lanes" style="gap:4px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M27</span> <span class="support-lane-body">WDV469 Project &amp; Portfolio VI <em>(3 cr)</em></span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">M27</span> <span class="support-lane-body">CRR4000 Career Readiness <em>(4 cr)</em></span></div>
+          </div>
+          <p>*<em>the portfolio requirement is already half-solved. i've been building in public since 2026.</em> // {goal line: december 2028}</p>
+        </div>
+      </div>
+      <aside class="card card--sm" style="box-shadow:4px 4px 0 var(--lavender);background:var(--peach);color:var(--ink)">
+        <details class="fs-sub"><summary class="card-eyebrow" style="color:var(--ink);cursor:pointer;list-style:none">checkpoint <span class="fs-caret" aria-hidden="true">▸</span></summary>
+        <div class="support-lanes" style="gap:6px">
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">anchor</span> <span class="support-lane-body">Project &amp; Portfolio VI (WDV469)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">career</span> <span class="support-lane-body">Career Readiness (CRR4000)</span></div>
+          <div class="support-lane" style="box-shadow:none;border:none;padding:3px;color:var(--ink)"><span class="support-lane-label">credits</span> <span class="support-lane-body">7 hours</span></div>
+        </div></details>
+      </aside>
+    </div>
+  </details>
+
+  <div class="userinfo-role">module boundaries follow Full Sail's Project &amp; Portfolio placement — their structure, published and marked subject to change. re-check the catalog before treating any month number as locked.</div>
+
+  <!-- full sequence, collapsed by default — the reference version -->
+  <details class="fs-module">
+    <summary class="phase-header phase-header--peach" style="box-shadow:4px 4px 0 var(--lavender)">
+      <h2 class="card-eyebrow">the full 27-month sequence</h2>
+      <span class="fs-caret" aria-hidden="true">▸</span>
+    </summary>
+    <div class="card card--sm" style="background:var(--lavender);color:var(--ink)">
+      <div class="card-body" style="font:13px/1.7 'IBM Plex Mono', monospace">
+        <p>M1 GEN1011 Creative Presentation (3)<br>
+        M2 TEM1001 Technology in the Entertainment and Media Industries (4)<br>
+        M3 PHY3020 Physical Science (4)<br>
+        M4 WDV1100 Introduction to Web Architecture (4)<br>
+        M5 DEV2319 Interfaces and Usability (3) · MAD1100 Discrete Mathematics (4)<br>
+        M6 DEV1001 Introduction to Development I (4)<br>
+        M7 WDV119 Project &amp; Portfolio I (3) · WDV3111 Prof. Dev. Seminar I (1)<br>
+        M8 DEV2001 Introduction to Development II (4)<br>
+        M9 DEV2301 Application Development (4)<br>
+        M10 WDV3322 Programming for Web Applications (4)<br>
+        M11 DEV2501 Interface Programming (4) · CTI3622 Database Systems (3)<br>
+        M12 WDV229 Project &amp; Portfolio II (3) · WDV3222 Prof. Dev. Seminar II (1)<br>
+        M13 WDV353 Server-Side Languages (4)<br>
+        M14 WDV463 Deployment of Web Applications (4)<br>
+        M15 WDV442 Advanced Server-Side Languages (4) · DEP1013 Psychology of Play (3)<br>
+        M16 WDV339 Project &amp; Portfolio III (3)<br>
+        M17 ENC1101 English Composition I (4)<br>
+        M18 WDV3300 Cloud Application Development (3)<br>
+        M19 WDV4424 Application Integration and Security (4)<br>
+        M20 WDV4416 Web Application Integration (4) · ENC3110 Technical Writing (4)<br>
+        M21 WDV349 Project &amp; Portfolio IV (3)<br>
+        M22 STA3300 Data Visualization (4)<br>
+        M23 WDV3400 Content Management System Development (3)<br>
+        M24 WDV3421 Connected Devices and Applications (3) · HUM302 Cultural Studies (4)<br>
+        M25 WDV4200 Secure Application Development (3)<br>
+        M26 WDV359 Project &amp; Portfolio V (3)<br>
+        M27 WDV469 Project &amp; Portfolio VI (3) · CRR4000 Career Readiness (4)</p>
+        <p><b>total: 120 credit hours</b></p>
+      </div>
+    </div>
+  </details>
+
+  <!-- rules -->
+  <div class="card card--slate" style="background:var(--lavender);color:var(--ink)">
+    <h2 class="card-title" style="font-size:18px">rules · read these when overwhelmed</h2>
+    <div style="font:14px/1.6 'Space Grotesk', sans-serif;display:flex;flex-direction:column;gap:4px">
+      <ol>
+        <li>the deadline is the deadline. this calendar doesn't flex</li>
+        <li>syllabus in week one. know how it's graded before it's due</li>
+        <li>ask the first time it's unclear, not the third</li>
+        <li>bad month? tell an advisor while it's still fixable</li>
+        <li>the P&amp;Ps carry the portfolio. never coast one</li>
+        <li>no filler courses. all 120 hours count</li>
+        <li>the sequence is theirs. lean harder, don't reorder</li>
+        <li>show up. the degree is the deliverable</li>
+        <li>keep every graded project. month 27 pulls from all of them</li>
+      </ol>
+    </div>
+    <div style="border-top:2px solid var(--peach);padding-top:10px;margin-top:4px">
+      <h3 class="card-eyebrow" style="margin-bottom:6px">definition of done (per module)</h3>
+      <div style="font:13.5px/1.6 'Space Grotesk', sans-serif;display:flex;flex-direction:column;gap:3px">
+        <div>— the Project &amp; Portfolio deliverable exists and is visible.</div>
+        <div>— this page reflects what actually happened.</div>
+        <div>— at least one obsidian nightly report exists for the stretch.</div>
+        <div>— i can explain what i built in plain english.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner footer-inner--wide">
+    <div class="footer-left">
+      <div class="footer-copy">© guerz.lol<br>no cookies, just cache</div>
+      <ul class="footer-social" aria-label="social">
+        <li><a href="https://github.com/gitguerz" target="_blank" rel="noopener noreferrer">gitguerz</a></li>
+        <li><a href="https://twitch.tv/guerz" target="_blank" rel="noopener noreferrer">ttv/guerz</a></li>
+      </ul>
+    </div>
+    <nav class="footer-nav" aria-label="footer">
+      <a href="index.html">{home}</a>
+      <a href="about.html">{about}</a>
+      <a href="playbooks.html">{playbooks}</a>
+      <a href="fcc-build-archive.html">{fcc build archive}</a>
+      <a href="sandbox.html">{sandbox}</a>
+      <a href="toolshed.html">{toolshed}</a>
+      <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">{blogguerz}</a>
+    </nav>
+    <div class="footer-note">best viewed at<br>any resolution</div>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+</body>
+</html>
