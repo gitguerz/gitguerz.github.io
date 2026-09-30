@@ -16,7 +16,8 @@
 <meta name="twitter:description" content="Learning full-stack web development in public. Build archives, coursework, experiments, and notes from Guerz.">
 <meta name="twitter:image" content="https://guerz.lol/og-banner.png">
 <link rel="icon" id="favicon" type="image/png" href="favicon-peach.png">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=6">
+
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Nicholas Guerzon","alternateName":"Guerz","url":"https://guerz.lol","jobTitle":"Full-Stack Web Developer (in training)","sameAs":["https://github.com/gitguerz","https://blog.guerz.lol","https://www.instagram.com/guerz/","https://bsky.app/profile/guerz.bsky.social","https://kolektiva.social/@guerz","https://techhub.social/@Guerz","https://djs.social/@guerz"]}
 </script>
@@ -56,11 +57,11 @@
 <main class="container" id="main" tabindex="-1">
 
   <figure class="banner-wrap">
-    <img class="banner" src="banner-index.png" width="1200" height="675" alt="GUERZ.LOL brutalist flyer — wireframe craft over a peach grid; web. code. vibes.; full-stack web developer in training; front-end by june 9, 2027">
+    <img class="banner" src="Banners/banner-index.png" width="1200" height="675" alt="GUERZ.LOL brutalist flyer — wireframe craft over a peach grid; web. code. vibes.; full-stack web developer in training; front-end by june 9, 2027">
   </figure>
 
-  <div class="userinfo-row">
-    <span class="avatar-frame"><img class="avatar" id="avatar-img" src="favicon-peach.png" alt="guerz avatar"></span>
+  <!-- hexagon comes AFTER the card in the markup; --avatar-right pushes it to the far right -->
+  <div class="userinfo-row userinfo-row--avatar-right">
     <div class="userinfo">
       <div class="userinfo-body">
         <div class="userinfo-name">{Guerz}</div>
@@ -75,10 +76,64 @@
         </div>
       </div>
     </div>
+    <span class="avatar-frame"><img class="avatar" id="avatar-img" src="favicon-peach.png" alt="guerz avatar"></span>
   </div>
 
-  <div class="card card--lavender" style="background:var(--peach);color:var(--ink)">
-    <div class="title-wrap"><h1 class="card-title">soft launch era; hard study mode</h1></div>
+  <!-- ===== box 1 of 3: the fall — peach, lavender border ===== -->
+  <!-- card--hero centers every line in the card (styles.css) -->
+  <div class="card card--lavender card--bg-peach card--hero">
+    <!-- beat 1 — the fall. centered, same wrapper as the other two titles -->
+    <div class="title-wrap title-wrap--center"><h1 class="card-title">passé, abhorred,
+      <br>timber felled;
+      <br>snap, folded.</h1></div>
+
+    <h2>Monday, September 28, 2026.</h2>
+
+    <!-- the confession -->
+    <p>sooo yeah, between impending eviction hanging over my life, suicidal thoughts racing for a straight week on end, 988 turned to the only number i called too many days and nights longer than i'd like to admit.</p>
+
+    <p>and yes... i <i>do</i> want to admit it. i am not ashamed of this; FAR fucking from it, in fact. but even still, getting through, getting by was quite the struggle-bus, all while crawling through, day-to-day, my being stuck to floor, <i>barely</i> able to do more than trudge along...clunk. clunk.</p>
+  </div>
+
+  <!-- ===== box 2 of 3: the turn + day one — lavender, peach border ===== -->
+  <div class="card card--peach card--bg-lavender card--hero">
+    <!-- beat 2 — the turn -->
+    <div class="title-wrap title-wrap--center"><p class="card-title">alas, tenacity resurges.
+      <br>thus, befallen Zealous.</p></div>
+
+    <!-- the Full Sail bar. &nbsp; = a space that never breaks, so "— DAY ONE" wraps as one piece on phones -->
+    <h2 class="dayone-head"><span class="fs-bar"><a href="https://www.fullsail.edu/" target="_blank" rel="noopener noreferrer">Full Sail University</a> —&nbsp;Day&nbsp;One</span></h2>
+
+    <!-- .degree keeps this at 32px (styles.css) -->
+    <h2 class="degree"><strong>— Web Development</strong> Bachelor of Science&nbsp;—</h2>
+
+    <h2>• 27 MONTHS • <em>Accelerated Pace</em> • <strong>ALL-Online</strong></h2>
+
+    <h2>Muh Fk'n <strong>Day <em>One, Suckas!!!</em></strong></h2>
+
+    <h3>September 28, 2026</h3>
+  </div>
+
+  <!-- ===== box 3 of 3: the rise — peach, lavender border ===== -->
+  <div class="card card--lavender card--bg-peach card--hero">
+    <h3>Aaaaand, So! Now this <em>officially marks</em> the first-steps <a href="playbooks/fullsail-playbook.html"><strong>The Full Sail Playbook</strong></a>!!</h3>
+
+    <h3>🧏🏽 can i get a muh fuggin' <strong>"HELL, YEAH</strong>!!"</h3>
+
+    <p>I better, chop, chop, and start gettin' after it,
+      <br>cuz i still got the ongoing <a href="playbooks.html"><strong>The freeCodeCamp Playbook</strong></a>
+      <br>Today is Week 19 Day 2 since i very first started <a href="https://freecodecamp.org/">freeCodeCamp!</a></p>
+
+    <!-- beat 3 — the rise. the wrapper div matters: without it, the `.card > p` rule
+         (18px paragraph font) outranks .card-title and shrinks this to paragraph size -->
+    <div class="title-wrap title-wrap--center"><p class="card-title">molt; phoenix down.
+      <br>rise up. begin anew.</p></div>
+
+    <h2>🛣️<em>two</em> routes 🛣️<em>one</em> destination📍</h2>
+  </div>
+
+  <!-- ===== card two: the welcome blurb + current phase/lane ===== -->
+  <div class="card card--peach card--bg-lavender">
     <div class="card-body">
       <h2>welcome to <b>GUERZ's</b> corner of the world wide web!</h2>
       
@@ -91,32 +146,32 @@
       <p>that said, what you see is mostly representative of where i am at in my studies plus built with the slight help of Bonabelle (Claude) to get the <a href="#guerzbook">GuerzBook</a> operable, as well as adding in the builds to <a href="fcc-build-archive.html">FCC Build Archive</a> & <a href="sandbox.html">Sandbox</a>.</p>
     </div>
 
-    <div class="row" style="margin-top:4px">
-      <div class="lane lane--lavender">
-        <div class="card-eyebrow" style="color:var(--ink)">current phase</div>
-    <div class="card-body"><strong>MODULE 1</strong>
-      <a href="https://freecodecamp.org">FCC</a> Responsive Web Design v9
-        <p>Certification Exam — when it's earned; not when scheduled</p></div>
+    <div class="row row--lanes">
+      <div class="lane">
+        <div class="card-eyebrow card-eyebrow--ink">current phase</div>
+        <div class="card-body"><strong>MODULE 1</strong>
+          <a href="https://freecodecamp.org">FCC</a> Responsive Web Design v9
+          <p>Certification Exam — when it's earned; not when scheduled</p></div>
       </div>
-      <div class="lane lane--lavender">
-        <div class="card-eyebrow" style="color:var(--ink)">current lane</div>
+      <div class="lane">
+        <div class="card-eyebrow card-eyebrow--ink">current lane</div>
         <div class="card-body"><strong>main focus:</strong> <a href="https://freecodecamp.org/">FCC</a> RWD v9 Cert Exam
-          <p><strong>support lanes:</strong> <a href="fcc-build-archive.html">FCC Build Archive</a>, <a href="https://www.frontendmentor.io/">Frontend Mentor</a></div>
+          <p><strong>support lanes:</strong> <a href="fcc-build-archive.html">FCC Build Archive</a>, <a href="https://www.frontendmentor.io/">Frontend Mentor</a></p></div>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="card card--peach" style="background:var(--lavender);color:var(--ink)">
-      <h2 class="card-eyebrow" style="color:var(--ink)">foundations</h2>
-      <div style="display:flex;flex-direction:column;gap:6px;font:14px/1.5 'Space Grotesk', sans-serif">
+    <div class="card card--lavender card--bg-peach">
+      <h2 class="card-eyebrow card-eyebrow--ink">foundations</h2>
+      <div class="foundations-list">
         <p><b>STAY THE COURSE</b> | believe what you put forth.</p>
         <p><b>SHIP WHAT COUNTS</b> | projects with purpose.</p>
         <p><strong>LEARN IN PUBLIC</strong> | the pride of process.</p>
         
       </div>
     </div>
-    <div class="callout" style="background:var(--lavender);color:var(--ink);box-shadow:5px 5px 0 var(--peach)">
+    <div class="callout callout--lavender">
       <h2 class="callout-title">guerz.lol vibes</h2>
       <div class="card-body">
       <p>warm, livejournal-y2k looks.</p>
@@ -127,9 +182,9 @@
     </div>
   </div>
 
-  <div class="card card--slate" id="guerzbook" style="background:var(--peach);color:var(--ink)">
-    <h2 class="card-eyebrow" style="color:var(--ink)">guerzbook</h2>
-    <div class="guestbook-text" style="opacity:.75">leave a note in the guestbo- errr... guerzbook! ^_^</div>
+  <div class="card card--wine" id="guerzbook">
+    <h2 class="card-eyebrow">guerzbook</h2>
+    <div class="guestbook-text guestbook-intro">leave a note in the guestbo- errr... guerzbook! ^_^</div>
     <div id="guerzbook-entries">
       <div class="guestbook-entry">
         <div class="guestbook-user">get-up-kid88</div>
@@ -140,20 +195,20 @@
         </div>
       </div>
     </div>
-    <form class="guestbook-form" id="guerzbook-form" style="flex-wrap:wrap;align-items:flex-end">
-      <div class="field" style="flex:1 1 130px">
+    <form class="guestbook-form guestbook-form--wrap" id="guerzbook-form">
+      <div class="field field--name">
         <label class="field-label" for="gb-name">name (required)</label>
         <input class="input" id="gb-name" name="name" required autocomplete="name">
       </div>
-      <div class="field" style="flex:1 1 170px">
+      <div class="field field--email">
         <label class="field-label" for="gb-email">email (required · never shown)</label>
         <input class="input" id="gb-email" name="email" type="email" required autocomplete="email">
       </div>
-      <div class="field" style="flex:2 1 100%">
+      <div class="field field--message">
         <label class="field-label" for="gb-message">your note (required)</label>
         <input class="input" id="gb-message" name="message" required>
       </div>
-      <button class="button" type="submit" style="padding:7px 14px">sign</button>
+      <button class="button" type="submit">sign</button>
     </form>
     <div class="form-status" id="gb-status" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>

@@ -1,5 +1,5 @@
 /* guerz.lol — shared stylesheet
-   LiveJournal-inspired system: peach (#e8b48f) + lavender (#b3a8cc)
+   LiveJournal-inspired system: peach (#F4AD7D) + lavender (#b3a8cc)
    Fonts: Recursive (display/titles/eyebrows), Space Grotesk (body), IBM Plex Mono (labels/mono) */
 
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500;700&family=Space+Mono:wght@400;700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Orelega+One&family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap');
@@ -9,6 +9,10 @@
   --lavender: #b3a8cc;
   --remix: oklch(0.79 0.075 25);
   --ink: #3a2b22;
+  /* burgundy — deep and warm, red-leaning, not a dusty rose */
+  --wine: #6a1f2e;
+  --wine-ink: #fdf0e4;   /* cream text on wine — 10.2:1 */
+  --wine-quiet: #b3a8cc; /* the site lavender, which clears 5:1 on this depth */
 
   --bg: oklch(0.94 0.035 55);
   --bg-day: oklch(0.94 0.035 55);
@@ -29,6 +33,9 @@ html[data-theme="night"] {
   --muted: #b3a8cc;
   --remix: oklch(0.62 0.075 25);
   --shadow: #000000;
+  --wine: #7a2434;       /* lifted a hair at night so it doesn't sink into the dark bg */
+  --wine-ink: #f6e9dd;
+  --wine-quiet: #cfc6e0;
   --focus-ring: #e8b48f;
 }
 
@@ -74,7 +81,7 @@ img { max-width: 100%; display: block; }
 }
 .toggle {
   display: flex; background: #fdf5ee; border: none;
-  font: 700 9.5px 'IBM Plex Mono', monospace; overflow: hidden;
+  font: 700 11px 'IBM Plex Mono', monospace; overflow: hidden;
 }
 .toggle button {
   padding: 4px 8px; border: none; background: none; color: var(--ink);
@@ -84,7 +91,7 @@ img { max-width: 100%; display: block; }
 
 .nav {
   display: flex; gap: 16px; flex-wrap: wrap; padding: 7px 20px;
-  font: 800 11px 'Recursive', sans-serif; text-transform: uppercase;
+  font: 800 13px 'Recursive', sans-serif; text-transform: uppercase;
   letter-spacing: .06em; color: var(--ink); background: #fdf5ee; border-bottom: none;
 }
 
@@ -94,7 +101,7 @@ img { max-width: 100%; display: block; }
 }
 .marquee span {
   display: inline-block; animation: marquee 48s linear infinite;
-  font: 700 11px 'IBM Plex Mono', monospace; color: var(--muted);
+  font: 700 12.5px 'IBM Plex Mono', monospace; color: var(--muted);
 }
 
 /* ---------- layout ---------- */
@@ -114,15 +121,43 @@ img { max-width: 100%; display: block; }
 .card--lavender{ box-shadow: 5px 5px 0 var(--lavender); }
 .card--slate   { box-shadow: 5px 5px 0 #7d6fa3; }
 .card--sm      { box-shadow: 4px 4px 0 var(--peach); padding: 12px; }
+/* background modifiers — replace the old inline style="background:...;color:..." on cards */
+.card--bg-peach    { background: var(--peach);    color: var(--ink); } /* peach card, dark ink text */
+.card--bg-lavender { background: var(--lavender); color: var(--ink); } /* lavender card, dark ink text */
+.card--hero        { text-align: center; }                            /* centers every line inside this one card (homepage card one) */
+
+/* ---------- wine card (guerzbook) ---------- */
+/* background + text ride on the tokens above; peach shadow is the warm counterpoint */
+.card--wine {
+  background: var(--wine); color: var(--wine-ink);
+  box-shadow: 5px 5px 0 var(--peach);
+}
+/* the guestbook bits inside default to ink/muted, which would sink into the wine —
+   these four lines re-point them at the light tokens */
+.card--wine .guestbook-user { color: var(--peach); }   /* 6:1 on the deep wine */
+.card--wine .guestbook-reply-user { color: var(--wine-quiet); }
+.card--wine .form-status--ok { color: #b9e3ad; }
+.card--wine .form-status--err { color: #ffb9ab; }
+/* peach button reads as the clear "do this" against the dark card */
+.card--wine .button { background: var(--peach); color: var(--ink); }
+/* an ink focus ring would vanish on wine, so switch it to peach inside this card */
+.card--wine :focus-visible { outline-color: var(--peach); }
+/* the "guerzbook" label: eyebrows default to muted purple, which sinks into wine, so go cream */
+.card--wine .card-eyebrow { color: var(--wine-ink); }
 
 .title-wrap {
   display: flex;
   width: fit-content;
 }
+/* inside a .card (a flex column), align-self slides the title box left / center / right */
+.title-wrap--left   { align-self: flex-start; } /* box hugs the card's left edge */
+.title-wrap--center { align-self: center; }     /* box sits dead center */
+.title-wrap--right  { align-self: flex-end; }   /* box hugs the card's right edge */
 
 .card-title {
   margin: .08em 0;
-  font: 900 clamp(52px, 12vw, 104px)/.88 'Recursive', sans-serif;
+  font: 900 clamp(34px, 7.6vw, 72px)/.92 'Recursive', sans-serif;
+  /* 72px desktop / 34px phone. line-height .92 (was .88) so <br> lines aren't cramped */
   text-transform: uppercase; letter-spacing: -.04em;
 }
 .card-title--brutal {
@@ -134,7 +169,21 @@ img { max-width: 100%; display: block; }
   font: 800 clamp(18px, 3vw, 24px)/1.15 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
 }
-.card-body { font: 15px/1.6 'Space Grotesk', sans-serif; }
+.card-eyebrow--ink { color: var(--ink); } /* dark eyebrow for peach/lavender cards (replaces inline style="color:var(--ink)") */
+.card-body { font: 18px/1.6 'Space Grotesk', sans-serif; }
+/* paragraphs written straight into a card (not inside .card-body) used to fall back
+   to the 16px body default and read smaller than everything around them */
+.card > p { font: 18px/1.6 'Space Grotesk', sans-serif; }
+
+/* ---------- block spacing inside cards ---------- */
+/* the space you were fighting is MARGIN between blocks, not line-height.
+   browsers give h2/h3/p a fat default margin; these three lines tighten it. */
+.card p  { margin: .4em 0; }
+.card h2 { margin: .7em 0 .15em; }
+.card h3 { margin: .6em 0 .15em; font-size: 1.375rem; }
+/* ^ font-size: the browser default for h3 is 1.17em = 18.7px, and card paragraphs are 18px,
+     so h3 barely looked bigger. 1.375rem = 22px: clearly above p (18px), still under h2 (24px) */
+.card h2:first-child, .card h3:first-child { margin-top: 0; }
 
 /* --- hero banner ------------------------------------------------------- */
 .banner-wrap { margin: 0; display: flex; justify-content: center; }
@@ -190,8 +239,15 @@ img { max-width: 100%; display: block; }
 .userinfo-tag-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; padding: 0 7px 4px;  }
 .userinfo-tag { display: inline-block; padding: 5px 16px; width: fit-content;  }
 .userinfo-tag--dark { background: #1c1a20; color: var(--peach);font-size: 16.2px; }
-.userinfo-tag--peach { background: var(--peach); color: var(--ink); font-size: 13px;}
-.userinfo-role { font: 700 10.5px 'IBM Plex Mono', monospace; color: var(--muted); }
+.userinfo-tag--peach { background: var(--peach); color: var(--ink); font-size: 15px;}
+.userinfo-role { font: 700 12px 'IBM Plex Mono', monospace; color: var(--muted); }
+
+/* homepage variant: card first, hexagon pushed to the far right (about.html keeps the default) */
+.userinfo-row--avatar-right > .avatar-frame { margin-left: auto; }        /* auto margin eats the free space, shoving the hex right */
+@media (max-width: 560px) {
+  .userinfo-row--avatar-right > .userinfo { flex: 1 1 100%; }             /* phones: card takes the full width... */
+  .userinfo-row--avatar-right > .avatar-frame { margin-left: 0; }         /* ...and the hex drops under it, not stuck right */
+}
 
 @media (max-width: 640px) {
   .avatar-frame--secondary { display: none; } /* one hex on mobile, both pages — the twin-hex symmetry only reads correctly side by side */
@@ -199,7 +255,7 @@ img { max-width: 100%; display: block; }
 
 .tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .tag {
-  font: 700 9.5px 'IBM Plex Mono', monospace; padding: 2px 7px; color: var(--ink);
+  font: 700 11px 'IBM Plex Mono', monospace; padding: 2px 7px; color: var(--ink);
 }
 .tag--peach { background: var(--peach); }
 .tag--lavender { background: var(--lavender); }
@@ -207,6 +263,7 @@ img { max-width: 100%; display: block; }
 /* ---------- lanes / two-up blocks ---------- */
 .row { display: flex; flex-wrap: wrap; gap: 12px; }
 .row > * { flex: 1; min-width: 200px; }
+.row--lanes { margin-top: 4px; } /* the phase/lane pair inside a card, nudged down a hair */
 
 .lane { border-left: 3px solid var(--peach); padding: 8px 0 8px 14px; display: flex; flex-direction: column; gap: 4px; }
 .lane--lavender { border-left-color: var(--lavender); }
@@ -220,25 +277,39 @@ img { max-width: 100%; display: block; }
   font: 800 clamp(18px, 3vw, 24px) 'Recursive', sans-serif;
   text-transform: uppercase; letter-spacing: .05em;
 }
+.callout--lavender { box-shadow: 5px 5px 0 var(--lavender); } /* lavender drop shadow, like .card--lavender */
+
+/* stacked one-liners (the "foundations" card) */
+.foundations-list {
+  display: flex; flex-direction: column; gap: 6px;   /* one item per row, 6px apart */
+  font: 16.5px/1.55 'Space Grotesk', sans-serif;      /* same size it had as an inline style */
+}
 
 /* ---------- guestbook ---------- */
 .guestbook-entry { display: flex; flex-direction: column; gap: 4px; }
-.guestbook-user { font: 700 11px 'IBM Plex Mono', monospace; color: var(--ink); }
-.guestbook-text { font: 13.5px/1.4 'Space Grotesk', sans-serif; }
+.guestbook-user { font: 700 12.5px 'IBM Plex Mono', monospace; color: var(--ink); }
+.guestbook-text { font: 17px/1.5 'Space Grotesk', sans-serif; }
 .guestbook-reply {
   margin-left: 18px; border-left: 2px solid var(--peach); padding-left: 10px; margin-top: 4px;
 }
-.guestbook-reply-user { font: 700 10.5px 'IBM Plex Mono', monospace; color: var(--muted); }
-.guestbook-reply-text { font: 12.5px/1.4 'Space Grotesk', sans-serif; }
+.guestbook-reply-user { font: 700 12px 'IBM Plex Mono', monospace; color: var(--muted); }
+.guestbook-reply-text { font: 16px/1.5 'Space Grotesk', sans-serif; }
+
+.guestbook-intro { opacity: .75; } /* the "leave a note" line, a bit quieter than the entries */
 
 .guestbook-form { display: flex; gap: 8px; margin-top: 4px; }
+.guestbook-form--wrap { flex-wrap: wrap; align-items: flex-end; } /* fields wrap onto new rows; button lines up with input bottoms */
+.guestbook-form .button { padding: 7px 14px; }                     /* the "sign" button's padding */
+.field--name    { flex: 1 1 130px; }  /* name box: grows, starts at 130px */
+.field--email   { flex: 1 1 170px; }  /* email box: grows, starts at 170px */
+.field--message { flex: 2 1 100%; }   /* note box: always its own full-width row */
 .input {
   flex: 1; min-width: 0; background: var(--paper2); border: none;
-  padding: 7px 9px; font: 13px 'Space Grotesk', sans-serif; color: var(--text);
+  padding: 9px 11px; font: 16px 'Space Grotesk', sans-serif; color: var(--text);
 }
 .button {
   background: var(--ink); color: var(--peach); border: none;
-  font: 700 10.5px 'IBM Plex Mono', monospace; padding: 0 14px;
+  font: 700 12px 'IBM Plex Mono', monospace; padding: 0 14px;
   text-transform: uppercase; cursor: pointer;
 }
 
@@ -249,11 +320,11 @@ img { max-width: 100%; display: block; }
   display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between;
 }
 .footer-inner--wide { max-width: 1160px; }
-.footer-copy { font: 11px/1.6 'IBM Plex Mono', monospace; color: var(--muted); }
-.footer-nav { display: flex; flex-direction: row; flex-wrap: wrap; gap: 4px 14px; font: 700 10.5px 'Recursive', sans-serif; text-transform: uppercase; }
-.footer-note { font: 11px/1.6 'IBM Plex Mono', monospace; color: var(--muted); text-align: right; }
+.footer-copy { font: 12.5px/1.6 'IBM Plex Mono', monospace; color: var(--muted); }
+.footer-nav { display: flex; flex-direction: row; flex-wrap: wrap; gap: 4px 14px; font: 700 12px 'Recursive', sans-serif; text-transform: uppercase; }
+.footer-note { font: 12.5px/1.6 'IBM Plex Mono', monospace; color: var(--muted); text-align: right; }
 .footer-left { display: flex; flex-direction: column; gap: 6px; }
-.footer-social { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; font: 700 10px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .03em; }
+.footer-social { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; font: 700 11.5px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .03em; }
 .footer-social a { color: var(--muted); text-decoration: none; }
 .footer-social a:hover { color: var(--ink); text-decoration: underline; }
 
@@ -264,10 +335,10 @@ img { max-width: 100%; display: block; }
   padding: 10px 12px; display: flex; flex-direction: column; gap: 3px;
 }
 .support-lane-label {
-  font: 700 9.5px 'IBM Plex Mono', monospace; text-transform: uppercase;
+  font: 700 11px 'IBM Plex Mono', monospace; text-transform: uppercase;
   letter-spacing: .06em; color: var(--ink);
 }
-.support-lane-body { font: 13.5px/1.4 'Space Grotesk', sans-serif; }
+.support-lane-body { font: 16.5px/1.5 'Space Grotesk', sans-serif; }
 
 /* ---------- goal badge ---------- */
 .goal-badge {
@@ -276,13 +347,13 @@ img { max-width: 100%; display: block; }
 }
 
 /* ---------- form status ---------- */
-.form-status { font: 700 11px 'IBM Plex Mono', monospace; }
+.form-status { font: 700 12.5px 'IBM Plex Mono', monospace; }
 .form-status--ok { color: #4a7a4a; }
 .form-status--err { color: #c2452d; }
 
 /* ---------- roadmap-specific ---------- */
 .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-.badge { font: 700 9.5px 'IBM Plex Mono', monospace; padding: 3px 8px; color: var(--ink); }
+.badge { font: 700 11px 'IBM Plex Mono', monospace; padding: 3px 8px; color: var(--ink); }
 .badge--peach { background: var(--peach); }
 .badge--lavender { background: var(--lavender); }
 
@@ -302,9 +373,9 @@ img { max-width: 100%; display: block; }
 }
 .week--lavender { box-shadow: 4px 4px 0 var(--lavender); }
 .week--now { box-shadow: 5px 5px 0 var(--ink); }
-.week-num { font: 700 12px 'IBM Plex Mono', monospace; color: var(--muted); min-width: 70px; }
+.week-num { font: 700 13.5px 'IBM Plex Mono', monospace; color: var(--muted); min-width: 70px; }
 .week--now .week-num { color: var(--ink); }
-.week-body { flex: 1; min-width: 220px; font: 13.5px/1.5 'Space Grotesk', sans-serif; }
+.week-body { flex: 1; min-width: 220px; font: 16.5px/1.55 'Space Grotesk', sans-serif; }
 .week-grid .week-body { flex: none; }
 .week-grid .week { flex: 1; min-width: 220px; flex-direction: column; }
 .week-grid .week-num { display: block; margin-bottom: 3px; }
@@ -327,7 +398,7 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase; letter-spacing: -.02em; color: var(--ink);
   min-width: 0; overflow-wrap: anywhere;
 }
-.section-count { margin-left: auto; font: 700 10px 'IBM Plex Mono', monospace; color: var(--ink); opacity: .75; white-space: normal; text-align: right; }
+.section-count { margin-left: auto; font: 700 11.5px 'IBM Plex Mono', monospace; color: var(--ink); opacity: .75; white-space: normal; text-align: right; }
 .section-body { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
 
 .project-box {
@@ -357,8 +428,8 @@ img { max-width: 100%; display: block; }
 .project-box > summary::-webkit-details-marker { display: none; }
 .project-caret { font: 800 13px 'IBM Plex Mono', monospace; color: var(--muted); transition: transform .18s ease; }
 .project-box[open] > summary .project-caret { transform: rotate(90deg); }
-.project-name { font: 800 15px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .01em; color: var(--text); }
-.project-stack { margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.project-name { font: 800 17px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: .01em; color: var(--text); }
+.project-stack { margin-left: auto; font: 700 11px 'IBM Plex Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 /* tabbed panes — the source tab reads first */
 .project-inner {
   padding: 12px; border-top: 2px dashed var(--muted);
@@ -372,10 +443,10 @@ img { max-width: 100%; display: block; }
 }
 .meta-row { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .meta-key {
-  flex: 0 0 128px; font: 800 9px 'IBM Plex Mono', monospace; text-transform: uppercase;
+  flex: 0 0 128px; font: 800 11px 'IBM Plex Mono', monospace; text-transform: uppercase;
   letter-spacing: .12em; color: var(--ink);
 }
-.meta-val { font: 600 12.5px 'Recursive', sans-serif; color: var(--text); }
+.meta-val { font: 600 15px 'Recursive', sans-serif; color: var(--text); }
 .view-tabs { display: flex; width: fit-content; border: none; overflow: hidden; }
 .view-tab {
   background: var(--paper); color: var(--muted); border: none; border-right: none;
@@ -393,7 +464,7 @@ img { max-width: 100%; display: block; }
   box-shadow: 4px 4px 0 var(--lavender); background: #fff; display: block;
 }
 .coming-soon {
-  padding: 16px 4px; font: 700 13px 'IBM Plex Mono', monospace; color: var(--muted);
+  padding: 16px 4px; font: 700 15px 'IBM Plex Mono', monospace; color: var(--muted);
   display: flex; align-items: center; gap: 8px;
 }
 .project-box--soon > summary { opacity: .85; }
@@ -419,7 +490,7 @@ img { max-width: 100%; display: block; }
 }
 .module-title {
   margin: .1em 0;
-  font: 900 15px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink);
+  font: 900 17px 'Recursive', sans-serif; text-transform: uppercase; letter-spacing: -.01em; color: var(--ink);
 }
 .module-count {
   margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--ink); opacity: .7;
@@ -429,8 +500,8 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; gap: 10px;
   padding: 7px 10px; border: none; background: var(--paper2);
 }
-.archive-check { font: 700 13px 'IBM Plex Mono', monospace; color: var(--muted); }
-.archive-name { font: 600 13px 'Recursive', sans-serif; color: var(--muted); }
+.archive-check { font: 700 15px 'IBM Plex Mono', monospace; color: var(--muted); }
+.archive-name { font: 600 15.5px 'Recursive', sans-serif; color: var(--muted); }
 .archive-type {
   margin-left: auto; font: 700 9px 'IBM Plex Mono', monospace; color: var(--muted);
   text-transform: uppercase; letter-spacing: .06em;
@@ -468,7 +539,7 @@ img { max-width: 100%; display: block; }
 .code-copy:hover { background: var(--lavender); }
 .code { margin: 0; padding: 12px 14px; overflow-x: auto; }
 .code code {
-  font: 500 12.5px/1.65 'IBM Plex Mono', monospace; color: #e6dcf5;
+  font: 500 14px/1.65 'IBM Plex Mono', monospace; color: #e6dcf5;
   white-space: pre-wrap; overflow-wrap: anywhere; display: block;
 }
 .code .line { display: grid; grid-template-columns: calc(3ch + 12px) 1fr; gap: 12px; }
@@ -509,7 +580,7 @@ img { max-width: 100%; display: block; }
   .project-name { flex-basis: 100%; order: 3; }
   .view-pane[data-pane="code"], .view-pane[data-pane="html"], .view-pane[data-pane="css"] { max-height: min(70vh, 560px); }
   .project-stack { margin-left: 0; }
-  .code { font-size: 11px; }
+  .code { font-size: 12.5px; }
 }
 
 /* ---------- a11y (WCAG 2.2 AA) — focus, skip link, hit areas ---------- */
@@ -548,7 +619,7 @@ a:hover { text-decoration-thickness: 2px; text-underline-offset: 2px; }
 /* SC 1.3.1 / 3.3.2 — visible field labels (never placeholder-only) */
 .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .field-label {
-  font: 700 9.5px 'IBM Plex Mono', monospace; text-transform: uppercase;
+  font: 700 11px 'IBM Plex Mono', monospace; text-transform: uppercase;
   letter-spacing: .06em; color: inherit;
 }
 .field .input { flex: none; width: 100%; }
@@ -557,6 +628,26 @@ a:hover { text-decoration-thickness: 2px; text-underline-offset: 2px; }
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
 }
+
+/* ---------- homepage: full sail day-one block ---------- */
+.card .dayone-head {                             /* `.card` in front so this beats the `.card h2` margin rule */
+  margin: .6em 0 .2em;                           /* a little air above, a sliver below */
+  font: 800 clamp(22px, 4.4vw, 38px)/1.5 'IBM Plex Mono', monospace; /* taller line-height so a wrapped bar doesn't overlap itself */
+  text-transform: uppercase;                     /* all caps */
+  letter-spacing: .02em;                         /* a hair of room between letters */
+}
+.fs-bar {                                        /* the burnt-orange box behind "full sail university — day one" */
+  background: #CC4B00;                           /* burnt orange */
+  color: #F1F1F1;                                /* light text; 4:1 contrast, passes for big bold text */
+  padding: .15em .35em;                          /* equal padding both sides */
+  -webkit-box-decoration-break: clone;           /* Safari: each wrapped line gets its own padding */
+  box-decoration-break: clone;                   /* every other browser: same thing */
+}
+.fs-bar a { color: inherit; }                    /* the link takes the bar's light text, not dark ink */
+.card h2.degree { font-size: 2rem; margin-top: .3em; } /* "web development bachelor of science": 32px */
+
+/* ---------- utilities ---------- */
+.center-text { text-align: center; } /* center any block's text */
 
 /* headings promoted from divs keep their original rhythm */
 h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title { margin: 0; }

@@ -1,6 +1,7 @@
 // guerz.lol — shared day/night theme toggle
 // include on every page after the <body> markup (or defer)
 (function () {
+  var base = (document.currentScript && document.currentScript.src) ? document.currentScript.src.replace(/[^\/]*$/, '') : '';
   function applyTheme(mode) {
     document.documentElement.setAttribute('data-theme', mode);
     document.querySelectorAll('[data-theme-btn]').forEach(function (btn) {
@@ -9,9 +10,9 @@
       btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     var favicon = document.getElementById('favicon');
-    if (favicon) favicon.setAttribute('href', mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png');
+    if (favicon) favicon.setAttribute('href', base + (mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png'));
     document.querySelectorAll('.avatar').forEach(function (avatar) {
-      avatar.setAttribute('src', mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png');
+      avatar.setAttribute('src', base + (mode === 'night' ? 'favicon-lavender.png' : 'favicon-peach.png'));
     });
     try { localStorage.setItem('guerz-theme', mode); } catch (e) {}
   }
