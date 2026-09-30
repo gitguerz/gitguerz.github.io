@@ -52,12 +52,8 @@
 
 <main class="container" id="main" tabindex="-1">
 
-  <figure class="banner-wrap">
-    <img class="banner" src="Banners/banner-about.png" width="1200" height="675" alt="GUERZ.LOL brutalist flyer — sector-g/02, wireframe torus-knot sculpture over a peach grid; analog dreams. digital grind. future primitive; full-stack web developer in training">
-  </figure>
-
-  <div class="userinfo-row">
-    <span class="avatar-frame"><img class="avatar" id="avatar-img" src="favicon-peach.png" alt="guerz avatar"></span>
+  <!-- hexagon comes AFTER the card in the markup; --avatar-right pushes it to the far right (same as the homepage) -->
+  <div class="userinfo-row userinfo-row--avatar-right">
     <div class="userinfo">
       <div class="userinfo-body">
         <div class="userinfo-name">{Guerz}</div>
@@ -73,11 +69,11 @@
         </div>
       </div>
     </div>
+    <span class="avatar-frame"><img class="avatar" id="avatar-img" src="favicon-peach.png" alt="guerz avatar"></span>
   </div>
 
   <article class="card card--lavender" style="background:var(--peach);color:var(--ink)">
-    <h1 class="sr-only">About</h1>
-    <h1 class="card-title">About A Guerz</h1></div>
+    <h1 class="card-title">About A Guerz</h1>
     <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
         <p>hi! i am Guerz,</p>
 

@@ -645,6 +645,12 @@ a:hover { text-decoration-thickness: 2px; text-underline-offset: 2px; }
 }
 .fs-bar a { color: inherit; }                    /* the link takes the bar's light text, not dark ink */
 .card h2.degree { font-size: 2rem; margin-top: .3em; } /* "web development bachelor of science": 32px */
+/* homepage stanzas: poem-like lines that are paragraphs (not headings) but look exactly like the old h3s.
+   `.card > p.stanza` is needed to outrank the `.card > p` rule, which would otherwise shrink these to 18px */
+.card > p.stanza {
+  font: 700 1.375rem/normal 'Space Grotesk', sans-serif; /* bold, 22px, default line spacing: same as .card h3 */
+  margin: .6em 0 .15em;                                  /* same breathing room as .card h3 */
+}
 
 /* ---------- utilities ---------- */
 .center-text { text-align: center; } /* center any block's text */

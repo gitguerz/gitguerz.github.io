@@ -1,2 +1,5 @@
 # macOS Finder junk files; never commit these
 .DS_Store
+
+# Cowork drops Claude screenshots/files here; keep them out of the public site
+Claude outputs/
