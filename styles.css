@@ -594,6 +594,13 @@ img { max-width: 100%; display: block; }
 
 /* SC 2.4.7 / 2.4.13 — visible 3px ring, never suppressed */
 :focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+/* light surfaces (peach/lavender) always get the dark ink focus ring. In night mode the default ring is
+   light peach (#e8b48f), which nearly vanishes on these surfaces (about 1.02:1 on peach, 1.21:1 on lavender) */
+:is(.card--bg-peach, .card--bg-lavender, .callout, .userinfo, .support-lane, .module,
+    .section > summary, .phase-header--peach, .phase-header--lavender,
+    [style*="background:var(--peach)"], [style*="background:var(--lavender)"]) {
+  --focus-ring: var(--ink); /* ink #3a2b22 on peach/lavender is high contrast in both themes */
+}
 .toggle button:focus-visible,
 .view-tab:focus-visible,
 .code-copy:focus-visible { outline-offset: -3px; }
@@ -651,6 +658,19 @@ a:hover { text-decoration-thickness: 2px; text-underline-offset: 2px; }
   font: 700 1.375rem/normal 'Space Grotesk', sans-serif; /* bold, 22px, default line spacing: same as .card h3 */
   margin: .6em 0 .15em;                                  /* same breathing room as .card h3 */
 }
+/* homepage supporting lines: they look like headings but are statements, so they're paragraphs.
+   `.card > p.` prefix outranks the `.card > p` 18px rule, same trick as .stanza */
+.card > p.lead-line {
+  font: 700 1.5rem/normal 'Space Grotesk', sans-serif;   /* bold 24px: the look they had as h2 */
+  margin: .7em 0 .15em;                                  /* the spacing they had as h2 */
+}
+.card > p.degree-line {
+  font: 700 2rem/normal 'Space Grotesk', sans-serif;     /* bold 32px: the look they had as h2.degree */
+  margin: .3em 0 .15em;                                  /* the spacing they had as h2.degree */
+}
+/* the hero story titles are now real <h2> headings; a global rule zeroes h2.card-title margins,
+   so give back the margin they had as <p class="card-title"> */
+.card--hero h2.card-title { margin: .4em 0; }            /* the .4em they got from `.card p` as <p> titles */
 
 /* ---------- utilities ---------- */
 .center-text { text-align: center; } /* center any block's text */

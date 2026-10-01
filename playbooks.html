@@ -31,7 +31,7 @@ html[data-theme="night"]{--card:#241f30}
 .pb-title{margin:0 0 8px;font-family:'Platypi',serif;font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.05;letter-spacing:-.01em}
 .pb-sub{margin:0 0 28px;max-width:640px;font:15px/1.55 'Space Grotesk',sans-serif;color:var(--muted)}
 
-.pb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.pb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px} /* min(100%,300px): a column can shrink below 300px on very narrow phones instead of overflowing */
 .pb-card{background:var(--card);border:2px solid var(--muted);box-shadow:5px 5px 0 var(--lavender);display:flex;flex-direction:column;overflow:hidden}
 
 .pb-thumb-wrap{display:block;position:relative;border-bottom:2px solid var(--muted)}
