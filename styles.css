@@ -688,3 +688,25 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
     scroll-behavior: auto !important;
   }
 }
+
+/* ===== TOOLSHED: AI credit blurb (toolshed.html only — .rm-credit classes exist nowhere else) ===== */
+.rm-credit {                                   /* the whole credit box */
+  max-width: 720px;                            /* keeps lines short enough to read comfortably */
+  margin: 0 0 28px;                            /* no top gap (the subtitle already has one), space before the tool grid */
+  padding: 18px 20px;                          /* breathing room inside the box */
+  background: var(--card, #fdf0e4);            /* same cream as the tool cards (falls back to cream if the variable is missing) */
+  border: 2px solid var(--muted);              /* same purple border as the tool cards */
+  box-shadow: 5px 5px 0 var(--peach);          /* peach drop shadow so it reads as a note, not another tool card (cards use lavender) */
+  font: 16px/1.55 'Eczar', serif;              /* same body font and size as the page subtitle */
+  color: var(--text, #3a2b22);                 /* page text color, so it flips correctly in night mode */
+}
+.rm-credit p { margin: 0 0 10px; }             /* tighter paragraph spacing inside the box */
+.rm-credit p:last-child { margin-bottom: 0; }  /* no extra gap under the final line */
+.rm-credit-title {                             /* the "How these tools were made" heading */
+  margin: 0 0 10px;                            /* small gap under the heading */
+  font: 800 20px/1.1 'Big Shoulders Display', sans-serif; /* same display font as the page title, smaller */
+  text-transform: uppercase;                   /* matches the page title's all-caps look */
+  letter-spacing: .01em;                       /* slight spacing so the caps don't crowd */
+}
+.rm-credit-list { margin: 0 0 10px; padding-left: 1.2em; } /* indent the role list a little */
+.rm-credit-list li { margin: 0 0 4px; }        /* small gap between roles */

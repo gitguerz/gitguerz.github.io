@@ -109,6 +109,19 @@ a{color:inherit}
   <h1 class="rm-title">the toolshed</h1>
   <p class="rm-sub">live builds, not exercises — open one, download it, or go read how it works.</p>
 
+  <!-- AI CREDIT BLURB: tells every visitor up front how the Toolshed tools were made -->
+  <section class="rm-credit" aria-labelledby="rm-credit-title"> <!-- labeled region so screen readers announce it by its heading -->
+    <h2 class="rm-credit-title" id="rm-credit-title">How these tools were made</h2> <!-- section heading; its id is what aria-labelledby points to -->
+    <p>Every tool in the Toolshed was made with AI. I came up with the idea for each one, decided what it needed to do, and tested it until it worked the way I wanted. The code itself was written mostly by two AI assistants: Plexi (Perplexity) and Bonnie (Claude).</p> <!-- the plain statement: AI-built, my ideas -->
+    <ul class="rm-credit-list"> <!-- who did what, one role per line -->
+      <li><strong>Me (Guerz):</strong> the idea, the requirements, the testing, and the final call on what ships.</li> <!-- my part -->
+      <li><strong>Plexi (Perplexity):</strong> research, first drafts, and most of the original builds.</li> <!-- Plexi's part -->
+      <li><strong>Bonnie (Claude):</strong> fixes, revisions, quality checks, and fitting each tool into this site.</li> <!-- Claude's part -->
+    </ul> <!-- end of the role list -->
+    <p>That makes the Toolshed different from the rest of guerz.lol. Everything in the FCC Build Archive and the Sandbox is coded by me, by hand, as part of my learning. The Toolshed holds tools I use for my own work, built by directing AI instead of writing every line myself.</p> <!-- draws the line between hand-coded and AI-built -->
+    <p>Each tool also has a linear note on its own page with the details.</p> <!-- points to the per-tool notes -->
+  </section> <!-- end of the AI credit blurb -->
+
   <div class="rm-grid">
 
     <!-- ============================================================
@@ -184,18 +197,18 @@ a{color:inherit}
 
     <article class="rm-card">
       <div class="rm-thumb-wrap">
-        <a class="rm-thumb-link" href="toolshed/quality-control-desk/index.html" aria-label="Open Quality Control Desk — live preview">
-          <img src="toolshed/roadmap-thumbs/qc-desk.png" alt="Screenshot preview of the Quality Control Desk" loading="lazy"
+        <a class="rm-thumb-link" href="toolshed/quality-control-desk/index.html" aria-label="Open Visibility &amp; Quality Control Desk — live preview">
+          <img src="toolshed/roadmap-thumbs/qc-desk.png" alt="Screenshot preview of the Visibility &amp; Quality Control Desk" loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="rm-thumb-placeholder"><span>screenshot pending</span></div>
         </a>
       </div>
       <div class="rm-card-body">
-        <h3 class="rm-card-name">Quality Control Desk</h3>
-        <p class="rm-card-desc">Pre-publish review checklist for guerz.lol — content truth, functionality, accessibility &amp; resilience, and a ship gate. 20 checks across 4 review lanes.</p>
-        <span class="rm-tag">v1 · live</span>
+        <h3 class="rm-card-name">Visibility &amp; Quality Control Desk</h3>
+        <p class="rm-card-desc">Make the site say what it means, then prove it works — crawlability, Google &amp; Bing, titles and link previews, Lighthouse and accessibility, plus a repair trail future-me can follow. 28 checks across 5 lanes.</p>
+        <span class="rm-tag">v2 · live</span>
         <div class="rm-actions">
-          <a class="rm-btn-dl" href="toolshed/quality-control-desk/index.html" download aria-label="Download Quality Control Desk">↓</a>
+          <a class="rm-btn-dl" href="toolshed/quality-control-desk/index.html" download aria-label="Download Visibility &amp; Quality Control Desk">↓</a>
           <a class="rm-btn-code" href="https://github.com/gitguerz/gitguerz.github.io/tree/main/toolshed/quality-control-desk" target="_blank" rel="noopener noreferrer">code</a>
         </div>
         <p class="rm-dl-note">html only — app.js &amp; styles.css live alongside it in the folder</p>
@@ -204,18 +217,18 @@ a{color:inherit}
 
     <article class="rm-card">
       <div class="rm-thumb-wrap">
-        <a class="rm-thumb-link" href="toolshed/wp-workshop/index.html" aria-label="Open WordPress 101 / Side Quest Workshop — live preview">
-          <img src="toolshed/roadmap-thumbs/wp-workshop.png" alt="Screenshot preview of the WordPress 101 Side Quest Workshop" loading="lazy"
+        <a class="rm-thumb-link" href="toolshed/wp-workshop/index.html" aria-label="Open WordPress 101 / The Blog Archive Engine — live preview">
+          <img src="toolshed/roadmap-thumbs/wp-workshop.png" alt="Screenshot preview of WordPress 101: The Blog Archive Engine" loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="rm-thumb-placeholder"><span>screenshot pending</span></div>
         </a>
       </div>
       <div class="rm-card-body">
-        <h3 class="rm-card-name">WordPress 101 / Side Quest Workshop</h3>
-        <p class="rm-card-desc">Beginner WordPress workshop — hosted vs. self-hosted route picker, 4 stations from claiming the keys to publish-day checks, plus an independent battle-test register.</p>
-        <span class="rm-tag">v1 · live</span>
+        <h3 class="rm-card-name">WordPress 101 / The Blog Archive Engine</h3>
+        <p class="rm-card-desc">WordPress road map for blog.guerz.lol — stabilize the house, make old writing findable, build a right rail that earns its space, and publish without sanding off the personality. 31 tasks across 6 stations, plus a battle-test register.</p>
+        <span class="rm-tag">v2 · live</span>
         <div class="rm-actions">
-          <a class="rm-btn-dl" href="toolshed/wp-workshop/index.html" download aria-label="Download WordPress 101 Side Quest Workshop">↓</a>
+          <a class="rm-btn-dl" href="toolshed/wp-workshop/index.html" download aria-label="Download WordPress 101: The Blog Archive Engine">↓</a>
           <a class="rm-btn-code" href="https://github.com/gitguerz/gitguerz.github.io/tree/main/toolshed/wp-workshop" target="_blank" rel="noopener noreferrer">code</a>
         </div>
         <p class="rm-dl-note">html only — app.js &amp; styles.css live alongside it in the folder</p>
