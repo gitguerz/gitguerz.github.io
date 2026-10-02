@@ -16,7 +16,7 @@ My corner of the world wide web: part web dev portfolio, part brain dump, part p
 | `playbooks/web-dev-playbook.html` | The Web Dev Playbook: six freeCodeCamp certs, one per module |
 | `playbooks/fullsail-playbook.html` | The Full Sail Web Development B.S. playbook, month by month |
 | `fcc-build-archive.html` | Every fCC Responsive Web Design build, rebuilt and commented |
-| `sandbox.html` | Cold builds in a tabbed code / preview format |
+| `sandbox.html` | HTML & CSS fundamentals + The Odin Project builds, in a tabbed code / preview format |
 | `toolshed.html` | Tools gallery (see below) |
 
 ## Toolshed

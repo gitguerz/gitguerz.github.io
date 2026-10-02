@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FCC Build Archive — freeCodeCamp &amp; Odin Project builds | guerz.lol</title>
-<meta name="description" content="Guerz's build archive: freeCodeCamp and Odin Project builds, with source code and learned concepts, shipped in public.">
+<title>FCC Build Archive — freeCodeCamp RWD v9 builds | guerz.lol</title>
+<meta name="description" content="Guerz's build archive: freeCodeCamp RWD v9 builds, with source code and learned concepts, shipped in public.">
 <link rel="canonical" href="https://guerz.lol/fcc-build-archive.html">
 <meta property="og:title" content="FCC Build Archive | guerz.lol">
-<meta property="og:description" content="freeCodeCamp and Odin Project builds, with source code and learned concepts, shipped in public.">
+<meta property="og:description" content="freeCodeCamp RWD v9 builds, with source code and learned concepts, shipped in public.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://guerz.lol/fcc-build-archive.html">
 <meta property="og:image" content="https://guerz.lol/og-banner.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FCC Build Archive | guerz.lol">
-<meta name="twitter:description" content="freeCodeCamp and Odin Project builds, with source code and learned concepts, shipped in public.">
+<meta name="twitter:description" content="freeCodeCamp RWD v9 builds, with source code and learned concepts, shipped in public.">
 <meta name="twitter:image" content="https://guerz.lol/og-banner.png">
 <link rel="icon" id="favicon" type="image/png" href="favicon-peach.png">
 <link rel="stylesheet" href="styles.css">
@@ -46,7 +46,7 @@
     <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">{blogguerz}</a>
   </nav>
   <div class="marquee" aria-hidden="true">
-    <span>☀ things i actually built ☾ code you can copy, paste, and pick apart ☀ cold builds + freeCodeCamp cert projects ☾ ugly but working &gt; perfect but stuck ☀ view source is a love language ☾ things i actually built ☀</span>
+    <span>☀ things i actually built ☾ code you can copy, paste, and pick apart ☀ freeCodeCamp workshops, labs + cert projects ☾ ugly but working &gt; perfect but stuck ☀ view source is a love language ☾ things i actually built ☀</span>
   </div>
 </header>
 
@@ -55,13 +55,9 @@
   <div class="card card--lavender" style="background:var(--lavender);color:var(--ink);box-shadow:5px 5px 0 var(--peach)">
     <div class="userinfo-role" style="color:var(--ink)">the build log · view source welcome</div>
     <div class="title-wrap"><h1 class="card-title">FCC BUILD ARCHIVE</h1></div>
-    <div class="card-body">everything i've built and shipped, split into 2 categories:
-  <ul>
-    <li><b>freeCodeCamp RWD v9 Build Archive</b> <em>(WIP)</em> — curriculum <em>workshops</em>, <em>labs</em>, &amp; <em>projects</em> chronologically logged from the first to the very last, every line commented and explained</li>
-    <li><b>The Odin Project</b> — an HTML project from TOP: HTML Foundations</li>
-  </ul>
+    <div class="card-body">everything i've built and shipped in the <b>freeCodeCamp RWD v9 Build Archive</b> <em>(WIP)</em> — curriculum <em>workshops</em>, <em>labs</em>, &amp; <em>projects</em> chronologically logged from the first to the very last, every line commented and explained.
   each build shows the code, with a clickable preview tab.
-  <p>looking for the cold builds? they packed up and moved to <a href="sandbox.html">Sandbox</a>.</p>
+  <p>looking for my HTML &amp; CSS fundamentals or The Odin Project builds? they packed up and moved to <a href="sandbox.html">Sandbox</a>.</p>
   <p><strong><em>NOTE:</em></strong> the following are built for my own educational purposes. feel free to steal and use. enjoy! ^_^</p></div>
   </div>
 
@@ -3646,76 +3642,6 @@ a { /* targets every anchor (link) element on the page */
     </div>
     </div>
   </details>
-    </div>
-  </details>
-
-  <details class="section" style="box-shadow:5px 5px 0 var(--lavender)" open>
-    <summary>
-      <span class="section-caret">▸</span>
-      <span class="section-title">The Odin Project</span>
-      <span class="section-count">1 built · worked chronologically</span>
-    </summary>
-    <div class="section-body">
-    <details class="project-box">
-      <summary>
-        <span class="project-caret">▸</span>
-        <span class="project-name">"Build a Recipe" Project</span>
-        <span class="project-stack">html</span>
-      </summary>
-      <div class="project-inner">
-        <div class="card-body">the Odin Project's take on the fCC recipe lab — a pure semantic HTML page: an <b>h1</b> title, a hero <b>img</b> with alt text, a description, an <b>ul</b> ingredients list, an <b>ol</b> of ordered steps, and a "more recipes" link list. no CSS, structure only. every line commented.</div>
-        <div class="view-pane" data-pane="html">
-          <div class="pane-label">html</div>
-          <div class="code-block code-block--peach">
-            <div class="code-bar">
-              <span class="code-file">index.html</span>
-              <button class="code-copy" type="button">copy</button>
-            </div>
-            <pre class="code"><code>&lt;!DOCTYPE html&gt;                          &lt;!-- tells the browser this is modern HTML5 --&gt;
-&lt;html lang="en"&gt;                         &lt;!-- starts the page; lang helps screen readers know this is English --&gt;
-&lt;head&gt;                                   &lt;!-- holds page info the browser uses; this part does not show on the page --&gt;
-&lt;title&gt;The Odin Recipes&lt;/title&gt;           &lt;!-- sets the browser tab title; the test needs this exact text --&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Creamy Chocolate Fudge&lt;/h1&gt;           &lt;!-- main visible heading for the recipe; the test needs this exact text --&gt;
-&lt;img src="https://cdn.freecodecamp.org/curriculum/labs/recipe.jpg" alt="creamy chocolate fudge squares on a plate"&gt; &lt;!-- shows the recipe image; alt describes it for screen readers and if the image fails --&gt;
-&lt;h2&gt;Description&lt;/h2&gt; &lt;!--starts the description section; the Odin Project FCC test needs this exact heading--&gt;
-&lt;p&gt;This creamy chocolate fudge is rich, smooth, and simple enough for a beginner recipe page.&lt;/p&gt; &lt;!-- first description paragraph; the test needs at least two p elements --&gt;
-&lt;p&gt;It uses basic pantry ingredients and sets into sweet squares that are easy to share.&lt;/p&gt; &lt;!-- second description paragraph; this gives the section more recipe detail --&gt;
-&lt;h2&gt;Ingredients&lt;/h2&gt;                      &lt;!-- starts the ingredients section; the test needs this exact heading text --&gt;
-&lt;ul&gt;                                      &lt;!-- starts an unordered list because ingredients do not need step-by-step order --&gt;
-  &lt;li&gt;2 cups chocolate chips&lt;/li&gt;         &lt;!-- one ingredient item in the unordered list --&gt;
-  &lt;li&gt;1 can sweetened condensed milk&lt;/li&gt; &lt;!-- one ingredient item in the unordered list --&gt;
-  &lt;li&gt;2 tablespoons butter&lt;/li&gt;           &lt;!-- one ingredient item in the unordered list --&gt;
-  &lt;li&gt;1 teaspoon vanilla extract&lt;/li&gt;     &lt;!-- one ingredient item in the unordered list --&gt;
-&lt;/ul&gt;                                     &lt;!-- closes the ingredients list --&gt;
-&lt;h2&gt;Steps&lt;/h2&gt;                            &lt;!-- starts the recipe steps section; the test needs this exact heading text --&gt;
-&lt;ol&gt;                                      &lt;!-- starts an ordered list because recipe steps must be followed in sequence --&gt;
-  &lt;li&gt;Line a small pan with parchment paper.&lt;/li&gt; &lt;!-- first numbered step in the recipe --&gt;
-  &lt;li&gt;Melt the chocolate chips, condensed milk, and butter together.&lt;/li&gt; &lt;!-- second numbered step in the recipe --&gt;
-  &lt;li&gt;Stir in the vanilla extract.&lt;/li&gt;   &lt;!-- third numbered step in the recipe --&gt;
-  &lt;li&gt;Spread the mixture into the pan and let it set before cutting.&lt;/li&gt; &lt;!-- fourth numbered step in the recipe --&gt;
-&lt;/ol&gt;                                     &lt;!-- closes the ordered steps list --&gt;
-&lt;h2&gt;More Recipes&lt;/h2&gt;                     &lt;!-- starts the related recipes section; the test needs this exact heading text --&gt;
-&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
-&lt;ul&gt;                                      &lt;!-- starts an unordered list because these recipe links are related options, not steps --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Vanilla Cupcakes&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Peanut Butter Cookies&lt;/a&gt;&lt;/li&gt; &lt;!-- list item with a placeholder link; the test needs href set to # --&gt;
-&lt;/ul&gt;                                     &lt;!-- closes the more recipes list --&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-          </div>
-        </div>
-        <div class="view-pane" data-pane="preview">
-          <div class="pane-label">preview</div>
-          <iframe class="preview-frame" data-src="fcc-build-archive/recipe/index.html" title="Build a Recipe preview" loading="lazy"></iframe>
-        </div>
-        <div class="project-links"><a href="fcc-build-archive/recipe/index.html" target="_blank" rel="noopener noreferrer">↗ open in new tab</a><a href="https://github.com/gitguerz/gitguerz.github.io/blob/main/fcc-build-archive/recipe/index.html" target="_blank" rel="noopener noreferrer">↗ github</a></div>
-      </div>
-    </details>
     </div>
   </details>
 
