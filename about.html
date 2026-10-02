@@ -52,7 +52,7 @@
 
 <main class="container" id="main" tabindex="-1">
 
-  <!-- hexagon comes AFTER the card in the markup; --avatar-right pushes it to the far right (same as the homepage) -->
+  <!-- Jeffran comes AFTER the card in the markup, so he sits on the right (where the hex used to be) -->
   <div class="userinfo-row userinfo-row--avatar-right">
     <div class="userinfo">
       <div class="userinfo-body">
@@ -69,12 +69,25 @@
         </div>
       </div>
     </div>
-    <span class="avatar-frame"><img class="avatar" id="avatar-img" src="favicon-peach.png" alt="guerz avatar"></span>
+    <!-- Jeffran replaces the hex on this page only (the homepage keeps the hex); <figure> pairs the image with its caption -->
+    <figure class="jeffran">
+      <!-- <picture> lets the browser grab the light WebP, or fall back to the PNG if it can't read WebP -->
+      <picture>
+        <!-- WebP first: ~50 KB vs ~300 KB for the PNG -->
+        <source srcset="assets/brand/jeffran-440.webp" type="image/webp">
+        <!-- PNG fallback; width/height reserve his space so the page doesn't jump while he loads -->
+        <img class="jeffran-img" src="assets/brand/jeffran-440.png" width="220" height="220" alt="Jeffran, a molting penguin in purple headphones, coding on a laptop with the ))&lt;&gt;(( logo.">
+      </picture>
+      <!-- small muted credit line under him -->
+      <figcaption class="jeffran-caption">illustrated with Gemini</figcaption>
+    </figure>
   </div>
 
-  <article class="card card--lavender" style="background:var(--peach);color:var(--ink)">
+  <!-- card--bg-peach = peach background + ink text (was an inline style) -->
+  <article class="card card--lavender card--bg-peach">
     <h1 class="card-title">About A Guerz</h1>
-    <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
+    <!-- card-body--about stacks the paragraphs with a 12px gap (was an inline style) -->
+    <div class="card-body card-body--about">
         <p>hi! i am Guerz,</p>
 
         <p>my roots are in the y2k internet — messing with deadjournal and later livejournal layouts, tweaking the frontend aesthetics until it felt like mine. this isn’t a beginner story. it’s a return. the muscle memory never left. it was just waiting for the right moment to come back online.</p>
@@ -90,7 +103,8 @@
         <p>if you’re reading this, i 1000% whole-heartedly appreciate you for stopping by. i’m likely building the next thing right now, so please, mind the digital debris strewn about; i am likely working on it. in the off chance that i may not be working on something broken, feel free to point something out: feel free to email me at nick@guerz.lol, or drop a comment in the <em>GuerzBook</em> at the bottom of the homepage.</p>
 
         <p>if you’re here, thanks for stopping by. i’m probably building the next thing right now.</p>
-        <p style="margin-top:6px;opacity:.85">— Guerz</p>
+        <!-- about-signoff = the slightly faded sign-off line (was an inline style) -->
+        <p class="about-signoff">— Guerz</p>
         
         <p>p.s. it's pronounced, "Guerz".</p>
     </div>

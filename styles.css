@@ -710,3 +710,35 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
 }
 .rm-credit-list { margin: 0 0 10px; padding-left: 1.2em; } /* indent the role list a little */
 .rm-credit-list li { margin: 0 0 4px; }        /* small gap between roles */
+
+/* ===== ABOUT PAGE (about.html only — .jeffran, .card-body--about and .about-signoff exist nowhere else) ===== */
+.jeffran {                                     /* the <figure> holding Jeffran + his caption */
+  margin: 0;                                   /* browsers give <figure> a 40px side margin; zero it */
+  width: 220px;                                /* display size (the file is 440px, so he stays sharp on retina screens) */
+  flex: none;                                  /* the flex row can't squash or stretch him */
+  display: flex;                               /* lets the image and caption stack... */
+  flex-direction: column;                      /* ...top to bottom */
+  align-items: center;                         /* caption centered under him */
+  gap: 6px;                                    /* small space between image and caption */
+}
+.jeffran-img {                                 /* the image itself */
+  width: 100%;                                 /* fills the figure's width */
+  height: auto;                                /* keeps him a perfect circle at any width */
+}
+.jeffran-caption {                             /* "illustrated with Gemini" */
+  font: 12.5px/1.4 'IBM Plex Mono', monospace; /* same small mono as the footer notes */
+  color: var(--muted);                         /* muted purple by day, lavender by night (flips with the theme) */
+  text-align: center;                          /* centered under him */
+}
+@media (max-width: 560px) {                    /* phones: the {Guerz} card takes the full row, Jeffran wraps under it */
+  .jeffran { width: 180px; }                   /* a bit smaller so he doesn't hog the screen; the row's justify-content centers him */
+}
+.card-body--about {                            /* the About card's paragraph stack (replaces its old inline style) */
+  display: flex;                               /* flex so the gap below works */
+  flex-direction: column;                      /* paragraphs stack top to bottom */
+  gap: 12px;                                   /* 12px between paragraphs, same as before */
+}
+.card p.about-signoff {                        /* "— Guerz" sign-off; `.card p.` outranks the `.card p` margin rule */
+  margin-top: 6px;                             /* the 6px top gap it had inline */
+  opacity: .85;                                /* slightly faded, same as before */
+}
