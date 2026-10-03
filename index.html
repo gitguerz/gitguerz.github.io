@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Learning full-stack web development in public. Build archives, coursework, experiments, and notes from Guerz.">
 <meta name="twitter:image" content="https://guerz.lol/og-banner.png">
 <link rel="icon" id="favicon" type="image/png" href="favicon-peach.png">
-<link rel="stylesheet" href="styles.css?v=6">
+<link rel="stylesheet" href="styles.css?v=7">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Nicholas Guerzon","alternateName":"Guerz","url":"https://guerz.lol","jobTitle":"Full-Stack Web Developer (in training)","sameAs":["https://github.com/gitguerz","https://blog.guerz.lol","https://www.instagram.com/guerz/","https://bsky.app/profile/guerz.bsky.social","https://kolektiva.social/@guerz","https://techhub.social/@Guerz","https://djs.social/@guerz"]}
@@ -259,6 +259,18 @@
       <a href="https://blogguerz.wordpress.com" target="_blank" rel="noopener noreferrer">{blogguerz}</a>
     </nav>
     <div class="footer-note">best viewed at<br>any resolution</div>
+  </div>
+  <!-- penguin sign-off: centered under the footer row (styles.css → FOOTER PENGUIN) -->
+  <div class="footer-mascot">
+    <!-- fixed-height box, so the tagline doesn't jump when the penguins swap -->
+    <div class="footer-penguin-box">
+      <!-- day penguin; styles.css hides it in night mode, and display:none also hides it from screen readers -->
+      <img class="footer-penguin footer-penguin--day" src="assets/brand/guerz-penguin-day.svg" width="30" height="45" alt="Pixel-art penguin">
+      <!-- night penguin with the gray outline; hidden in day mode the same way, so only one is ever announced -->
+      <img class="footer-penguin footer-penguin--night" src="assets/brand/guerz-penguin-darksafe.svg" width="54" height="54" alt="Pixel-art penguin">
+    </div>
+    <!-- tagline is real text, not part of the image, so it flips color with the theme and can be read aloud -->
+    <p class="footer-tagline">it's pronounced: “guerz”</p>
   </div>
 </footer>
 

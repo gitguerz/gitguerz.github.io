@@ -742,3 +742,41 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
   margin-top: 6px;                             /* the 6px top gap it had inline */
   opacity: .85;                                /* slightly faded, same as before */
 }
+
+/* ===== FOOTER PENGUIN (footer only — .footer-mascot, .footer-penguin* and .footer-tagline exist nowhere else) ===== */
+.footer-mascot {                               /* penguin + tagline, centered under the footer row */
+  display: flex;                               /* flex so the two pieces stack and center... */
+  flex-direction: column;                      /* ...penguin on top, tagline under it */
+  align-items: center;                         /* centered left to right */
+  gap: 2px;                                    /* tagline sits right under the penguin */
+  padding: 0 24px 18px;                        /* no top gap (the footer row above already has 18px), 18px at the bottom to match */
+}
+.footer-penguin-box {                          /* holds whichever penguin is showing */
+  height: 54px;                                /* tall enough for the night penguin's outline, so nothing jumps on theme swap */
+  display: flex;                               /* flex so the penguin centers inside the box */
+  align-items: center;                         /* centered top to bottom */
+  justify-content: center;                     /* centered left to right */
+}
+.footer-penguin {                              /* both penguins */
+  image-rendering: pixelated;                  /* keep hard pixel edges, never smooth/blur them */
+}
+.footer-penguin--day {                         /* day penguin (tight-cropped file) */
+  width: 30px;                                 /* 10 art-pixels wide × 3px each */
+  height: 45px;                                /* 15 art-pixels tall × 3px each: a whole number per pixel, so every pixel is the same size */
+}
+.footer-penguin--night {                       /* night penguin (square file with the gray outline) */
+  width: 54px;                                 /* 360-unit file at 3px per 20-unit art pixel, so his body matches the day penguin exactly */
+  height: 54px;                                /* square, same math */
+  display: none;                               /* hidden by default (day mode) — also hides it from screen readers */
+}
+html[data-theme="night"] .footer-penguin--day { display: none; }    /* night: hide the day penguin... */
+html[data-theme="night"] .footer-penguin--night { display: block; } /* ...and show the outlined one */
+.footer-tagline {                              /* it's pronounced: “guerz” */
+  margin: 0;                                   /* no default paragraph margins */
+  font: 12.5px/1.6 'IBM Plex Mono', monospace; /* same small mono as the footer's other notes */
+  color: var(--muted);                         /* muted purple by day, lavender by night (flips with the theme) */
+  text-align: center;                          /* centered under the penguin */
+}
+@media (max-width: 640px) {                    /* phones */
+  .footer-mascot { padding-left: 14px; padding-right: 14px; } /* same side padding the footer row switches to on phones */
+}
