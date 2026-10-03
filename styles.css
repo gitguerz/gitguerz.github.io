@@ -814,6 +814,97 @@ html[data-theme="night"] .page-playbooks { --card: #241f30; }          /* night-
   background: var(--lavender);                   /* lavender header instead of .section's default peach */
 }
 
+/* ----- fcc-build-archive gallery: built builds as thumbnail cards (replaced the embedded code panes + iframe previews) ----- */
+:where(.page-fcc-archive) .build-grid {          /* the card grid inside each module */
+  display: grid;                                 /* lay cards out in a grid */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* as many 260px+ columns as fit; they stretch to fill the row */
+  gap: 16px;                                     /* space between cards */
+  margin-bottom: 10px;                           /* breathing room before the not-yet-built rows */
+}
+:where(.page-fcc-archive) .build-card {          /* one build card */
+  display: flex;                                 /* stack thumbnail + text vertically */
+  flex-direction: column;                        /* top to bottom */
+  background: var(--paper2);                     /* cream in day, dark plum in night (token flips by itself) */
+  border: 2px solid var(--muted);                /* muted purple outline, like the toolshed cards */
+  box-shadow: 5px 5px 0 var(--lavender);         /* lavender drop shadow */
+}
+:where(.page-fcc-archive) .build-card-thumb {    /* screenshot frame (a link, or the code-only placeholder) */
+  display: block;                                /* links are inline by default; make it a box */
+  aspect-ratio: 16 / 10;                         /* matches the 640×400 screenshots, so nothing jumps while they load */
+  overflow: hidden;                              /* crop the zoom-on-hover inside the frame */
+  border-bottom: 2px solid var(--muted);         /* line between picture and text */
+  background: #ffffff;                           /* white behind the screenshot (most builds are white pages) */
+}
+:where(.page-fcc-archive) .build-card-thumb img { /* the screenshot itself */
+  display: block;                                /* removes the tiny gap under inline images */
+  width: 100%;                                   /* fill the frame's width */
+  height: 100%;                                  /* fill the frame's height */
+  object-fit: cover;                             /* crop instead of squish */
+  object-position: top;                          /* keep the top of the page visible (that's where titles live) */
+  transition: transform .2s ease;                /* smooth zoom on hover */
+}
+:where(.page-fcc-archive) .build-card-thumb:hover img,
+:where(.page-fcc-archive) .build-card-thumb:focus-visible img { /* mouse over, or keyboard focus on, the screenshot */
+  transform: scale(1.03);                        /* tiny zoom so it feels clickable */
+}
+:where(.page-fcc-archive) .build-card-thumb--code-only { /* placeholder for a build with no live page */
+  display: flex;                                 /* center the label */
+  align-items: center;                           /* vertical center */
+  justify-content: center;                       /* horizontal center */
+  background: repeating-linear-gradient(135deg, var(--peach), var(--peach) 14px, var(--lavender) 14px, var(--lavender) 28px); /* peach/lavender stripes, same as the toolshed's missing-screenshot look */
+}
+:where(.page-fcc-archive) .build-card-thumb--code-only span { /* the "code only" label */
+  background: var(--ink);                        /* dark chip */
+  color: var(--peach);                           /* peach text */
+  font: 700 10px 'IBM Plex Mono', monospace;     /* small mono label */
+  text-transform: uppercase;                     /* CODE ONLY */
+  letter-spacing: .08em;                         /* a little air between letters */
+  padding: 5px 10px;                             /* chip padding */
+}
+:where(.page-fcc-archive) .build-card-body {     /* text area under the screenshot */
+  display: flex;                                 /* stack the text pieces */
+  flex-direction: column;                        /* top to bottom */
+  gap: 8px;                                      /* space between pieces */
+  flex: 1;                                       /* grow so every card in a row ends at the same line */
+  padding: 12px 14px;                            /* inner spacing */
+}
+:where(.page-fcc-archive) .build-card-tags {     /* badge + stack row */
+  display: flex;                                 /* side by side */
+  justify-content: space-between;                /* badge left, stack right */
+  align-items: center;                           /* line them up vertically */
+  gap: 8px;                                      /* never let them touch */
+}
+:where(.page-fcc-archive) .build-card-name {     /* the build's name */
+  margin: 0;                                     /* no default h3 margin */
+  font: 800 18px/1.15 'Recursive', sans-serif;   /* bold display font, tight lines */
+  color: var(--text);                            /* main text color (flips in night) */
+}
+:where(.page-fcc-archive) .build-card-text {     /* my blurb */
+  margin: 0;                                     /* no default p margin */
+  font-size: 14px;                               /* a touch smaller than body text */
+  line-height: 1.45;                             /* comfy reading */
+  color: var(--text);                            /* main text color */
+}
+:where(.page-fcc-archive) .build-card-meta {     /* Concepts Learned (and the other meta lines) */
+  margin: 0;                                     /* no default p margin */
+  font: 500 11.5px/1.45 'IBM Plex Mono', monospace; /* small mono, like the old meta rows */
+  color: var(--muted);                           /* muted purple */
+}
+:where(.page-fcc-archive) .build-card-links {    /* "↗ live build" + "↗ code" */
+  margin-top: auto;                              /* pin the links to the bottom of the card */
+  display: flex;                                 /* side by side */
+  flex-wrap: wrap;                               /* wrap on very narrow cards */
+  gap: 14px;                                     /* space between the two links */
+  font: 700 11px 'IBM Plex Mono', monospace;     /* small bold mono */
+  text-transform: uppercase;                     /* LIVE BUILD / CODE */
+}
+:where(.page-fcc-archive) .build-card-links a {  /* each link */
+  color: var(--text);                            /* main text color (underline comes from the site's link style) */
+}
+:where(.page-fcc-archive) .build-card-code {     /* the folded-up code box on the code-only card */
+  margin-top: 4px;                               /* small gap above it */
+}
+
 /* ===== PAGE: toolshed.html — moved from the page's old <style> block; every rule is scoped to body.page-toolshed ===== */
 /* :where(.page-toolshed) scopes each rule to this page but adds ZERO specificity, so every rule wins/loses exactly as it did in the old <style> block */
 .page-toolshed {                                  /* page tokens (were on :root, which would have leaked site-wide) */
