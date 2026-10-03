@@ -35,7 +35,7 @@ My corner of the world wide web: part web dev portfolio, part brain dump, part p
 |---|---|
 | `Banners/` | Page banner images (capital B; GitHub Pages is case-sensitive) |
 | `playbooks/` | Both playbook pages, plus `thumbs/` for their preview cards |
-| `fcc-build-archive/` | One folder per fCC build, each with its own `index.html` |
+| *(fCC builds)* | Moved to their own repo, [freecodecamp-responsive-web-design-v9](https://github.com/gitguerz/freecodecamp-responsive-web-design-v9), live at [builds.guerz.lol](https://builds.guerz.lol). `fcc-build-archive.html` still shows the code + live previews |
 | `sandbox/` | One folder per sandbox experiment |
 | `toolshed/` | The tools listed above |
 
@@ -51,6 +51,8 @@ My corner of the world wide web: part web dev portfolio, part brain dump, part p
 | `CNAME` | Points GitHub Pages at guerz.lol. **Don't delete.** |
 | `.github/workflows/static.yml` | Deploys the site to GitHub Pages on every push to `main` |
 | `.gitignore` | Keeps macOS `.DS_Store` junk out of the repo |
+| `_redirects` | Cloudflare redirects: old `/fcc-build-archive/<build>/` URLs → builds.guerz.lol (TOP builds → `sandbox/`) |
+| `.assetsignore` | Files Cloudflare must not serve publicly (`.git`, README, etc.) |
 
 ## Stack
 
