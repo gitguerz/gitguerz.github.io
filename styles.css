@@ -807,8 +807,11 @@ html[data-theme="night"] .page-playbooks { --card: #241f30; }          /* night-
 
 /* ===== PAGE: fcc-build-archive.html — replaces the page's 3 old inline style="" attributes; scoped to body.page-fcc-archive ===== */
 /* :where(.page-fcc-archive) scopes each rule to this page but adds ZERO specificity; the rules sit at the end of the file, so they still beat the .card / .section defaults they override */
-:where(.page-fcc-archive) .fcc-archive-section { /* the big "RWD v9" details section */
-  box-shadow: 5px 5px 0 var(--lavender);         /* lavender drop shadow instead of .section's default peach */
+:where(.page-fcc-archive) .fcc-archive-section { /* the big "RWD v9" + "Legacy V8" details sections */
+  box-shadow: 5px 5px 0 var(--peach);            /* peach drop shadow, to match the title card */
+}
+:where(.page-fcc-archive) .fcc-archive-section > summary { /* the clickable header bar of those sections */
+  background: var(--lavender);                   /* lavender header instead of .section's default peach */
 }
 
 /* ===== PAGE: toolshed.html — moved from the page's old <style> block; every rule is scoped to body.page-toolshed ===== */
