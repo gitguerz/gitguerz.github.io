@@ -20,62 +20,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Eczar:wght@400;600;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --peach:#F4AD7D; --lavender:#b3a8cc; --ink:#3a2b22; /* constant dark — chip/badge bg, never flips */
-  --bg:oklch(0.94 0.035 55); --paper:#ffffff; --card:#fdf0e4; --text:#3a2b22; --muted:#6a5d94; --shadow:#3a2b22;
-}
-html[data-theme="night"]{
-  --bg:#17131f; --paper:#221d2d; --card:#241f30; --text:#eee6f5; --muted:#b3a8cc; --shadow:#000000;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Eczar',serif;transition:background .25s ease,color .25s ease}
-img{max-width:100%;display:block}
-a{color:inherit}
-
-.rm-main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-.rm-kicker{font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
-.rm-title{margin:0 0 8px;font:800 clamp(28px,5vw,44px)/1 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.01em}
-.rm-sub{margin:0 0 28px;max-width:640px;font:16px/1.55 'Eczar',serif;color:var(--muted)}
-
-.rm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-
-.rm-card{background:var(--card);border:2px solid var(--muted);box-shadow:5px 5px 0 var(--lavender);display:flex;flex-direction:column;overflow:hidden}
-
-.rm-thumb-wrap{display:block;position:relative;border-bottom:2px solid var(--muted)}
-.rm-thumb-link{display:block;position:relative;aspect-ratio:16/9;background:var(--paper)}
-.rm-thumb-link img{width:100%;height:100%;object-fit:cover}
-.rm-thumb-placeholder{
-  display:none;position:absolute;inset:0;align-items:center;justify-content:center;
-  background:repeating-linear-gradient(135deg,var(--peach),var(--peach) 14px,var(--lavender) 14px,var(--lavender) 28px);
-}
-.rm-thumb-placeholder span{
-  background:var(--ink);color:var(--peach);font:700 10px 'IBM Plex Mono',monospace;
-  text-transform:uppercase;letter-spacing:.08em;padding:5px 10px;
-}
-
-.rm-card-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
-.rm-card-name{margin:0;font:800 20px 'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1}
-.rm-card-desc{margin:0;font:14.5px/1.5 'Eczar',serif;color:var(--text);min-height:calc(1.5em * 3)}
-.rm-tag{align-self:flex-start;white-space:nowrap;font:700 9.5px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:var(--peach);padding:3px 8px}
-
-.rm-actions{margin-top:4px;display:flex;align-items:center;gap:8px;padding-top:6px}
-.rm-btn-dl{
-  display:flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 auto;
-  border:2px solid var(--muted);background:var(--paper);color:var(--text);font-size:16px;text-decoration:none;
-}
-.rm-btn-dl:hover{background:var(--peach);color:var(--ink)}
-.rm-btn-code{
-  border:2px solid var(--ink);background:var(--ink);color:var(--peach);
-  font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;
-  padding:0 14px;height:34px;display:flex;align-items:center;text-decoration:none;
-}
-.rm-btn-code:hover{background:var(--lavender);color:var(--ink)}
-.rm-dl-note{font:11px/1.3 'IBM Plex Mono',monospace;color:var(--muted)}
-
-</style>
 </head>
-<body>
+<!-- page-toolshed scopes this page's rules in styles.css (PAGE: toolshed.html) so they never touch other pages -->
+<body class="page-toolshed">
 
 <a class="skip-link" href="#main">skip to main content</a>
 

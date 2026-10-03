@@ -821,3 +821,38 @@ html[data-theme="night"] .page-playbooks { --card: #241f30; }          /* night-
 :where(.page-fcc-archive) .fcc-archive-section { /* the big "RWD v9" details section */
   box-shadow: 5px 5px 0 var(--lavender);         /* lavender drop shadow instead of .section's default peach */
 }
+
+/* ===== PAGE: toolshed.html — moved from the page's old <style> block; every rule is scoped to body.page-toolshed ===== */
+/* :where(.page-toolshed) scopes each rule to this page but adds ZERO specificity, so every rule wins/loses exactly as it did in the old <style> block */
+.page-toolshed {                                  /* page tokens (were on :root, which would have leaked site-wide) */
+  --peach: #F4AD7D; --lavender: #b3a8cc; --ink: #3a2b22;                       /* brand colors; ink is the constant dark for chips/badges, never flips */
+  --bg: oklch(0.94 0.035 55); --paper: #ffffff; --card: #fdf0e4;               /* day page bg, paper, and the cream card surface (.rm-card + .rm-credit use --card) */
+  --text: #3a2b22; --muted: #6a5d94; --shadow: #3a2b22;                         /* day text, muted purple, shadow */
+}
+html[data-theme="night"] .page-toolshed {         /* night-mode tokens, still this page only */
+  --bg: #17131f; --paper: #221d2d; --card: #241f30;                             /* night page bg, paper, and the dark card surface */
+  --text: #eee6f5; --muted: #b3a8cc; --shadow: #000000;                         /* night text, muted lavender, black shadow */
+}
+.page-toolshed { font-family: 'Eczar', serif; }   /* this page's body font (was html,body; a real class is needed here so it still beats the site-wide body font) */
+:where(.page-toolshed) a { color: inherit; }      /* links take their parent's color (same specificity as the old bare `a` rule) */
+:where(.page-toolshed) .rm-main { max-width: 1080px; margin: 0 auto; padding: 28px 20px 48px; } /* centered page column with breathing room */
+:where(.page-toolshed) .rm-kicker { font: 700 11px 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0 0 6px; } /* "toolshed / working tools" label */
+:where(.page-toolshed) .rm-title { margin: 0 0 8px; font: 800 clamp(28px, 5vw, 44px)/1 'Big Shoulders Display', sans-serif; text-transform: uppercase; letter-spacing: -.01em; } /* "THE TOOLSHED" title */
+:where(.page-toolshed) .rm-sub { margin: 0 0 28px; max-width: 640px; font: 16px/1.55 'Eczar', serif; color: var(--muted); } /* muted subtitle */
+:where(.page-toolshed) .rm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; } /* tool card grid */
+:where(.page-toolshed) .rm-card { background: var(--card); border: 2px solid var(--muted); box-shadow: 5px 5px 0 var(--lavender); display: flex; flex-direction: column; overflow: hidden; } /* one tool card */
+:where(.page-toolshed) .rm-thumb-wrap { display: block; position: relative; border-bottom: 2px solid var(--muted); } /* frame around the screenshot */
+:where(.page-toolshed) .rm-thumb-link { display: block; position: relative; aspect-ratio: 16/9; background: var(--paper); } /* clickable 16:9 screenshot area */
+:where(.page-toolshed) .rm-thumb-link img { width: 100%; height: 100%; object-fit: cover; } /* screenshot fills the box */
+:where(.page-toolshed) .rm-thumb-placeholder { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; background: repeating-linear-gradient(135deg, var(--peach), var(--peach) 14px, var(--lavender) 14px, var(--lavender) 28px); } /* striped stand-in if a screenshot 404s (hidden by default) */
+:where(.page-toolshed) .rm-thumb-placeholder span { background: var(--ink); color: var(--peach); font: 700 10px 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .08em; padding: 5px 10px; } /* "screenshot pending" label */
+:where(.page-toolshed) .rm-card-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; } /* text area of the card */
+:where(.page-toolshed) .rm-card-name { margin: 0; font: 800 20px 'Big Shoulders Display', sans-serif; text-transform: uppercase; letter-spacing: -.01em; line-height: 1.1; } /* tool name */
+:where(.page-toolshed) .rm-card-desc { margin: 0; font: 14.5px/1.5 'Eczar', serif; color: var(--text); min-height: calc(1.5em * 3); } /* description, at least 3 lines tall so cards line up */
+:where(.page-toolshed) .rm-tag { align-self: flex-start; white-space: nowrap; font: 700 9.5px 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .05em; background: var(--ink); color: var(--peach); padding: 3px 8px; } /* small dark version tag */
+:where(.page-toolshed) .rm-actions { margin-top: 4px; display: flex; align-items: center; gap: 8px; padding-top: 6px; } /* button row */
+:where(.page-toolshed) .rm-btn-dl { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex: 0 0 auto; border: 2px solid var(--muted); background: var(--paper); color: var(--text); font-size: 16px; text-decoration: none; } /* square download button */
+:where(.page-toolshed) .rm-btn-dl:hover { background: var(--peach); color: var(--ink); } /* download button hover */
+:where(.page-toolshed) .rm-btn-code { border: 2px solid var(--ink); background: var(--ink); color: var(--peach); font: 700 11px 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: .05em; padding: 0 14px; height: 34px; display: flex; align-items: center; text-decoration: none; } /* solid "code" button */
+:where(.page-toolshed) .rm-btn-code:hover { background: var(--lavender); color: var(--ink); } /* code button hover */
+:where(.page-toolshed) .rm-dl-note { font: 11px/1.3 'IBM Plex Mono', monospace; color: var(--muted); } /* tiny note under the buttons */
