@@ -144,6 +144,9 @@ img { max-width: 100%; display: block; }
 .card--wine :focus-visible { outline-color: var(--peach); }
 /* the "guerzbook" label: eyebrows default to muted purple, which sinks into wine, so go cream */
 .card--wine .card-eyebrow { color: var(--wine-ink); }
+/* links to index.html#guerzbook (About page) jump here; the sticky header is up to 191px tall on small phones,
+   so stop the jump 205px short of the card instead of hiding its top under the header */
+#guerzbook { scroll-margin-top: 205px; }       /* only changes where an anchor jump lands; layout doesn't move */
 
 .title-wrap {
   display: flex;
@@ -711,7 +714,7 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
 .rm-credit-list { margin: 0 0 10px; padding-left: 1.2em; } /* indent the role list a little */
 .rm-credit-list li { margin: 0 0 4px; }        /* small gap between roles */
 
-/* ===== ABOUT PAGE (about.html only — .jeffran, .card-body--about, .card-body--now, .about-links and .about-signoff exist nowhere else) ===== */
+/* ===== ABOUT PAGE (about.html only — .jeffran, .card-body--about, .card-body--now and .about-links exist nowhere else) ===== */
 .jeffran {                                     /* the <figure> holding Jeffran + his caption */
   margin: 0;                                   /* browsers give <figure> a 40px side margin; zero it */
   width: 220px;                                /* display size (the file is 440px, so he stays sharp on retina screens) */
@@ -748,10 +751,6 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
   flex-direction: column;                      /* one link per line */
   gap: 6px;                                    /* 6px between links, same as before */
   font: 15.5px/1.5 'Space Grotesk', sans-serif; /* 15.5px body font, 1.5 line height, same as before */
-}
-.card p.about-signoff {                        /* "— Guerz" sign-off; `.card p.` outranks the `.card p` margin rule */
-  margin-top: 6px;                             /* the 6px top gap it had inline */
-  opacity: .85;                                /* slightly faded, same as before */
 }
 
 /* ===== FOOTER PENGUIN (footer only — .footer-mascot, .footer-penguin* and .footer-tagline exist nowhere else) ===== */
