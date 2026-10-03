@@ -21,7 +21,8 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://guerz.lol/"},{"@type":"ListItem","position":2,"name":"FCC Build Archive","item":"https://guerz.lol/fcc-build-archive.html"}]}
 </script>
 </head>
-<body>
+<!-- page-fcc-archive scopes this page's rules in styles.css (PAGE: fcc-build-archive.html) so they never touch other pages -->
+<body class="page-fcc-archive">
 
 <a class="skip-link" href="#main">skip to main content</a>
 
@@ -52,8 +53,10 @@
 
 <main class="container container--wide" id="main" tabindex="-1">
 
-  <div class="card card--lavender" style="background:var(--lavender);color:var(--ink);box-shadow:5px 5px 0 var(--peach)">
-    <div class="userinfo-role" style="color:var(--ink)">the build log · view source welcome</div>
+  <!-- fcc-intro-card = lavender card, ink text, peach shadow (was an inline style) -->
+  <div class="card card--lavender fcc-intro-card">
+    <!-- fcc-intro-role = the small label in ink instead of muted purple (was an inline style) -->
+    <div class="userinfo-role fcc-intro-role">the build log · view source welcome</div>
     <div class="title-wrap"><h1 class="card-title">FCC BUILD ARCHIVE</h1></div>
     <div class="card-body">everything i've built and shipped in the <b>freeCodeCamp RWD v9 Build Archive</b> <em>(WIP)</em> — curriculum <em>workshops</em>, <em>labs</em>, &amp; <em>projects</em> chronologically logged from the first to the very last, every line commented and explained.
   each build shows the code, with a clickable preview tab.
@@ -61,7 +64,8 @@
   <p><strong><em>NOTE:</em></strong> the following are built for my own educational purposes. feel free to steal and use. enjoy! ^_^</p></div>
   </div>
 
-  <details class="section" id="rwd-archive" style="box-shadow:5px 5px 0 var(--lavender)" open>
+  <!-- fcc-archive-section = lavender drop shadow on the archive section (was an inline style) -->
+  <details class="section fcc-archive-section" id="rwd-archive" open>
     <summary>
       <span class="section-caret">▸</span>
       <span class="section-title">freeCodeCamp - RWD v9 Build Archive</span>

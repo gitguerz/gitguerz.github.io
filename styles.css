@@ -807,3 +807,17 @@ html[data-theme="night"] .page-playbooks { --card: #241f30; }          /* night-
 :where(.page-playbooks) .pb-btn:hover { background: var(--lavender); color: var(--ink); } /* solid button hover */
 :where(.page-playbooks) .pb-btn--ghost { background: var(--paper); color: var(--text); border-color: var(--muted); } /* outlined "source" button */
 :where(.page-playbooks) .pb-btn--ghost:hover { background: var(--peach); color: var(--ink); border-color: var(--ink); } /* outlined button hover */
+
+/* ===== PAGE: fcc-build-archive.html — replaces the page's 3 old inline style="" attributes; scoped to body.page-fcc-archive ===== */
+/* :where(.page-fcc-archive) scopes each rule to this page but adds ZERO specificity; the rules sit at the end of the file, so they still beat the .card / .section defaults they override */
+:where(.page-fcc-archive) .fcc-intro-card {      /* the intro card at the top of the archive */
+  background: var(--lavender);                   /* lavender card surface */
+  color: var(--ink);                             /* dark ink text */
+  box-shadow: 5px 5px 0 var(--peach);            /* peach drop shadow (overrides card--lavender's lavender one) */
+}
+:where(.page-fcc-archive) .fcc-intro-role {      /* "the build log · view source welcome" label */
+  color: var(--ink);                             /* ink instead of the default muted purple, so it reads on lavender */
+}
+:where(.page-fcc-archive) .fcc-archive-section { /* the big "RWD v9" details section */
+  box-shadow: 5px 5px 0 var(--lavender);         /* lavender drop shadow instead of .section's default peach */
+}
