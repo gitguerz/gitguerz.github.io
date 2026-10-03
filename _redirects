@@ -1,22 +1,28 @@
 # _redirects: Cloudflare reads this file on deploy and sends old URLs to their new homes.
 # Format per rule: <old path>  <new path or full URL>  <status code>. 301 = "moved for good" (search engines pass the SEO credit along).
-# Rules are checked top to bottom and the FIRST match wins, so the specific rules sit above the catch-all.
+# GOTCHA (learned live): rules WITHOUT a * ("static") must all sit ABOVE the first rule WITH a * ("dynamic").
+# On the live site, specific * rules lost to the catch-all, so every special case below is spelled out file by file, no * at all.
 # The gallery page itself (/fcc-build-archive and /fcc-build-archive.html) is never matched below, so it keeps working.
 
 # someone typing the gallery address with a trailing slash goes to the gallery, not to builds.guerz.lol
-/fcc-build-archive/                  /fcc-build-archive                                      301
+/fcc-build-archive/                               /fcc-build-archive                                        301
 
-# The Odin Project recipe build moved into Sandbox (no-slash version, then everything inside the folder)
-/fcc-build-archive/recipe            /sandbox/recipe/                                        301
-/fcc-build-archive/recipe/*          /sandbox/recipe/:splat                                  301
+# The Odin Project recipe build moved into Sandbox: folder (no slash), folder (slash), and its one file
+/fcc-build-archive/recipe                         /sandbox/recipe/                                          301
+/fcc-build-archive/recipe/                        /sandbox/recipe/                                          301
+/fcc-build-archive/recipe/index.html              /sandbox/recipe/                                          301
 
-# The Odin Project landing-page build moved into Sandbox (same two rules)
-/fcc-build-archive/landing-page      /sandbox/landing-page/                                  301
-/fcc-build-archive/landing-page/*    /sandbox/landing-page/:splat                            301
+# The Odin Project landing-page build moved into Sandbox: folder (no slash), folder (slash), and its two files
+/fcc-build-archive/landing-page                   /sandbox/landing-page/                                    301
+/fcc-build-archive/landing-page/                  /sandbox/landing-page/                                    301
+/fcc-build-archive/landing-page/index.html        /sandbox/landing-page/                                    301
+/fcc-build-archive/landing-page/styles.css        /sandbox/landing-page/styles.css                          301
 
-# the legacy V8 Magazine lives in its own folder on builds.guerz.lol
-/fcc-build-archive/magazine          https://builds.guerz.lol/legacy-rwd-v8/magazine/        301
-/fcc-build-archive/magazine/*        https://builds.guerz.lol/legacy-rwd-v8/magazine/:splat  301
+# the legacy V8 Magazine lives in its own folder on builds.guerz.lol: folder (no slash), folder (slash), and its two files
+/fcc-build-archive/magazine                       https://builds.guerz.lol/legacy-rwd-v8/magazine/          301
+/fcc-build-archive/magazine/                      https://builds.guerz.lol/legacy-rwd-v8/magazine/          301
+/fcc-build-archive/magazine/index.html            https://builds.guerz.lol/legacy-rwd-v8/magazine/          301
+/fcc-build-archive/magazine/styles.css            https://builds.guerz.lol/legacy-rwd-v8/magazine/styles.css 301
 
-# catch-all: every other fCC build kept its folder name, so /fcc-build-archive/<build>/... maps straight across
-/fcc-build-archive/*                 https://builds.guerz.lol/:splat                         301
+# catch-all, LAST and the only * rule: every other fCC build kept its folder name, so /fcc-build-archive/<build>/... maps straight across
+/fcc-build-archive/*                              https://builds.guerz.lol/:splat                           301
