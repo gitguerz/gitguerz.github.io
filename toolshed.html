@@ -52,9 +52,15 @@
 </header>
 
 <main class="rm-main" id="main" tabindex="-1">
-  <p class="rm-kicker">toolshed / working tools</p>
-  <h1 class="rm-title">the toolshed</h1>
-  <p class="rm-sub">live builds, not exercises — open one, download it, or go read how it works.</p>
+  <!-- page title box: the same lavender title card as fcc-build-archive and playbooks (styles.css → SHARED: page title card) -->
+  <div class="card card--lavender title-card">
+    <!-- small label above the title -->
+    <div class="userinfo-role title-card-role">toolshed / working tools</div>
+    <!-- the big page title (displays uppercase via .card-title) -->
+    <div class="title-wrap"><h1 class="card-title">the toolshed</h1></div>
+    <!-- the intro line under the title -->
+    <div class="card-body">live builds, not exercises — open one, download it, or go read how it works.</div>
+  </div>
 
   <!-- AI CREDIT BLURB: tells every visitor up front how the Toolshed tools were made -->
   <section class="rm-credit" aria-labelledby="rm-credit-title"> <!-- labeled region so screen readers announce it by its heading -->
