@@ -711,7 +711,7 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
 .rm-credit-list { margin: 0 0 10px; padding-left: 1.2em; } /* indent the role list a little */
 .rm-credit-list li { margin: 0 0 4px; }        /* small gap between roles */
 
-/* ===== ABOUT PAGE (about.html only — .jeffran, .card-body--about and .about-signoff exist nowhere else) ===== */
+/* ===== ABOUT PAGE (about.html only — .jeffran, .card-body--about, .card-body--now, .about-links and .about-signoff exist nowhere else) ===== */
 .jeffran {                                     /* the <figure> holding Jeffran + his caption */
   margin: 0;                                   /* browsers give <figure> a 40px side margin; zero it */
   width: 220px;                                /* display size (the file is 440px, so he stays sharp on retina screens) */
@@ -737,6 +737,17 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
   display: flex;                               /* flex so the gap below works */
   flex-direction: column;                      /* paragraphs stack top to bottom */
   gap: 12px;                                   /* 12px between paragraphs, same as before */
+}
+.card-body--now {                              /* the "now" card's four lines (replaces its old inline style) */
+  display: flex;                               /* flex so the gap below works */
+  flex-direction: column;                      /* lines stack top to bottom */
+  gap: 5px;                                    /* 5px between lines, same as before */
+}
+.about-links {                                 /* the "where to find me" link list (replaces its old inline style) */
+  display: flex;                               /* flex so the gap below works */
+  flex-direction: column;                      /* one link per line */
+  gap: 6px;                                    /* 6px between links, same as before */
+  font: 15.5px/1.5 'Space Grotesk', sans-serif; /* 15.5px body font, 1.5 line height, same as before */
 }
 .card p.about-signoff {                        /* "— Guerz" sign-off; `.card p.` outranks the `.card p` margin rule */
   margin-top: 6px;                             /* the 6px top gap it had inline */
