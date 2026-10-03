@@ -105,7 +105,7 @@ function exportLog() {
   const testLines = tests.map(box => `- [${box.checked ? "x" : " "}] ${box.parentElement.textContent.trim()}`);
   const text = [
     "---", "title: WordPress 101 — The Blog Archive Engine", `updated: ${new Date().toISOString().slice(0,10)}`, `route: ${route}`, "---", "",
-    "# WordPress 101 — The Blog Archive Engine", "", `Route selected: ${route}`, "", "## Roadmap tasks", ...taskLines, "", "## Battle test register", ...testLines, "", "## Field notes", `- Theme/template: ${notes[0].value || ""}`, `- One next action: ${notes[1].value || ""}`, "", "## Linear notes", "Original roadmap writing and design: Guerz. Third-party platform and WordPress materials remain subject to their owners' terms.", ""
+    "# WordPress 101 — The Blog Archive Engine", "", `Route selected: ${route}`, "", "## Roadmap tasks", ...taskLines, "", "## Battle test register", ...testLines, "", "## Field notes", `- Theme/template: ${notes[0].value || ""}`, `- One next action: ${notes[1].value || ""}`, "", "## Liner notes", "Original roadmap writing and design: Guerz. Third-party platform and WordPress materials remain subject to their owners' terms.", ""
   ].join("\n");
   const url = URL.createObjectURL(new Blob([text], { type: "text/markdown;charset=utf-8" }));
   const link = document.createElement("a");
