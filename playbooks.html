@@ -20,46 +20,9 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://guerz.lol/"},{"@type":"ListItem","position":2,"name":"Playbooks","item":"https://guerz.lol/playbooks.html"}]}
 </script>
-<style>
-/* gallery layout — same pattern as the toolshed, scoped to this page */
-/* --card is the card surface; toolshed.html defines it in its own scoped block,
-   so this page needs its own copy (styles.css doesn't ship one) */
-:root{--card:#fdf0e4}
-html[data-theme="night"]{--card:#241f30}
-.pb-main{max-width:1080px;margin:0 auto;padding:28px 20px 48px}
-.pb-kicker{font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 6px}
-.pb-title{margin:0 0 8px;font-family:'Platypi',serif;font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.05;letter-spacing:-.01em}
-.pb-sub{margin:0 0 28px;max-width:640px;font:15px/1.55 'Space Grotesk',sans-serif;color:var(--muted)}
-
-.pb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px} /* min(100%,300px): a column can shrink below 300px on very narrow phones instead of overflowing */
-.pb-card{background:var(--card);border:2px solid var(--muted);box-shadow:5px 5px 0 var(--lavender);display:flex;flex-direction:column;overflow:hidden}
-
-.pb-thumb-wrap{display:block;position:relative;border-bottom:2px solid var(--muted)}
-.pb-thumb-link{display:block;position:relative;aspect-ratio:16/9;background:var(--paper)}
-.pb-thumb-link img{width:100%;height:100%;object-fit:cover}
-.pb-thumb-placeholder{display:none;position:absolute;inset:0;align-items:center;justify-content:center;
-  background:repeating-linear-gradient(135deg,var(--peach),var(--peach) 14px,var(--lavender) 14px,var(--lavender) 28px)}
-.pb-thumb-placeholder span{background:var(--ink);color:var(--peach);font:700 10px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.08em;padding:5px 10px}
-
-.pb-card-body{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
-.pb-card-name{margin:0;font-family:'Platypi',serif;font-weight:800;font-size:22px;line-height:1.1;letter-spacing:-.01em}
-.pb-card-desc{margin:0;font:14.5px/1.55 'Space Grotesk',sans-serif;color:var(--text)}
-.pb-tag{align-self:flex-start;white-space:nowrap;font:700 9.5px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:var(--peach);padding:3px 8px}
-
-.pb-facts{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-.pb-facts li{font:700 10px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;
-  color:var(--text);border:2px solid var(--muted);padding:3px 8px}
-
-.pb-actions{margin-top:auto;display:flex;align-items:center;gap:8px;padding-top:10px}
-.pb-btn{border:2px solid var(--ink);background:var(--ink);color:var(--peach);
-  font:700 11px 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;
-  padding:0 14px;height:34px;display:flex;align-items:center;text-decoration:none}
-.pb-btn:hover{background:var(--lavender);color:var(--ink)}
-.pb-btn--ghost{background:var(--paper);color:var(--text);border-color:var(--muted)}
-.pb-btn--ghost:hover{background:var(--peach);color:var(--ink);border-color:var(--ink)}
-</style>
 </head>
-<body>
+<!-- page-playbooks scopes this page's rules in styles.css (PAGE: playbooks.html) so they never touch other pages -->
+<body class="page-playbooks">
 
 <a class="skip-link" href="#main">skip to main content</a>
 
