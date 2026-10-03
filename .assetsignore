@@ -1,0 +1,20 @@
+# .assetsignore: files Cloudflare should NOT upload as public pages (same pattern rules as .gitignore)
+# git's internal folder (history + config) was publicly readable at guerz.lol/.git/
+.git
+# GitHub Actions workflows (repo plumbing, not site content)
+.github
+# repo housekeeping files
+.gitignore
+.assetsignore
+# macOS Finder junk
+.DS_Store
+# the repo's readme is for GitHub, not for site visitors
+README.md
+# GitHub Pages custom-domain file (not needed by the Worker)
+CNAME
+# Cloudflare's own config + local cache, in case they ever land in the repo
+wrangler.jsonc
+wrangler.toml
+.wrangler
+# Cowork scratch folder (already gitignored; listed here as a second lock)
+Claude outputs
