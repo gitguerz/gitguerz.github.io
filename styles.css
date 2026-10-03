@@ -692,7 +692,7 @@ h2.card-eyebrow, h3.card-eyebrow, h2.callout-title, h2.card-title, h2.post-title
 /* ===== TOOLSHED: AI credit blurb (toolshed.html only — .rm-credit classes exist nowhere else) ===== */
 .rm-credit {                                   /* the whole credit box */
   max-width: 720px;                            /* keeps lines short enough to read comfortably */
-  margin: 0 0 28px;                            /* no top gap (the subtitle already has one), space before the tool grid */
+    margin: 0 auto 28px;                         /* no top gap, auto left/right margins center the box, space before the tool grid */
   padding: 18px 20px;                          /* breathing room inside the box */
   background: var(--card, #fdf0e4);            /* same cream as the tool cards (falls back to cream if the variable is missing) */
   border: 2px solid var(--muted);              /* same purple border as the tool cards */
