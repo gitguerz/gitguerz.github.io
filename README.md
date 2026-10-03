@@ -33,7 +33,6 @@ My corner of the world wide web: part web dev portfolio, part brain dump, part p
 
 | Folder | What lives there |
 |---|---|
-| `Banners/` | Page banner images (capital B; GitHub Pages is case-sensitive) |
 | `playbooks/` | Both playbook pages, plus `thumbs/` for their preview cards |
 | *(fCC builds)* | Moved to their own repo, [freecodecamp-responsive-web-design-v9](https://github.com/gitguerz/freecodecamp-responsive-web-design-v9), live at [builds.guerz.lol](https://builds.guerz.lol). `fcc-build-archive.html` still shows the code + live previews |
 | `sandbox/` | One folder per sandbox experiment |
@@ -48,8 +47,6 @@ My corner of the world wide web: part web dev portfolio, part brain dump, part p
 | `guerzbook.js` | Guestbook front end; talks to a Cloudflare Worker + KV, with Formspree email notifications |
 | `projects.js` | Code viewer for the build archive and sandbox: line numbers, syntax colors, copy button, lazy previews |
 | `sitemap.xml` / `robots.txt` | Tell search engines what's here |
-| `CNAME` | Points GitHub Pages at guerz.lol. **Don't delete.** |
-| `.github/workflows/static.yml` | Deploys the site to GitHub Pages on every push to `main` |
 | `.gitignore` | Keeps macOS `.DS_Store` junk out of the repo |
 | `_redirects` | Cloudflare redirects: old `/fcc-build-archive/<build>/` URLs → builds.guerz.lol (TOP builds → `sandbox/`) |
 | `.assetsignore` | Files Cloudflare must not serve publicly (`.git`, README, etc.) |
@@ -59,8 +56,8 @@ My corner of the world wide web: part web dev portfolio, part brain dump, part p
 - Plain HTML, CSS, and vanilla JS: no framework, no build step
 - Fonts: Recursive (titles), Space Grotesk (body), IBM Plex Mono (labels), Platypi (the {Guerz} name)
 - Palette: peach `#F4AD7D`, lavender `#b3a8cc`, ink `#3a2b22`, burgundy `#6a1f2e`
-- Hosting: GitHub Pages
-- Domain + DNS: Porkbun
+- Hosting: Cloudflare Workers (static assets), Worker `gitguerz-github-io`; every push to `main` auto-deploys
+- Domain: Porkbun · DNS: Cloudflare
 - Guestbook backend: Cloudflare Workers + KV
 
 ## Run it locally
@@ -83,7 +80,7 @@ Opening the `.html` files directly also works, but a local server behaves more l
 ```bash
 git add -A                          # stage new, changed, and deleted files
 git commit -m "what changed"        # save a snapshot with a message
-git push                            # GitHub Actions rebuilds guerz.lol in a minute or two
+git push                            # Cloudflare Workers Builds redeploys guerz.lol in a minute or two
 ```
 
 **Edit only in this folder.** It's the one source of truth.
